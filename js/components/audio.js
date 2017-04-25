@@ -20,6 +20,6 @@ export default class Audio extends React.Component {
     }
 
     render() {
-        return (<button>Play audio again</button>);
+        return (<button>Play audio again </button>);
     }
 }
