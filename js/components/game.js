@@ -10,9 +10,9 @@ export default function Game() {
     return (
         <div>
           <Staves />
-          <Audio />
           <AnswerEntry />
           <KofN />
+          <Audio />
           <Next />
         </div>
     );
