@@ -1,4 +1,7 @@
+# -*- mode: gitignore; -*-
 build
 node_modules
 *.log
 playground_delete
+\#*\
+.\#*
