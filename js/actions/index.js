@@ -11,6 +11,6 @@ export const getNewChord = () => ({
 
 export const COMPARE_TO_ACTUAL = 'COMPARE_TO_ACTUAL';
 export const compareToActual = (guess) => ({
-    type: compareToActual,
+    type: COMPARE_TO_ACTUAL,
     guess
 });
