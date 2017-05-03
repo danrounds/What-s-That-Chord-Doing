@@ -24,7 +24,7 @@ export class Audio extends React.Component {
     }
 
     render() {
-        return (<button onClick={this.playSounds}>Play audio again </button>);
+        return (<button onClick={this.playSounds}>Play audio again</button>);
     }
 }
 

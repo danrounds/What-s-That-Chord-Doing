@@ -4,9 +4,9 @@ export const startNewGame = () => ({
     type: START_NEW_GAME
 });
 
-export const GET_NEW_CHORD = 'GET_NEW_CHORD';
-export const getNewChord = () => ({
-    type: GET_NEW_CHORD
+export const GET_NEXT_QUESTION = 'GET_NEXT_QUESTION';
+export const getNextQuestion = () => ({
+    type: GET_NEXT_QUESTION
 });
 
 export const COMPARE_TO_ACTUAL = 'COMPARE_TO_ACTUAL';
