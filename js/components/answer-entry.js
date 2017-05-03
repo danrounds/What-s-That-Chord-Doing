@@ -5,7 +5,6 @@ import AnswerButton from './answer-button';
 export default class AnswerEntry extends React.Component {
     constructor(props) {
         super(props);
-        // this.onButtonClick = this.onButtonClick.bind(this);
     }
 
     render() {
