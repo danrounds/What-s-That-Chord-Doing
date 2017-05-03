@@ -9,7 +9,7 @@ export class Audio extends React.Component {
     //     Soundfont.instrument(ac, 'acoustic_grand_piano').then(function (piano) {
     //         for (let i of this.props.notes)
     //             piano.play(i).stop(ac.currentTime + 0.68);
-    
+
     //         piano.schedule(ac.currentTime + 0.7, [
     //             {time: 0, note: 'F4'},
     //             {time: 0, note: 'A4'},
