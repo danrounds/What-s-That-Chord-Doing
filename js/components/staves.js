@@ -17,17 +17,17 @@ export class Staves extends React.Component {
         } catch(err) { ;  }
 
         const VF = Vex.Flow;
-        var div = document.getElementById("staves");
-        var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+        const div = document.getElementById("staves");
+        const renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
         // Configure the rendering context.
         renderer.resize(500, 300);
-        var context = renderer.getContext();
+        const context = renderer.getContext();
         context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
         // Create a stave of width 400 at position 10, 40 on the canvas.
         const treble = new VF.Stave(10, 40, 400);
-        treble.addClef('treble');
+        treble.addClef('treble').addKeySignature('D');
         treble.setContext(context).draw();
 
         const bass = new VF.Stave(10, 145, 400);
@@ -35,12 +35,17 @@ export class Staves extends React.Component {
         bass.setContext(context).draw();
 
         if (this.props.notes.length) {
+
+            const keyManager = new VF.KeyManager('D');
+
+            console.log(keyManager);
+
             const trebleNotes = [
-                new VF.StaveNote({clef: "treble", keys: ['c/4', 'e/4', 'g/4'], duration: "w" }),
+                new VF.StaveNote({clef: "treble", keys: ['C#/4', 'E#/4', 'G#/4'], duration: "w" }),
             ];
 
             const bassNotes = [
-                new VF.StaveNote({clef: "bass", keys: ['c/2', 'c/3'], duration: "w" }),
+                new VF.StaveNote({clef: "bass", keys: ['cb/2', 'cb/3'], duration: "w" }),
             ];
 
             const trebleVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
