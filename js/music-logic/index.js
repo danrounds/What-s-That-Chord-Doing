@@ -1,4 +1,4 @@
-const keyMaps = {
+const noteNameTables = {
     flatEnharmonic: [
         'A/2','Bb/2','Cb/3','C/3','Db/3','D/3','Eb/3','Fb/2','F/3','Gb/3','G/3',
         'Ab/3','A/3','Bb/3','Cb/3','C/4','Db/4','D/4','Eb/4','Fb/4','F/4','Gb/4',
@@ -26,94 +26,94 @@ const keyMaps = {
 const keysCharacteristics = {
     'A': {
         displacement: 0,
-        majorMap: keyMaps.sharpChromatic,
-        minorMap: keyMaps.flatChromatic,
-        neapolMap: keyMaps.flatChromatic
+        majorMap: noteNameTables.sharpChromatic,
+        minorMap: noteNameTables.flatChromatic,
+        neapolMap: noteNameTables.flatChromatic
     },
     'A#': {
         displacement: 1
     },
     'Bb': {
         displacement: 1,
-        majorMap: keyMaps.flatChromatic,
-        minorMap: keyMaps.flatEnharmonic,
-        neapolMap: keyMaps.sharpChromatic
+        majorMap: noteNameTables.flatChromatic,
+        minorMap: noteNameTables.flatEnharmonic,
+        neapolMap: noteNameTables.sharpChromatic
     },
     'B': {
         displacement: 2,
-        majorMap: keyMaps.sharpChromatic,
-        minorMap: keyMaps.sharpChromatic,
-        neapolMap: keyMaps.sharpChromatic
+        majorMap: noteNameTables.sharpChromatic,
+        minorMap: noteNameTables.sharpChromatic,
+        neapolMap: noteNameTables.sharpChromatic
     },
     'C': {
         displacement: 3,
-        majorMap: keyMaps.flatChromatic,
-        minorMap: keyMaps.flatChromatic,
-        neapolMap: keyMaps.flatChromatic
+        majorMap: noteNameTables.flatChromatic,
+        minorMap: noteNameTables.flatChromatic,
+        neapolMap: noteNameTables.flatChromatic
     },
     'C#': {
         displacement: 4,
-        majorMap: keyMaps.sharpEnharmonic,
-        minorMap: keyMaps.sharpEnharmonic,
-        neapolMap: keyMaps.sharpChromatic
+        majorMap: noteNameTables.sharpEnharmonic,
+        minorMap: noteNameTables.sharpEnharmonic,
+        neapolMap: noteNameTables.sharpChromatic
     },
     'Db': {
         displacement: 4,
-        majorMap: keyMaps.flatChromatic,
-        minorMap: keyMaps.flatEnharmonic,
-        neapolMap: keyMaps.sharpChromatic
+        majorMap: noteNameTables.flatChromatic,
+        minorMap: noteNameTables.flatEnharmonic,
+        neapolMap: noteNameTables.sharpChromatic
     },
     'D': {
         displacement: 5,
-        majorMap: keyMaps.sharpChromatic,
-        minorMap: keyMaps.flatChromatic,
-        neapolMap: keyMaps.flatChromatic
+        majorMap: noteNameTables.sharpChromatic,
+        minorMap: noteNameTables.flatChromatic,
+        neapolMap: noteNameTables.flatChromatic
     },
     'D#': {
         displacement: 6
     },
     'Eb': {
         displacement: 6,
-        majorMap: keyMaps.flatChromatic,
-        minorMap: keyMaps.flatEnharmonic,
-        neapolMap: keyMaps.flatEnharmonic
+        majorMap: noteNameTables.flatChromatic,
+        minorMap: noteNameTables.flatEnharmonic,
+        neapolMap: noteNameTables.flatEnharmonic
     },
     'E': {
         displacement: 7,
-        majorMap: keyMaps.sharpChromatic,
-        minorMap: keyMaps.sharpChromatic,
-        neapolMap: keyMaps.sharpChromatic
+        majorMap: noteNameTables.sharpChromatic,
+        minorMap: noteNameTables.sharpChromatic,
+        neapolMap: noteNameTables.sharpChromatic
     },
     'F': {
         displacement: 8,
-        majorMap: keyMaps.flatChromatic,
-        minorMap: keyMaps.flatChromatic,
-        neapolMap: keyMaps.flatChromatic
+        majorMap: noteNameTables.flatChromatic,
+        minorMap: noteNameTables.flatChromatic,
+        neapolMap: noteNameTables.flatChromatic
     },
     'F#': {
         displacement: 9,
-        majorMap: keyMaps.sharpChromatic,
-        minorMap: keyMaps.sharpEnharmonic,
-        neapolMap: keyMaps.sharpChromatic
+        majorMap: noteNameTables.sharpChromatic,
+        minorMap: noteNameTables.sharpEnharmonic,
+        neapolMap: noteNameTables.sharpChromatic
     },
     'Gb': {
         displacement: 9,
-        majorMap: keyMaps.flatEnharmonic
+        majorMap: noteNameTables.flatEnharmonic
     },
     'G': {
         displacement: 10,
-        majorMap: keyMaps.sharpChromatic,
-        minorMap: keyMaps.flatChromatic,
-        neapolMap: keyMaps.flatChromatic
+        majorMap: noteNameTables.sharpChromatic,
+        minorMap: noteNameTables.flatChromatic,
+        neapolMap: noteNameTables.flatChromatic
     },
     'G#': {
         displacement: 11
     },
     'Ab': {
         displacement: 11,
-        majorMap: keyMaps.flatChromatic,
-        minorMap: keyMaps.flatEnharmonic,
-        neapolMap: keyMaps.sharpChromatic
+        majorMap: noteNameTables.flatChromatic,
+        minorMap: noteNameTables.flatEnharmonic,
+        neapolMap: noteNameTables.sharpChromatic
     }
 };
 
@@ -172,6 +172,15 @@ const keys = {
 
 const chordGetter = {
     init(gameType) {
+        // Our init function (obviously)
+        //
+        // Designed to be called externally. Called with gameType ===
+        // ['easyMajor','hardMajor','easyMinor','intmd8Minor','hardMinor','all']
+        // --i.e. one of the keys from `chordSets`
+        //
+        // This establishes a key for us and sets up the relevant note-name
+        // tables, and a displacement for indexing said tables
+
         this.ourChordSubset = chordSets[gameType];
 
         const [major, minor] = [keys.major, keys.minor];
@@ -180,16 +189,35 @@ const chordGetter = {
             hardMinor: minor, all: major
         }[gameType];
         
-        console.log(this.ourSubsetOfKeys + ' our subset of keys');
-
         this.pickKey(this.ourSubsetOfKeys, gameType);
-
-        console.log(this.keyNameReadable);
-        console.log(this.keyNameNotation);
+        return {
+            keyNameReadable: this.keyNameReadable,
+            keyNameNotation: this.keyNameNotation
+        };
     },
 
-    getRandom: function(array) {
-        return array[Math.floor(Math.random() * array.length)];
+    getChord() {
+        // Designed to be called externally (after the init function has been
+        // called). Returns the chord numeral (string), chord notes (array),
+        // and an array of which indices of our chord note array are accidentals
+        // --which we need because VexFlow won't otherwise display accidentals
+
+        this.currentChordNumeral = this.getRandom(this.ourChordSubset);
+        let {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
+        const noteNameMap = keysCharacteristics[this.currentKey][enharmonically];
+
+        const chordNotes = [];
+        chordVoicings[chordType].map(val => {
+            chordNotes.push(noteNameMap[this.keyDisplacement + val + displacement]);
+        });
+
+        this.accidentalIndices = this.getAccidentals() || [];
+
+        return {
+            currentChordNumeral: this.currentChordNumeral,
+            chordNotes: chordNotes,
+            accidentalIndices: this.getAccidentals() || []
+        };
     },
 
     pickKey(keySubset, gameType) {
@@ -204,27 +232,6 @@ const chordGetter = {
             this.tonality = 'minor';
         }
         this.keyDisplacement = keysCharacteristics[this.currentKey]['displacement'];
-    },
-
-    getChord() {
-        this.currentChordNumeral = this.getRandom(this.ourChordSubset);
-        let {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
-
-        console.log(`enharmonically:::::::::: ${enharmonically}`);
-        const noteNameMap = keysCharacteristics[this.currentKey][enharmonically];
-        console.log(this.keyNameReadable);
-        console.log(this.currentChordNumeral);
-
-        this.chordNotes = [];
-        chordVoicings[chordType].map(val => {
-            // console.log(`noteNameMap: ${noteNameMap}`);
-            this.chordNotes.push(noteNameMap[this.keyDisplacement + val + displacement]);
-        });
-
-        this.accidentalIndices = this.getAccidentals() || [];
-
-        console.log(`chordNotes: ${this.chordNotes}`);
-        console.log(`accidentals: `+this.accidentalIndices);
     },
 
     getAccidentals() {
@@ -285,8 +292,12 @@ const chordGetter = {
             }()
             // varies
         }[this.currentChordNumeral];
+    },
+
+    getRandom: function(array) {
+        return array[Math.floor(Math.random() * array.length)];
     }
 };
 
 export default chordGetter;
-chordGetter.init('all');
+// chordGetter.init('all');
