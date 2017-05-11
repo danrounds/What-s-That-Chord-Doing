@@ -34,6 +34,8 @@ export const reducer = (state=initialState, action) => {
 
         var {currentChordNumeral, chordNotes, accidentalIndices} = chordGetter.getChord();
         console.log(currentChordNumeral);
+        console.log(chordNotes);
+        console.log(keyNameNotation);
 
         return {
             // keyNameReadable: state.keyNameReadable,
