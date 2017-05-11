@@ -19,7 +19,7 @@ export const reducer = (state=initialState, action) => {
         // using `var`, because we're using the same variables repeatedly in
         // this switch block, and the object destructuring syntax requires a
         // let/const/var prefix. This is the only one that will work.
-        console.log(currentChordNumeral);
+        // console.log(currentChordNumeral);
 
         return {
             // keyNameReadable,
@@ -30,9 +30,10 @@ export const reducer = (state=initialState, action) => {
         };
 
     case actions.COMPARE_TO_ACTUAL:
-        console.log(action.guess);
+        // console.log(action.guess);
 
         var {currentChordNumeral, chordNotes, accidentalIndices} = chordGetter.getChord();
+        console.log(currentChordNumeral);
 
         return {
             // keyNameReadable: state.keyNameReadable,
