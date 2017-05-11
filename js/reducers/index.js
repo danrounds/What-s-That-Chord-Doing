@@ -2,31 +2,56 @@ import * as actions from '../actions/';
 import chordGetter from '../music-logic/';
 
 const initialState = {
-    chord: 'i',
-    notes: []
+    chord: '',
+    notes: [],
+    keyNameNotation: 'C'
 };
 
+
 export const reducer = (state=initialState, action) => {
+
     switch(action.type) {
     case actions.START_NEW_GAME:
         console.log(chordGetter);
+
+        var {keyNameReadable, keyNameNotation} = chordGetter.init('all');
+        var {currentChordNumeral, chordNotes, accidentalIndices} = chordGetter.getChord();
+        // using `var`, because we're using the same variables repeatedly in
+        // this switch block, and the object destructuring syntax requires a
+        // let/const/var prefix. This is the only one that will work.
+        console.log(currentChordNumeral);
+
         return {
-            chord: 'i',
-            notes: ['C3', 'C4', 'E4', 'G4']
+            // keyNameReadable,
+            keyNameNotation,
+            chord: currentChordNumeral,
+            notes: chordNotes,
+            accidentalIndices
         };
 
     case actions.COMPARE_TO_ACTUAL:
         console.log(action.guess);
+
+        var {currentChordNumeral, chordNotes, accidentalIndices} = chordGetter.getChord();
+
         return {
-            chord: 'whe',
-            notes: ['E3', 'C4', 'E4', 'G4']
+            // keyNameReadable: state.keyNameReadable,
+            keyNameNotation: state.keyNameNotation,
+            chord: currentChordNumeral,
+            notes: chordNotes,
+            accidentalIndices
         };
 
     case actions.GET_NEXT_QUESTION:
-        console.log('yup');
+
+        var {currentChordNumeral, chordNotes, accidentalIndices} = chordGetter.getChord();
+
         return {
-            chord: 'whe',
-            notes: ['G3', 'C4', 'E3', 'G3']
+            // keyNameReadable: state.keyNameReadable,
+            keyNameNotation: state.keyNameNotation,
+            chord: currentChordNumeral,
+            notes: chordNotes,
+            accidentalIndices
         };
 
     default:
