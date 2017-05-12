@@ -15,9 +15,11 @@ export class Staves extends React.Component {
         let symbol = (note[note.length - 1]);
         if (symbol === '#')
             return '#';
-        else if (symbol === 'b')
+        else if (symbol === 'b') {
+            if (note.length == 3)
+                return 'bb';
             return 'b';
-        else
+        } else
             return 'n';
     }
 
@@ -49,8 +51,20 @@ export class Staves extends React.Component {
             const keyManager = new VF.KeyManager(this.props.keySignature);
 
             const trebleNotes = [
-                new VF.StaveNote({clef: 'treble', keys: ['Eb/3', 'G/3', 'Bb/3'], duration: 'w' }),
+                // new VF.StaveNote({clef: "treble", keys: ["C/4"], duration: "q" }),
+                // new VF.StaveNote({clef: "treble", keys: ["D/4"], duration: "q" }),
+                // new VF.StaveNote({clef: "treble", keys: ["E/4"], duration: "q" }),
+                // new VF.StaveNote({clef: "treble", keys: ["F/4"], duration: "q" }),
+                new VF.StaveNote({clef: "treble", keys: ["G/5"], duration: "q" }),
+                new VF.StaveNote({clef: "treble", keys: ["A/5"], duration: "q" }),
+                new VF.StaveNote({clef: "treble", keys: ["B/5"], duration: "q" }),
+                new VF.StaveNote({clef: "treble", keys: ["C/6"], duration: "q" }),
             ];
+
+            // const trebleNotes = [
+            //     new VF.StaveNote({clef: 'treble', keys: ['Eb/3', 'G/3', 'Bb/3'], duration: 'w' }),
+            // ];
+
 
             // const trebleNotes = [
             //     new VF.StaveNote({clef: 'treble', keys: this.props.notes , duration: 'w' }),
@@ -59,6 +73,8 @@ export class Staves extends React.Component {
             const accidentalIndices = this.props.accidentals;
             let bassNotes;
             let [i, j, k] = accidentalIndices;
+            console.log(`accidentalIndices ${accidentalIndices}`);
+
             switch(accidentalIndices.length) {
 
             case 1:
@@ -79,9 +95,9 @@ export class Staves extends React.Component {
             case 3:
                 bassNotes = [
                     new VF.StaveNote({clef: 'bass', keys: this.props.notes, duration: 'w' })
-                        .addAccidental(0, new VF.Accidental(this.getAccidental(i)))
-                        .addAccidental(1, new VF.Accidental(this.getAccidental(j)))
-                        .addAccidental(2, new VF.Accidental(this.getAccidental(k)))
+                        .addAccidental(i, new VF.Accidental(this.getAccidental(i)))
+                        .addAccidental(j, new VF.Accidental(this.getAccidental(j)))
+                        .addAccidental(k, new VF.Accidental(this.getAccidental(k)))
                 ];
                 break;
 

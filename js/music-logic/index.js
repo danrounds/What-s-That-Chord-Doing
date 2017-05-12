@@ -1,23 +1,33 @@
 const noteNameTables = {
-    flatEnharmonic: [
-        'A/2','Bb/2','Cb/3','C/3','Db/3','D/3','Eb/3','Fb/2','F/3','Gb/3','G/3',
-        'Ab/3','A/3','Bb/3','Cb/3','C/4','Db/4','D/4','Eb/4','Fb/4','F/4','Gb/4',
-        'G/4','Ab/4','A/4','Bb/4','Cb/4','C/5','Db/5','D/5','Eb/5','Fb/5','F/5',
+    flatDblFlat: [
+        'Bbb/2','Bb/2','Cb/3','C/3','Db/3','Ebb/3','Eb/3','Fb/3','F/3','Gb/3','G/3',
+        'Ab/3','Bbb/3','Bb/3','Cb/4','C/4','Db/4','Ebb/4','Eb/4','Fb/4','F/4','Gb/4',
+        'G/4','Ab/4','Bbb/4','Bb/4','Cb/5','C/5','Db/5','Ebb/5','Eb/5','Fb/5','F/5',
         'Gb/5'
     ],
+
+    flatEnharmonic: [
+        'A/2','Bb/2','Cb/3','C/3','Db/3','D/3','Eb/3','Fb/3','F/3','Gb/3','G/3',
+        'Ab/3','A/3','Bb/3','Cb/4','C/4','Db/4','D/4','Eb/4','Fb/4','F/4','Gb/4',
+        'G/4','Ab/4','A/4','Bb/4','Cb/5','C/5','Db/5','D/5','Eb/5','Fb/5','F/5',
+        'Gb/5'
+    ],
+
     flatChromatic:  [
         'A/2','Bb/2','B/2','C/3','Db/3','D/3','Eb/3','E/3','F/3','Gb/3','G/3',
         'Ab/3','A/3','Bb/3','B/3','C/4','Db/4','D/4','Eb/4','E/4','F/4','Gb/4',
         'G/4','Ab/4','A/4','Bb/4','B/4','C/5','Db/5','D/5','Eb/5','E/5','F/5','Gb/5'
     ],
+
     sharpChromatic: [
         'A/2','A#/2','B/2','C/3','C#/3','D/3','D#/3','E/3','F/3','F#/3','G/3',
         'G#/3','A/3','A#/3','B/3','C/4','C#/4','D/4','D#/4','E/4','F/4','F#/4',
         'G/4','G#/4','A/4','A#/4','B/4','C/5','C#/5','D/5','D#/5','E/5','F/5','F#/5'
     ],
+
     sharpEnharmonic: [
         'A/2','A#/2','B/2','B#/3','C#/3','D/3','D#/3','E/3','E#/3','F#/3','G/3',
-        'G#/3','A/3','A#/3','B/3','B#/4','C#/4','D/4','D#/4','E/4','E#/4','F#/4',
+        'G#/3','A/3','A#/3','B/3','B#/3','C#/4','D/4','D#/4','E/4','E#/4','F#/4',
         'G/4','G#/4','A/4','A#/4','B/4','B#/5','C#/5','D/5','D#/5','E/5','E#/5',
         'F#/5'
     ]
@@ -30,85 +40,103 @@ const keysCharacteristics = {
         minorMap: noteNameTables.flatChromatic,
         neapolMap: noteNameTables.flatChromatic
     },
+
     'A#': {
         displacement: 1
     },
+
     'Bb': {
         displacement: 1,
         majorMap: noteNameTables.flatChromatic,
         minorMap: noteNameTables.flatEnharmonic,
         neapolMap: noteNameTables.sharpChromatic
     },
+
     'B': {
         displacement: 2,
         majorMap: noteNameTables.sharpChromatic,
         minorMap: noteNameTables.sharpChromatic,
         neapolMap: noteNameTables.sharpChromatic
     },
+
     'C': {
         displacement: 3,
         majorMap: noteNameTables.flatChromatic,
         minorMap: noteNameTables.flatChromatic,
         neapolMap: noteNameTables.flatChromatic
     },
+
     'C#': {
         displacement: 4,
         majorMap: noteNameTables.sharpEnharmonic,
         minorMap: noteNameTables.sharpEnharmonic,
         neapolMap: noteNameTables.sharpChromatic
     },
+
     'Db': {
         displacement: 4,
         majorMap: noteNameTables.flatChromatic,
-        minorMap: noteNameTables.flatEnharmonic,
+        minorMap: noteNameTables.flatDblFlat,
         neapolMap: noteNameTables.sharpChromatic
     },
+
     'D': {
         displacement: 5,
         majorMap: noteNameTables.sharpChromatic,
         minorMap: noteNameTables.flatChromatic,
         neapolMap: noteNameTables.flatChromatic
     },
+
     'D#': {
         displacement: 6
     },
+
     'Eb': {
         displacement: 6,
         majorMap: noteNameTables.flatChromatic,
         minorMap: noteNameTables.flatEnharmonic,
         neapolMap: noteNameTables.flatEnharmonic
     },
+
     'E': {
         displacement: 7,
         majorMap: noteNameTables.sharpChromatic,
         minorMap: noteNameTables.sharpChromatic,
         neapolMap: noteNameTables.sharpChromatic
     },
+
     'F': {
         displacement: 8,
         majorMap: noteNameTables.flatChromatic,
         minorMap: noteNameTables.flatChromatic,
         neapolMap: noteNameTables.flatChromatic
     },
+
     'F#': {
         displacement: 9,
-        majorMap: noteNameTables.sharpChromatic,
+        majorMap: noteNameTables.sharpEnharmonic,
         minorMap: noteNameTables.sharpEnharmonic,
-        neapolMap: noteNameTables.sharpChromatic
+        neapolMap: noteNameTables.flatChromatic
     },
+
     'Gb': {
         displacement: 9,
-        majorMap: noteNameTables.flatEnharmonic
+        majorMap: noteNameTables.flatEnharmonic,
+        minorMap: noteNameTables.flatDblFlat,
+        neapolMap: noteNameTables.flatChromatic
     },
+
     'G': {
         displacement: 10,
         majorMap: noteNameTables.sharpChromatic,
         minorMap: noteNameTables.flatChromatic,
         neapolMap: noteNameTables.flatChromatic
     },
+
     'G#': {
         displacement: 11
     },
+
     'Ab': {
         displacement: 11,
         majorMap: noteNameTables.flatChromatic,
@@ -159,14 +187,12 @@ const chordSets = {
     hardMajor: ['I','♭II','ii','iii','iv','IV','V','♭VI','vi','♭VII','vii°'],
     easyMinor: ['i','ii°','♭III','iv','V','♭VI','♭VII'],
     intmd8Minor: ['i','ii°','♭III','iv','V','♭VI','vi','♭VII','vii°'],
-    // hardMinor: ['i','ii°','ii','♭III','♭III+','iv','v','V','♭VI','vi','♭VII','vii°'],
-    hardMinor: ['i','♭II','ii°','ii','♭III','♭III+','iv','v','V','♭VI','vi','♭VII','vii°'],
-    all: ['I','i','♭II','ii','ii°','iii','♭III','♭III+','iv','v','V','♭VI','vi','♭VII','vii°']
+    hardMinor: ['i','♭II','ii°','ii','♭III','iv','v','V','♭VI','vi','♭VII','vii°'],
+    all: ['I','i','♭II','ii','ii°','iii','♭III','iv','v','V','♭VI','vi','♭VII','vii°']
 };
 
 const keys = {
-    major: ['A','Bb','B','C','C#','Db','D','Eb','E','F','F#','Gb','G'],
-    // minor: ['A','Bb','B','C','C#','D','Eb','E','F','F#','G']
+    major: ['A','Bb','B','C','C#','Db','D','Eb','E','F','F#','Gb','G','Ab'],
     minor: ['A','Bb','B','C','C#','D','Eb','E','F','F#','G','Ab']
 };
 
@@ -260,7 +286,7 @@ const chordGetter = {
             // root
 
             '♭II': function() {
-                if (['Db','Gb'].indexOf(that.currentKey) !== -1)
+                if (['Ab','Db','Gb'].indexOf(that.currentKey) !== -1)
                     return accidentalMap.rootThirdAndFifth;
                 else
                     return accidentalMap.rootAndFifth;
@@ -285,7 +311,7 @@ const chordGetter = {
             // root
 
             '♭II': function() {
-                if (['Db','Gb','Ab'].indexOf(that.currentKey) !== -1)
+                if (['Ab','Db','Gb'].indexOf(that.currentKey) !== -1)
                     return accidentalMap.rootAndThird;
                 else
                     return accidentalMap.root;
