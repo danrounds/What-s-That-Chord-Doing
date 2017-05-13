@@ -1,41 +1,42 @@
 const noteNameTables = {
     flatDblFlat: [
-        'Bbb/2','Bb/2','Cb/3','C/3','Db/3','Ebb/3','Eb/3','Fb/3','F/3','Gb/3','G/3',
-        'Ab/3','Bbb/3','Bb/3','Cb/4','C/4','Db/4','Ebb/4','Eb/4','Fb/4','F/4','Gb/4',
-        'G/4','Ab/4','Bbb/4','Bb/4','Cb/5','C/5','Db/5','Ebb/5','Eb/5','Fb/5','F/5',
-        'Gb/5','G/5','Ab/5','Bbb/5','Bb/5','Cb/6','C/6','Db/6','Ebb/6','Eb/6',
-        'Fb/6','F/6','Gb/6'
+        'Bbb/2','Bb/2','Cb/3','C/3','Db/3','Ebb/3','Eb/3','Fb/3','F/3','Gb/3',
+        'G/3','Ab/3','Bbb/3','Bb/3','Cb/4','C/4','Db/4','Ebb/4','Eb/4','Fb/4',
+        'F/4','Gb/4','G/4','Ab/4','Bbb/4','Bb/4','Cb/5','C/5','Db/5','Ebb/5',
+        'Eb/5','Fb/5','F/5','Gb/5','G/5','Ab/5','Bbb/5','Bb/5','Cb/6','C/6',
+        'Db/6','Ebb/6','Eb/6','Fb/6','F/6','Gb/6'
     ],
 
     flatEnharmonic: [
         'A/2','Bb/2','Cb/3','C/3','Db/3','D/3','Eb/3','Fb/3','F/3','Gb/3','G/3',
-        'Ab/3','A/3','Bb/3','Cb/4','C/4','Db/4','D/4','Eb/4','Fb/4','F/4','Gb/4',
-        'G/4','Ab/4','A/4','Bb/4','Cb/5','C/5','Db/5','D/5','Eb/5','Fb/5','F/5',
-        'Gb/5','G/5','Ab/5','A/5','Bb/5','Cb/6','C/6','Db/6','D/6','Eb/6',
-        'Fb/6','F/6','Gb/6','G/6'
+        'Ab/3','A/3','Bb/3','Cb/4','C/4','Db/4','D/4','Eb/4','Fb/4','F/4',
+        'Gb/4','G/4','Ab/4','A/4','Bb/4','Cb/5','C/5','Db/5','D/5','Eb/5',
+        'Fb/5','F/5','Gb/5','G/5','Ab/5','A/5','Bb/5','Cb/6','C/6','Db/6','D/6',
+        'Eb/6','Fb/6','F/6','Gb/6','G/6'
     ],
 
     flatChromatic:  [
         'A/2','Bb/2','B/2','C/3','Db/3','D/3','Eb/3','E/3','F/3','Gb/3','G/3',
         'Ab/3','A/3','Bb/3','B/3','C/4','Db/4','D/4','Eb/4','E/4','F/4','Gb/4',
-        'G/4','Ab/4','A/4','Bb/4','B/4','C/5','Db/5','D/5','Eb/5','E/5','F/5','Gb/5',
-        'G/5','Ab/5','A/5','Bb/5','B/5','C/6','Db/6','D/6','Eb/6','E/6','F/6','Gb/6',
-        'G/6'
+        'G/4','Ab/4','A/4','Bb/4','B/4','C/5','Db/5','D/5','Eb/5','E/5','F/5',
+        'Gb/5','G/5','Ab/5','A/5','Bb/5','B/5','C/6','Db/6','D/6','Eb/6','E/6',
+        'F/6','Gb/6','G/6'
     ],
 
     sharpChromatic: [
         'A/2','A#/2','B/2','C/3','C#/3','D/3','D#/3','E/3','F/3','F#/3','G/3',
         'G#/3','A/3','A#/3','B/3','C/4','C#/4','D/4','D#/4','E/4','F/4','F#/4',
-        'G/4','G#/4','A/4','A#/4','B/4','C/5','C#/5','D/5','D#/5','E/5','F/5','F#/5',
-        'G/5','G#/5','A/5','A#/5','B/5','C/6','C#/6','D/6','D#/6','E/6','F/6','F#/6',
+        'G/4','G#/4','A/4','A#/4','B/4','C/5','C#/5','D/5','D#/5','E/5','F/5',
+        'F#/5','G/5','G#/5','A/5','A#/5','B/5','C/6','C#/6','D/6','D#/6','E/6',
+        'F/6','F#/6'
     ],
 
     sharpEnharmonic: [
         'A/2','A#/2','B/2','B#/3','C#/3','D/3','D#/3','E/3','E#/3','F#/3','G/3',
-        'G#/3','A/3','A#/3','B/3','B#/3','C#/4','D/4','D#/4','E/4','E#/4','F#/4',
-        'G/4','G#/4','A/4','A#/4','B/4','B#/5','C#/5','D/5','D#/5','E/5','E#/5','F#/5',
-        'G/5','G#/5','A/5','A#/5','B/5','B#/5','C#/6','D/6','D#/6',
-        'E/6','E#/6','F#/6',
+        'G#/3','A/3','A#/3','B/3','B#/3','C#/4','D/4','D#/4','E/4','E#/4',
+        'F#/4','G/4','G#/4','A/4','A#/4','B/4','B#/5','C#/5','D/5','D#/5','E/5',
+        'E#/5','F#/5','G/5','G#/5','A/5','A#/5','B/5','B#/5','C#/6','D/6',
+        'D#/6','E/6','E#/6','F#/6'
     ]
 };
 
@@ -183,20 +184,20 @@ const chordVoicings = {
     // augmented: [0,4,8]
 
     // [5th, root, 3rd], [root, 3rd, 5th], [3rd, 5th, root]
-    diminished: [ [6,12,15], [12,15,18], [15,18,24] ][2],
-    minor: [ [7,12,15], [12,15,19], [15,19,24] ][2],
-    major: [ [7,12,16], [12,16,19], [16,19,24] ][2],
-    augmented: [ [8,12,16], [12,16,20], [16,20,24] ][2]
+    diminished: [ [6,12,15], [12,15,18], [15,18,24] ],
+    minor: [ [7,12,15], [12,15,19], [15,19,24] ],
+    major: [ [7,12,16], [12,16,19], [16,19,24] ],
+    augmented: [ [8,12,16], [12,16,20], [16,20,24] ]
 };
 
 const accidentalMap = {
-    root: [ [1], [0], [2] ][2],
-    third: [ [2], [1], [0] ][2],
-    fifth: [ [0], [2], [1] ][2],
-    rootAndThird: [ [1,2], [0,1], [0,2] ][2],
-    rootAndFifth: [ [0,1], [0,2], [1,2] ][2],
-    thirdAndFifth: [ [0,2], [1,2], [0,1] ][2],
-    rootThirdAndFifth: [ [0,1,2], [0,1,2], [0,1,2] ][2]
+    root: [ [1], [0], [2] ],
+    third: [ [2], [1], [0] ],
+    fifth: [ [0], [2], [1] ],
+    rootAndThird: [ [1,2], [0,1], [0,2] ],
+    rootAndFifth: [ [0,1], [0,2], [1,2] ],
+    thirdAndFifth: [ [0,2], [1,2], [0,1] ],
+    rootThirdAndFifth: [ [0,1,2], [0,1,2], [0,1,2] ]
 };
 
 const chordSets = {
@@ -250,16 +251,20 @@ const chordGetter = {
         const noteNameMap = keysCharacteristics[this.currentKey][enharmonically];
 
         const chordNotes = [];
-        chordVoicings[chordType].map(val => {
+
+        let i = this.getIndex(chordVoicings[chordType]);
+
+        chordVoicings[chordType][i].map(val => {
+        // this.getRandom(chordVoicings[chordType]).map(val => {
             chordNotes.push(noteNameMap[this.keyDisplacement + val + displacement]);
         });
 
-        this.accidentalIndices = this.getAccidentals() || [];
+        // this.accidentalIndices = this.getAccidentals(i) || [];
 
         return {
             currentChordNumeral: this.currentChordNumeral,
             chordNotes: chordNotes,
-            accidentalIndices: this.getAccidentals() || []
+            accidentalIndices: this.getAccidentals(i) || []
         };
     },
 
@@ -277,61 +282,61 @@ const chordGetter = {
         this.keyDisplacement = keysCharacteristics[this.currentKey]['displacement'];
     },
 
-    getAccidentals() {
+    getAccidentals(i) {
         if (this.tonality === 'major') {
-            return this.processMajorAccidentals(this);
+            return this.processMajorAccidentals(this, i);
         } else {
-            return this.processMinorAccidentals(this);
+            return this.processMinorAccidentals(this, i);
         }
     },
 
-    processMajorAccidentals(that) {
+    processMajorAccidentals(that, i) {
         return {
-            'i': accidentalMap.third,
-            'iv': accidentalMap.third,
-            'v': accidentalMap.third,
+            'i': accidentalMap.third[i],
+            'iv': accidentalMap.third[i],
+            'v': accidentalMap.third[i],
 
-            '♭III': accidentalMap.rootAndFifth,
-            '♭III+': accidentalMap.rootAndFifth,
-            '♭VI': accidentalMap.rootAndFifth,
+            '♭III': accidentalMap.rootAndFifth[i],
+            '♭III+': accidentalMap.rootAndFifth[i],
+            '♭VI': accidentalMap.rootAndFifth[i],
             // root and fifth
 
-            'ii°': accidentalMap.fifth,
+            'ii°': accidentalMap.fifth[i],
             // fifth
             
-            '♭VII': accidentalMap.root,
+            '♭VII': accidentalMap.root[i],
             // root
 
             '♭II': function() {
                 if (['Ab','Db','Gb'].indexOf(that.currentKey) !== -1)
-                    return accidentalMap.rootThirdAndFifth;
+                    return accidentalMap.rootThirdAndFifth[i];
                 else
-                    return accidentalMap.rootAndFifth;
+                    return accidentalMap.rootAndFifth[i];
             }()
             // varies
         }[this.currentChordNumeral];
     },
 
-    processMinorAccidentals(that) {
+    processMinorAccidentals(that, i) {
         return {
-            'ii': accidentalMap.fifth,
-            '♭III+': accidentalMap.fifth,
+            'ii': accidentalMap.fifth[i],
+            '♭III+': accidentalMap.fifth[i],
             // fifth
 
-            'V': accidentalMap.third,
+            'V': accidentalMap.third[i],
             // third
             
-            'vi': accidentalMap.rootAndFifth,
+            'vi': accidentalMap.rootAndFifth[i],
             // root and fifth
             
-            'vii°': accidentalMap.root,
+            'vii°': accidentalMap.root[i],
             // root
 
             '♭II': function() {
                 if (['Ab','Db','Gb'].indexOf(that.currentKey) !== -1)
-                    return accidentalMap.rootAndThird;
+                    return accidentalMap.rootAndThird[i];
                 else
-                    return accidentalMap.root;
+                    return accidentalMap.root[i];
             }()
             // varies
         }[this.currentChordNumeral];
@@ -339,6 +344,10 @@ const chordGetter = {
 
     getRandom: function(array) {
         return array[Math.floor(Math.random() * array.length)];
+    },
+
+    getIndex: function(array) {
+        return Math.floor(Math.random() * array.length);
     }
 };
 
