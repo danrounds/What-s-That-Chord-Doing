@@ -213,7 +213,7 @@ const chordSets = {
     easyMinor: ['i','ii°','♭III','iv','V','♭VI','♭VII'],
     intmd8Minor: ['i','ii°','♭III','iv','V','♭VI','vi','♭VII','vii°'],
     hardMinor: ['i','♭II','ii°','ii','♭III','iv','v','V','♭VI','vi','♭VII','vii°'],
-    all: ['I','i','♭II','ii','ii°','iii','♭III','iv','v','V','♭VI','vi','♭VII','vii°']
+    all: ['i','I','♭II','ii°','ii','♭III','iii','iv','IV','v','V','♭VI','vi','♭VII','vii°']
 };
 
 const keys = {
