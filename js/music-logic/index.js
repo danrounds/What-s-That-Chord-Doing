@@ -278,8 +278,6 @@ const chordGetter = {
 
         const i = this.inversions ? this.getIndex(chord['bass']) : 0;
         const offset = chord['bass'][i];
-        console.log('bass note:');
-        console.log(noteNameMap[this.keyDisplacement + offset + displacement]);
         return [
             i,
             noteNameMap[this.keyDisplacement + offset + displacement]
@@ -353,13 +351,11 @@ const chordGetter = {
     },
 
     processMajorBassAccidental(inversion) {
-        console.log(`inversion: ${inversion}; currentChordNumeral: ${this.currentChordNumeral}`);
         if (['i','iv','v'].indexOf(this.currentChordNumeral) !== -1) {
             if (inversion === 1)
                 return true;
 
         } else if (['♭III','♭III+','♭VI'].indexOf(this.currentChordNumeral) !== -1) {
-            console.log('we here '+inversion);
             if ([0,2].indexOf(inversion) !== -1)
                 return true;
 
