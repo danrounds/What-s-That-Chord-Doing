@@ -12,10 +12,10 @@ export const reducer = (state=initialState, action) => {
 
     switch(action.type) {
     case actions.START_NEW_GAME:
-        console.log(chordGetter);
+        // console.log(chordGetter);
 
         var {keyNameReadable, keyNameNotation} = chordGetter.init('all');
-        var {currentChordNumeral, chordNotes, accidentalIndices} = chordGetter.getChord();
+        var {currentChordNumeral, trebleNotes, accidentals} = chordGetter.getChord();
         // using `var`, because we're using the same variables repeatedly in
         // this switch block, and the object destructuring syntax requires a
         // let/const/var prefix. This is the only one that will work.
@@ -25,36 +25,36 @@ export const reducer = (state=initialState, action) => {
             // keyNameReadable,
             keyNameNotation,
             chord: currentChordNumeral,
-            notes: chordNotes,
-            accidentalIndices
+            notes: trebleNotes,
+            accidentals
         };
 
     case actions.COMPARE_TO_ACTUAL:
         // console.log(action.guess);
 
-        var {currentChordNumeral, chordNotes, accidentalIndices} = chordGetter.getChord();
-        console.log(currentChordNumeral);
-        console.log(chordNotes);
-        console.log(keyNameNotation);
+        var {currentChordNumeral, trebleNotes, accidentals} = chordGetter.getChord();
+        // console.log(currentChordNumeral);
+        // console.log(trebleNotes);
+        // console.log('key ::: '+state.keyNameNotation);
 
         return {
             // keyNameReadable: state.keyNameReadable,
             keyNameNotation: state.keyNameNotation,
             chord: currentChordNumeral,
-            notes: chordNotes,
-            accidentalIndices
+            notes: trebleNotes,
+            accidentals
         };
 
     case actions.GET_NEXT_QUESTION:
 
-        var {currentChordNumeral, chordNotes, accidentalIndices} = chordGetter.getChord();
+        var {currentChordNumeral, trebleNotes, accidentals} = chordGetter.getChord();
 
         return {
             // keyNameReadable: state.keyNameReadable,
             keyNameNotation: state.keyNameNotation,
             chord: currentChordNumeral,
-            notes: chordNotes,
-            accidentalIndices
+            notes: trebleNotes,
+            accidentals
         };
 
     default:

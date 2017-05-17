@@ -48,53 +48,36 @@ export class Staves extends React.Component {
         bass.setContext(context).draw();
 
         if (this.props.notes.length) {
-            const keyManager = new VF.KeyManager(this.props.keySignature);
-
-            const trebleNotes = [
-                // new VF.StaveNote({clef: "treble", keys: ["C/4"], duration: "q" }),
-                // new VF.StaveNote({clef: "treble", keys: ["D/4"], duration: "q" }),
-                // new VF.StaveNote({clef: "treble", keys: ["E/4"], duration: "q" }),
-                // new VF.StaveNote({clef: "treble", keys: ["F/4"], duration: "q" }),
-                new VF.StaveNote({clef: "treble", keys: ["G/5"], duration: "q" }),
-                new VF.StaveNote({clef: "treble", keys: ["A/5"], duration: "q" }),
-                new VF.StaveNote({clef: "treble", keys: ["B/5"], duration: "q" }),
-                new VF.StaveNote({clef: "treble", keys: ["C/6"], duration: "q" }),
-            ];
-
             // const trebleNotes = [
             //     new VF.StaveNote({clef: 'treble', keys: ['Eb/3', 'G/3', 'Bb/3'], duration: 'w' }),
             // ];
 
-
-            // const trebleNotes = [
-            //     new VF.StaveNote({clef: 'treble', keys: this.props.notes , duration: 'w' }),
-            // ];
-
             const accidentalIndices = this.props.accidentals;
-            let bassNotes;
-            let [i, j, k] = accidentalIndices;
-            console.log(`accidentalIndices ${accidentalIndices}`);
+            console.log('we here');
+            console.log(accidentalIndices);
+            let trebleNotes;
+            let [i, j, k] = accidentalIndices.trebleIndices;
 
-            switch(accidentalIndices.length) {
+            switch(accidentalIndices.trebleIndices.length) {
 
             case 1:
-                bassNotes = [
-                    new VF.StaveNote({clef: 'bass', keys: this.props.notes, duration: 'w' })
+                trebleNotes = [
+                    new VF.StaveNote({clef: 'treble', keys: this.props.notes, duration: 'w' })
                         .addAccidental(i, new VF.Accidental(this.getAccidental(i)))
                 ];
                 break;
 
             case 2:
-                bassNotes = [
-                    new VF.StaveNote({clef: 'bass', keys: this.props.notes, duration: 'w' })
+                trebleNotes = [
+                    new VF.StaveNote({clef: 'treble', keys: this.props.notes, duration: 'w' })
                         .addAccidental(i, new VF.Accidental(this.getAccidental(i)))
                         .addAccidental(j, new VF.Accidental(this.getAccidental(j)))
                 ];
                 break;
 
             case 3:
-                bassNotes = [
-                    new VF.StaveNote({clef: 'bass', keys: this.props.notes, duration: 'w' })
+                trebleNotes = [
+                    new VF.StaveNote({clef: 'treble', keys: this.props.notes, duration: 'w' })
                         .addAccidental(i, new VF.Accidental(this.getAccidental(i)))
                         .addAccidental(j, new VF.Accidental(this.getAccidental(j)))
                         .addAccidental(k, new VF.Accidental(this.getAccidental(k)))
@@ -102,23 +85,23 @@ export class Staves extends React.Component {
                 break;
 
             default:
-                bassNotes = [
-                    new VF.StaveNote({clef: 'bass', keys: this.props.notes, duration: 'w' }),
+                trebleNotes = [
+                    new VF.StaveNote({clef: 'treble', keys: this.props.notes, duration: 'w' }),
                 ];
             }
-
+          
             const trebleVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
-            const bassVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
+            // const bassVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
             trebleVoice.addTickables(trebleNotes);
-            bassVoice.addTickables(bassNotes);
+            // bassVoice.addTickables(bassNotes);
 
             // Format and justify the notes to 400 pixels.
             const formatter = new VF.Formatter().joinVoices([trebleVoice]).format([trebleVoice], 400);
-            const formatter2 = new VF.Formatter().joinVoices([bassVoice]).format([bassVoice], 400);
+            // const formatter2 = new VF.Formatter().joinVoices([bassVoice]).format([bassVoice], 400);
 
             // Render voices
             trebleVoice.draw(context, treble);
-            bassVoice.draw(context, bass);
+            // bassVoice.draw(context, bass);
         }
     }
 
@@ -138,7 +121,7 @@ export class Staves extends React.Component {
 const mapStateToProps = (state, props) => ({
     chord: state.chord,
     notes: state.notes,
-    accidentals: state.accidentalIndices,
+    accidentals: state.accidentals,
     keySignature: state.keyNameNotation
 });
 

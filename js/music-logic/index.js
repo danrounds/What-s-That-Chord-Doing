@@ -32,9 +32,9 @@ const noteNameTables = {
     ],
 
     sharpEnharmonic: [
-        'A/2','A#/2','B/2','B#/3','C#/3','D/3','D#/3','E/3','E#/3','F#/3','G/3',
+        'A/2','A#/2','B/2','B#/2','C#/3','D/3','D#/3','E/3','E#/3','F#/3','G/3',
         'G#/3','A/3','A#/3','B/3','B#/3','C#/4','D/4','D#/4','E/4','E#/4',
-        'F#/4','G/4','G#/4','A/4','A#/4','B/4','B#/5','C#/5','D/5','D#/5','E/5',
+        'F#/4','G/4','G#/4','A/4','A#/4','B/4','B#/4','C#/5','D/5','D#/5','E/5',
         'E#/5','F#/5','G/5','G#/5','A/5','A#/5','B/5','B#/5','C#/6','D/6',
         'D#/6','E/6','E#/6','F#/6'
     ]
@@ -173,21 +173,28 @@ const chordTypeAndDisplacement = {
 const _chords = Object.keys(chordTypeAndDisplacement);
 
 const chordVoicings = {
-    // diminished: [12,15,18],
-    // minor: [12,15,19],
-    // major: [12,16,19],
-    // augmented: [12,16,20]
+    // bass: [root, 3rd, 5th]
+    // treble: [5th, root, 3rd], [root, 3rd, 5th], [3rd, 5th, root]
 
-    // diminished: [0,3,6],
-    // minor: [0,3,7],
-    // major: [0,4,7],
-    // augmented: [0,4,8]
+    diminished: {
+        bass: [0,3,6],
+        treble: [ [6,12,15], [12,15,18], [15,18,24] ]
+    },
 
-    // [5th, root, 3rd], [root, 3rd, 5th], [3rd, 5th, root]
-    diminished: [ [6,12,15], [12,15,18], [15,18,24] ],
-    minor: [ [7,12,15], [12,15,19], [15,19,24] ],
-    major: [ [7,12,16], [12,16,19], [16,19,24] ],
-    augmented: [ [8,12,16], [12,16,20], [16,20,24] ]
+    minor: {
+        bass: [0,3,7],
+        treble: [ [7,12,15], [12,15,19], [15,19,24] ]
+    },
+
+    major: {
+        bass: [0,4,7],
+        treble: [ [7,12,16], [12,16,19], [16,19,24] ]
+    },
+
+    augmented: {
+        bass: [0,4,8],
+        treble: [ [8,12,16], [12,16,20], [16,20,24] ]
+    }
 };
 
 const accidentalMap = {
@@ -215,7 +222,7 @@ const keys = {
 };
 
 const chordGetter = {
-    init(gameType) {
+    init(gameType, inversionsBool) {
         // Our init function (obviously)
         //
         // Designed to be called externally. Called with gameType ===
@@ -226,6 +233,7 @@ const chordGetter = {
         // tables, and a displacement for indexing said tables
 
         this.ourChordSubset = chordSets[gameType];
+        this.inversions = inversionsBool;
 
         const [major, minor] = [keys.major, keys.minor];
         this.ourSubsetOfKeys = {
@@ -247,25 +255,48 @@ const chordGetter = {
         // --which we need because VexFlow won't otherwise display accidentals
 
         this.currentChordNumeral = this.getRandom(this.ourChordSubset);
-        let {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
-        const noteNameMap = keysCharacteristics[this.currentKey][enharmonically];
 
-        const chordNotes = [];
+        const {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
+        const chord = chordVoicings[chordType];
 
-        let i = this.getIndex(chordVoicings[chordType]);
-
-        chordVoicings[chordType][i].map(val => {
-        // this.getRandom(chordVoicings[chordType]).map(val => {
-            chordNotes.push(noteNameMap[this.keyDisplacement + val + displacement]);
-        });
-
-        // this.accidentalIndices = this.getAccidentals(i) || [];
+        const [inversion, bassNote] = this.getBassNote(chord);
+        const [trebleVoicesIndex, trebleNotes] = this.getTrebleNotes(chord);
 
         return {
             currentChordNumeral: this.currentChordNumeral,
-            chordNotes: chordNotes,
-            accidentalIndices: this.getAccidentals(i) || []
+            bassNote,
+            trebleNotes,
+            inversion,
+            // accidentalIndices: this.getAccidentals(inversion, trebleVoicesIndex)
+            accidentals: this.getAccidentals(inversion, trebleVoicesIndex)
         };
+    },
+
+    getBassNote(chord) {
+        const {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
+        const noteNameMap = keysCharacteristics[this.currentKey][enharmonically];
+
+        const i = this.inversions ? this.getIndex(chord['bass']) : 0;
+        const offset = chord['bass'][i];
+        console.log('bass note:');
+        console.log(noteNameMap[this.keyDisplacement + offset + displacement]);
+        return [
+            i,
+            noteNameMap[this.keyDisplacement + offset + displacement]
+        ];
+    },
+
+    getTrebleNotes(chord) {
+        const {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
+        const noteNameMap = keysCharacteristics[this.currentKey][enharmonically];
+        let i = this.getIndex(chord['treble']);
+
+        const trebleNotes = [];
+        chord = chordVoicings[chordType]['treble'][i];
+        chord.map(val => {
+            trebleNotes.push(noteNameMap[this.keyDisplacement + val + displacement]);
+        });
+        return [i, trebleNotes];
     },
 
     pickKey(keySubset, gameType) {
@@ -282,74 +313,139 @@ const chordGetter = {
         this.keyDisplacement = keysCharacteristics[this.currentKey]['displacement'];
     },
 
-    getAccidentals(i) {
+    getAccidentals(inversion, i) {
         if (this.tonality === 'major') {
-            return this.processMajorAccidentals(this, i);
+            return this.processMajorAccidentals(this, inversion, i);
         } else {
-            return this.processMinorAccidentals(this, i);
+            return this.processMinorAccidentals(this, inversion, i);
         }
     },
 
-    processMajorAccidentals(that, i) {
+    processMajorAccidentals(that, inversion, i) {
         return {
-            'i': accidentalMap.third[i],
-            'iv': accidentalMap.third[i],
-            'v': accidentalMap.third[i],
-
-            '♭III': accidentalMap.rootAndFifth[i],
-            '♭III+': accidentalMap.rootAndFifth[i],
-            '♭VI': accidentalMap.rootAndFifth[i],
-            // root and fifth
-
-            'ii°': accidentalMap.fifth[i],
-            // fifth
-            
-            '♭VII': accidentalMap.root[i],
-            // root
-
-            '♭II': function() {
-                if (['Ab','Db','Gb'].indexOf(that.currentKey) !== -1)
-                    return accidentalMap.rootThirdAndFifth[i];
-                else
-                    return accidentalMap.rootAndFifth[i];
-            }()
-            // varies
-        }[this.currentChordNumeral];
+            bassAccidental: this.processMajorBassAccidental(inversion),
+            trebleIndices: this.processMajorTrebleAccidentals(that, i)
+        };
     },
 
-    processMinorAccidentals(that, i) {
-        return {
-            'ii': accidentalMap.fifth[i],
-            '♭III+': accidentalMap.fifth[i],
-            // fifth
+    processMajorTrebleAccidentals(that, i) {
+        try {
+            return {
+                'i': accidentalMap.third,
+                'iv': accidentalMap.third,
+                'v': accidentalMap.third,
+                '♭III': accidentalMap.rootAndFifth,
+                '♭III+': accidentalMap.rootAndFifth,
+                '♭VI': accidentalMap.rootAndFifth,
+                'ii°': accidentalMap.fifth,
+                '♭VII': accidentalMap.root,
 
-            'V': accidentalMap.third[i],
-            // third
-            
-            'vi': accidentalMap.rootAndFifth[i],
-            // root and fifth
-            
-            'vii°': accidentalMap.root[i],
-            // root
-
-            '♭II': function() {
-                if (['Ab','Db','Gb'].indexOf(that.currentKey) !== -1)
-                    return accidentalMap.rootAndThird[i];
-                else
-                    return accidentalMap.root[i];
-            }()
-            // varies
-        }[this.currentChordNumeral];
+                '♭II': function() {
+                    if (['Ab','Db','Gb'].indexOf(that.currentKey) !== -1)
+                        return accidentalMap.rootThirdAndFifth;
+                    else
+                        return accidentalMap.rootAndFifth;
+                }()
+            }[this.currentChordNumeral][i];
+        } catch(e) {
+            return [];
+        }
     },
 
-    getRandom: function(array) {
+    processMajorBassAccidental(inversion) {
+        console.log(`inversion: ${inversion}; currentChordNumeral: ${this.currentChordNumeral}`);
+        if (['i','iv','v'].indexOf(this.currentChordNumeral) !== -1) {
+            if (inversion === 1)
+                return true;
+
+        } else if (['♭III','♭III+','♭VI'].indexOf(this.currentChordNumeral) !== -1) {
+            console.log('we here '+inversion);
+            if ([0,2].indexOf(inversion) !== -1)
+                return true;
+
+        } else if (this.currentChordNumeral === 'ii°') {
+            if (inversion === 2)
+                return true;
+        
+        } else if (this.currentChordNumeral === '♭VII') {
+            if (inversion === 0)
+                return true;
+
+        } else if (this.currentChordNumeral === '♭II') {
+            if (['Ab','Db','Gb'].indexOf(this.currentKey) !== -1)
+                return true;        // ([0,1,2])
+            else
+                if ([0,2].indexOf(inversion) !== -1)
+                    return true;
+        }
+
+        return false;
+    },
+
+    processMinorAccidentals(that, inversion, i) {
+        return {
+            bassAccidental: this.processMinorBassAccidental(inversion),
+            trebleIndices: this.processMinorTrebleAccidentals(that, i)
+        };
+    },
+
+    processMinorTrebleAccidentals(that, i) {
+        try {
+            return {
+                'ii': accidentalMap.fifth,
+                '♭III+': accidentalMap.fifth,
+                'V': accidentalMap.third,
+                'vi': accidentalMap.rootAndFifth,
+                'vii°': accidentalMap.root,
+
+                '♭II': function() {
+                    if (['Ab','Db','Gb'].indexOf(that.currentKey) !== -1)
+                        return accidentalMap.rootAndThird;
+                    else
+                        return accidentalMap.root;
+                }()
+            }[this.currentChordNumeral][i];
+        } catch(e) {
+            return [];
+        }
+    },
+
+    processMinorBassAccidental(inversion) {
+        if (['ii','♭III+'].indexOf(this.currentChordNumeral) === -1) {
+            if (inversion === 1)
+                return true;
+
+        } else if (this.currentChordNumeral === 'V') {
+            if (inversion === 1)
+                return true;
+
+        } else if (this.currentChordNumeral === 'vi') {
+            if ([0,2].indexOf(inversion) !== -1)
+                return true;
+
+        } else if (this.currentChordNumeral === 'vii°') {
+            if (inversion === 0)
+                return true;
+
+        } else if (this.currentChordNumeral === '♭II') {
+            if (inversion === 0)
+                return true;
+            else if (inversion === 1)
+                if (['Ab','Db','Gb'].indexOf(this.currentKey) !== -1) {
+                    return true;
+            }
+        }
+        return false;
+    },
+
+    getRandom(array) {
         return array[Math.floor(Math.random() * array.length)];
     },
 
-    getIndex: function(array) {
+    getIndex(array) {
         return Math.floor(Math.random() * array.length);
     }
 };
 
 export default chordGetter;
-// chordGetter.init('all');
+// chordGetter.init('all', true);
