@@ -28,9 +28,19 @@ export class Audio extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
-    chord: state.chord,
-    notes: state.notes.map((val) => val.split('/').join(''))
-});
+const mapStateToProps = (state, props) => {
+    let notes;
+    if (state.notes.bass === null || state.notes.treble === []) {
+        notes = [];
+    } else {
+        notes = state.notes.treble.map((val) => val.split('/').join(''))
+            .unshift(state.notes.bass.split('/').join(''));
+    }
+
+    return {
+        chord: state.chord,
+        notes
+    };
+};
 
 export default connect(mapStateToProps)(Audio);

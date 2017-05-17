@@ -10,9 +10,7 @@ export class Staves extends React.Component {
         this.vf = null;
     }
 
-    getAccidental(i) {
-        let note = this.props.notes[i].split('/')[0];
-        let symbol = (note[note.length - 1]);
+    symbolToAccidental(note, symbol) {
         if (symbol === '#')
             return '#';
         else if (symbol === 'b') {
@@ -21,6 +19,18 @@ export class Staves extends React.Component {
             return 'b';
         } else
             return 'n';
+    }
+
+    getBassAccidental() {
+        let note = this.props.notes.bass.split('/')[0];
+        let symbol = (note[note.length - 1]);
+        return this.symbolToAccidental(note, symbol);
+    }
+
+    getTrebleAccidental(i) {
+        let note = this.props.notes.treble[i].split('/')[0];
+        let symbol = (note[note.length - 1]);
+        return this.symbolToAccidental(note, symbol);
     }
 
     drawMusic() {
@@ -47,14 +57,9 @@ export class Staves extends React.Component {
         bass.addClef('bass').addKeySignature(this.props.keySignature);
         bass.setContext(context).draw();
 
-        if (this.props.notes.length) {
-            // const trebleNotes = [
-            //     new VF.StaveNote({clef: 'treble', keys: ['Eb/3', 'G/3', 'Bb/3'], duration: 'w' }),
-            // ];
+        if (this.props.notes.treble.length) {
 
             const accidentalIndices = this.props.accidentals;
-            console.log('we here');
-            console.log(accidentalIndices);
             let trebleNotes;
             let [i, j, k] = accidentalIndices.trebleIndices;
 
@@ -62,46 +67,58 @@ export class Staves extends React.Component {
 
             case 1:
                 trebleNotes = [
-                    new VF.StaveNote({clef: 'treble', keys: this.props.notes, duration: 'w' })
-                        .addAccidental(i, new VF.Accidental(this.getAccidental(i)))
+                    new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
+                        .addAccidental(i, new VF.Accidental(this.getTrebleAccidental(i)))
                 ];
                 break;
 
             case 2:
                 trebleNotes = [
-                    new VF.StaveNote({clef: 'treble', keys: this.props.notes, duration: 'w' })
-                        .addAccidental(i, new VF.Accidental(this.getAccidental(i)))
-                        .addAccidental(j, new VF.Accidental(this.getAccidental(j)))
+                    new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
+                        .addAccidental(i, new VF.Accidental(this.getTrebleAccidental(i)))
+                        .addAccidental(j, new VF.Accidental(this.getTrebleAccidental(j)))
                 ];
                 break;
 
             case 3:
                 trebleNotes = [
-                    new VF.StaveNote({clef: 'treble', keys: this.props.notes, duration: 'w' })
-                        .addAccidental(i, new VF.Accidental(this.getAccidental(i)))
-                        .addAccidental(j, new VF.Accidental(this.getAccidental(j)))
-                        .addAccidental(k, new VF.Accidental(this.getAccidental(k)))
+                    new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
+                        .addAccidental(i, new VF.Accidental(this.getTrebleAccidental(i)))
+                        .addAccidental(j, new VF.Accidental(this.getTrebleAccidental(j)))
+                        .addAccidental(k, new VF.Accidental(this.getTrebleAccidental(k)))
                 ];
                 break;
 
             default:
                 trebleNotes = [
-                    new VF.StaveNote({clef: 'treble', keys: this.props.notes, duration: 'w' }),
+                    new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' }),
+                ];
+            }
+
+            let bassNote;
+            if (this.props.accidentals.bassAccidental) {
+                bassNote = [
+                    new VF.StaveNote({clef: 'bass', keys: [this.props.notes.bass], duration: 'w' })
+                        .addAccidental(0, new VF.Accidental(this.getBassAccidental()))
+                ];
+            } else {
+                bassNote = [
+                    new VF.StaveNote({clef: 'bass', keys: [this.props.notes.bass], duration: 'w' })
                 ];
             }
           
             const trebleVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
-            // const bassVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
+            const bassVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
             trebleVoice.addTickables(trebleNotes);
-            // bassVoice.addTickables(bassNotes);
+            bassVoice.addTickables(bassNote);
 
             // Format and justify the notes to 400 pixels.
             const formatter = new VF.Formatter().joinVoices([trebleVoice]).format([trebleVoice], 400);
-            // const formatter2 = new VF.Formatter().joinVoices([bassVoice]).format([bassVoice], 400);
+            const formatter2 = new VF.Formatter().joinVoices([bassVoice]).format([bassVoice], 400);
 
             // Render voices
             trebleVoice.draw(context, treble);
-            // bassVoice.draw(context, bass);
+            bassVoice.draw(context, bass);
         }
     }
 
