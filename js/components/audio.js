@@ -33,8 +33,8 @@ const mapStateToProps = (state, props) => {
     if (state.notes.bass === null || state.notes.treble === []) {
         notes = [];
     } else {
-        notes = state.notes.treble.map((val) => val.split('/').join(''))
-            .unshift(state.notes.bass.split('/').join(''));
+        notes = state.notes.treble.map((val) => val.split('/').join(''));
+        notes.unshift(state.notes.bass.split('/').join(''));
     }
 
     return {

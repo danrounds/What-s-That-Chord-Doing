@@ -14,7 +14,7 @@ export const reducer = (state=initialState, action) => {
     case actions.START_NEW_GAME:
         // console.log(chordGetter);
 
-        var {keyNameReadable, keyNameNotation} = chordGetter.init('all');
+        var {keyNameReadable, keyNameNotation} = chordGetter.init('hardMinor', true);
         var {currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
         // using `var`, because we're using the same variables repeatedly in
         // this switch block, and the object destructuring syntax requires a
