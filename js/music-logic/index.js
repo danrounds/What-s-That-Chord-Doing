@@ -231,7 +231,7 @@ const chordGetter = {
         //
         // This establishes a key for us and sets up the relevant note-name
         // tables, and a displacement for indexing said tables
-
+ 
         this.ourChordSubset = chordSets[gameType];
         this.inversions = inversionsBool;
 
@@ -244,8 +244,29 @@ const chordGetter = {
         this.pickKey(this.ourSubsetOfKeys, gameType);
         return {
             keyNameReadable: this.keyNameReadable,
-            keyNameNotation: this.keyNameNotation
+            keyNameNotation: this.keyNameNotation,
+            introChordSequence: this.getIntroProgression()
         };
+    },
+
+    getIntroProgression() {
+        // This generates the chord progression we play before each question to
+        // establish our key. It only needs to be used by our MIDI library, so
+        // we don't care about enharmonically-correct  note names
+        let progression = this.tonality === 'major' ?
+                //[  I or i ],[ IV or iv ],[    V     ],[  I or i  ]
+                [[0,19,24,28],[5,17,21,24],[7,14,19,23],[0,16,19,24]] : // major
+                [[0,19,24,27],[5,17,20,24],[7,14,19,23],[0,15,19,24]];  // minor
+
+        let chords = [];
+        for (let chord of progression) {
+            let notes = [];
+            chord.map(val => {
+                notes.push(noteNameTables.sharpChromatic[this.keyDisplacement + val]);
+            });
+            chords.push(notes);
+        }
+        return chords;
     },
 
     getChord() {
