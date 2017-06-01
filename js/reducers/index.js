@@ -1,66 +1,82 @@
 import * as actions from '../actions/';
-import chordGetter from '../music-logic/';
 
-const initialState = {
-    chord: '',
-    notes: { bass: null, treble: [] },
-    keyNameNotation: 'C'
+let initialState = {
+    keyNameReadable: null,
+    keyNameNotation: null,
+    chord: null,
+    notes: {bass: null, treble: []},
+    accidentals: {bassAccidental: null, trebleIndices: []},
+    guessN: 0,
+    answeredCorrectly: false
 };
-
 
 export const reducer = (state=initialState, action) => {
 
     switch(action.type) {
     case actions.START_NEW_GAME:
-        // console.log(chordGetter);
-
-        var {keyNameReadable, keyNameNotation} = chordGetter.init('hardMinor', true);
-        var {currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
-        // using `var`, because we're using the same variables repeatedly in
-        // this switch block, and the object destructuring syntax requires a
-        // let/const/var prefix. This is the only one that will work.
-        // console.log(currentChordNumeral);
-
         return {
-            // keyNameReadable,
-            keyNameNotation,
-            chord: currentChordNumeral,
-            notes: {bass: bassNote, treble: trebleNotes},
-            accidentals
-        };
-
-    case actions.COMPARE_TO_ACTUAL:
-        // console.log(action.guess);
-
-        var {currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
-        // console.log(currentChordNumeral);
-        // console.log(trebleNotes);
-        // console.log('key ::: '+state.keyNameNotation);
-
-        return {
-            // keyNameReadable: state.keyNameReadable,
-            keyNameNotation: state.keyNameNotation,
-            chord: currentChordNumeral,
-            notes: {bass: bassNote, treble: trebleNotes},
-            accidentals
+            keyNameReadable: action.keyNameReadable,
+            keyNameNotation: action.keyNameNotation,
+            // introChordSequence: action.introChordSequence,
+            accidentals: {
+                bassAccidental: action.accidentals.bassAccidental,
+                trebleIndices: [...action.accidentals.trebleIndices]
+            },
+            chord: action.currentChordNumeral,
+            notes: {bass: action.bassNote, treble: action.trebleNotes},
+            guessN: 0,
+            answeredCorrectly: false
         };
 
     case actions.GET_NEXT_QUESTION:
-        var {currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
         return {
-            // keyNameReadable: state.keyNameReadable,
+            keyNameReadable: state.keyNameReadable,
             keyNameNotation: state.keyNameNotation,
-            chord: currentChordNumeral,
-            // notes: trebleNotes,
-            notes: {bass: bassNote, treble: trebleNotes},
-            accidentals
+            chord: action.currentChordNumeral,
+            notes: {bass: action.bassNote, treble: [...action.trebleNotes]},
+            accidentals: {
+                bassAccidental: action.accidentals.bassAccidental,
+                trebleIndices: [...action.accidentals.trebleIndices]
+            },
+            guessN: 0,
+            answeredCorrectly: false
+        };
+
+    case actions.INCREMENT_GUESS_N:
+        return {
+            keyNameReadable: state.keyNameReadable,
+            keyNameNotation: state.keyNameNotation,
+            chord: state.chord,
+            notes: {
+                bass: state.notes.bass,
+                treble: [...state.notes.treble]
+            },
+            accidentals: {
+                bassAccidental: state.accidentals.bassAccidental,
+                trebleIndices: [...state.accidentals.trebleIndices]
+            },
+            guessN: state.guessN + 1,
+            answeredCorrectly: false
+        };
+
+    case actions.MARK_TURN_CORRECT:
+        return {
+            keyNameReadable: state.keyNameReadable,
+            keyNameNotation: state.keyNameNotation,
+            chord: state.chord,
+            notes: {
+                bass: state.notes.bass,
+                treble: [...state.notes.treble]
+            },
+            accidentals: {
+                bassAccidental: state.accidentals.bassAccidental,
+                trebleIndices: [...state.accidentals.trebleIndices]
+            },
+            guessN: state.guessN++,
+            answeredCorrectly: true
         };
 
     default:
-        // console.log('we here');
         return state;
     }
-
-
 };
-
