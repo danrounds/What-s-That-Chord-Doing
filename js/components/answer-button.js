@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from  '../actions';
-import store from '../store';
 
 export class AnswerButton extends React.Component {
     constructor(props) {
@@ -10,12 +9,25 @@ export class AnswerButton extends React.Component {
     }
 
     onClick() {
-        this.props.dispatch(actions.compareToActual(this.props.chord));
+        if (!this.props.answeredCorrectly) {
+            if (this.props.guess === this.props.currentChord) {
+                this.props.dispatch(actions.markTurnCorrect());
+                console.log('he got it');
+            } else {
+                this.props.dispatch(actions.incrementGuessN());
+                console.log('nope');
+            }
+        }
     }
 
     render(props) {
-        return <button onClick={this.onClick}>{this.props.chord}</button>;
+        return <button onClick={this.onClick}>{this.props.guess}</button>;
     }
 }
 
-export default connect()(AnswerButton);
+const mapStateToProps = (state, props) => ({
+    currentChord: state.chord,
+    answeredCorrectly: state.answeredCorrectly
+});
+
+export default connect(mapStateToProps)(AnswerButton);

@@ -64,7 +64,6 @@ export class Staves extends React.Component {
             let [i, j, k] = accidentalIndices.trebleIndices;
 
             switch(accidentalIndices.trebleIndices.length) {
-
             case 1:
                 trebleNotes = [
                     new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
@@ -106,7 +105,7 @@ export class Staves extends React.Component {
                     new VF.StaveNote({clef: 'bass', keys: [this.props.notes.bass], duration: 'w' })
                 ];
             }
-          
+            
             const trebleVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
             const bassVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
             trebleVoice.addTickables(trebleNotes);
@@ -123,12 +122,22 @@ export class Staves extends React.Component {
     }
 
     componentWillReceiveProps() {
+        let ans = this.props.answeredCorrectly;
+        let ans2 = this.props.guessN;
         this.drawMusic();
+        console.log(this.props);
+        return ans + ans2;
     }
 
-    componentDidMount() {
+    componentWillUpdate() {
         this.drawMusic();
+        console.log(this.props);
     }
+
+    // componentDidMount() {
+    //     this.drawMusic();
+    //     console.log(this.props);
+    // }
 
     render() {
         return (<div id="staves"></div>);
@@ -137,9 +146,17 @@ export class Staves extends React.Component {
 
 const mapStateToProps = (state, props) => ({
     chord: state.chord,
-    notes: state.notes,
-    accidentals: state.accidentals,
-    keySignature: state.keyNameNotation
+    notes: Object.assign({}, {bass: state.notes.bass, treble: [...state.notes.treble]}),
+    accidentals: Object.assign(
+        {},
+        {
+            bassAccidental: state.accidentals.bassAccidental,
+            trebleIndices: [...state.accidentals.trebleIndices]
+        }
+    ),
+    keySignature: state.keyNameNotation,
+    answeredCorrectly: state.answeredCorrectly
 });
 
 export default connect(mapStateToProps)(Staves);
+

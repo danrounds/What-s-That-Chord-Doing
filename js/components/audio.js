@@ -9,6 +9,7 @@ export class Audio extends React.Component {
         super(props);
         this.playSounds = this.playSounds.bind(this);
         this.instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
+        // this.notes = this.processNotes();
     }
 
     playSounds() {
@@ -18,9 +19,9 @@ export class Audio extends React.Component {
             }
         });
     }
-
-    componentWillReceiveProps() {
-        this.playSounds();
+    componentDidUpdate() {
+        if (!this.props.guessN || this.props.answeredCorrectly)
+            this.playSounds();
     }
 
     render() {
@@ -38,8 +39,9 @@ const mapStateToProps = (state, props) => {
     }
 
     return {
-        chord: state.chord,
-        notes
+        notes,
+        guessN: state.guessN,
+        answeredCorrectly: state.answeredCorrectly
     };
 };
 
