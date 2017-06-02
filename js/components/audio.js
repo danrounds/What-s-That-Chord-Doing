@@ -14,9 +14,6 @@ export class Audio extends React.Component {
 
     playIntroChordsAndPrompt() {
         let timeOffset = 0;
-        console.log('we are we here, now?');
-        console.log(this.props.answeredCorrectly);
-        console.log(!this.props.guessN);
         this.instrument.then(piano => {
             for (let chord of this.props.introChordSequence) {
                 for (let i of chord) {
@@ -31,12 +28,9 @@ export class Audio extends React.Component {
     playPrompt(timeOffset=0) {
         this.instrument.then(piano => {
             for (let i of this.props.answer) {
-                // piano.play(i).stop(ac.currentTime + 0.68);
                 piano.play(i, ac.currentTime + timeOffset, {duration: 0.68});
-
             }
         });
-
     }
 
     componentDidUpdate() {
@@ -48,7 +42,8 @@ export class Audio extends React.Component {
     }
 
     render() {
-        return (<button onClick={this.playIntroChordsAndPrompt}>Play audio again</button>);
+        return (<button onClick={this.playIntroChordsAndPrompt}>Play audio again
+                </button>);
     }
 }
 
