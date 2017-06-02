@@ -7,39 +7,65 @@ const ac = new AudioContext();
 export class Audio extends React.Component {
     constructor(props) {
         super(props);
-        this.playSounds = this.playSounds.bind(this);
+        this.playPrompt = this.playPrompt.bind(this);
+        this.playIntroChordsAndPrompt = this.playIntroChordsAndPrompt.bind(this);
         this.instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
-        // this.notes = this.processNotes();
     }
 
-    playSounds() {
+    playIntroChordsAndPrompt() {
+        let timeOffset = 0;
+        console.log('we are we here, now?');
+        console.log(this.props.answeredCorrectly);
+        console.log(!this.props.guessN);
         this.instrument.then(piano => {
-            for (let i of this.props.notes) {
-                piano.play(i).stop(ac.currentTime + 0.68);
+            for (let chord of this.props.introChordSequence) {
+                for (let i of chord) {
+                    piano.play(i, ac.currentTime + timeOffset, {duration: 0.68});
+                }
+                timeOffset += 0.68;
             }
+            this.playPrompt(3.5);
         });
     }
+
+    playPrompt(timeOffset=0) {
+        this.instrument.then(piano => {
+            for (let i of this.props.answer) {
+                // piano.play(i).stop(ac.currentTime + 0.68);
+                piano.play(i, ac.currentTime + timeOffset, {duration: 0.68});
+
+            }
+        });
+
+    }
+
     componentDidUpdate() {
-        if (!this.props.guessN || this.props.answeredCorrectly)
-            this.playSounds();
+        if (this.props.answeredCorrectly) {
+            this.playPrompt();
+        } else if (!this.props.guessN) {
+            this.playIntroChordsAndPrompt();
+        }
     }
 
     render() {
-        return (<button onClick={this.playSounds}>Play audio again</button>);
+        return (<button onClick={this.playIntroChordsAndPrompt}>Play audio again</button>);
     }
 }
 
 const mapStateToProps = (state, props) => {
-    let notes;
-    if (state.notes.bass === null || state.notes.treble === []) {
+    const processNotes = (val) => val.split('/').join('');
+
+    let notes = state.notes;
+    if (notes.bass === null || notes.treble === []) {
         notes = [];
     } else {
-        notes = state.notes.treble.map((val) => val.split('/').join(''));
-        notes.unshift(state.notes.bass.split('/').join(''));
+        notes = [notes.bass, ...notes.treble].map(processNotes);
     }
 
     return {
-        notes,
+        answer: notes,
+        introChordSequence: state.introChordSequence.map(
+            (array) => array.map(processNotes)),
         guessN: state.guessN,
         answeredCorrectly: state.answeredCorrectly
     };

@@ -3,6 +3,7 @@ import * as actions from '../actions/';
 let initialState = {
     keyNameReadable: null,
     keyNameNotation: null,
+    introChordSequence: [],
     chord: null,
     notes: {bass: null, treble: []},
     accidentals: {bassAccidental: null, trebleIndices: []},
@@ -17,11 +18,12 @@ export const reducer = (state=initialState, action) => {
         return {
             keyNameReadable: action.keyNameReadable,
             keyNameNotation: action.keyNameNotation,
-            // introChordSequence: action.introChordSequence,
-            accidentals: {
-                bassAccidental: action.accidentals.bassAccidental,
-                trebleIndices: [...action.accidentals.trebleIndices]
-            },
+            introChordSequence: action.introChordSequence,
+            // accidentals: {
+            //     bassAccidental: action.accidentals.bassAccidental,
+            //     trebleIndices: [...action.accidentals.trebleIndices]
+            // },
+            accidentals: action.accidentals,
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: action.trebleNotes},
             guessN: 0,
@@ -32,6 +34,10 @@ export const reducer = (state=initialState, action) => {
         return {
             keyNameReadable: state.keyNameReadable,
             keyNameNotation: state.keyNameNotation,
+            introChordSequence: [[...state.introChordSequence[0]],
+                                 [...state.introChordSequence[1]],
+                                 [...state.introChordSequence[2]],
+                                 [...state.introChordSequence[3]]],
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: [...action.trebleNotes]},
             accidentals: {
@@ -46,6 +52,10 @@ export const reducer = (state=initialState, action) => {
         return {
             keyNameReadable: state.keyNameReadable,
             keyNameNotation: state.keyNameNotation,
+            introChordSequence: [[...state.introChordSequence[0]],
+                                 [...state.introChordSequence[1]],
+                                 [...state.introChordSequence[2]],
+                                 [...state.introChordSequence[3]]],
             chord: state.chord,
             notes: {
                 bass: state.notes.bass,
@@ -63,6 +73,10 @@ export const reducer = (state=initialState, action) => {
         return {
             keyNameReadable: state.keyNameReadable,
             keyNameNotation: state.keyNameNotation,
+            introChordSequence: [[...state.introChordSequence[0]],
+                                 [...state.introChordSequence[1]],
+                                 [...state.introChordSequence[2]],
+                                 [...state.introChordSequence[3]]],
             chord: state.chord,
             notes: {
                 bass: state.notes.bass,

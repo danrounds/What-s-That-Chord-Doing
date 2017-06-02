@@ -8,7 +8,7 @@ export const startNewGame = () => {
         type: START_NEW_GAME,
         keyNameReadable,
         keyNameNotation,
-        // introChordSequence,
+        introChordSequence,
         currentChordNumeral,
         bassNote,
         trebleNotes,
