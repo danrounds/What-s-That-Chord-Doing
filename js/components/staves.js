@@ -3,41 +3,20 @@ import {connect} from 'react-redux';
 import Vex from 'vexflow';
 
 export class Staves extends React.Component {
-
     constructor(props) {
         super(props);
         this.drawMusic = this.drawMusic.bind(this);
-        this.vf = null;
     }
 
-    symbolToAccidental(note, symbol) {
-        if (symbol === '#')
-            return '#';
-        else if (symbol === 'b') {
-            if (note.length == 3)
-                return 'bb';
-            return 'b';
-        } else
-            return 'n';
-    }
-
-    getBassAccidental() {
-        let note = this.props.notes.bass.split('/')[0];
-        let symbol = (note[note.length - 1]);
-        return this.symbolToAccidental(note, symbol);
-    }
-
-    getTrebleAccidental(i) {
-        let note = this.props.notes.treble[i].split('/')[0];
-        let symbol = (note[note.length - 1]);
-        return this.symbolToAccidental(note, symbol);
-    }
-
-    drawMusic() {
+    deleteCanvas() {
         try {
             const staves = document.getElementById('staves');
             staves.removeChild(staves.childNodes[0]);
-        } catch(err) { ;  }
+        } catch(err) { ; }
+    }
+
+    drawMusic() {
+        this.deleteCanvas();
 
         const VF = Vex.Flow;
         const div = document.getElementById('staves');
@@ -45,6 +24,7 @@ export class Staves extends React.Component {
 
         // Configure the rendering context.
         renderer.resize(500, 300);
+
         const context = renderer.getContext();
         context.setFont('Arial', 10, '').setBackgroundFillStyle('eed');
 
@@ -57,55 +37,10 @@ export class Staves extends React.Component {
         bass.addClef('bass').addKeySignature(this.props.keySignature);
         bass.setContext(context).draw();
 
-        if (this.props.notes.treble.length) {
+        if (this.props.answeredCorrectly) {            
+            const trebleNotes = this.defineTrebleNotes(VF);
+            const bassNote = this.defineBassNote(VF);
 
-            const accidentalIndices = this.props.accidentals;
-            let trebleNotes;
-            let [i, j, k] = accidentalIndices.trebleIndices;
-
-            switch(accidentalIndices.trebleIndices.length) {
-            case 1:
-                trebleNotes = [
-                    new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
-                        .addAccidental(i, new VF.Accidental(this.getTrebleAccidental(i)))
-                ];
-                break;
-
-            case 2:
-                trebleNotes = [
-                    new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
-                        .addAccidental(i, new VF.Accidental(this.getTrebleAccidental(i)))
-                        .addAccidental(j, new VF.Accidental(this.getTrebleAccidental(j)))
-                ];
-                break;
-
-            case 3:
-                trebleNotes = [
-                    new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
-                        .addAccidental(i, new VF.Accidental(this.getTrebleAccidental(i)))
-                        .addAccidental(j, new VF.Accidental(this.getTrebleAccidental(j)))
-                        .addAccidental(k, new VF.Accidental(this.getTrebleAccidental(k)))
-                ];
-                break;
-
-            default:
-                trebleNotes = [
-                    new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' }),
-                ];
-            }
-
-            let bassNote;
-            if (this.props.accidentals.bassAccidental) {
-                bassNote = [
-                    new VF.StaveNote({clef: 'bass', keys: [this.props.notes.bass], duration: 'w' })
-                        .addAccidental(0, new VF.Accidental(this.getBassAccidental()))
-                ];
-            } else {
-                bassNote = [
-                    new VF.StaveNote({clef: 'bass', keys: [this.props.notes.bass], duration: 'w' })
-                ];
-            }
-            
             const trebleVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
             const bassVoice = new VF.Voice({num_beats: 1,  beat_value: 1});
             trebleVoice.addTickables(trebleNotes);
@@ -121,23 +56,69 @@ export class Staves extends React.Component {
         }
     }
 
-    componentWillReceiveProps() {
-        let ans = this.props.answeredCorrectly;
-        let ans2 = this.props.guessN;
-        this.drawMusic();
-        console.log(this.props);
-        return ans + ans2;
+    defineBassNote(VF) {
+        // This defines our bass note and accompanying accidental (if
+        // applicable)
+        if (this.props.accidentals.bassAccidental) {
+            return [
+                new VF.StaveNote({clef: 'bass', keys: [this.props.notes.bass], duration: 'w' })
+                    .addAccidental(0, new VF.Accidental(this.getAccidental()))
+            ];
+        } else {
+            return [
+                new VF.StaveNote({clef: 'bass', keys: [this.props.notes.bass], duration: 'w' })
+            ];
+        }
     }
 
-    componentWillUpdate() {
-        this.drawMusic();
-        console.log(this.props);
+    defineTrebleNotes(VF) {
+        // This defines our treble notes and accompanying accidentals (if
+        // applicable)
+        const accidentalIndices = this.props.accidentals;
+        let [i, j, k] = accidentalIndices.trebleIndices;
+
+        switch(accidentalIndices.trebleIndices.length) {
+        case 1:
+            return [
+                new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
+                    .addAccidental(i, new VF.Accidental(this.getAccidental(i)))
+            ];
+
+        case 2:
+            return  [
+                new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
+                    .addAccidental(i, new VF.Accidental(this.getAccidental(i)))
+                    .addAccidental(j, new VF.Accidental(this.getAccidental(j)))
+            ];
+
+        case 3:
+            return [
+                new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
+                    .addAccidental(i, new VF.Accidental(this.getAccidental(0)))
+                    .addAccidental(j, new VF.Accidental(this.getAccidental(1)))
+                    .addAccidental(k, new VF.Accidental(this.getAccidental(2)))
+            ];
+
+        default:
+            return [
+                new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' }),
+            ];
+        }
     }
 
-    // componentDidMount() {
-    //     this.drawMusic();
-    //     console.log(this.props);
-    // }
+    getAccidental(i) {
+        const notes = i ?  this.props.notes.treble[i] : this.props.notes.bass;
+        const note = notes.split('/')[0];
+        const symbol = (note[note.length - 1]);
+
+        return function(symbol, note) {
+            return { '#':'#', 'b': note.length === 3 ? 'bb' : 'b' }[symbol] || 'n';
+        }(symbol, note);
+    }
+
+    componentDidUpdate() {
+        this.drawMusic();
+    }
 
     render() {
         return (<div id="staves"></div>);
@@ -145,15 +126,8 @@ export class Staves extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    chord: state.chord,
-    notes: Object.assign({}, {bass: state.notes.bass, treble: [...state.notes.treble]}),
-    accidentals: Object.assign(
-        {},
-        {
-            bassAccidental: state.accidentals.bassAccidental,
-            trebleIndices: [...state.accidentals.trebleIndices]
-        }
-    ),
+    notes: state.notes,
+    accidentals: state.accidentals,
     keySignature: state.keyNameNotation,
     answeredCorrectly: state.answeredCorrectly
 });

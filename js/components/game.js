@@ -16,31 +16,18 @@ export class Game extends React.Component {
     //     this.props.dispatch(actions.startNewGame());
     // }
 
-  // render() {
-  //   return (
-  //       <div>
-  //       <Staves />
-  //       <AnswerEntry />
-  //       <KofN />
-  //       <Audio />
-  //       <Next />
-  //       <StartNewGame />
-  //       </div>
-  //   );
-  // }
-
-  render() {
-    return (
-        <div>
-        <AnswerEntry />
-        <KofN />
-        <Audio />
-        <Next />
-        <StartNewGame />
-        </div>
-    );
-  }
-
+    render() {
+        return (
+            <div>
+              <Staves />
+              <AnswerEntry />
+              <KofN />
+              <Audio />
+              <Next />
+              <StartNewGame />
+            </div>
+        );
+    }
 }
 
 export default connect()(Game);
