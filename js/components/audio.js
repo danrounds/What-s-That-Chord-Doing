@@ -19,6 +19,7 @@ export class Audio extends React.Component {
         // our key and then plays the question prompt (playPrompt())
         let timeOffset = 0;
         this.instrument.then(piano => {
+            piano.stop();
             for (let chord of this.props.introChordSequence) {
                 for (let i of chord) {
                     piano.play(i, ac.currentTime + timeOffset, {duration: 0.68});

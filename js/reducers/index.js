@@ -19,10 +19,6 @@ export const reducer = (state=initialState, action) => {
             keyNameReadable: action.keyNameReadable,
             keyNameNotation: action.keyNameNotation,
             introChordSequence: action.introChordSequence,
-            // accidentals: {
-            //     bassAccidental: action.accidentals.bassAccidental,
-            //     trebleIndices: [...action.accidentals.trebleIndices]
-            // },
             accidentals: action.accidentals,
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: action.trebleNotes},
