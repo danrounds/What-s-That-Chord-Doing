@@ -3,6 +3,11 @@ import {connect} from 'react-redux';
 import Vex from 'vexflow';
 
 export class Staves extends React.Component {
+    // This is the music-notation display component.
+    //
+    // This is the ugliest of our components; VexFlow is very "low level",
+    // in terms of the abstractions it uses for representing musical objects.
+    // The code here has to wrangle with that complexity.
     constructor(props) {
         super(props);
         this.drawMusic = this.drawMusic.bind(this);
@@ -133,4 +138,3 @@ const mapStateToProps = (state, props) => ({
 });
 
 export default connect(mapStateToProps)(Staves);
-
