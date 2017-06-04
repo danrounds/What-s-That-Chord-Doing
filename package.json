@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A React template",
   "main": "js/index.js",
+  "engines": {
+    "node": "7.2.1"
+  },
   "scripts": {
     "start": "http-server -c-1 build",
     "dev": "run-p watch serve",
