@@ -1,0 +1,9 @@
+language: node_js
+node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: HK0JTIqLx2+FnTKQD6Z1K4d39fd0f4YyHxpDz/lF8jXhrusBavFr4HPVk+2rkaOwIoRIuFZsNcTLpYrRjmJ/sAtrehF8Rauc5D1LeXP6sRb9T32qzDKwbNxEcD3XPGcnlYYpsFckqQ75V5zLNY9X9JvR6ZIA7m0zqvSBuvI/wdwz4thJiS+ugh8PAUJeh+kPQAB/5XqDDd0VG20When6FCpzRIMPOOn3BGJkZ5+pdYq4WO2uDxx3i+vUvRwxUTVqggc39wCXYX3Ntn/4ucwLE3tnwcynFbuc07/aZC2dE7/Os0H7wqoaQYxmpLmS3/rQItfU6nGLKtyMdvq1Y7zINVcsIkdXuIKrCosoPwzcOOzb84GwKnayxxGp9jKI1SYag4T/ntZgX8NMpDLDD2hAc8nrRAJwpwzThQJ98PhCt89BzxDbcU8o6x9YJH0622hyZr1vyJ/+AYyVRVGHxORg8zq7axzrxIYRIrd+ZZC2aP4l7hB14UWpyjBF/VAHLcj7D+w2hX7rZ88fdJ5tNpHXwnf9HNdpapNqhwZO5+lRMceNeulGtLAv3p0rzWvd8wWme9o8+M/diZ1mc9aXlBRx/3qXZD6Rl9ZUa+ot+A8ds1W9TgBT9+qzzSnHzSXwzIc3fEO+LWFhlmkllws7iVzFneqsQmLAtw9alVaX26vly2M=
+  app: What-s-That-Chord-Doing
+  on:
+    repo: danrounds/What-s-That-Chord-Doing
