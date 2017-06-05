@@ -99,9 +99,9 @@ export class Staves extends React.Component {
         case 3:
             return [
                 new VF.StaveNote({clef: 'treble', keys: this.props.notes.treble, duration: 'w' })
-                    .addAccidental(i, new VF.Accidental(this.getAccidental(0)))
-                    .addAccidental(j, new VF.Accidental(this.getAccidental(1)))
-                    .addAccidental(k, new VF.Accidental(this.getAccidental(2)))
+                    .addAccidental(i, new VF.Accidental(this.getAccidental(i)))
+                    .addAccidental(j, new VF.Accidental(this.getAccidental(j)))
+                    .addAccidental(k, new VF.Accidental(this.getAccidental(k)))
             ];
 
         default:
@@ -112,7 +112,7 @@ export class Staves extends React.Component {
     }
 
     getAccidental(i) {
-        const notes = i ?  this.props.notes.treble[i] : this.props.notes.bass;
+        const notes = i !== undefined ? this.props.notes.treble[i] : this.props.notes.bass;
         const note = notes.split('/')[0];
         const symbol = (note[note.length - 1]);
 

@@ -326,7 +326,7 @@ const chordGetter = {
             this.tonality = 'major';
         } else {
             this.keyNameReadable = this.currentKey + ' minor';
-            this.keyNameNotation = this.currentKey;
+            this.keyNameNotation = this.currentKey + 'm';
             this.tonality = 'minor';
         }
         this.keyDisplacement = keysCharacteristics[this.currentKey]['displacement'];
@@ -391,14 +391,14 @@ const chordGetter = {
         } else if (this.currentChordNumeral === '♭II') {
             if (['Ab','Db','Gb'].indexOf(this.currentKey) !== -1)
                 return true;        // ([0,1,2])
-            else
+            else {
                 if ([0,2].indexOf(inversion) !== -1)
                     return true;
+            }
         }
-
         return false;
     },
-
+    
     processMinorAccidentals(that, inversion, i) {
         return {
             bassAccidental: this.processMinorBassAccidental(inversion),
@@ -416,8 +416,8 @@ const chordGetter = {
                 'vii°': accidentalMap.root,
 
                 '♭II': function() {
-                    if (['Ab','Db','Gb'].indexOf(that.currentKey) !== -1)
-                        return accidentalMap.rootAndThird;
+                    if (['Bb','Ab'].indexOf(that.currentKey) !== -1)
+                        return accidentalMap.rootThirdAndFifth;
                     else
                         return accidentalMap.root;
                 }()
@@ -428,8 +428,8 @@ const chordGetter = {
     },
 
     processMinorBassAccidental(inversion) {
-        if (['ii','♭III+'].indexOf(this.currentChordNumeral) === -1) {
-            if (inversion === 1)
+        if (['ii','♭III+'].indexOf(this.currentChordNumeral) !== -1) {
+            if (inversion === 2)
                 return true;
 
         } else if (this.currentChordNumeral === 'V') {
@@ -447,9 +447,8 @@ const chordGetter = {
         } else if (this.currentChordNumeral === '♭II') {
             if (inversion === 0)
                 return true;
-            else if (inversion === 1)
-                if (['Ab','Db','Gb'].indexOf(this.currentKey) !== -1) {
-                    return true;
+            else if (['Bb','Ab'].indexOf(this.currentKey) !== -1) {
+                return true;
             }
         }
         return false;
