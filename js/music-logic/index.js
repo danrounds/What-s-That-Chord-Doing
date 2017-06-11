@@ -211,7 +211,7 @@ const chordSets = {
     easyMajor: ['I','ii','iii','IV','V','vi','vii°'],
     hardMajor: ['I','♭II','ii','iii','iv','IV','V','♭VI','vi','♭VII','vii°'],
     easyMinor: ['i','ii°','♭III','iv','V','♭VI','♭VII'],
-    intmd8Minor: ['i','ii°','♭III','iv','V','♭VI','vi','♭VII','vii°'],
+    intermediateMinor: ['i','ii°','♭III','iv','V','♭VI','vi','♭VII','vii°'],
     hardMinor: ['i','♭II','ii°','ii','♭III','iv','v','V','♭VI','vi','♭VII','vii°'],
     all: ['i','I','♭II','ii°','ii','♭III','iii','iv','IV','v','V','♭VI','vi','♭VII','vii°']
 };
@@ -238,7 +238,7 @@ const chordGetter = {
         const [major, minor] = [keys.major, keys.minor];
         this.ourSubsetOfKeys = {
             easyMajor: major, hardMajor: major, easyMinor: minor,
-            hardMinor: minor, all: major
+            intermediateMinor: minor, hardMinor: minor, all: major
         }[gameType];
         
         this.pickKey(this.ourSubsetOfKeys, gameType);

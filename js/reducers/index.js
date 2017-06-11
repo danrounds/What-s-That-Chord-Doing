@@ -2,6 +2,7 @@ import * as actions from '../actions/';
 
 let initialState = {
     gameType: null,
+    inversions: null,
     keyNameReadable: null,
     keyNameNotation: null,
     introChordSequence: [],

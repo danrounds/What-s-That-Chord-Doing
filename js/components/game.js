@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 
 import Staves from './staves';
 import Audio from './audio';
@@ -27,6 +28,7 @@ export class Game extends React.Component {
               <Audio />
               <Next />
               <StartNewGame />
+              <Link to="/">Return to Index</Link>
             </div>
         );
     }
