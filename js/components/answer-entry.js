@@ -1,32 +1,30 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import AnswerButton from './answer-button';
 
-export default class AnswerEntry extends React.Component {
+export class AnswerEntry extends React.Component {
     constructor(props) {
         super(props);
+        this.buttons = props.chordSubset.map((numeral) => {
+            return (
+                <AnswerButton guess={numeral} />
+            );
+        });
     }
 
     render() {
         return (
             <div>
-              <AnswerButton guess="i" />
-              <AnswerButton guess="I" />
-              <AnswerButton guess="♭II" />
-              <AnswerButton guess="ii°" />
-              <AnswerButton guess="ii" />
-              <AnswerButton guess="♭III" />
-              <AnswerButton guess="iii" />
-              <AnswerButton guess="iv" />
-              <AnswerButton guess="IV" />
-              <AnswerButton guess="v" />
-              <AnswerButton guess="V" />
-              <AnswerButton guess="♭VI" />
-              <AnswerButton guess="vi" />
-              <AnswerButton guess="♭VII" />
-              <AnswerButton guess="vii°" />
+              {this.buttons}
             </div>
         );
     }
-
 }
+
+const mapStateToProps = (state, props) => ({
+    chordSubset: state.chordSubset
+});
+
+export default connect(mapStateToProps)(AnswerEntry);
+

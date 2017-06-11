@@ -6,6 +6,7 @@ let initialState = {
     keyNameReadable: null,
     keyNameNotation: null,
     introChordSequence: [],
+    chordSubset: [],
     chord: null,
     notes: {bass: null, treble: []},
     accidentals: {bassAccidental: null, trebleIndices: []},
@@ -23,6 +24,7 @@ export const reducer = (state=initialState, action) => {
             keyNameReadable: action.keyNameReadable,
             keyNameNotation: action.keyNameNotation,
             introChordSequence: action.introChordSequence,
+            chordSubset: action.chordSubset,
             accidentals: action.accidentals,
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: action.trebleNotes},
@@ -40,6 +42,7 @@ export const reducer = (state=initialState, action) => {
                                  [...state.introChordSequence[1]],
                                  [...state.introChordSequence[2]],
                                  [...state.introChordSequence[3]]],
+            chordSubset: [...state.chordSubset],
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: [...action.trebleNotes]},
             accidentals: {
@@ -60,6 +63,7 @@ export const reducer = (state=initialState, action) => {
                                  [...state.introChordSequence[1]],
                                  [...state.introChordSequence[2]],
                                  [...state.introChordSequence[3]]],
+            chordSubset: [...state.chordSubset],
             chord: state.chord,
             notes: {
                 bass: state.notes.bass,
@@ -83,6 +87,7 @@ export const reducer = (state=initialState, action) => {
                                  [...state.introChordSequence[1]],
                                  [...state.introChordSequence[2]],
                                  [...state.introChordSequence[3]]],
+            chordSubset: [...state.chordSubset],
             chord: state.chord,
             notes: {
                 bass: state.notes.bass,

@@ -245,7 +245,8 @@ const chordGetter = {
         return {
             keyNameReadable: this.keyNameReadable,
             keyNameNotation: this.keyNameNotation,
-            introChordSequence: this.getIntroProgression()
+            introChordSequence: this.getIntroProgression(),
+            chordSubset: this.ourChordSubset
         };
     },
 
