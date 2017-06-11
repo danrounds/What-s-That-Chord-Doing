@@ -2,27 +2,28 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Soundfont from 'soundfont-player';
 
-const ac = new AudioContext();
+// const ac = new AudioContext();
 
 export class Audio extends React.Component {
     // This component plays audio--when the button is pressed, when we advance
     // to a new question, and when the player has answered a question correctly
     constructor(props) {
+        console.log(props);
         super(props);
         this.playPrompt = this.playPrompt.bind(this);
         this.playIntroChordsAndPrompt = this.playIntroChordsAndPrompt.bind(this);
-        this.instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
+        // this.instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
     }
 
     playIntroChordsAndPrompt() {
         // This plays a chord progression (I-IV-V-I or i-iv-V-i) to introduce
         // our key and then plays the question prompt (playPrompt())
         let timeOffset = 0;
-        this.instrument.then(piano => {
+        this.props.instrument.then(piano => {
             piano.stop();
             for (let chord of this.props.introChordSequence) {
                 for (let i of chord) {
-                    piano.play(i, ac.currentTime + timeOffset, {duration: 0.68});
+                    piano.play(i, this.props.ac.currentTime + timeOffset, {duration: 0.68});
                 }
                 timeOffset += 0.68;
             }
@@ -33,9 +34,9 @@ export class Audio extends React.Component {
     playPrompt(timeOffset=0) {
         // This plays the actual "question" chord. It also plays after the
         // player has made a correct guess
-        this.instrument.then(piano => {
+        this.props.instrument.then(piano => {
             for (let i of this.props.answer) {
-                piano.play(i, ac.currentTime + timeOffset, {duration: 0.68});
+                piano.play(i, this.props.ac.currentTime + timeOffset, {duration: 0.68});
             }
         });
     }

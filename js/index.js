@@ -5,19 +5,14 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {Router, Route, hashHistory} from 'react-router';
 
+import Soundfont from 'soundfont-player';
+
 import store from './store';
 import Game from './components/game';
 import Home from './components/home';
 
-// document.addEventListener('DOMContentLoaded', () =>
-//                           ReactDOM.render(
-//                               <Provider store={store}>
-//                                 <div>
-//                                   <Game />
-//                                 </div>
-//                               </Provider>,
-//                               document.getElementById('app')
-//                           ));
+const ac = new AudioContext();
+const instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
 
 const routes = (
     <Router history={hashHistory}>
@@ -40,7 +35,10 @@ const routes = (
 const GameWrapper = (props) => (
     <Provider store={store}>
       <div>
-        <Game mode={props.mode} inversions={props.inversions || false}/>
+        <Game mode={props.mode}
+              inversions={props.inversions || false}
+              instrument={instrument}
+              ac={ac}/>
       </div>
     </Provider>
 );

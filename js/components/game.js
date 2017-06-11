@@ -25,7 +25,7 @@ export class Game extends React.Component {
               <Staves />
               <AnswerEntry />
               <KofN />
-              <Audio />
+              <Audio instrument={this.props.instrument} ac={this.props.ac}/>
               <Next />
               <StartNewGame />
               <Link to="/">Return to Index</Link>
