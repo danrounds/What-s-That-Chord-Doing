@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Soundfont from 'soundfont-player';
 
 export class Audio extends React.Component {
     // This component plays audio--when the button is pressed, when we advance
