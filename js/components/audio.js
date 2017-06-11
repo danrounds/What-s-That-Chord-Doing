@@ -2,8 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Soundfont from 'soundfont-player';
 
-// const ac = new AudioContext();
-
 export class Audio extends React.Component {
     // This component plays audio--when the button is pressed, when we advance
     // to a new question, and when the player has answered a question correctly

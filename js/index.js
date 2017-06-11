@@ -16,7 +16,7 @@ const instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
 
 const routes = (
     <Router history={hashHistory}>
-      <Route path="/" component={Home} />
+      <Route path="/" component={() => <Home instrument={instrument}/>} />
       <Route path="/easy-major" component={() => <GameWrapper mode="easyMajor"/>} />
       <Route path="/hard-major" component={() => <GameWrapper mode="hardMajor"/>} />
       <Route path="/easy-minor" component={() => <GameWrapper mode="easyMinor"/>} />

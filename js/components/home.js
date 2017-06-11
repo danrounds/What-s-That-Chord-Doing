@@ -2,7 +2,13 @@ import React from 'react';
 import {Link} from 'react-router';
 
 export default class Home extends React.Component {
-    render() {
+    componentDidUpdate() {
+        this.props.instrument.then(piano => {
+            piano.stop();
+        });
+    }
+
+    render(props) {
         return(
             <div>
               <h2>Game modes:</h2>
