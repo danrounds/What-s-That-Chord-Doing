@@ -8,11 +8,9 @@ export class Audio extends React.Component {
     // This component plays audio--when the button is pressed, when we advance
     // to a new question, and when the player has answered a question correctly
     constructor(props) {
-        console.log(props);
         super(props);
         this.playPrompt = this.playPrompt.bind(this);
         this.playIntroChordsAndPrompt = this.playIntroChordsAndPrompt.bind(this);
-        // this.instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
     }
 
     playIntroChordsAndPrompt() {
