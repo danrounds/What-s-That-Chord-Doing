@@ -8,7 +8,7 @@ export class AnswerEntry extends React.Component {
         super(props);
         this.buttons = props.chordSubset.map((numeral) => {
             return (
-                <AnswerButton guess={numeral} />
+                <AnswerButton key={numeral} guess={numeral} />
             );
         });
     }
