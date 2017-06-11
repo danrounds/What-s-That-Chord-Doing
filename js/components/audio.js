@@ -40,11 +40,19 @@ export class Audio extends React.Component {
         });
     }
 
-    componentDidUpdate() {
+    playSounds() {
         if (this.props.answeredCorrectly)
             this.playPrompt();
         else if (!this.props.guessN)
             this.playIntroChordsAndPrompt();
+    }
+
+    componentDidMount() {
+        this.playSounds();
+    }
+
+    componentDidUpdate() {
+        this.playSounds();
     }
 
     render() {

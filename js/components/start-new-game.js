@@ -10,7 +10,8 @@ export class StartNewGame extends React.Component {
     }
 
     startNewGame() {
-        this.props.dispatch(actions.startNewGame());
+        this.props.dispatch(actions.startNewGame(this.props.gameType,
+                                                 this.props.inversions));
     }
 
     render() {
@@ -18,4 +19,9 @@ export class StartNewGame extends React.Component {
     }
 }
 
-export default connect()(StartNewGame);
+const mapStateToProps = (state, props) => ({
+    gameType: state.gameType,
+    inversions: state.inversions
+});
+
+export default connect(mapStateToProps)(StartNewGame);

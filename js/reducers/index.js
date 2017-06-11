@@ -1,6 +1,7 @@
 import * as actions from '../actions/';
 
 let initialState = {
+    gameType: null,
     keyNameReadable: null,
     keyNameNotation: null,
     introChordSequence: [],
@@ -16,6 +17,8 @@ export const reducer = (state=initialState, action) => {
     switch(action.type) {
     case actions.START_NEW_GAME:
         return {
+            gameType: action.gameType,
+            inversions: action.inversions,
             keyNameReadable: action.keyNameReadable,
             keyNameNotation: action.keyNameNotation,
             introChordSequence: action.introChordSequence,
@@ -28,6 +31,8 @@ export const reducer = (state=initialState, action) => {
 
     case actions.GET_NEXT_QUESTION:
         return {
+            gameType: state.gameType,
+            inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
             keyNameNotation: state.keyNameNotation,
             introChordSequence: [[...state.introChordSequence[0]],
@@ -46,6 +51,8 @@ export const reducer = (state=initialState, action) => {
 
     case actions.INCREMENT_GUESS_N:
         return {
+            gameType: state.gameType,
+            inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
             keyNameNotation: state.keyNameNotation,
             introChordSequence: [[...state.introChordSequence[0]],
@@ -67,6 +74,8 @@ export const reducer = (state=initialState, action) => {
 
     case actions.MARK_TURN_CORRECT:
         return {
+            gameType: state.gameType,
+            inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
             keyNameNotation: state.keyNameNotation,
             introChordSequence: [[...state.introChordSequence[0]],

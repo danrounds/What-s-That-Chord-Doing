@@ -121,6 +121,10 @@ export class Staves extends React.Component {
         }(symbol, note);
     }
 
+    componentDidMount() {
+        this.drawMusic();
+    }
+
     componentDidUpdate() {
         this.drawMusic();
     }

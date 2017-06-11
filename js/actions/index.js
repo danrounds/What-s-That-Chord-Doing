@@ -1,11 +1,14 @@
 import chordGetter from '../music-logic/';
 
 export const START_NEW_GAME = 'START_NEW_GAME';
-export const startNewGame = () => {
-    let {keyNameReadable, keyNameNotation, introChordSequence} = chordGetter.init('all', true);
-    let {currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();;
+export const startNewGame = (gameType, inversions) => {
+    let {keyNameReadable, keyNameNotation, introChordSequence} = chordGetter.init(gameType, inversions);
+    console.log(chordGetter);
+    let {currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
     return {
         type: START_NEW_GAME,
+        inversions,
+        gameType,
         keyNameReadable,
         keyNameNotation,
         introChordSequence,

@@ -12,9 +12,11 @@ import * as actions from '../actions';
 import store from '../store';
 
 export class Game extends React.Component {
-    // componentDidMount() {
-    //     this.props.dispatch(actions.startNewGame());
-    // }
+    constructor(props) {
+        super(props);
+        this.props.dispatch(actions.startNewGame(this.props.mode,
+                                                 this.props.inversions));
+    }
 
     render() {
         return (
