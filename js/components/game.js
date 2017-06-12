@@ -8,6 +8,7 @@ import AnswerEntry from './answer-entry';
 import KofN from './k-of-n';
 import Next from './next';
 import StartNewGame from './start-new-game';
+import Status from './status';
 
 import * as actions from '../actions';
 import store from '../store';
@@ -23,6 +24,7 @@ export class Game extends React.Component {
         return (
             <div>
               <Staves />
+              <Status />
               <AnswerEntry />
               <KofN />
               <Audio instrument={this.props.instrument} ac={this.props.ac}/>

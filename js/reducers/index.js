@@ -7,11 +7,12 @@ let initialState = {
     keyNameNotation: null,
     introChordSequence: [],
     chordSubset: [],
+    chordName: null,
     chord: null,
     notes: {bass: null, treble: []},
     accidentals: {bassAccidental: null, trebleIndices: []},
     guessN: 0,
-    answeredCorrectly: false
+    answeredCorrectly: null
 };
 
 export const reducer = (state=initialState, action) => {
@@ -26,6 +27,7 @@ export const reducer = (state=initialState, action) => {
             introChordSequence: action.introChordSequence,
             chordSubset: action.chordSubset,
             accidentals: action.accidentals,
+            chordName: action.chordName,
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: action.trebleNotes},
             guessN: 0,
@@ -43,6 +45,7 @@ export const reducer = (state=initialState, action) => {
                                  [...state.introChordSequence[2]],
                                  [...state.introChordSequence[3]]],
             chordSubset: [...state.chordSubset],
+            chordName: action.chordName,
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: [...action.trebleNotes]},
             accidentals: {
@@ -64,6 +67,7 @@ export const reducer = (state=initialState, action) => {
                                  [...state.introChordSequence[2]],
                                  [...state.introChordSequence[3]]],
             chordSubset: [...state.chordSubset],
+            chordName: state.chordName,
             chord: state.chord,
             notes: {
                 bass: state.notes.bass,
@@ -88,6 +92,7 @@ export const reducer = (state=initialState, action) => {
                                  [...state.introChordSequence[2]],
                                  [...state.introChordSequence[3]]],
             chordSubset: [...state.chordSubset],
+            chordName: state.chordName,
             chord: state.chord,
             notes: {
                 bass: state.notes.bass,

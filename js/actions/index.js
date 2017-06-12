@@ -3,7 +3,7 @@ import chordGetter from '../music-logic/';
 export const START_NEW_GAME = 'START_NEW_GAME';
 export const startNewGame = (gameType, inversions) => {
     let {keyNameReadable, keyNameNotation, introChordSequence, chordSubset} = chordGetter.init(gameType, inversions);
-    let {currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
+    let {chordName, currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
     return {
         type: START_NEW_GAME,
         inversions,
@@ -12,6 +12,7 @@ export const startNewGame = (gameType, inversions) => {
         keyNameNotation,
         introChordSequence,
         chordSubset,
+        chordName,
         currentChordNumeral,
         bassNote,
         trebleNotes,
@@ -21,9 +22,10 @@ export const startNewGame = (gameType, inversions) => {
 
 export const GET_NEXT_QUESTION = 'GET_NEXT_QUESTION';
 export const getNextQuestion = () => {
-    let {currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
+    let {chordName, currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
     return {
         type: GET_NEXT_QUESTION,
+        chordName,
         currentChordNumeral,
         bassNote,
         trebleNotes,

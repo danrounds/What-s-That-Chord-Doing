@@ -281,11 +281,12 @@ const chordGetter = {
         const {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
         const chord = chordVoicings[chordType];
 
-        const [inversion, bassNote] = this.getBassNote(chord);
+        const [inversion, bassNote, chordName] = this.getBassNote(chord);
         const [trebleVoicesIndex, trebleNotes] = this.getTrebleNotes(chord);
 
         return {
             currentChordNumeral: this.currentChordNumeral,
+            chordName,
             bassNote,
             trebleNotes,
             inversion,
@@ -302,7 +303,8 @@ const chordGetter = {
         const offset = chord['bass'][i];
         return [
             i,
-            noteNameMap[this.keyDisplacement + offset + displacement]
+            noteNameMap[this.keyDisplacement + offset + displacement],
+            `${noteNameMap[this.keyDisplacement + displacement].split('/')[0]} ${chordType}`
         ];
     },
 

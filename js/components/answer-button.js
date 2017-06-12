@@ -10,13 +10,10 @@ export class AnswerButton extends React.Component {
 
     onClick() {
         if (!this.props.answeredCorrectly) {
-            if (this.props.guess === this.props.currentChord) {
+            if (this.props.guess === this.props.currentChord)
                 this.props.dispatch(actions.markTurnCorrect());
-                console.log('he got it');
-            } else {
+            else
                 this.props.dispatch(actions.incrementGuessN());
-                console.log('nope');
-            }
         }
     }
 
