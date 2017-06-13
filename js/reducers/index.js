@@ -26,10 +26,10 @@ export const reducer = (state=initialState, action) => {
             keyNameNotation: action.keyNameNotation,
             introChordSequence: action.introChordSequence,
             chordSubset: action.chordSubset,
-            accidentals: action.accidentals,
             chordName: action.chordName,
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: action.trebleNotes},
+            accidentals: action.accidentals,
             guessN: 0,
             answeredCorrectly: false
         };
