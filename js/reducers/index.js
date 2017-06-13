@@ -32,9 +32,9 @@ export const reducer = (state=initialState, action) => {
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: action.trebleNotes},
             accidentals: action.accidentals,
-            guessN: 1,
+            guessN: 0,
             answeredCorrectly: false,
-            questionNumber: 0,
+            questionNumber: 1,
             gameOver: false
         };
 
