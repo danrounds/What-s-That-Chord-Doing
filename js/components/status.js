@@ -14,9 +14,10 @@ export class Status extends React.Component {
                     'You are wrong','Nope'
                 ]);
         else if (this.props.answeredCorrectly)
-            return this.getRandom(['You got it!','Yes!','Correct!']) +
-            ` ${this.props.chordName} is the ${this.props.chord} chord of `
-            +`${this.props.key_}`;
+            return this.getRandom(['You got it!','Yes!','Correct!'])
+            +` The ${this.props.chord} chord of ${this.props.key_} is`
+            +` ${this.props.chordName}`;
+
         else
             return '';
     }
