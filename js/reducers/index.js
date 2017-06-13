@@ -12,7 +12,9 @@ let initialState = {
     notes: {bass: null, treble: []},
     accidentals: {bassAccidental: null, trebleIndices: []},
     guessN: 0,
-    answeredCorrectly: null
+    answeredCorrectly: null,
+    questionNumber: 0,
+    gameOver: false
 };
 
 export const reducer = (state=initialState, action) => {
@@ -30,8 +32,10 @@ export const reducer = (state=initialState, action) => {
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: action.trebleNotes},
             accidentals: action.accidentals,
-            guessN: 0,
-            answeredCorrectly: false
+            guessN: 1,
+            answeredCorrectly: false,
+            questionNumber: 0,
+            gameOver: false
         };
 
     case actions.GET_NEXT_QUESTION:
@@ -53,7 +57,9 @@ export const reducer = (state=initialState, action) => {
                 trebleIndices: [...action.accidentals.trebleIndices]
             },
             guessN: 0,
-            answeredCorrectly: false
+            answeredCorrectly: false,
+            questionNumber: (state.questionNumber + 1) % 11,
+            gameOver: false
         };
 
     case actions.INCREMENT_GUESS_N:
@@ -78,10 +84,13 @@ export const reducer = (state=initialState, action) => {
                 trebleIndices: [...state.accidentals.trebleIndices]
             },
             guessN: state.guessN + 1,
-            answeredCorrectly: false
+            answeredCorrectly: false,
+            questionNumber: state.questionNumber,
+            gameOver: false
         };
 
     case actions.MARK_TURN_CORRECT:
+        let gameOver = state.questionNumber === 10 ? true : false;
         return {
             gameType: state.gameType,
             inversions: state.inversions,
@@ -103,7 +112,9 @@ export const reducer = (state=initialState, action) => {
                 trebleIndices: [...state.accidentals.trebleIndices]
             },
             guessN: state.guessN++,
-            answeredCorrectly: true
+            answeredCorrectly: true,
+            questionNumber: state.questionNumber,
+            gameOver
         };
 
     default:
