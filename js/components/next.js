@@ -10,7 +10,8 @@ export class Next extends React.Component {
     }
 
     onClick() {
-        this.props.dispatch(actions.getNextQuestion());
+        if (!(this.props.questionNumber === 10))
+            this.props.dispatch(actions.getNextQuestion());
     }
 
     render() {
@@ -18,4 +19,8 @@ export class Next extends React.Component {
     }
 }
 
-export default connect()(Next);
+const mapStateToProps = (state, props) => ({
+    questionNumber: state.questionNumber
+});
+
+export default connect(mapStateToProps)(Next);

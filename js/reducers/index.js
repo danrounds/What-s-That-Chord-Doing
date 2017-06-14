@@ -39,6 +39,7 @@ export const reducer = (state=initialState, action) => {
         };
 
     case actions.GET_NEXT_QUESTION:
+        let gameOver = state.questionNumber === 9 ? true : false;
         return {
             gameType: state.gameType,
             inversions: state.inversions,
@@ -59,7 +60,7 @@ export const reducer = (state=initialState, action) => {
             guessN: 0,
             answeredCorrectly: false,
             questionNumber: (state.questionNumber + 1) % 11,
-            gameOver: false
+            gameOver
         };
 
     case actions.INCREMENT_GUESS_N:
@@ -90,7 +91,7 @@ export const reducer = (state=initialState, action) => {
         };
 
     case actions.MARK_TURN_CORRECT:
-        let gameOver = state.questionNumber === 10 ? true : false;
+        gameOver = state.questionNumber === 10 ? true : false;
         return {
             gameType: state.gameType,
             inversions: state.inversions,

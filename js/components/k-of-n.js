@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 
 export class KofN extends React.Component {
     render() {
-        if (!this.props.questionNumber)
-            return null;
         return (<p>Question {this.props.questionNumber} of 10</p>);
     }
 }
