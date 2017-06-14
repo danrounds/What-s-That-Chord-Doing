@@ -22,8 +22,24 @@ export class Status extends React.Component {
             return '';
     }
 
+    getAverageClicks() {
+        if (this.props.clicksPerRightAnswer.length) {
+            return String(
+                this.props.clicksPerRightAnswer.reduce(
+                    (a,b) => a + b)/this.props.clicksPerRightAnswer.length
+            ).substring(0,5) + ' guesses per correct answer';
+        }
+        else
+            return '';
+    }
     render() {
-        return (<h3>{this.getText()}</h3>);
+        return (
+            <h3>
+              {this.getText()}<br/>
+              {this.props.nAnsweredRight} answered correctly<br/>
+              {this.getAverageClicks()}
+            </h3>
+        );
     }
 }
 
@@ -32,7 +48,9 @@ const mapStateToProps = (state, props) => ({
     chordName: state.chordName,
     chord: state.chord,
     guessN: state.guessN,
-    answeredCorrectly: state.answeredCorrectly
+    answeredCorrectly: state.answeredCorrectly,
+    nAnsweredRight: state.nAnsweredRight,
+    clicksPerRightAnswer: state.clicksPerRightAnswer
 });
 
 export default connect(mapStateToProps)(Status);
