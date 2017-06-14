@@ -14,6 +14,8 @@ let initialState = {
     guessN: 0,
     answeredCorrectly: null,
     questionNumber: 0,
+    nAnsweredRight: 0,
+    clicksPerRightAnswer: [],
     gameOver: false
 };
 
@@ -35,11 +37,12 @@ export const reducer = (state=initialState, action) => {
             guessN: 0,
             answeredCorrectly: false,
             questionNumber: 1,
+            nAnsweredRight: 0,
+            clicksPerRightAnswer: [],
             gameOver: false
         };
 
     case actions.GET_NEXT_QUESTION:
-        let gameOver = state.questionNumber === 9 ? true : false;
         return {
             gameType: state.gameType,
             inversions: state.inversions,
@@ -60,7 +63,9 @@ export const reducer = (state=initialState, action) => {
             guessN: 0,
             answeredCorrectly: false,
             questionNumber: (state.questionNumber + 1) % 11,
-            gameOver
+            nAnsweredRight: state.nAnsweredRight,
+            clicksPerRightAnswer: [...state.clicksPerRightAnswer],
+            gameOver: false
         };
 
     case actions.INCREMENT_GUESS_N:
@@ -87,11 +92,13 @@ export const reducer = (state=initialState, action) => {
             guessN: state.guessN + 1,
             answeredCorrectly: false,
             questionNumber: state.questionNumber,
+            nAnsweredRight: state.nAnsweredRight,
+            clicksPerRightAnswer: [...state.clicksPerRightAnswer],
             gameOver: false
         };
 
     case actions.MARK_TURN_CORRECT:
-        gameOver = state.questionNumber === 10 ? true : false;
+        let gameOver = state.questionNumber === 10 ? true : false;
         return {
             gameType: state.gameType,
             inversions: state.inversions,
@@ -115,6 +122,8 @@ export const reducer = (state=initialState, action) => {
             guessN: state.guessN++,
             answeredCorrectly: true,
             questionNumber: state.questionNumber,
+            nAnsweredRight: state.nAnsweredRight + 1,
+            clicksPerRightAnswer: [...state.clicksPerRightAnswer, state.guessN],
             gameOver
         };
 
