@@ -22,13 +22,17 @@ export class Audio extends React.Component {
                 }
                 timeOffset += 0.68;
             }
-            this.playPrompt(3.5);
+            this.playPrompt(null, null, 3.5);
         });
     }
 
-    playPrompt(timeOffset=0) {
+    playPrompt(null_, null__, timeOffset=0) {
         // This plays the actual "question" chord. It also plays after the
-        // player has made a correct guess
+        // player has made a correct guess.
+        // Weird function signature is due to a quirk of our version of React,
+        // in which superfluous (for our purposes) arguments are sent to
+        // functions called by React with onClick. Documented: 
+        // https://github.com/facebook/react/issues/8354
         this.props.instrument.then(piano => {
             for (let i of this.props.answer) {
                 piano.play(i, this.props.ac.currentTime + timeOffset, {duration: 0.68});
@@ -52,8 +56,12 @@ export class Audio extends React.Component {
     }
 
     render() {
-        return (<button onClick={this.playIntroChordsAndPrompt}>Play audio again
-                </button>);
+        return (
+            <div>
+              <button onClick={this.playIntroChordsAndPrompt}>Play intro & chord again</button>
+              <button onClick={this.playPrompt}>Play chord again</button>
+            </div>
+        );
     }
 }
 
