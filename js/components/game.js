@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
 import Staves from './staves';
-import Audio from './audio';
+import PlayAudio from './play-audio';
 import AnswerEntry from './answer-entry';
 import KofN from './k-of-n';
 import Next from './next';
@@ -27,7 +27,7 @@ export class Game extends React.Component {
               <Status />
               <AnswerEntry />
               <KofN />
-              <Audio instrument={this.props.instrument} ac={this.props.ac}/>
+              <PlayAudio instrument={this.props.instrument} ac={this.props.ac}/>
               <Next />
               <StartNewGame />
               <Link to="/">Return to Index</Link>
