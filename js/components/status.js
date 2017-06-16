@@ -32,6 +32,7 @@ export class Status extends React.Component {
         else
             return '';
     }
+    
     render() {
         return (
             <h3>
