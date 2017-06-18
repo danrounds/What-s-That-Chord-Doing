@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import * as actions from '../actions';
+
 export class Status extends React.Component {
     getRandom(array) {
         return array[Math.floor(Math.random() * array.length)];
@@ -33,9 +35,21 @@ export class Status extends React.Component {
             return '';
     }
 
+    getNewGameLink() {
+        if (this.props.gameOver)
+            return (
+                <a href="javascript:void(0)"
+                   onClick={() => this.props.dispatch(
+                  actions.startNewGame(this.props.mode,this.props.inversions))}>
+                  Play again?
+                </a>);
+        return null;
+    }
+
     render() {
         return (
             <h3>
+              {this.getNewGameLink()}<br/>
               {this.getText()}<br/>
               {this.props.nAnsweredRight} answered correctly<br/>
               {this.getAverageClicks()}
@@ -51,7 +65,8 @@ const mapStateToProps = (state, props) => ({
     guessN: state.guessN,
     answeredCorrectly: state.answeredCorrectly,
     nAnsweredRight: state.nAnsweredRight,
-    clicksPerRightAnswer: state.clicksPerRightAnswer
+    clicksPerRightAnswer: state.clicksPerRightAnswer,
+    gameOver: state.gameOver
 });
 
 export default connect(mapStateToProps)(Status);

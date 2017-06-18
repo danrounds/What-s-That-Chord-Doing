@@ -24,7 +24,7 @@ export class Game extends React.Component {
         return (
             <div>
               <Staves />
-              <Status />
+              <Status mode={this.props.mode} inversions={this.props.inversions}/>
               <AnswerEntry />
               <KofN />
               <PlayAudio instrument={this.props.instrument} ac={this.props.ac}/>
