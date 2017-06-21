@@ -8,7 +8,7 @@ import {Router, Route, hashHistory} from 'react-router';
 import Soundfont from 'soundfont-player';
 
 import store from './store';
-import Game from './components/game';
+import GameWrapper from './components/game-wrapper';
 import Home from './components/home';
 
 const ac = new AudioContext();
@@ -16,31 +16,32 @@ const instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
 
 const routes = (
     <Router history={hashHistory}>
-      <Route path="/" component={() => <Home instrument={instrument}/>} />
-      <Route path="/easy-major" component={() => <GameWrapper mode="easyMajor"/>} />
-      <Route path="/hard-major" component={() => <GameWrapper mode="hardMajor"/>} />
-      <Route path="/easy-minor" component={() => <GameWrapper mode="easyMinor"/>} />
-      <Route path="/intermediate-minor" component={() => <GameWrapper mode="intermediateMinor"/>} />
-      <Route path="/hard-minor" component={() => <GameWrapper mode="hardMinor"/>} />
-      <Route path="/all-chords" component={() => <GameWrapper mode="all"/>} />
-      <Route path="/easy-major-inv" component={() => <GameWrapper mode="easyMajor" inversions={true}/>} />
-      <Route path="/hard-major-inv" component={() => <GameWrapper mode="hardMajor" inversions={true}/>} />
-      <Route path="/easy-minor-inv" component={() => <GameWrapper mode="easyMinor" inversions={true}/>} />
-      <Route path="/intermediate-minor-inv" component={() => <GameWrapper mode="intermediateMinor" inversions={true}/>} />
-      <Route path="/hard-minor-inv" component={() => <GameWrapper mode="hardMinor" inversions={true}/>} />
-      <Route path="/all-chords-inv" component={() => <GameWrapper mode="all" inversions={true}/>} />
+      <Route path="/" component={() => <Home instrument={instrument} ac={ac}/>} />
+      <Route path="/easy-major" component={() =>
+        <GameWrapper mode="easyMajor" ac={ac} instrument={instrument}/>} />
+      <Route path="/hard-major" component={() =>
+        <GameWrapper mode="hardMajor" ac={ac} instrument={instrument}/>} />
+      <Route path="/easy-minor" component={() =>
+        <GameWrapper mode="easyMinor" ac={ac}  instrument={instrument}/>} />
+      <Route path="/intermediate-minor" component={() =>
+        <GameWrapper mode="intermediateMinor" ac={ac}  instrument={instrument}/>} />
+      <Route path="/hard-minor" component={() =>
+        <GameWrapper mode="hardMinor" ac={ac}  instrument={instrument}/>} />
+      <Route path="/all-chords" component={() =>
+        <GameWrapper mode="all" ac={ac}  instrument={instrument}/>} />
+      <Route path="/easy-major-inv" component={() =>
+        <GameWrapper mode="easyMajor" inversions={true} ac={ac} instrument={instrument}/>} />
+      <Route path="/hard-major-inv" component={() =>
+        <GameWrapper mode="hardMajor" inversions={true} ac={ac} instrument={instrument}/>} />
+      <Route path="/easy-minor-inv" component={() =>
+        <GameWrapper mode="easyMinor" inversions={true} ac={ac} instrument={instrument}/>} />
+      <Route path="/intermediate-minor-inv" component={() =>
+        <GameWrapper mode="intermediateMinor" inversions={true} ac={ac}  instrument={instrument}/>} />
+      <Route path="/hard-minor-inv" component={() =>
+        <GameWrapper mode="hardMinor" inversions={true} ac={ac} instrument={instrument}/>} />
+      <Route path="/all-chords-inv" component={() =>
+        <GameWrapper mode="all" inversions={true} ac={ac} instrument={instrument}/>} />
     </Router>
-);
-
-const GameWrapper = (props) => (
-    <Provider store={store}>
-      <div>
-        <Game mode={props.mode}
-              inversions={props.inversions || false}
-              instrument={instrument}
-              ac={ac}/>
-      </div>
-    </Provider>
 );
 
 document.addEventListener(
