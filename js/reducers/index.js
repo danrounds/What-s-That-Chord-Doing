@@ -22,8 +22,10 @@ let initialState = {
 export const reducer = (state=initialState, action) => {
 
     switch(action.type) {
+
     case actions.START_NEW_GAME:
         return {
+            keyValue: null,
             gameType: action.gameType,
             inversions: action.inversions,
             keyNameReadable: action.keyNameReadable,
@@ -42,8 +44,41 @@ export const reducer = (state=initialState, action) => {
             gameOver: false
         };
 
+    case actions.GET_KEY_PRESS:
+        console.log(action.keyValue);
+        return {
+            keyValue: action.keyValue,
+            gameType: state.gameType,
+            inversions: state.inversions,
+            keyNameReadable: state.keyNameReadable,
+            keyNameNotation: state.keyNameNotation,
+            introChordSequence: [[...state.introChordSequence[0]],
+                                 [...state.introChordSequence[1]],
+                                 [...state.introChordSequence[2]],
+                                 [...state.introChordSequence[3]]],
+            chordSubset: [...state.chordSubset],
+            chordName: state.chordName,
+            chord: state.chord,
+            notes: {
+                bass: state.notes.bass,
+                treble: [...state.notes.treble]
+            },
+            accidentals: {
+                bassAccidental: state.accidentals.bassAccidental,
+                trebleIndices: [...state.accidentals.trebleIndices]
+            },
+            guessN: state.guessN,
+            answeredCorrectly: state.answeredCorrectly,
+            questionNumber: state.questionNumber,
+            nAnsweredRight: state.nAnsweredRight,
+            clicksPerRightAnswer: [...state.clicksPerRightAnswer],
+            gameOver: state.gameOver
+        };
+
+
     case actions.GET_NEXT_QUESTION:
         return {
+            keyValue: null,
             gameType: state.gameType,
             inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
@@ -70,6 +105,7 @@ export const reducer = (state=initialState, action) => {
 
     case actions.INCREMENT_GUESS_N:
         return {
+            keyValue: null,
             gameType: state.gameType,
             inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
@@ -100,6 +136,7 @@ export const reducer = (state=initialState, action) => {
     case actions.MARK_TURN_CORRECT:
         let gameOver = state.questionNumber === 10 ? true : false;
         return {
+            keyValue: null,
             gameType: state.gameType,
             inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,

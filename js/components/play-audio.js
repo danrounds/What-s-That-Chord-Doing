@@ -41,10 +41,12 @@ export class PlayAudio extends React.Component {
     }
 
     playSounds() {
-        if (this.props.answeredCorrectly)
-            this.playPrompt();
-        else if (!this.props.guessN)
-            this.playIntroChordsAndPrompt();
+        if (!this.props.keyPress) {
+            if (this.props.answeredCorrectly)
+                this.playPrompt();
+            else if (!this.props.guessN)
+                this.playIntroChordsAndPrompt();
+        }
     }
 
     componentDidMount() {
@@ -70,6 +72,7 @@ const mapStateToProps = (state, props) => {
     let notes = state.notes;
 
     return {
+        keyPress: state.keyValue,
         answer: notes.bass ? [notes.bass, ...notes.treble].map(
             processNotes) : [],
         introChordSequence: state.introChordSequence.map(

@@ -1,5 +1,11 @@
 import chordGetter from '../music-logic/';
 
+export const GET_KEY_PRESS = 'GET_KEY_PRESS';
+export const getKeyPress = (keyValue) => ({
+    type: GET_KEY_PRESS,
+    keyValue
+});
+
 export const START_NEW_GAME = 'START_NEW_GAME';
 export const startNewGame = (gameType, inversions) => {
     let {keyNameReadable, keyNameNotation, introChordSequence, chordSubset} = chordGetter.init(gameType, inversions);

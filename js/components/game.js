@@ -16,13 +16,33 @@ import store from '../store';
 export class Game extends React.Component {
     constructor(props) {
         super(props);
+        this.handleKey = this.handleKey.bind(this);
+        this.getFocus = this.getFocus.bind(this);
         this.props.dispatch(actions.startNewGame(this.props.mode,
                                                  this.props.inversions));
     }
 
+    getFocus() {
+        this.gameContainer.focus();
+    };
+
+    handleKey(e) {
+        this.props.dispatch(actions.getKeyPress(e.key));
+    };
+
+    componentDidMount() {
+        this.getFocus();
+    }
+
+    componentDidUpdate() {
+        this.getFocus();
+    }
+
     render() {
         return (
-            <div>
+            <div tabIndex="0" onKeyDown={this.handleKey}
+                 onBlur={this.getFocus}
+                 ref={element => { this.gameContainer = element; }}>
               <Staves/>
               <Status mode={this.props.mode} inversions={this.props.inversions}/>
               <AnswerEntry />
