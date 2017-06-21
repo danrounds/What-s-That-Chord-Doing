@@ -20,14 +20,6 @@ export class Game extends React.Component {
                                                  this.props.inversions));
     }
 
-    // getFocus() {
-    //     this.inputField.focus();
-    // }
-
-    // handleKey(e) {
-    //     alert(e);
-    // }
-
     render() {
         return (
             <div>

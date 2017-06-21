@@ -11,7 +11,7 @@ export default class GameWrapper extends React.Component {
     }
 
     getFocus() {
-        this.inputField.focus();
+        this.gameContainer.focus();
     };
 
     handleKey(e) {
@@ -31,7 +31,7 @@ export default class GameWrapper extends React.Component {
             <Provider store={store}>
               <div tabIndex="0" onKeyPress={this.handleKey}
                    onBlur={this.getFocus}
-                   ref={element => { this.inputField = element; }}>
+                   ref={element => { this.gameContainer = element; }}>
                 <Game mode={this.props.mode}
                       inversions={this.props.inversions || false}
                       instrument={this.props.instrument}
@@ -40,21 +40,4 @@ export default class GameWrapper extends React.Component {
             </Provider>
         );
     }
-
-    // render(props) {
-    //     return (
-    //         <Provider store={store}>
-    //           <div>
-    //             <Game mode={this.props.mode}
-    //                   onBlur={this.getFocus} 
-    //                   onKeyPress={this.handleKey}
-    //                   ref={element => { this.inputField = element; }}
-    //               inversions={this.props.inversions || false}
-    //               instrument={this.props.instrument}
-    //               ac={this.props.ac}
-    //               autoFocus/>
-    //           </div>
-    //         </Provider>
-    //     );
-    // }
 }
