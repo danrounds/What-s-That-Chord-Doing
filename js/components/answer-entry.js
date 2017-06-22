@@ -6,27 +6,31 @@ export class AnswerEntry extends React.Component {
     constructor(props) {
         super(props);
         this.onClick = this.onClick.bind(this);
-        this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.onKey = this.onKey.bind(this);
         this.buttons = this.makeButtons();
+        this.keyMap = this.makeKeyMap();
     }
 
     makeButtons() {
-        const keys = ['q','w','e','r','t','y','u','i','o','p',
-                      'a','s','d','f','g','h','j','k','l',';'];
-
         return this.props.chordSubset.map((numeral) => {
-            let k = keys.shift();
             return (
                 <button key={numeral} onClick={this.onClick}>
                   {numeral}
                 </button>
             );
-            // return (
-            //     <button key={numeral} onClick={this.onClick} onKeyPress={this.handleKeyPress}>
-            //       {numeral}
-            //     </button>
-            // );
         });
+    }
+
+    makeKeyMap() {
+        const keys = ['a','s','d','f','g','h','j','k','l',';',
+                      'z','x','c','v','b','n','m',',','.','/'];
+
+        const keyMap = {};
+        this.props.chordSubset.map((numeral) => {
+            let k = keys.shift();
+            keyMap[k] = numeral;
+        });
+        return keyMap;
     }
     
     onClick(e) {
@@ -38,11 +42,20 @@ export class AnswerEntry extends React.Component {
         }
     }
 
-    handleKeyPress(e) {
-        console.log('OK');
-        if (e.key === this.props.buttonShortcut)
-            // this.onClick();
-            console.log('OK');
+    onKey() {
+        if (!this.props.answeredCorrectly) {
+            if (this.keyMap[this.props.keyValue]) {
+                if (this.keyMap[this.props.keyValue] === this.props.currentChord)
+                    this.props.dispatch(actions.markTurnCorrect());
+                else
+                    this.props.dispatch(actions.incrementGuessN());
+            }
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.props.keyValue)
+            this.onKey();
     }
 
     render() {
@@ -55,6 +68,7 @@ export class AnswerEntry extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
+    keyValue: state.keyValue,
     chordSubset: state.chordSubset,
     currentChord: state.chord,
     answeredCorrectly: state.answeredCorrectly

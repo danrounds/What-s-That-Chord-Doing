@@ -1,6 +1,7 @@
 import * as actions from '../actions/';
 
 let initialState = {
+    keyValue: null,
     gameType: null,
     inversions: null,
     keyNameReadable: null,
@@ -25,7 +26,7 @@ export const reducer = (state=initialState, action) => {
 
     case actions.START_NEW_GAME:
         return {
-            keyValue: null,
+            keyValue: '',
             gameType: action.gameType,
             inversions: action.inversions,
             keyNameReadable: action.keyNameReadable,
@@ -78,7 +79,7 @@ export const reducer = (state=initialState, action) => {
 
     case actions.GET_NEXT_QUESTION:
         return {
-            keyValue: null,
+            keyValue: '',
             gameType: state.gameType,
             inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
@@ -105,7 +106,7 @@ export const reducer = (state=initialState, action) => {
 
     case actions.INCREMENT_GUESS_N:
         return {
-            keyValue: null,
+            keyValue: '',
             gameType: state.gameType,
             inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
@@ -136,7 +137,7 @@ export const reducer = (state=initialState, action) => {
     case actions.MARK_TURN_CORRECT:
         let gameOver = state.questionNumber === 10 ? true : false;
         return {
-            keyValue: null,
+            keyValue: '',
             gameType: state.gameType,
             inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
@@ -156,11 +157,11 @@ export const reducer = (state=initialState, action) => {
                 bassAccidental: state.accidentals.bassAccidental,
                 trebleIndices: [...state.accidentals.trebleIndices]
             },
-            guessN: state.guessN++,
+            guessN: state.guessN + 1,
             answeredCorrectly: true,
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight + 1,
-            clicksPerRightAnswer: [...state.clicksPerRightAnswer, state.guessN],
+            clicksPerRightAnswer: [...state.clicksPerRightAnswer, state.guessN + 1],
             gameOver
         };
 

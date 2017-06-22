@@ -27,7 +27,8 @@ export class Game extends React.Component {
     };
 
     handleKey(e) {
-        this.props.dispatch(actions.getKeyPress(e.key));
+        this.props.dispatch(actions.getKeyPress(e.ctrlKey ?
+                                                'Control '+e.key : e.key));
     };
 
     componentDidMount() {

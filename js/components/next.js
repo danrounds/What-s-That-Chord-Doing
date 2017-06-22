@@ -10,8 +10,15 @@ export class Next extends React.Component {
     }
 
     onClick() {
-        if (!(this.props.questionNumber === 10))
+        if (this.props.questionNumber !== 10)
             this.props.dispatch(actions.getNextQuestion());
+    }
+
+    componentDidUpdate() {
+        if (['ArrowRight', ' '].indexOf(this.props.keyValue) !== -1) {
+            if (this.props.questionNumber !== 10)
+                this.props.dispatch(actions.getNextQuestion());
+        }
     }
 
     render() {
@@ -20,6 +27,7 @@ export class Next extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
+    keyValue: state.keyValue,
     questionNumber: state.questionNumber
 });
 
