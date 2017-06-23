@@ -18,15 +18,6 @@ export class StartNewGame extends React.Component {
                                                      this.props.inversions));
     }
 
-    // componentDidUpdate() {
-    //     if (this.props.gameOver && this.props.keyValue === 'Enter')
-    //         this.startNewGame();
-    //     else if (this.props.keyValue === 'Control Enter') {
-    //         if (this.props.gameOver || this.props.firstQ || confirm('Are you sure you discard your progress?'))
-    //             this.startNewGame();
-    //     }
-    // }
-
     componentDidUpdate() {
         if (this.props.keyValue === 'Enter' || this.props.keyValue === 'Control Enter'){
                 this.startNewGame();
