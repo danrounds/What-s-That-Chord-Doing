@@ -10,15 +10,25 @@ export class StartNewGame extends React.Component {
     }
 
     startNewGame() {
-        this.props.dispatch(actions.startNewGame(this.props.gameType,
-                                                 this.props.inversions));
+        if (this.props.gameOver || this.props.firstQ)
+            this.props.dispatch(actions.startNewGame(this.props.gameType,
+                                                     this.props.inversions));
+        else if (confirm('Are you sure you discard your progress?'))
+            this.props.dispatch(actions.startNewGame(this.props.gameType,
+                                                     this.props.inversions));
     }
 
+    // componentDidUpdate() {
+    //     if (this.props.gameOver && this.props.keyValue === 'Enter')
+    //         this.startNewGame();
+    //     else if (this.props.keyValue === 'Control Enter') {
+    //         if (this.props.gameOver || this.props.firstQ || confirm('Are you sure you discard your progress?'))
+    //             this.startNewGame();
+    //     }
+    // }
+
     componentDidUpdate() {
-        if (this.props.gameOver && this.props.keyValue === 'Enter')
-            this.startNewGame();
-        else if (this.props.keyValue === 'Control Enter') {
-            if (this.props.gameOver || this.props.firstQ || confirm('Are you sure you discard your progress?'))
+        if (this.props.keyValue === 'Enter' || this.props.keyValue === 'Control Enter'){
                 this.startNewGame();
         }
     }
