@@ -40,7 +40,7 @@ export class Status extends React.Component {
             : '';
     }
 
-    getNewGameLink() {
+    getBetweenTurnStatus() {
         if (this.props.gameOver)
             return (
                 <div>
@@ -59,7 +59,7 @@ export class Status extends React.Component {
     render() {
         return (
             <h3>
-              {this.getNewGameLink()}<br/>
+              {this.getBetweenTurnStatus()}<br/>
               {this.getStatusText()}<br/>
               {this.nRightText = this.props.nAnsweredRight +' answered correctly'}<br/>
               {this.getAverageClicks()}
