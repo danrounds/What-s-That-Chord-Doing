@@ -41,16 +41,19 @@ export class Status extends React.Component {
     }
 
     getNewGameLink() {
-        return (this.props.gameOver) ?
-            (
+        if (this.props.gameOver)
+            return (
                 <div>
                   Press ENTER to <a href="javascript:void(0)"
                                     onClick={() => this.props.dispatch(
                     actions.startNewGame(this.props.mode,this.props.inversions))}>
                     play again
                   </a>
-                </div>)
-        : null;
+                </div>);
+        else if (this.props.answeredCorrectly)
+            return (<div>Press SPACE for the next question</div>);
+        else
+            return null;
     }
 
     render() {
