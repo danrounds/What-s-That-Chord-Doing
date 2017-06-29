@@ -28,17 +28,17 @@ export class Staves extends React.Component {
         const renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
         // Configure the rendering context.
-        renderer.resize(500, 300);
+        renderer.resize(500, 200);
 
         const context = renderer.getContext();
         context.setFont('Arial', 10, '').setBackgroundFillStyle('eed');
 
-        // Create a stave of width 400 at position 10, 40 on the canvas.
-        const treble = new VF.Stave(10, 40, 400);
+        // Create a stave of width 400 at position 0, 0 (x, y) on the canvas.
+        const treble = new VF.Stave(0, 0, 400);
         treble.addClef('treble').addKeySignature(this.props.keySignature);
         treble.setContext(context).draw();
 
-        const bass = new VF.Stave(10, 145, 400);
+        const bass = new VF.Stave(0, 105, 400);
         bass.addClef('bass').addKeySignature(this.props.keySignature);
         bass.setContext(context).draw();
 

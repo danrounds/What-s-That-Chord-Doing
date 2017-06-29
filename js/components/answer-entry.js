@@ -9,13 +9,53 @@ export class AnswerEntry extends React.Component {
         this.onKey = this.onKey.bind(this);
         this.buttons = this.makeButtons();
         this.keyMap = this.makeKeyMap();
+        this.guess = null;
     }
 
     makeButtons() {
+        const keys = ['a','s','d','f','g','h','j','k','l',';',
+                     'z','x','c','v','b','n','m',',','.','/'];
+
+        const keyHintStyleBig = {
+            border: '1px solid green',
+            borderRadius: '2px',
+            backgroundColor: 'green',
+            fontSize: '14px',
+            color:'white',
+            margin: 'auto',
+            width: '15px'
+        };
+
+        const buttonStyle = {
+            fontSize: '20px',
+            height: '60px',
+            width: '50px'
+        };
+
+        const buttonWrongStyle = {
+            backgroundColor: 'red',
+            fontSize: '20px',
+            height: '60px',
+            width: '50px'         
+        };
+
+        const buttonRightStyle = {
+            backgroundColor: 'deepskyblue',
+            fontSize: '20px',
+            height: '60px',
+            width: '50px'
+        };
+
         return this.props.chordSubset.map((numeral) => {
+            let k = keys.shift();
+
             return (
-                <button key={numeral} onClick={this.onClick}>
-                  {numeral}
+                <button style={this.guess === numeral ?
+                               (numeral === this.props.currentChord ? buttonRightStyle : buttonWrongStyle)
+                        : buttonStyle}
+                        key={numeral} onClick={this.onClick}>
+                  {numeral}<br/>
+                  {1 ? <div style={keyHintStyleBig}>{k}</div> : null}
                 </button>
             );
         });
@@ -35,7 +75,14 @@ export class AnswerEntry extends React.Component {
     
     onClick(e) {
         if (!this.props.answeredCorrectly) {
-            if (e.target.innerHTML === this.props.currentChord)
+
+            // We're either clicking a button or something deeper in our tree
+            if (e.target.parentElement.nodeName === 'BUTTON')
+                this.guess = e.target.parentElement.innerText.split('\n')[0];
+            else
+                this.guess = e.target.innerText.split('\n')[0];
+
+            if (this.guess === this.props.currentChord)
                 this.props.dispatch(actions.markTurnCorrect());
             else
                 this.props.dispatch(actions.incrementGuessN());
@@ -44,6 +91,7 @@ export class AnswerEntry extends React.Component {
 
     onKey() {
         if (!this.props.answeredCorrectly) {
+            this.guess = this.keyMap[this.props.keyValue] || null;
             if (this.keyMap[this.props.keyValue]) {
                 if (this.keyMap[this.props.keyValue] === this.props.currentChord)
                     this.props.dispatch(actions.markTurnCorrect());
@@ -56,6 +104,22 @@ export class AnswerEntry extends React.Component {
     componentDidUpdate() {
         if (this.props.keyValue)
             this.onKey();
+
+        if (this.props.answeredCorrectly)
+            this.endTurn = true;
+
+        if (this.endTurn) {
+            if (!this.props.guessN) {
+                this.endTurn = false;
+                this.guess = null;
+                this.forceUpdate();
+            }
+        }
+        this.buttons = this.makeButtons();
+    }
+
+    componentWillUpdate() {
+        this.buttons = this.makeButtons();
     }
 
     render() {
@@ -71,6 +135,7 @@ const mapStateToProps = (state, props) => ({
     keyValue: state.keyValue,
     chordSubset: state.chordSubset,
     currentChord: state.chord,
+    guessN: state.guessN,
     answeredCorrectly: state.answeredCorrectly
 });
 

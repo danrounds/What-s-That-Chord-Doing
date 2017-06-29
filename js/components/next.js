@@ -22,7 +22,21 @@ export class Next extends React.Component {
     }
 
     render() {
-        return(<button onClick={this.onClick}>next Q</button>);
+        const miniKeyHintStyle = {
+            border: '1px solid green',
+            borderRadius: '2px',
+            backgroundColor: 'green',
+            fontSize: '10px',
+            color:'white',
+            margin: 'auto'
+        };
+
+        return(
+            <button onClick={this.onClick}>
+              next ?
+              <div style={miniKeyHintStyle}>SPACE</div>
+            </button>
+        );
     }
 }
 

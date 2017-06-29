@@ -1,6 +1,28 @@
 #app {
-    height: 100%;
-    min-height: 100%;
-    min-width: 100%;
-    width: 100%;
+    width: 500px;
+    left: auto;
+    right: auto;
+}
+
+#app {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#app :focus {
+    /* bad practice, but it works, here */
+    outline: 0;
+}
+
+button {
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+
+}
+
+button:hover {
+    background-color: orangered;
 }

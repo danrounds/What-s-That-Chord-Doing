@@ -24,7 +24,7 @@ export class Status extends React.Component {
             this.stopPrompting = true;
 
         } else if (!(this.stopPrompting && this.props.guessN)) {
-            this.statusText = '';
+            this.statusText = (<br/>);
             this.stopPrompting = false;
         }
 
@@ -37,33 +37,43 @@ export class Status extends React.Component {
                 this.props.clicksPerRightAnswer.reduce(
                     (a,b) => a + b)/this.props.clicksPerRightAnswer.length
             ).substring(0,5) + ' guesses per correct answer'
-            : '';
+            : (<br/>);
     }
 
     getBetweenTurnStatus() {
+        
+        const miniKeyHintStyle = {
+            border: '1px solid green',
+            borderRadius: '2px',
+            backgroundColor: 'green',
+            // fontSize: '10px',
+            color:'white',
+            margin: 'auto'
+        };
+
         if (this.props.gameOver)
             return (
                 <div>
-                  Press ENTER to <a href="javascript:void(0)"
+                  Press <span style={miniKeyHintStyle}>ENTER</span> to <a href="javascript:void(0)"
                                     onClick={() => this.props.dispatch(
                     actions.startNewGame(this.props.mode,this.props.inversions))}>
                     play again
                   </a>
                 </div>);
         else if (this.props.answeredCorrectly)
-            return (<div>Press SPACE for the next question</div>);
+            return (<div>Press <span style={miniKeyHintStyle}>SPACE</span> for the next question</div>);
         else
-            return null;
+            return (<br/>);
     }
 
     render() {
         return (
-            <h3>
-              {this.getBetweenTurnStatus()}<br/>
-              {this.getStatusText()}<br/>
-              {this.nRightText = this.props.nAnsweredRight +' answered correctly'}<br/>
-              {this.getAverageClicks()}
-            </h3>
+            <div style={{height: '90px', margin:'10px 5px 10px 5px'}}>
+              <h3>{this.getBetweenTurnStatus()}</h3>
+              <h3>{this.getStatusText()}</h3>
+              <h3>{this.nRightText = this.props.nAnsweredRight +' answered correctly'}</h3>
+              <h3>{this.getAverageClicks()}</h3>
+            </div>
         );
     }
 

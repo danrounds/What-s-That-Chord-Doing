@@ -32,7 +32,21 @@ export class StartNewGame extends React.Component {
     }
 
     render() {
-        return (<button onClick={this.startNewGame}><b>Start New Game</b></button>);
+        const miniKeyHintStyle = {
+            border: '1px solid green',
+            borderRadius: '2px',
+            backgroundColor: 'green',
+            fontSize: '10px',
+            color:'white',
+            margin: 'auto'
+        };
+
+        return (
+            <button onClick={this.startNewGame}>
+              <em>Start New Game</em>
+              <div style={{fontSize: '10px'}}><span style={miniKeyHintStyle}>CTRL</span> + <span style={miniKeyHintStyle}>ENTER</span></div>
+            </button>
+        );
     }
 }
 
