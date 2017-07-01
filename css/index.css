@@ -1,13 +1,16 @@
-#app {
-    width: 500px;
-    left: auto;
-    right: auto;
+* {
+    /* font-family: 'Zilla Slab', serif; */
+    font-family: 'Raleway', sans-serif;
 }
 
 #app {
+    font-family: 'Raleway', sans-serif;
     width: 500px;
+    left: auto;
+    right: auto;
     margin-left: auto;
     margin-right: auto;
+
 }
 
 #app :focus {
@@ -15,11 +18,20 @@
     outline: 0;
 }
 
+/* #staves { */
+/*     background-color: #ffffcc; */
+/* } */
+
 button {
-    -moz-transition: all .2s ease-in;
-    -o-transition: all .2s ease-in;
-    -webkit-transition: all .2s ease-in;
-    transition: all .2s ease-in;
+    /* -moz-transition: all 0.1s ease-in; */
+    /* -o-transition: all 0.1s ease-in; */
+    /* -webkit-transition: all 0.1s ease-in; */
+    /* transition: all 0.1s ease-in; */
+
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    -webkit-transition: all 0.1s linear;
+    transition: all 0.1s linear;
 
 }
 
