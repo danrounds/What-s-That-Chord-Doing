@@ -46,9 +46,9 @@ export class PlayAudio extends React.Component {
                 this.playPrompt();
             else if (!this.props.guessN)
                 this.playIntroChordsAndPrompt();
-        } else if (this.props.keyPress === '?') {
+        } else if (this.props.keyPress === ',') {
             this.playPrompt();
-        } else if (this.props.keyPress === '/') {
+        } else if (this.props.keyPress === '.') {
             this.playIntroChordsAndPrompt();
         }
     }
@@ -76,11 +76,11 @@ export class PlayAudio extends React.Component {
             <div>
               <button onClick={this.playIntroChordsAndPrompt}>
                 Play intro & chord again<br/>
-                <div style={miniKeyHintStyleDiv}>/</div>
+                <div style={miniKeyHintStyleDiv}>,</div>
               </button>
               <button onClick={this.playPrompt}>
                 Play chord again<br/>
-                <div style={miniKeyHintStyleDiv}>?</div>
+                <div style={miniKeyHintStyleDiv}>.</div>
               </button>
             </div>
         );
