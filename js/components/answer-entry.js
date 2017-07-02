@@ -33,6 +33,7 @@ export class AnswerEntry extends React.Component {
         };
 
         const buttonWrongStyle = {
+            border: '1px',
             backgroundColor: 'red',
             fontSize: '20px',
             height: '60px',
@@ -40,6 +41,7 @@ export class AnswerEntry extends React.Component {
         };
 
         const buttonRightStyle = {
+            border: '1px',
             backgroundColor: 'deepskyblue',
             fontSize: '20px',
             height: '60px',
@@ -72,7 +74,7 @@ export class AnswerEntry extends React.Component {
         });
         return keyMap;
     }
-    
+
     onClick(e) {
         if (!this.props.answeredCorrectly) {
 
@@ -82,6 +84,7 @@ export class AnswerEntry extends React.Component {
             else
                 this.guess = e.target.innerText.split('\n')[0];
 
+            // actions
             if (this.guess === this.props.currentChord)
                 this.props.dispatch(actions.markTurnCorrect());
             else

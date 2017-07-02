@@ -55,13 +55,21 @@ export class Status extends React.Component {
             return (
                 <div>
                   Press <span style={miniKeyHintStyle}>ENTER</span> to <a href="javascript:void(0)"
-                                    onClick={() => this.props.dispatch(
+                                                                          onClick={() => this.props.dispatch(
                     actions.startNewGame(this.props.mode,this.props.inversions))}>
                     play again
                   </a>
                 </div>);
         else if (this.props.answeredCorrectly)
-            return (<div>Press <span style={miniKeyHintStyle}>SPACE</span> for the next question</div>);
+            return (
+                <div>
+                  Press <span style={miniKeyHintStyle}>SPACE</span> for <a href="javascript:void(0)"
+                     onClick={() => this.props.dispatch(
+                    actions.getNextQuestion())}>the next question
+                  </a>
+                </div>);
+        else if (!this.props.guessN)
+            return (<div>Guess the chord based on context!</div>);
         else
             return (<br/>);
     }
@@ -69,10 +77,10 @@ export class Status extends React.Component {
     render() {
         return (
             <div style={{height: '90px', margin:'10px 5px 10px 5px'}}>
-              <h3>{this.getBetweenTurnStatus()}</h3>
-              <h3>{this.getStatusText()}</h3>
-              <h3>{this.nRightText = this.props.nAnsweredRight +' answered correctly'}</h3>
-              <h3>{this.getAverageClicks()}</h3>
+              <h2 className="status-primary">{this.getBetweenTurnStatus()}</h2>
+              <h3 className="status-secondary">{this.getStatusText()}</h3>
+              <h3 className="status-secondary">{this.nRightText = this.props.nAnsweredRight +' answered correctly'}</h3>
+              <h3 className="status-secondary">{this.getAverageClicks()}</h3>
             </div>
         );
     }

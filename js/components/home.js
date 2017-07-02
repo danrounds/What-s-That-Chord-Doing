@@ -11,7 +11,7 @@ export default class Home extends React.Component {
     render(props) {
         return(
             <div>
-              <h2>Game modes:</h2>
+              <h2 className="h-primary">Game modes:</h2>
               <ul>
                 <li><Link to="/easy-major">easy major</Link></li>
                 <li><Link to="/hard-major">hard major</Link></li>

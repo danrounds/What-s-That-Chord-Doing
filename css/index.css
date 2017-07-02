@@ -10,12 +10,25 @@
     right: auto;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 #app :focus {
     /* bad practice, but it works, here */
     outline: 0;
+}
+
+.h-primary {
+    font-size: 44px;
+    margin-bottom: 10px;
+}
+
+.status-primary {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.status-secondary {
+    font-size: 20px;
 }
 
 /* #staves { */
@@ -27,7 +40,7 @@ button {
     /* -o-transition: all 0.1s ease-in; */
     /* -webkit-transition: all 0.1s ease-in; */
     /* transition: all 0.1s ease-in; */
-
+    height: 40px;
     -moz-transition: all 0.1s linear;
     -o-transition: all 0.1s linear;
     -webkit-transition: all 0.1s linear;
@@ -36,5 +49,6 @@ button {
 }
 
 button:hover {
+    border: 1px;
     background-color: orangered;
 }
