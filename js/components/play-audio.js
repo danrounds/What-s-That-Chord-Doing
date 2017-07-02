@@ -47,9 +47,9 @@ export class PlayAudio extends React.Component {
             else if (!this.props.guessN)
                 this.playIntroChordsAndPrompt();
         } else if (this.props.keyPress === ',') {
-            this.playPrompt();
-        } else if (this.props.keyPress === '.') {
             this.playIntroChordsAndPrompt();
+        } else if (this.props.keyPress === '.') {
+            this.playPrompt();
         }
     }
 
@@ -67,6 +67,7 @@ export class PlayAudio extends React.Component {
             borderRadius: '2px',
             backgroundColor: 'green',
             fontSize: '10px',
+            fontWeight: 'bold',
             color:'white',
             margin: 'auto',
             width: '10px'

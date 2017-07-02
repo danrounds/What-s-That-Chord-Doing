@@ -13,8 +13,7 @@
 }
 
 #app :focus {
-    /* bad practice, but it works, here */
-    outline: 0;
+    outline: 1px dashed pink;
 }
 
 .h-primary {
