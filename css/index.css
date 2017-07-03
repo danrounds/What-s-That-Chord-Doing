@@ -1,9 +1,11 @@
 * {
     /* font-family: 'Zilla Slab', serif; */
+    color: #333;
     font-family: 'Raleway', sans-serif;
 }
 
 #app {
+    color: #333;
     font-family: 'Raleway', sans-serif;
     width: 500px;
     left: auto;
@@ -49,5 +51,5 @@ button {
 
 button:hover {
     border: 1px;
-    background-color: orangered;
+    background-color: lightgreen;
 }
