@@ -43,7 +43,7 @@ export class Game extends React.Component {
 
     render() {
         return (
-            <div tabIndex="0" onKeyDown={this.handleKey}
+            <div className="game" tabIndex="0" onKeyDown={this.handleKey}
                  onBlur={this.getFocus}
                  ref={element => { this.gameContainer = element; }}>
               <Staves/>

@@ -93,9 +93,9 @@ export class Status extends React.Component {
 
     render() {
         return (
-            <div style={{height: '90px', margin:'10px 5px 10px 5px'}}>
+            <div style={{height: '110px', margin:'10px 5px 10px 5px'}}>
               <h2 className="status-primary">{this.getBetweenTurnStatus()}</h2>
-              <h3 className="status-secondary">{this.getStatusText()}</h3>
+              <h3 className="status-secondary" style={{color: '#000', marginBottom: '7px'}}>{this.getStatusText()}</h3>
               <h3 className="status-secondary">{this.nRightText = this.props.nAnsweredRight +' answered correctly'}</h3>
               <h3 className="status-secondary">{this.getAverageClicks()}</h3>
             </div>

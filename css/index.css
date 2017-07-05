@@ -4,9 +4,21 @@
     font-family: 'Raleway', sans-serif;
 }
 
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: beige;
+    /* background-color: coral; */
+}
+
 #app {
+    background-color: #fcfaff;
     color: #333;
     font-family: 'Raleway', sans-serif;
+    height: 100%;
     width: 500px;
     left: auto;
     right: auto;
@@ -16,6 +28,11 @@
 
 #app :focus {
     outline: 1px dashed pink;
+}
+
+.game {
+    height: 100%;
+    padding-left: 20px;
 }
 
 .h-primary {
@@ -29,12 +46,14 @@
 }
 
 .status-secondary {
+    color: #444;
     font-size: 20px;
 }
 
-/* #staves { */
-/*     background-color: #ffffcc; */
-/* } */
+#staves {
+    margin-left: 5px;
+    height: 
+}
 
 button {
     /* -moz-transition: all 0.1s ease-in; */
