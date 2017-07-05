@@ -20,10 +20,12 @@ export class KeyboardShortcutsOnOff extends React.Component {
     }
 
     render() {
-        if (this.props.display) 
+        if (this.props.display)
             return (
                 <button onClick={this.onClick}>
-                  Turn off keyboard shortcuts
+                  {this.props.displayKeyboardShortcuts
+                      ? 'Turn off keyboard shortcuts'
+                  : 'Turn on keyboard shortcuts'}
                 </button>
             );
         else
