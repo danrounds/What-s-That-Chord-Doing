@@ -50,7 +50,9 @@ export class StartNewGame extends React.Component {
         return (
             <button onClick={this.startNewGame}>
               <em>Start New Game</em>
-                {this.props.displayKeyboardShortcuts ? <div style={{fontSize: '10px'}}><span style={miniKeyHintStyle}>CTRL</span> + <span style={miniKeyHintStyle}>ENTER</span></div> : null}
+              {this.props.displayKeyboardShortcuts
+                  ? <div style={{fontSize: '10px'}}><span style={miniKeyHintStyle}>CTRL</span> + <span style={miniKeyHintStyle}>ENTER</span></div>
+              : null}
             </button>
         );
     }

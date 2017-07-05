@@ -40,7 +40,9 @@ export class Next extends React.Component {
         return(
             <button onClick={this.onClick}>
               next ?
-              {this.props.displayKeyboardShortcuts ? <div style={miniKeyHintStyle}>SPACE</div> : null}
+              {this.props.displayKeyboardShortcuts
+                  ? <div style={miniKeyHintStyle}>SPACE</div>
+              : null}
             </button>
         );
     }

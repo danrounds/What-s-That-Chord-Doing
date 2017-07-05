@@ -56,12 +56,17 @@ export class AnswerEntry extends React.Component {
             let k = keys.shift();
 
             return (
-                <button style={this.guess === numeral ?
-                               (numeral === this.props.currentChord ? buttonRightStyle : buttonWrongStyle)
+                <button style={this.guess === numeral
+                               ? (numeral === this.props.currentChord
+                                  ? buttonRightStyle
+                                  : buttonWrongStyle
+                                 )
                         : buttonStyle}
                         key={numeral} onClick={this.onClick}>
                   {numeral}<br/>
-                  {this.props.displayKeyboardShortcuts ? <div style={keyHintStyleBig}>{k}</div> : null}
+                  {this.props.displayKeyboardShortcuts
+                      ? <div style={keyHintStyleBig}>{k}</div>
+                  : null}
                 </button>
             );
         });
