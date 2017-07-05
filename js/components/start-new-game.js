@@ -7,6 +7,9 @@ export class StartNewGame extends React.Component {
     constructor(props) {
         super(props);
         this.startNewGame = this.startNewGame.bind(this);
+        this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+        // /\ this is kept as a "last state" variable, and compared to props
+        // in the event that it changes
     }
 
     prompt() {
@@ -25,10 +28,13 @@ export class StartNewGame extends React.Component {
                 this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                      this.props.inversions));
 
-        } else if (this.props.keyValue === 'Enter' && this.props.gameOver)
+        } else if (this.props.keyValue === 'Enter' && this.props.gameOver) {
             this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                      this.props.inversions));
-
+        } else if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts) {
+            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+            this.forceUpdate();
+        }
     }
 
     render() {
@@ -44,7 +50,7 @@ export class StartNewGame extends React.Component {
         return (
             <button onClick={this.startNewGame}>
               <em>Start New Game</em>
-              <div style={{fontSize: '10px'}}><span style={miniKeyHintStyle}>CTRL</span> + <span style={miniKeyHintStyle}>ENTER</span></div>
+                {this.props.displayKeyboardShortcuts ? <div style={{fontSize: '10px'}}><span style={miniKeyHintStyle}>CTRL</span> + <span style={miniKeyHintStyle}>ENTER</span></div> : null}
             </button>
         );
     }
@@ -52,6 +58,7 @@ export class StartNewGame extends React.Component {
 
 const mapStateToProps = (state, props) => ({
     keyValue: state.keyValue,
+    displayKeyboardShortcuts: state.displayKeyboardShortcuts,
     gameType: state.gameType,
     inversions: state.inversions,
     firstQ: state.questionNumber === 1 && !state.answeredCorrectly,

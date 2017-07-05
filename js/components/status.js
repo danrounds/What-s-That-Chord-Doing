@@ -51,27 +51,44 @@ export class Status extends React.Component {
             margin: 'auto'
         };
 
-        if (this.props.gameOver)
-            return (
-                <div>
-                  Press <span style={miniKeyHintStyle}>ENTER</span> to <a href="javascript:void(0)"
-                                                                          onClick={() => this.props.dispatch(
-                    actions.startNewGame(this.props.mode,this.props.inversions))}>
-                    play again
-                  </a>
-                </div>);
-        else if (this.props.answeredCorrectly)
-            return (
-                <div>
-                  Press <span style={miniKeyHintStyle}>SPACE</span> for <a href="javascript:void(0)"
-                     onClick={() => this.props.dispatch(
-                    actions.getNextQuestion())}>the next question
-                  </a>
-                </div>);
-        else if (!this.props.guessN)
+        if (this.props.gameOver) {
+            if (this.props.displayKeyboardShortcuts)
+                return (
+                    <div>
+                      Press <span style={miniKeyHintStyle}>ENTER</span> to <a href="javascript:void(0)"
+                                                                              onClick={() => this.props.dispatch(
+                        actions.startNewGame(this.props.mode,this.props.inversions))}>
+                        play again
+                      </a>
+                    </div>);
+            else
+                return (
+                      <a href="javascript:void(0)"
+                         onClick={() => this.props.dispatch(
+                        actions.startNewGame(this.props.mode,this.props.inversions))}>
+                        Play again?
+                      </a>);
+        } else if (this.props.answeredCorrectly) {
+            if (this.props.displayKeyboardShortcuts)
+                return (
+                    <div>
+                      Press <span style={miniKeyHintStyle}>SPACE</span> for <a href="javascript:void(0)"
+                                                                               onClick={() => this.props.dispatch(
+                        actions.getNextQuestion())}>the next question
+                      </a>
+                    </div>);
+            else
+                return (
+                    <a href="javascript:void(0)"
+                       onClick={() => this.props.dispatch(
+                      actions.getNextQuestion())}>Want the next question?
+                    </a>
+                );
+        } else if (!this.props.guessN) {
             return (<div>Guess the chord based on context!</div>);
-        else
+        } else {
             return (<br/>);
+        }
     }
 
     render() {
@@ -89,6 +106,7 @@ export class Status extends React.Component {
 
 const mapStateToProps = (state, props) => ({
     keyValue: state.keyValue,
+    displayKeyboardShortcuts: state.displayKeyboardShortcuts,
     key_: state.keyNameReadable,
     chordName: state.chordName,
     chord: state.chord,

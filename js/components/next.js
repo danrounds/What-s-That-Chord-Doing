@@ -7,6 +7,9 @@ export class Next extends React.Component {
     constructor(props) {
         super(props);
         this.onClick = this.onClick.bind(this);
+        this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+        // /\ this is kept as a "last state" variable, and compared to props
+        // in the event that it changes
     }
 
     onClick() {
@@ -18,6 +21,9 @@ export class Next extends React.Component {
         if (['ArrowRight', ' '].indexOf(this.props.keyValue) !== -1) {
             if (this.props.questionNumber !== 10)
                 this.props.dispatch(actions.getNextQuestion());
+        } else if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts) {
+            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+            this.forceUpdate();
         }
     }
 
@@ -34,7 +40,7 @@ export class Next extends React.Component {
         return(
             <button onClick={this.onClick}>
               next ?
-              <div style={miniKeyHintStyle}>SPACE</div>
+              {this.props.displayKeyboardShortcuts ? <div style={miniKeyHintStyle}>SPACE</div> : null}
             </button>
         );
     }
@@ -42,6 +48,7 @@ export class Next extends React.Component {
 
 const mapStateToProps = (state, props) => ({
     keyValue: state.keyValue,
+    displayKeyboardShortcuts: state.displayKeyboardShortcuts,
     questionNumber: state.questionNumber
 });
 

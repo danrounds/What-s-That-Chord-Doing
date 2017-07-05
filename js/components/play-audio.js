@@ -2,12 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 export class PlayAudio extends React.Component {
-    // This component plays audio--when the button is pressed, when we advance
+    // This component plays audio--when the buttons are pressed, when we advance
     // to a new question, and when the player has answered a question correctly
     constructor(props) {
         super(props);
         this.playPrompt = this.playPrompt.bind(this);
         this.playIntroChordsAndPrompt = this.playIntroChordsAndPrompt.bind(this);
+        this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+        // /\ this is kept as a "last state" variable, and compared to props
+        // in the event that it changes
     }
 
     playIntroChordsAndPrompt() {
@@ -58,7 +61,10 @@ export class PlayAudio extends React.Component {
     }
 
     componentDidUpdate() {
-        this.playSounds();
+        if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts)
+            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+        else
+            this.playSounds();
     }
 
     render() {
@@ -77,11 +83,11 @@ export class PlayAudio extends React.Component {
             <div>
               <button onClick={this.playIntroChordsAndPrompt}>
                 Play intro & chord again<br/>
-                <div style={miniKeyHintStyleDiv}>,</div>
+                {this.props.displayKeyboardShortcuts ? <div style={miniKeyHintStyleDiv}>,</div> : null}
               </button>
               <button onClick={this.playPrompt}>
                 Play chord again<br/>
-                <div style={miniKeyHintStyleDiv}>.</div>
+                {this.props.displayKeyboardShortcuts ? <div style={miniKeyHintStyleDiv}>.</div> : null}
               </button>
             </div>
         );
@@ -94,6 +100,7 @@ const mapStateToProps = (state, props) => {
 
     return {
         keyPress: state.keyValue,
+        displayKeyboardShortcuts: state.displayKeyboardShortcuts,
         answer: notes.bass ? [notes.bass, ...notes.treble].map(
             processNotes) : [],
         introChordSequence: state.introChordSequence.map(

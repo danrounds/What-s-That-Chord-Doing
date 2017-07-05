@@ -11,6 +11,9 @@ export class AnswerEntry extends React.Component {
         this.buttons = this.makeButtons();
         this.keyMap = this.makeKeyMap();
         this.guess = null;
+        this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+        // /\ this is kept as a "last state" variable, and compared to props
+        // in the event that it changes
     }
 
     makeButtons() {
@@ -58,7 +61,7 @@ export class AnswerEntry extends React.Component {
                         : buttonStyle}
                         key={numeral} onClick={this.onClick}>
                   {numeral}<br/>
-                  {1 ? <div style={keyHintStyleBig}>{k}</div> : null}
+                  {this.props.displayKeyboardShortcuts ? <div style={keyHintStyleBig}>{k}</div> : null}
                 </button>
             );
         });
@@ -119,6 +122,12 @@ export class AnswerEntry extends React.Component {
                 this.forceUpdate();
             }
         }
+
+        if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts) {
+            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+            this.forceUpdate();
+        }
+
         this.buttons = this.makeButtons();
     }
 
@@ -137,6 +146,7 @@ export class AnswerEntry extends React.Component {
 
 const mapStateToProps = (state, props) => ({
     keyValue: state.keyValue,
+    displayKeyboardShortcuts: state.displayKeyboardShortcuts,
     chordSubset: state.chordSubset,
     currentChord: state.chord,
     guessN: state.guessN,

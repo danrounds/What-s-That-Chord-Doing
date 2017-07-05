@@ -2,6 +2,7 @@ import * as actions from '../actions/';
 
 let initialState = {
     keyValue: null,
+    displayKeyboardShortcuts: null,
     gameType: null,
     inversions: null,
     keyNameReadable: null,
@@ -24,31 +25,10 @@ export const reducer = (state=initialState, action) => {
 
     switch(action.type) {
 
-    case actions.START_NEW_GAME:
-        return {
-            keyValue: '',
-            gameType: action.gameType,
-            inversions: action.inversions,
-            keyNameReadable: action.keyNameReadable,
-            keyNameNotation: action.keyNameNotation,
-            introChordSequence: action.introChordSequence,
-            chordSubset: action.chordSubset,
-            chordName: action.chordName,
-            chord: action.currentChordNumeral,
-            notes: {bass: action.bassNote, treble: action.trebleNotes},
-            accidentals: action.accidentals,
-            guessN: 0,
-            answeredCorrectly: false,
-            questionNumber: 1,
-            nAnsweredRight: 0,
-            clicksPerRightAnswer: [],
-            gameOver: false
-        };
-
     case actions.GET_KEY_PRESS:
-        console.log(action.keyValue);
         return {
             keyValue: action.keyValue,
+            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
             gameType: state.gameType,
             inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
@@ -76,10 +56,64 @@ export const reducer = (state=initialState, action) => {
             gameOver: state.gameOver
         };
 
+    case actions.TOGGLE_KEYBOARD_SHORTCUT_DISPLAY:
+        return {
+            keyValue: '',
+            displayKeyboardShortcuts: action.displayBool,
+            gameType: state.gameType,
+            inversions: state.inversions,
+            keyNameReadable: state.keyNameReadable,
+            keyNameNotation: state.keyNameNotation,
+            introChordSequence: [[...state.introChordSequence[0]],
+                                 [...state.introChordSequence[1]],
+                                 [...state.introChordSequence[2]],
+                                 [...state.introChordSequence[3]]],
+            chordSubset: [...state.chordSubset],
+            chordName: state.chordName,
+            chord: state.chord,
+            notes: {
+                bass: state.notes.bass,
+                treble: [...state.notes.treble]
+            },
+            accidentals: {
+                bassAccidental: state.accidentals.bassAccidental,
+                trebleIndices: [...state.accidentals.trebleIndices]
+            },
+            guessN: state.guessN,
+            answeredCorrectly: state.answeredCorrectly,
+            questionNumber: state.questionNumber,
+            nAnsweredRight: state.nAnsweredRight,
+            clicksPerRightAnswer: [...state.clicksPerRightAnswer],
+            gameOver: state.gameOver
+        };
+
+    case actions.START_NEW_GAME:
+        return {
+            keyValue: '',
+            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
+            gameType: action.gameType,
+            inversions: action.inversions,
+            keyNameReadable: action.keyNameReadable,
+            keyNameNotation: action.keyNameNotation,
+            introChordSequence: action.introChordSequence,
+            chordSubset: action.chordSubset,
+            chordName: action.chordName,
+            chord: action.currentChordNumeral,
+            notes: {bass: action.bassNote, treble: action.trebleNotes},
+            accidentals: action.accidentals,
+            guessN: 0,
+            answeredCorrectly: false,
+            questionNumber: 1,
+            nAnsweredRight: 0,
+            clicksPerRightAnswer: [],
+            gameOver: false
+        };
+
 
     case actions.GET_NEXT_QUESTION:
         return {
             keyValue: '',
+            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
             gameType: state.gameType,
             inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
@@ -107,6 +141,7 @@ export const reducer = (state=initialState, action) => {
     case actions.INCREMENT_GUESS_N:
         return {
             keyValue: '',
+            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
             gameType: state.gameType,
             inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,
@@ -138,6 +173,7 @@ export const reducer = (state=initialState, action) => {
         let gameOver = state.questionNumber === 10 ? true : false;
         return {
             keyValue: '',
+            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
             gameType: state.gameType,
             inversions: state.inversions,
             keyNameReadable: state.keyNameReadable,

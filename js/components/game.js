@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import MediaQuery from 'react-responsive';
 
 import Staves from './staves';
 import PlayAudio from './play-audio';
@@ -8,6 +9,7 @@ import AnswerEntry from './answer-entry';
 import KofN from './k-of-n';
 import Next from './next';
 import StartNewGame from './start-new-game';
+import KeyboardShortcutsOnOff from './keyboard-shortcuts-on-off';
 import Status from './status';
 
 import * as actions from '../actions';
@@ -51,6 +53,11 @@ export class Game extends React.Component {
               <PlayAudio instrument={this.props.instrument} ac={this.props.ac}/>
               <Next />
               <StartNewGame />
+              <MediaQuery minDeviceWidth={800}>
+                {(matches) => 
+                    (<KeyboardShortcutsOnOff display={matches}/>)
+                }
+              </MediaQuery>
               <Link to="/">Return to Index</Link>
             </div>
         );
