@@ -87,33 +87,34 @@ button {
 }
 
 .buttonWrongStyle {
-    background-color: #ff1a1a;
+    /* background-color: #ff1a1a; */
+    background-color: #ff3333;
     border: 1px solid gray;
-    color: white;
+    color: beige;
     font-size: 20px;
     height: 60px;
-    text-shadow: -0.5px 0 #333, 0 0.5px #333, 0.5px 0 #333, 0 -0.5px #333;
+    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333, 0 -1px 5px #555;
     width: 50px;
 }
 
 .buttonRightStyle  {
     background-color: cornflowerblue;
     border: 1px solid gray;
-    color: white;
+    color: beige;
     font-size: 20px;
     height: 60px;
-    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333;
+    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333, 0 -1px 5px black;
     width: 50px;
 }
 
 button:hover {
-    box-shadow: inset 2px -1px 20px 0px #ffd966;
+    box-shadow: inset 2px -1px 20px 0 #ffd966;
 }
 
 .keyHint {
+    background-color: green;
     border: 1px solid green;
     border-radius: 2px;
-    background-color: green;
     color: white;
     margin: auto;
 }
