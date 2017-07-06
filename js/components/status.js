@@ -42,21 +42,13 @@ export class Status extends React.Component {
 
     getBetweenTurnStatus() {
         
-        const miniKeyHintStyle = {
-            border: '1px solid green',
-            borderRadius: '2px',
-            backgroundColor: 'green',
-            // fontSize: '10px',
-            color:'white',
-            margin: 'auto'
-        };
-
         if (this.props.gameOver) {
             if (this.props.displayKeyboardShortcuts)
                 return (
                     <div>
-                      Game over! Press <span style={miniKeyHintStyle}>ENTER</span> to <a href="javascript:void(0)"
-                                                                                         onClick={() => this.props.dispatch(
+                      Game over! Press&nbsp;
+                      <span className="keyHint">ENTER</span> to&nbsp;
+                      <a href="javascript:void(0)" onClick={() => this.props.dispatch(
                         actions.startNewGame(this.props.mode,this.props.inversions))}>
                         play again
                       </a>
@@ -72,7 +64,7 @@ export class Status extends React.Component {
             if (this.props.displayKeyboardShortcuts)
                 return (
                     <div>
-                      Press <span style={miniKeyHintStyle}>SPACE</span> for&nbsp;
+                      Press <span className="keyHint">SPACE</span> for&nbsp;
                       <a href="javascript:void(0)" onClick={() => this.props.dispatch(
                         actions.getNextQuestion())}>the next question
                       </a>
@@ -93,7 +85,7 @@ export class Status extends React.Component {
 
     render() {
         return (
-            <div style={{height: '115px', margin:'10px 5px 10px 5px'}}>
+            <div className="status-box">
               <h3 className="status-feedback">{this.getStatusText()}</h3>
               <h3 className="status-secondary">{this.nRightText = this.props.nAnsweredRight +' answered correctly'}</h3>
               <h3 className="status-secondary">{this.getAverageClicks()}</h3>

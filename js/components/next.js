@@ -28,20 +28,11 @@ export class Next extends React.Component {
     }
 
     render() {
-        const miniKeyHintStyle = {
-            border: '1px solid green',
-            borderRadius: '2px',
-            backgroundColor: 'green',
-            fontSize: '10px',
-            color:'white',
-            margin: 'auto'
-        };
-
         return(
             <button onClick={this.onClick}>
               next ?
               {this.props.displayKeyboardShortcuts
-                  ? <div style={miniKeyHintStyle}>SPACE</div>
+                  ? <div className="keyHint miniKeyHint">SPACE</div>
               : null}
             </button>
         );

@@ -1,5 +1,4 @@
 * {
-    /* font-family: 'Zilla Slab', serif; */
     color: #333;
     font-family: 'Raleway', sans-serif;
 }
@@ -11,7 +10,6 @@ html {
 body {
     height: 100%;
     background-color: beige;
-    /* background-color: coral; */
 }
 
 #app {
@@ -19,7 +17,7 @@ body {
     color: #333;
     font-family: 'Raleway', sans-serif;
     height: 100%;
-    width: 500px;
+    width: 520px;
     left: auto;
     right: auto;
     margin-left: auto;
@@ -30,14 +28,27 @@ body {
     outline: 1px dashed pink;
 }
 
+li :focus {
+    background-color: lime;
+}
+
 .game {
     height: 100%;
     padding-left: 20px;
 }
 
+#staves {
+    margin-left: 5px;
+}
+
 .h-primary {
     font-size: 44px;
     margin-bottom: 10px;
+}
+
+.status-box {
+    height: 115px;
+    margin: 10px 5px 10px 5px;
 }
 
 .status-feedback {
@@ -57,25 +68,70 @@ body {
     margin-left: 2px;
 }
 
-#staves {
-    margin-left: 5px;
-    height: 
+.k-of-n {
+    margin:10px 5px 10px 5px;
 }
 
 button {
-    /* -moz-transition: all 0.1s ease-in; */
-    /* -o-transition: all 0.1s ease-in; */
-    /* -webkit-transition: all 0.1s ease-in; */
-    /* transition: all 0.1s ease-in; */
     height: 40px;
     -moz-transition: all 0.1s linear;
     -o-transition: all 0.1s linear;
     -webkit-transition: all 0.1s linear;
     transition: all 0.1s linear;
+}
 
+.buttonStyle {
+    font-size: 20px;
+    height: 60px;
+    width: 50px;
+}
+
+.buttonWrongStyle {
+    background-color: #ff1a1a;
+    border: 1px solid gray;
+    color: white;
+    font-size: 20px;
+    height: 60px;
+    text-shadow: -0.5px 0 #333, 0 0.5px #333, 0.5px 0 #333, 0 -0.5px #333;
+    width: 50px;
+}
+
+.buttonRightStyle  {
+    background-color: cornflowerblue;
+    border: 1px solid gray;
+    color: white;
+    font-size: 20px;
+    height: 60px;
+    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333;
+    width: 50px;
 }
 
 button:hover {
-    border: 1px;
-    background-color: lightgreen;
+    box-shadow: inset 2px -1px 20px 0px #ffd966;
+}
+
+.keyHint {
+    border: 1px solid green;
+    border-radius: 2px;
+    background-color: green;
+    color: white;
+    margin: auto;
+}
+
+.answerKeyHint {
+    font-size: 14px;
+    width: 15px;
+}
+
+.miniKeyHint {
+    font-size: 10px;
+}
+
+.miniKeyHintDiv {
+    font-size: 10px;
+    width: 10px;
+}
+
+a:hover {
+    text-shadow: 1px 1px 3px #ffd966;
 }

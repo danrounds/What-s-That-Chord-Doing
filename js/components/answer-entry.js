@@ -20,52 +20,20 @@ export class AnswerEntry extends React.Component {
         const keys = ['a','s','d','f','g','h','j','k','l',';',
                      'z','x','c','v','b','n','m',',','.','/'];
 
-        const keyHintStyleBig = {
-            border: '1px solid green',
-            borderRadius: '2px',
-            backgroundColor: 'green',
-            fontSize: '14px',
-            color:'white',
-            margin: 'auto',
-            width: '15px'
-        };
-
-        const buttonStyle = {
-            fontSize: '20px',
-            height: '60px',
-            width: '50px'
-        };
-
-        const buttonWrongStyle = {
-            border: '1px',
-            backgroundColor: 'red',
-            fontSize: '20px',
-            height: '60px',
-            width: '50px'         
-        };
-
-        const buttonRightStyle = {
-            border: '1px',
-            backgroundColor: 'deepskyblue',
-            fontSize: '20px',
-            height: '60px',
-            width: '50px'
-        };
-
         return this.props.chordSubset.map((numeral) => {
             let k = keys.shift();
 
             return (
-                <button style={this.guess === numeral
-                               ? (numeral === this.props.currentChord
-                                  ? buttonRightStyle
-                                  : buttonWrongStyle
-                                 )
-                        : buttonStyle}
+                <button className={this.guess === numeral
+                                   ? (numeral === this.props.currentChord
+                                      ? "buttonRightStyle"
+                                      : "buttonWrongStyle"
+                                     )
+                        : "buttonStyle"}
                         key={numeral} onClick={this.onClick}>
                   {numeral}<br/>
                   {this.props.displayKeyboardShortcuts
-                      ? <div style={keyHintStyleBig}>{k}</div>
+                      ? <div className="keyHint answerKeyHint">{k}</div>
                   : null}
                 </button>
             );

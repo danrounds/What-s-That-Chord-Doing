@@ -68,29 +68,18 @@ export class PlayAudio extends React.Component {
     }
 
     render() {
-        const miniKeyHintStyleDiv = {
-            border: '1px solid green',
-            borderRadius: '2px',
-            backgroundColor: 'green',
-            fontSize: '10px',
-            fontWeight: 'bold',
-            color:'white',
-            margin: 'auto',
-            width: '10px'
-        };
-
         return (
             <div>
               <button onClick={this.playIntroChordsAndPrompt}>
                 Play intro & chord again<br/>
                 {this.props.displayKeyboardShortcuts
-                    ? <div style={miniKeyHintStyleDiv}>,</div>
+                    ? <div className="keyHint miniKeyHintDiv">,</div>
                 : null}
               </button>
               <button onClick={this.playPrompt}>
                 Play chord again<br/>
                 {this.props.displayKeyboardShortcuts
-                    ? <div style={miniKeyHintStyleDiv}>.</div>
+                 ? <div className="keyHint miniKeyHintDiv">.</div>
                 : null}
               </button>
             </div>

@@ -38,20 +38,11 @@ export class StartNewGame extends React.Component {
     }
 
     render() {
-        const miniKeyHintStyle = {
-            border: '1px solid green',
-            borderRadius: '2px',
-            backgroundColor: 'green',
-            fontSize: '10px',
-            color:'white',
-            margin: 'auto'
-        };
-
         return (
             <button onClick={this.startNewGame}>
               <em>Start New Game</em>
               {this.props.displayKeyboardShortcuts
-                  ? <div style={{fontSize: '10px'}}><span style={miniKeyHintStyle}>CTRL</span> + <span style={miniKeyHintStyle}>ENTER</span></div>
+                  ? <div className="miniKeyHint"><span className="keyHint">CTRL</span> + <span className="keyHint miniKeyHint">ENTER</span></div>
               : null}
             </button>
         );
