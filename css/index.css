@@ -40,14 +40,21 @@ body {
     margin-bottom: 10px;
 }
 
+.status-feedback {
+    color: #000;
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
 .status-primary {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .status-secondary {
-    color: #444;
+    color: #363;
     font-size: 20px;
+    margin-left: 2px;
 }
 
 #staves {

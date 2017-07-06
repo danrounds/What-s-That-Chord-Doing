@@ -55,25 +55,25 @@ export class Status extends React.Component {
             if (this.props.displayKeyboardShortcuts)
                 return (
                     <div>
-                      Press <span style={miniKeyHintStyle}>ENTER</span> to <a href="javascript:void(0)"
-                                                                              onClick={() => this.props.dispatch(
+                      Game over! Press <span style={miniKeyHintStyle}>ENTER</span> to <a href="javascript:void(0)"
+                                                                                         onClick={() => this.props.dispatch(
                         actions.startNewGame(this.props.mode,this.props.inversions))}>
                         play again
                       </a>
                     </div>);
             else
                 return (
-                      <a href="javascript:void(0)"
-                         onClick={() => this.props.dispatch(
+                    <div>Game over! <a href="javascript:void(0)"
+                                       onClick={() => this.props.dispatch(
                         actions.startNewGame(this.props.mode,this.props.inversions))}>
                         Play again?
-                      </a>);
+                    </a></div>);
         } else if (this.props.answeredCorrectly) {
             if (this.props.displayKeyboardShortcuts)
                 return (
                     <div>
-                      Press <span style={miniKeyHintStyle}>SPACE</span> for <a href="javascript:void(0)"
-                                                                               onClick={() => this.props.dispatch(
+                      Press <span style={miniKeyHintStyle}>SPACE</span> for&nbsp;
+                      <a href="javascript:void(0)" onClick={() => this.props.dispatch(
                         actions.getNextQuestion())}>the next question
                       </a>
                     </div>);
@@ -93,11 +93,11 @@ export class Status extends React.Component {
 
     render() {
         return (
-            <div style={{height: '110px', margin:'10px 5px 10px 5px'}}>
-              <h2 className="status-primary">{this.getBetweenTurnStatus()}</h2>
-              <h3 className="status-secondary" style={{color: '#000', marginBottom: '7px'}}>{this.getStatusText()}</h3>
+            <div style={{height: '115px', margin:'10px 5px 10px 5px'}}>
+              <h3 className="status-feedback">{this.getStatusText()}</h3>
               <h3 className="status-secondary">{this.nRightText = this.props.nAnsweredRight +' answered correctly'}</h3>
               <h3 className="status-secondary">{this.getAverageClicks()}</h3>
+              <h2 className="status-primary">{this.getBetweenTurnStatus()}</h2>
             </div>
         );
     }
