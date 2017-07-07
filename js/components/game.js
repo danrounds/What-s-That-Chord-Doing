@@ -13,7 +13,6 @@ import KeyboardShortcutsOnOff from './keyboard-shortcuts-on-off';
 import Status from './status';
 
 import * as actions from '../actions';
-import store from '../store';
 
 export class Game extends React.Component {
     constructor(props) {
