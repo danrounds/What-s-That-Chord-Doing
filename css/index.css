@@ -28,22 +28,36 @@ body {
     outline: 1px dashed pink;
 }
 
+.nav-link {
+    display: block;
+    height: 30px;
+    text-decoration: none;
+    padding-left: 20px;
+    padding-top: 10px;
+    width: 95%;
+}
+
 li :focus {
-    background-color: lime;
+    /* background-color: lightgreen; */
+    background-color: coral;
+    background-image: url('brushed-alum.png');
+}
+
+.modes-primary {
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-top: 20px;
 }
 
 .game {
     height: 100%;
     padding-left: 20px;
+    padding-right: 20px;
 }
 
 #staves {
     margin-left: 5px;
-}
-
-.h-primary {
-    font-size: 44px;
-    margin-bottom: 10px;
 }
 
 .status-box {
@@ -87,9 +101,9 @@ button {
 }
 
 .buttonWrongStyle {
-    /* background-color: #ff1a1a; */
     background-color: #ff3333;
-    border: 1px solid gray;
+    border: 1px solid #9c9c9c;
+    border-radius: 2px;
     color: beige;
     font-size: 20px;
     height: 60px;
@@ -99,7 +113,8 @@ button {
 
 .buttonRightStyle  {
     background-color: cornflowerblue;
-    border: 1px solid gray;
+    border: 1px solid #9c9c9c;
+    border-radius: 2px;
     color: beige;
     font-size: 20px;
     height: 60px;
@@ -133,6 +148,6 @@ button:hover {
     width: 10px;
 }
 
-a:hover {
+.game-link:hover {
     text-shadow: 1px 1px 3px #ffd966;
 }

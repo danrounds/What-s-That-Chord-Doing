@@ -41,21 +41,21 @@ export class Status extends React.Component {
     }
 
     getBetweenTurnStatus() {
-        
         if (this.props.gameOver) {
             if (this.props.displayKeyboardShortcuts)
                 return (
                     <div>
                       Game over! Press&nbsp;
                       <span className="keyHint">ENTER</span> to&nbsp;
-                      <a href="javascript:void(0)" onClick={() => this.props.dispatch(
+                      <a className="game-link" href="javascript:void(0)"
+                         onClick={() => this.props.dispatch(
                         actions.startNewGame(this.props.mode,this.props.inversions))}>
                         play again
                       </a>
                     </div>);
             else
                 return (
-                    <div>Game over! <a href="javascript:void(0)"
+                    <div>Game over! <a className="game-link" href="javascript:void(0)"
                                        onClick={() => this.props.dispatch(
                         actions.startNewGame(this.props.mode,this.props.inversions))}>
                         Play again?
@@ -65,13 +65,14 @@ export class Status extends React.Component {
                 return (
                     <div>
                       Press <span className="keyHint">SPACE</span> for&nbsp;
-                      <a href="javascript:void(0)" onClick={() => this.props.dispatch(
+                      <a className="game-link" href="javascript:void(0)"
+                         onClick={() => this.props.dispatch(
                         actions.getNextQuestion())}>the next question
                       </a>
                     </div>);
             else
                 return (
-                    <a href="javascript:void(0)"
+                    <a className="game-link" href="javascript:void(0)"
                        onClick={() => this.props.dispatch(
                       actions.getNextQuestion())}>Want the next question?
                     </a>

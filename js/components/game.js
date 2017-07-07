@@ -57,7 +57,7 @@ export class Game extends React.Component {
                     (<KeyboardShortcutsOnOff display={matches}/>)
                 }
               </MediaQuery>
-              <Link to="/">Return to Index</Link>
+              <Link className="game-link" to="/">Return to Index</Link>
             </div>
         );
     }
