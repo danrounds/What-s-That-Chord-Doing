@@ -48,10 +48,10 @@ export class Game extends React.Component {
                  ref={element => { this.gameContainer = element; }}>
               <NavBar />
               <div className="game">
+                <KofN />
                 <Staves />
                 <Status mode={this.props.mode} inversions={this.props.inversions}/>
                 <AnswerEntry />
-                <KofN />
                 <PlayAudio instrument={this.props.instrument} ac={this.props.ac}/>
                 <StartNewGame />
                 <Next />
