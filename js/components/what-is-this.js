@@ -9,9 +9,12 @@ import NavBar from './nav-bar';
 export default class WhatIsThis extends React.Component {
     render() {
         return (
-            <Provider store={store}>
-              <NavBar parent="WhatIs"/>
-            </Provider>
+            <div>
+              <Provider store={store}>
+                <NavBar parent="WhatIs"/>
+              </Provider>
+              <p>Explanation of game goes here</p>
+            </div>
         );
     }
 }
