@@ -197,6 +197,27 @@ button:hover {
     width: 10px;
 }
 
+.miniCtrlHint, .miniPlus, .miniEnterHint {
+    display: inline-block;
+}
+
+.miniPlus {
+    width: 10px;
+}
+
+
+.miniCtrlHint {
+    width: 27px;
+}
+
+.miniEnterHint {
+    width: 35px;
+}
+
 .game-link:hover {
     text-shadow: 1px 1px 3px #ffd966;
+}
+
+.play-audio-div {
+    display: inline-block;
 }

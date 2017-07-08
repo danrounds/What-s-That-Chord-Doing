@@ -69,7 +69,7 @@ export class PlayAudio extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="play-audio-div">
               <button onClick={this.playIntroChordsAndPrompt}>
                 Play intro & chord again<br/>
                 {this.props.displayKeyboardShortcuts

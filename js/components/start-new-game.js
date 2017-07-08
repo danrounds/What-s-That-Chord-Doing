@@ -39,14 +39,26 @@ export class StartNewGame extends React.Component {
 
     render() {
         return (
-            <button onClick={this.startNewGame}>
-              <em>Start New Game</em>
+            <button className="ctrlBtns" onClick={this.startNewGame}>
+              Start New Game
               {this.props.displayKeyboardShortcuts
-                  ? <div className="miniKeyHint"><span className="keyHint">CTRL</span> + <span className="keyHint miniKeyHint">ENTER</span></div>
+                  ? <div className="miniKeyHint"><div className="keyHint miniCtrlHint">CTRL</div><div className="miniPlus"> + </div><div className="keyHint miniEnterHint">ENTER</div></div>
               : null}
             </button>
         );
     }
+
+    // render() {
+    //     return (
+    //         <button className="ctrlBtns" onClick={this.startNewGame}>
+    //           Start New Game
+    //           {this.props.displayKeyboardShortcuts
+    //               ? <div className="miniKeyHint keyHint">CTRL ENTER</div>
+    //           : null}
+    //         </button>
+    //     );
+    // }
+
 }
 
 const mapStateToProps = (state, props) => ({
