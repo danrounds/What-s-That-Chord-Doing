@@ -10,6 +10,7 @@ import Soundfont from 'soundfont-player';
 import store from './store';
 import GameWrapper from './components/game-wrapper';
 import Home from './components/home';
+import WhatIsThis from './components/what-is-this';
 
 const ac = new AudioContext();
 const instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
@@ -17,6 +18,7 @@ const instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
 const routes = (
     <Router history={hashHistory}>
       <Route path="/" component={() => <Home instrument={instrument} ac={ac}/>} />
+      <Route path="/what_is_this" component={() => <WhatIsThis instrument={instrument} ac={ac}/>} />
       <Route path="/easy-major" component={() =>
         <GameWrapper mode="easyMajor" ac={ac} instrument={instrument}/>} />
       <Route path="/hard-major" component={() =>

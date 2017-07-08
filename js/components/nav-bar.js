@@ -14,6 +14,11 @@ export class NavBar extends React.Component {
                 <Link className="nav-text" to="/">Exercises</Link>
               </div>
 
+              <div className={this.props.parent === 'WhatIs'
+                   ? "nav-button nav-button-selected" : "nav-button"}>
+                <Link className="nav-text" to="/what_is_this">What is this?</Link>
+              </div>
+
               <MediaQuery minDeviceWidth={800}>
                 {(matches) => {
                     let showHints;

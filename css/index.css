@@ -48,6 +48,10 @@ body {
     background-color: red;
 }
 
+.nav-button:active {
+    background-color: lime;
+}
+
 .nav-button-selected, .nav-button-selected:hover {
     background-color: orange;
 }
