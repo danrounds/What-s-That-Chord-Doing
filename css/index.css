@@ -132,8 +132,14 @@ li :focus {
 }
 
 .k-of-n {
-    margin: 25px 5px 0 5px;
+    border: 2px solid #ffe4e1;
+    border-radius: 5px;
     font-size: 28px;
+    height: 35px;
+    line-height: 35px;
+    margin: 15px 5px 0 5px;
+    padding-left: 10px;
+    width: 230px;
 }
 
 button {
