@@ -29,7 +29,7 @@ export class Next extends React.Component {
 
     render() {
         return(
-            <button onClick={this.onClick}>
+            <button className="nxtBtn" onClick={this.onClick}>
               next ?
               {this.props.displayKeyboardShortcuts
                   ? <div className="keyHint miniKeyHint">SPACE</div>

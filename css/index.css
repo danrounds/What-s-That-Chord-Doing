@@ -175,6 +175,17 @@ button:hover {
     box-shadow: inset 2px -1px 20px 0 #ffd966;
 }
 
+.nxtBtn {
+    background-color: #e5cdca;
+    border-width: 1px;
+    font-weight: bold;
+}
+
+.nxtBtn:hover {
+    box-shadow: inset 2px -1px 20px 0 #yellow;
+}
+
+
 .keyHint {
     background-color: green;
     border: 1px solid green;
@@ -190,6 +201,7 @@ button:hover {
 
 .miniKeyHint {
     font-size: 10px;
+    font-weight: bold;
 }
 
 .miniKeyHintDiv {
