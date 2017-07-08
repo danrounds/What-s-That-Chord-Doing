@@ -58,27 +58,6 @@ export class Game extends React.Component {
               </div>
             </div>
         );
-
-        // return (
-        //     <div className="game" tabIndex="0" onKeyDown={this.handleKey}
-        //          onBlur={this.getFocus}
-        //          ref={element => { this.gameContainer = element; }}>
-        //       <Link className="game-link" to="/">Return to Index</Link>
-        //       <MediaQuery minDeviceWidth={800}>
-        //         {(matches) => 
-        //             (<KeyboardShortcutsOnOff display={matches}/>)
-        //         }
-        //     </MediaQuery>
-        //         <Staves/>
-        //         <Status mode={this.props.mode} inversions={this.props.inversions}/>
-        //       <AnswerEntry />
-        //       <KofN />
-        //       <PlayAudio instrument={this.props.instrument} ac={this.props.ac}/>
-        //       <StartNewGame />
-        //       <Next />
-        //     </div>
-        // );
-
     }
 }
 

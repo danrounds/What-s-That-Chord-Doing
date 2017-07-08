@@ -10,7 +10,7 @@ export class NavBar extends React.Component {
         return (
             <div className='nav-bar'>
               <div className={this.props.parent === 'Home'
-                   ? "nav-button" : "nav-button nav-button-invisible"}>
+                   ? "nav-button nav-button-selected" : "nav-button"}>
                 <Link className="nav-text" to="/">Exercises</Link>
               </div>
 

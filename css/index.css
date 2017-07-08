@@ -34,7 +34,7 @@ body {
 }
 
 .nav-button {
-    background-color: orange;
+    background-color: lime;
     border-radius: 4px;
     display: inline-block;
     font-size: 14px;
@@ -48,15 +48,10 @@ body {
     background-color: red;
 }
 
-.nav-button:active {
+.nav-button-selected, .nav-button-selected:hover {
     background-color: orange;
 }
-
-.nav-button-invisible {
-    background-color: lime;
-    border: none;
-}
-
+  
 .nav-text {
     display: block;
     height: 100%;

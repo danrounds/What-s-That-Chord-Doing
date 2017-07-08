@@ -22,7 +22,7 @@ export class KeyboardShortcutsOnOff extends React.Component {
     render() {
         if (this.props.showButton)
             return (
-                <div className="nav-button nav-button-invisible" onClick={this.onClick}>
+                <div className="nav-button" onClick={this.onClick}>
                   {this.props.displayKeyboardShortcuts
                       ? (<p className="nav-text">Keyboard hints <span className="nav-on">ON</span></p>)
                    : (<p className="nav-text">Keyboard hints <span className="nav-off">OFF</span></p>)}
