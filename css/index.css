@@ -206,6 +206,7 @@ button:hover {
 
 .miniKeyHintDiv {
     font-size: 10px;
+    font-weight: bold;
     width: 10px;
 }
 
