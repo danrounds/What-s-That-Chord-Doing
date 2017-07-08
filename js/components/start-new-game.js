@@ -47,18 +47,6 @@ export class StartNewGame extends React.Component {
             </button>
         );
     }
-
-    // render() {
-    //     return (
-    //         <button className="ctrlBtns" onClick={this.startNewGame}>
-    //           Start New Game
-    //           {this.props.displayKeyboardShortcuts
-    //               ? <div className="miniKeyHint keyHint">CTRL ENTER</div>
-    //           : null}
-    //         </button>
-    //     );
-    // }
-
 }
 
 const mapStateToProps = (state, props) => ({
