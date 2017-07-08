@@ -110,24 +110,24 @@ li :focus {
 }
 
 .status-box {
-    height: 115px;
-    margin: 10px 5px 10px 5px;
+    height: 100px;
+    margin: 0 5px 10px 5px;
 }
 
 .status-feedback {
     color: #000;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 7px;
 }
 
 .status-primary {
-    font-size: 24px;
+    font-size: 21px;
     margin-top: 10px;
 }
 
 .status-secondary {
     color: #363;
-    font-size: 20px;
+    font-size: 18px;
     margin-left: 2px;
 }
 
