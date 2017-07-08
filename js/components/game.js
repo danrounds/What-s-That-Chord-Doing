@@ -11,6 +11,7 @@ import Next from './next';
 import StartNewGame from './start-new-game';
 import KeyboardShortcutsOnOff from './keyboard-shortcuts-on-off';
 import Status from './status';
+import NavBar from './nav-bar';
 
 import * as actions from '../actions';
 
@@ -42,24 +43,42 @@ export class Game extends React.Component {
 
     render() {
         return (
-            <div className="game" tabIndex="0" onKeyDown={this.handleKey}
+            <div tabIndex="0" onKeyDown={this.handleKey}
                  onBlur={this.getFocus}
                  ref={element => { this.gameContainer = element; }}>
-              <Staves/>
-              <Status mode={this.props.mode} inversions={this.props.inversions}/>
-              <AnswerEntry />
-              <KofN />
-              <PlayAudio instrument={this.props.instrument} ac={this.props.ac}/>
-              <Next />
-              <StartNewGame />
-              <MediaQuery minDeviceWidth={800}>
-                {(matches) => 
-                    (<KeyboardShortcutsOnOff display={matches}/>)
-                }
-              </MediaQuery>
-              <Link className="game-link" to="/">Return to Index</Link>
+              <NavBar />
+              <div className="game">
+                <Staves />
+                <Status mode={this.props.mode} inversions={this.props.inversions}/>
+                <AnswerEntry />
+                <KofN />
+                <PlayAudio instrument={this.props.instrument} ac={this.props.ac}/>
+                <StartNewGame />
+                <Next />
+              </div>
             </div>
         );
+
+        // return (
+        //     <div className="game" tabIndex="0" onKeyDown={this.handleKey}
+        //          onBlur={this.getFocus}
+        //          ref={element => { this.gameContainer = element; }}>
+        //       <Link className="game-link" to="/">Return to Index</Link>
+        //       <MediaQuery minDeviceWidth={800}>
+        //         {(matches) => 
+        //             (<KeyboardShortcutsOnOff display={matches}/>)
+        //         }
+        //     </MediaQuery>
+        //         <Staves/>
+        //         <Status mode={this.props.mode} inversions={this.props.inversions}/>
+        //       <AnswerEntry />
+        //       <KofN />
+        //       <PlayAudio instrument={this.props.instrument} ac={this.props.ac}/>
+        //       <StartNewGame />
+        //       <Next />
+        //     </div>
+        // );
+
     }
 }
 

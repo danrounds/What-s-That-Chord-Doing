@@ -2,8 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {Provider} from 'react-redux';
 
 import * as actions from '../actions';
+import store from '../store';
+
+import NavBar from './nav-bar';
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -38,23 +42,29 @@ export default class Home extends React.Component {
     }
 
     render(props) {
+        console.log(this.props.location);
         return(
-            <div ref="main" className="game" onKeyDown={this.handleKey} onMouseLeave={this.focusKey}>
-              <h2 className="modes-primary">Game modes:</h2>
-              <ul>
-                <li><Link ref="_0" className="nav-link" to="/easy-major" onMouseOver={this.focusMouse}>easy major</Link></li>
-                <li><Link ref="_1" className="nav-link" to="/hard-major" onMouseOver={this.focusMouse}>hard major</Link></li>
-                <li><Link ref="_2" className="nav-link" to="/easy-minor" onMouseOver={this.focusMouse}>easy minor</Link></li>
-                <li><Link ref="_3" className="nav-link" to="/intermediate-minor" onMouseOver={this.focusMouse}>intermediate minor</Link></li>
-                <li><Link ref="_4" className="nav-link" to="/hard-minor" onMouseOver={this.focusMouse}>hard minor</Link></li>
-                <li><Link ref="_5" className="nav-link" to="/all-chords" onMouseOver={this.focusMouse}>all chords</Link></li>
-                <li><Link ref="_6" className="nav-link" to="/easy-major-inv" onMouseOver={this.focusMouse}>easy major, inversions</Link></li>
-                <li><Link ref="_7" className="nav-link" to="/hard-major-inv" onMouseOver={this.focusMouse}>hard major, inversions</Link></li>
-                <li><Link ref="_8" className="nav-link" to="/easy-minor-inv" onMouseOver={this.focusMouse}>easy minor, inversions</Link></li>
-                <li><Link ref="_9" className="nav-link" to="/intermediate-minor-inv" onMouseOver={this.focusMouse}>intermediate minor, inversions</Link></li>
-                <li><Link ref="_10" className="nav-link" to="/hard-minor-inv" onMouseOver={this.focusMouse}>hard minor, inversions</Link></li>
-                <li><Link ref="_11" className="nav-link" to="/all-chords-inv" onMouseOver={this.focusMouse}>all chords, inversions</Link></li>
-              </ul>
+            <div>
+              <Provider store={store}>
+                <NavBar parent="Home"/>
+              </Provider>
+              <div ref="main" className="game" onKeyDown={this.handleKey} onMouseLeave={this.focusKey}>
+                <h2 className="modes-primary">Game modes:</h2>
+                <ul>
+                  <li><Link ref="_0" className="nav-link" to="/easy-major" onMouseOver={this.focusMouse}>easy major</Link></li>
+                  <li><Link ref="_1" className="nav-link" to="/hard-major" onMouseOver={this.focusMouse}>hard major</Link></li>
+                  <li><Link ref="_2" className="nav-link" to="/easy-minor" onMouseOver={this.focusMouse}>easy minor</Link></li>
+                  <li><Link ref="_3" className="nav-link" to="/intermediate-minor" onMouseOver={this.focusMouse}>intermediate minor</Link></li>
+                  <li><Link ref="_4" className="nav-link" to="/hard-minor" onMouseOver={this.focusMouse}>hard minor</Link></li>
+                  <li><Link ref="_5" className="nav-link" to="/all-chords" onMouseOver={this.focusMouse}>all chords</Link></li>
+                  <li><Link ref="_6" className="nav-link" to="/easy-major-inv" onMouseOver={this.focusMouse}>easy major, inversions</Link></li>
+                  <li><Link ref="_7" className="nav-link" to="/hard-major-inv" onMouseOver={this.focusMouse}>hard major, inversions</Link></li>
+                  <li><Link ref="_8" className="nav-link" to="/easy-minor-inv" onMouseOver={this.focusMouse}>easy minor, inversions</Link></li>
+                  <li><Link ref="_9" className="nav-link" to="/intermediate-minor-inv" onMouseOver={this.focusMouse}>intermediate minor, inversions</Link></li>
+                  <li><Link ref="_10" className="nav-link" to="/hard-minor-inv" onMouseOver={this.focusMouse}>hard minor, inversions</Link></li>
+                  <li><Link ref="_11" className="nav-link" to="/all-chords-inv" onMouseOver={this.focusMouse}>all chords, inversions</Link></li>
+                </ul>
+              </div>
             </div>
         );
     }

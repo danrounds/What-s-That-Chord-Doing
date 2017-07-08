@@ -28,6 +28,56 @@ body {
     outline: 1px dashed pink;
 }
 
+.nav-bar {
+    background-color: lime;
+    height: 60px;
+}
+
+.nav-button {
+    background-color: orange;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 14px;
+    height: 49px;
+    margin-top: 4.5px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.nav-button:hover {
+    background-color: red;
+}
+
+.nav-button:active {
+    background-color: orange;
+}
+
+.nav-button-invisible {
+    background-color: lime;
+    border: none;
+}
+
+.nav-text {
+    display: block;
+    height: 100%;
+    line-height: 49px;
+    padding: 0;
+    width: 100%;
+    text-decoration: none;
+}
+
+.nav-off {
+    color: red;
+    font-weight: bold;
+    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333, 0 -1px;
+}
+
+.nav-on {
+    color: lightblue;
+    font-weight: bold;
+    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333, 0 -1px;
+}
+
 .nav-link {
     display: block;
     height: 30px;

@@ -7,7 +7,7 @@ let initialState = {
     inversions: null,
     keyNameReadable: null,
     keyNameNotation: null,
-    introChordSequence: [],
+    introChordSequence: [[],[],[],[]],
     chordSubset: [],
     chordName: null,
     chord: null,
@@ -18,7 +18,7 @@ let initialState = {
     questionNumber: 0,
     nAnsweredRight: 0,
     clicksPerRightAnswer: [],
-    gameOver: false
+    gameOver: false,
 };
 
 export const reducer = (state=initialState, action) => {
@@ -53,7 +53,7 @@ export const reducer = (state=initialState, action) => {
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer],
-            gameOver: state.gameOver
+            gameOver: state.gameOver,
         };
 
     case actions.TOGGLE_KEYBOARD_SHORTCUT_DISPLAY:
@@ -84,7 +84,7 @@ export const reducer = (state=initialState, action) => {
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer],
-            gameOver: state.gameOver
+            gameOver: state.gameOver,
         };
 
     case actions.START_NEW_GAME:
@@ -106,7 +106,8 @@ export const reducer = (state=initialState, action) => {
             questionNumber: 1,
             nAnsweredRight: 0,
             clicksPerRightAnswer: [],
-            gameOver: false
+            gameOver: false,
+            test: state.test
         };
 
 
@@ -135,7 +136,7 @@ export const reducer = (state=initialState, action) => {
             questionNumber: (state.questionNumber + 1) % 11,
             nAnsweredRight: state.nAnsweredRight,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer],
-            gameOver: false
+            gameOver: false,
         };
 
     case actions.INCREMENT_GUESS_N:
@@ -166,7 +167,7 @@ export const reducer = (state=initialState, action) => {
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer],
-            gameOver: false
+            gameOver: false,
         };
 
     case actions.MARK_TURN_CORRECT:
@@ -198,7 +199,7 @@ export const reducer = (state=initialState, action) => {
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight + 1,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer, state.guessN + 1],
-            gameOver
+            gameOver,
         };
 
     default:

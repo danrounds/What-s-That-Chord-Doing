@@ -16,17 +16,17 @@ export class KeyboardShortcutsOnOff extends React.Component {
 
     componentWillMount() {
         this.props.dispatch(actions.toggleKeyboardShortcutDisplay(
-            this.props.display));
+            this.props.showHints));
     }
 
     render() {
-        if (this.props.display)
+        if (this.props.showButton)
             return (
-                <button onClick={this.onClick}>
+                <div className="nav-button nav-button-invisible" onClick={this.onClick}>
                   {this.props.displayKeyboardShortcuts
-                      ? 'Turn off keyboard shortcuts'
-                  : 'Turn on keyboard shortcuts'}
-                </button>
+                      ? (<p className="nav-text">Keyboard hints <span className="nav-on">ON</span></p>)
+                   : (<p className="nav-text">Keyboard hints <span className="nav-off">OFF</span></p>)}
+                </div>
             );
         else
             return null;
