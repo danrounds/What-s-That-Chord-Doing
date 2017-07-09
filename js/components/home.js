@@ -12,7 +12,6 @@ import NavBar from './nav-bar';
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
-        // this.focus = this.focus.bind(this);
         this.focusKey = this.focusKey.bind(this);
         this.handleKey = this.handleKey.bind(this);
         this.currentLinkN = 0;
