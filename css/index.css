@@ -79,10 +79,10 @@ body {
 
 .nav-link {
     display: block;
-    height: 30px;
+    height: 40px;
+    line-height: 40px;
     text-decoration: none;
     padding-left: 20px;
-    padding-top: 10px;
 }
 
 li :focus {
@@ -100,6 +100,7 @@ li :focus {
 
 .difficultyLvl {
     background-color: coral;
+    border-bottom: 1px solid white;
     font-size: 20px;
     height: 40px;
     line-height: 40px;
@@ -109,7 +110,7 @@ li :focus {
 .easy-container, .novice-container, .difficult-container {
     display: block;
     height: 0px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-out;
     width: 100%;
     overflow: hidden;
 }
