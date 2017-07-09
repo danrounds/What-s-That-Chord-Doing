@@ -83,7 +83,6 @@ body {
     text-decoration: none;
     padding-left: 20px;
     padding-top: 10px;
-    width: 95%;
 }
 
 li :focus {
@@ -97,6 +96,34 @@ li :focus {
     font-weight: 600;
     margin-bottom: 10px;
     padding-top: 20px;
+}
+
+.difficultyLvl {
+    background-color: coral;
+    font-size: 20px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.easy-container, .novice-container, .difficult-container {
+    display: block;
+    height: 0px;
+    transition: all 0.3s ease;
+    width: 100%;
+    overflow: hidden;
+}
+
+.easy-container:not(:empty) {
+    height: 160px;
+}
+
+.novice-container:not(:empty) {
+    height: 240px;
+}
+
+.difficult-container:not(:empty) {
+    height: 80px;
 }
 
 .game {
