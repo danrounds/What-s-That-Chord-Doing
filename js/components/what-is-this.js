@@ -18,9 +18,3 @@ export default class WhatIsThis extends React.Component {
         );
     }
 }
-
-// const mapStateToProps = (state, props) => ({
-//     displayKeyboardShortcuts: state.displayKeyboardShortcuts
-// });
-
-// export default connect(mapStateToProps)(WhatIsThis);

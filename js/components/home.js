@@ -41,7 +41,6 @@ export default class Home extends React.Component {
     }
 
     render(props) {
-        console.log(this.props.location);
         return(
             <div>
               <Provider store={store}>
