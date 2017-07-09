@@ -7,6 +7,7 @@ export default class LessonsNavigator extends React.Component {
         super(props);
         this.focusKey = this.focusKey.bind(this);
         this.handleKey = this.handleKey.bind(this);
+        this.onDifficultyClick = this.onDifficultyClick.bind(this);
         this.currentLinkN = 0;
     }
 
@@ -26,25 +27,26 @@ export default class LessonsNavigator extends React.Component {
         this.focusKey();
     }
 
+    onDifficultyClick() {
+        console.log('we here');
+    }
+
     componentDidMount() {
         this.focusKey();
-        this.props.instrument.then(piano => {
-            piano.stop();
-        });
     }
 
     render() {
         return (
             <div ref="main" className="game" onKeyDown={this.handleKey} onMouseLeave={this.focusKey}>
               <h2 className="modes-primary">Game modes:</h2>
-              Easy
+              <div className="difficultyLvl" onClick={this.onDifficultyClick}>Easy</div>
               <ul>
                 <li><Link ref="_0" className="nav-link" to="/easy-major" onMouseOver={this.focusMouse}>easy major</Link></li>
                 <li><Link ref="_1" className="nav-link" to="/easy-major-inv" onMouseOver={this.focusMouse}>easy major, inversions</Link></li>
                 <li><Link ref="_2" className="nav-link" to="/easy-minor" onMouseOver={this.focusMouse}>easy minor</Link></li>
                 <li><Link ref="_3" className="nav-link" to="/easy-minor-inv" onMouseOver={this.focusMouse}>easy minor, inversions</Link></li>
               </ul>
-              Novice
+              <div className="difficultyLvl" onClick={this.onDifficultyClick}>Novice</div>
               <ul>
                 <li><Link ref="_4" className="nav-link" to="/intermediate-minor" onMouseOver={this.focusMouse}>intermediate minor</Link></li>
                 <li><Link ref="_5" className="nav-link" to="/intermediate-minor-inv" onMouseOver={this.focusMouse}>intermediate minor, inversions</Link></li>
@@ -53,7 +55,7 @@ export default class LessonsNavigator extends React.Component {
                 <li><Link ref="_8" className="nav-link" to="/hard-minor" onMouseOver={this.focusMouse}>hard minor</Link></li>
                 <li><Link ref="_9" className="nav-link" to="/hard-minor-inv" onMouseOver={this.focusMouse}>hard minor, inversions</Link></li>
               </ul>
-              Difficult
+              <div className="difficultyLvl" onClick={this.onDifficultyClick}>Difficult</div>
               <ul>
                 <li><Link ref="_10" className="nav-link" to="/all-chords" onMouseOver={this.focusMouse}>all chords</Link></li>
                 <li><Link ref="_11" className="nav-link" to="/all-chords-inv" onMouseOver={this.focusMouse}>all chords, inversions</Link></li>

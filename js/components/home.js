@@ -8,6 +8,12 @@ import NavBar from './nav-bar';
 import LessonsNavigator from './lessons-navigator';
 
 export default class Home extends React.Component {
+    componentDidMount() {
+        this.props.instrument.then(piano => {
+            piano.stop();
+        });
+    }
+
     render(props) {
         return(
             <div>
