@@ -99,12 +99,23 @@ li :focus {
 }
 
 .difficultyLvl {
+    display: block;
     background-color: coral;
     border-bottom: 1px solid white;
     font-size: 20px;
     height: 40px;
+    width: 100%;
     line-height: 40px;
     text-align: center;
+    text-decoration: none;
+}
+
+.difficultyLvl:focus {
+    background-color: purple;
+}
+
+.difficultyLvl:active {
+    background-color: coral;
 }
 
 .easy-container, .novice-container, .difficult-container {
