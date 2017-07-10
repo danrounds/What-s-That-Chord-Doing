@@ -1,8 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import ReactDOM from 'react-dom';
 
-export default class LessonsNavigator extends React.Component {
+import * as actions from  '../actions';
+
+export class LessonsNavigator extends React.Component {
     constructor(props) {
         super(props);
         this.focusKey = this.focusKey.bind(this);
@@ -59,14 +62,14 @@ export default class LessonsNavigator extends React.Component {
     onDifficultyClick(e) {
         let difficulty = e.target.innerText;
         if (difficulty === 'Easy') {
-            this.updateDisplayArray(this.easyRefs, !this.state.displayEasy);
-            this.setState({displayEasy: !this.state.displayEasy});
+            this.updateDisplayArray(this.easyRefs, !this.props.lessonIndexDisplay.easy);
+            this.props.dispatch(actions.updateLessonIndexDisplay('easy'));
         } else if (difficulty === 'Novice') {
-            this.updateDisplayArray(this.noviceRefs, !this.state.displayNovice);
-            this.setState({displayNovice: !this.state.displayNovice});
+            this.updateDisplayArray(this.noviceRefs, !this.props.lessonIndexDisplay.novice);
+            this.props.dispatch(actions.updateLessonIndexDisplay('novice'));
         } else if (difficulty === 'Difficult') {
-            this.updateDisplayArray(this.difficultRefs, !this.state.displayDifficult);
-            this.setState({displayDifficult: !this.state.displayDifficult});
+            this.updateDisplayArray(this.difficultRefs, !this.props.lessonIndexDisplay.difficult);
+            this.props.dispatch(actions.updateLessonIndexDisplay('difficult'));
         }
     }
 
@@ -83,6 +86,7 @@ export default class LessonsNavigator extends React.Component {
 
     componentDidMount() {
         this.focusKey();
+        console.log(this.props.lessonIndexDisplay);
     }
 
     render() {
@@ -91,7 +95,7 @@ export default class LessonsNavigator extends React.Component {
               <h2 className="modes-primary">Game modes:</h2>
               <a ref="a" className="difficultyLvl" href="javascript:this.onDifficultyClick" onClick={this.onDifficultyClick}>Easy</a>
               <div className="easy-container">
-                {this.state.displayEasy && (
+                {this.props.lessonIndexDisplay.easy && (
                   <ul className="miniLessonList">
                     <li><Link ref="b" className="nav-link" to="/easy-major" onMouseOver={this.focusMouse}>easy major</Link></li>
                     <li><Link ref="c" className="nav-link" to="/easy-major-inv" onMouseOver={this.focusMouse}>easy major, inversions</Link></li>
@@ -102,7 +106,7 @@ export default class LessonsNavigator extends React.Component {
               </div>
               <a ref="f" className="difficultyLvl" href="javascript:this.onDifficultyClick"onClick={this.onDifficultyClick}>Novice</a>
               <div className="novice-container">
-                {this.state.displayNovice && (
+                {this.props.lessonIndexDisplay.novice && (
                   <ul className="miniLessonList">
                     <li><Link ref="g" className="nav-link" to="/intermediate-minor" onMouseOver={this.focusMouse}>intermediate minor</Link></li>
                     <li><Link ref="h" className="nav-link" to="/intermediate-minor-inv" onMouseOver={this.focusMouse}>intermediate minor, inversions</Link></li>
@@ -115,7 +119,7 @@ export default class LessonsNavigator extends React.Component {
               </div>
               <a ref="m" className="difficultyLvl" href="javascript:this.onDifficultyClick" onClick={this.onDifficultyClick}>Difficult</a>
               <div className="difficult-container">
-                {this.state.displayDifficult && (
+                {this.props.lessonIndexDisplay.difficult && (
                   <ul className="miniLessonList">
                     <li><Link ref="n" className="nav-link" to="/all-chords" onMouseOver={this.focusMouse}>all chords</Link></li>
                     <li><Link ref="o" className="nav-link" to="/all-chords-inv" onMouseOver={this.focusMouse}>all chords, inversions</Link></li>
@@ -123,6 +127,13 @@ export default class LessonsNavigator extends React.Component {
               }
               </div>
             </div>
-    );
+        );
+    }
 }
-}
+
+const mapStateToProps = (state, props) => ({
+    lessonIndexDisplay: state.lessonIndexDisplay
+});
+
+
+export default connect(mapStateToProps)(LessonsNavigator);

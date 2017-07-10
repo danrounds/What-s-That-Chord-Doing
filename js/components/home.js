@@ -20,7 +20,9 @@ export default class Home extends React.Component {
               <Provider store={store}>
                 <NavBar parent="Home"/>
               </Provider>
-              <LessonsNavigator />
+              <Provider store={store}>
+                <LessonsNavigator />
+              </Provider>
             </div>
         );
     }
