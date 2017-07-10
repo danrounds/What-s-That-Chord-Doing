@@ -86,7 +86,8 @@ body {
 }
 
 li :focus {
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
+    background-color: #91f999;
     /* background-color: coral; */
     /* background-image: url('brushed-alum.png'); */
 }
@@ -100,7 +101,9 @@ li :focus {
 
 .difficultyLvl {
     display: block;
-    background-color: coral;
+    /* background-color: coral; */
+    /* background-color: #f88379; */
+    background-color: #f99991;
     border-bottom: 1px solid white;
     font-size: 20px;
     height: 40px;
@@ -111,11 +114,15 @@ li :focus {
 }
 
 .difficultyLvl:focus {
-    background-color: purple;
+    /* background-color: #8379f8; */
+    background-color: #9991f9;
+    color: white;
 }
 
 .difficultyLvl:active {
-    background-color: coral;
+    /* background-color: coral; */
+    /* background-color: #f88379; */
+    background-color: #f99991;
 }
 
 .easy-container, .novice-container, .difficult-container {
