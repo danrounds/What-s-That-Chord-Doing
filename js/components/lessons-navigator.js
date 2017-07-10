@@ -39,7 +39,11 @@ export default class LessonsNavigator extends React.Component {
     }
 
     focusKey(link) {
-        ReactDOM.findDOMNode(this.refs[this.displayArray[this.currentLinkI]]).focus();
+        try {
+            ReactDOM.findDOMNode(this.refs[this.displayArray[this.currentLinkI]]).focus();
+        } catch(e) {
+            ReactDOM.findDOMNode(this.refs[this.displayArray[0]]).focus();
+        }
     }
 
     handleKey(e) {
