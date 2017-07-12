@@ -17,7 +17,6 @@ export class LessonsNavigator extends React.Component {
         // list:
         this.currentLinkI = 0;  // this is our index into displayArray
 
-        // ::: this.displayArray = ['a','f','m', ...]
         // displayArray ends up containing ref string values for the elements
         // we currently are displaying. 'a','f','m' are the refs for Easy,
         // Novice, Difficult "buttons"  We always want them displayed.
@@ -28,7 +27,8 @@ export class LessonsNavigator extends React.Component {
         this.noviceRefs = ['g','h','i','j','k','l']; // refs for novice lessons
         this.difficultRefs = ['n','o'];              // refs for difficult ...
 
-        this.getDisplayArray(); // defines `this.displayArray`
+        // this.getDisplayArray(); // defines `this.displayArray`
+        this.displayArray = this.getDisplayArray();
     }
 
     clickLink() {
@@ -60,20 +60,43 @@ export class LessonsNavigator extends React.Component {
     onDifficultyClick(e) {
         let difficulty = e.target.innerText;
         if (difficulty === 'Easy') {
-            this.getDisplayArray({easy: !this.props.lessonIndexDisplay.easy});
+            this.displayArray =
+                this.getDisplayArray({easy: !this.props.lessonIndexDisplay.easy});
             this.props.dispatch(actions.updateLessonIndexDisplay('easy'));
         } else if (difficulty === 'Novice') {
-            this.getDisplayArray({novice: !this.props.lessonIndexDisplay.novice});
+            this.displayArray =
+                this.getDisplayArray({novice: !this.props.lessonIndexDisplay.novice});
             this.props.dispatch(actions.updateLessonIndexDisplay('novice'));
         } else if (difficulty === 'Difficult') {
-            this.getDisplayArray({difficult: !this.props.lessonIndexDisplay.difficult});
+            this.displayArray =
+                this.getDisplayArray({difficult: !this.props.lessonIndexDisplay.difficult});
             this.props.dispatch(actions.updateLessonIndexDisplay('difficult'));
         }
     }
 
-    getDisplayArray(difficulty={}) {
-        this.displayArray = this.alwaysDisplayedRefs;
+    // getDisplayArray(difficulty={}) {
+    //     this.displayArray = this.alwaysDisplayedRefs;
      
+    //     let easy = (difficulty.easy === undefined)
+    //             ? this.props.lessonIndexDisplay.easy : difficulty.easy;
+    //     let novice = (difficulty.novice === undefined)
+    //             ? this.props.lessonIndexDisplay.novice : difficulty.novice;
+    //     let difficult = (difficulty.difficult === undefined)
+    //             ? this.props.lessonIndexDisplay.difficult : difficulty.difficult;
+
+    //     if (easy)
+    //         this.displayArray = this.displayArray.concat(this.easyRefs);
+    //     if (novice)
+    //         this.displayArray = this.displayArray.concat(this.noviceRefs);
+    //     if (difficult)
+    //         this.displayArray = this.displayArray.concat(this.difficultRefs);
+
+    //     this.displayArray.sort();
+    // }
+
+    getDisplayArray(difficulty={}) {
+        let displayArray = this.alwaysDisplayedRefs;
+        
         let easy = (difficulty.easy === undefined)
                 ? this.props.lessonIndexDisplay.easy : difficulty.easy;
         let novice = (difficulty.novice === undefined)
@@ -82,15 +105,14 @@ export class LessonsNavigator extends React.Component {
                 ? this.props.lessonIndexDisplay.difficult : difficulty.difficult;
 
         if (easy)
-            this.displayArray = this.displayArray.concat(this.easyRefs);
+            displayArray = displayArray.concat(this.easyRefs);
         if (novice)
-            this.displayArray = this.displayArray.concat(this.noviceRefs);
+            displayArray = displayArray.concat(this.noviceRefs);
         if (difficult)
-            this.displayArray = this.displayArray.concat(this.difficultRefs);
+            displayArray = displayArray.concat(this.difficultRefs);
 
-        this.displayArray.sort();
-    }
-
+        return displayArray.sort(); 
+   }
 
     componentDidMount() {
         this.focusKey();
