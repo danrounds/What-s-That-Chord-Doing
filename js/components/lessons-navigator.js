@@ -11,7 +11,7 @@ export class LessonsNavigator extends React.Component {
         this.focusKey = this.focusKey.bind(this);
         this.handleKey = this.handleKey.bind(this);
         this.onDifficultyClick = this.onDifficultyClick.bind(this);
-        this.getDisplayArray = this.getDisplayArray.bind(this)
+        this.getDisplayArray = this.getDisplayArray.bind(this);
 
         // displayArray ends up containing ref string values for the elements
         // we currently are displaying. 'a','f','m' are the refs for the top-
