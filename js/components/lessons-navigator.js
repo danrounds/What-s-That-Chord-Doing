@@ -11,50 +11,44 @@ export class LessonsNavigator extends React.Component {
         this.focusKey = this.focusKey.bind(this);
         this.handleKey = this.handleKey.bind(this);
         this.onDifficultyClick = this.onDifficultyClick.bind(this);
-        this.getDisplayArray = this.getDisplayArray.bind(this);
-        
-        // FOLLOWING VARIABLES are for keyboard navigation through our lesson
-        // list:
-        this.currentLinkI = 0;  // this is our index into displayArray
+        this.getDisplayArray = this.getDisplayArray.bind(this)
 
         // displayArray ends up containing ref string values for the elements
-        // we currently are displaying. 'a','f','m' are the refs for Easy,
-        // Novice, Difficult "buttons"  We always want them displayed.
+        // we currently are displaying. 'a','f','m' are the refs for the top-
+        // level Easy,Novice,Difficult "buttons"  We always want them displayed.
         this.alwaysDisplayedRefs = ['a','f','m'];
-        // The following ref strings are dynamically added and removed from
-        // displayArray:
+        // These ref strings are dynamically added/removed from displayArray:
         this.easyRefs = ['b','c','d','e'];           // refs for easy lessons
         this.noviceRefs = ['g','h','i','j','k','l']; // refs for novice lessons
         this.difficultRefs = ['n','o'];              // refs for difficult ...
-
-        // this.getDisplayArray(); // defines `this.displayArray`
         this.displayArray = this.getDisplayArray();
     }
 
     clickLink() {
-        ReactDOM.findDOMNode(this.refs[this.displayArray[this.currentLinkI]]).click();
+        ReactDOM.findDOMNode(this.refs[this.displayArray[this.props.lessonIndexDisplay.i]]).click();
     }
 
     focusMouse(link) {
         ReactDOM.findDOMNode(link.target).focus();
     }
 
-    focusKey(link) {
+    focusKey() {
         try {
-            ReactDOM.findDOMNode(this.refs[this.displayArray[this.currentLinkI]]).focus();
+            ReactDOM.findDOMNode(this.refs[this.displayArray[this.props.lessonIndexDisplay.i]]).focus();
         } catch(e) {
             ReactDOM.findDOMNode(this.refs[this.displayArray[0]]).focus();
         }
     }
 
     handleKey(e) {
+        let i = this.props.lessonIndexDisplay.i;
         if (['ArrowDown','ArrowRight','s','d','S','D'].indexOf(e.key) !== -1)
-            this.currentLinkI = (this.currentLinkI + 1) % this.displayArray.length;
+            i = (i + 1) % this.displayArray.length;
         else if (['ArrowUp','ArrowLeft','w','a','W','A'].indexOf(e.key) !== -1)
-            this.currentLinkI = (this.currentLinkI -1 === -1) ? this.displayArray.length - 1 : this.currentLinkI - 1;
+            i = (i - 1 === -1) ? this.displayArray.length - 1 : i - 1;
         else if (e.key === ' ')
             this.clickLink();
-        this.focusKey();
+        this.props.dispatch(actions.updateLessonIndexDisplay({i}));
     }
 
     onDifficultyClick(e) {
@@ -62,15 +56,20 @@ export class LessonsNavigator extends React.Component {
         if (difficulty === 'Easy') {
             this.displayArray =
                 this.getDisplayArray({easy: !this.props.lessonIndexDisplay.easy});
-            this.props.dispatch(actions.updateLessonIndexDisplay('easy'));
+            this.props.dispatch(actions.updateLessonIndexDisplay(
+                {easy: !this.props.lessonIndexDisplay.easy}));
+
         } else if (difficulty === 'Novice') {
             this.displayArray =
                 this.getDisplayArray({novice: !this.props.lessonIndexDisplay.novice});
-            this.props.dispatch(actions.updateLessonIndexDisplay('novice'));
+            this.props.dispatch(actions.updateLessonIndexDisplay(
+                {novice: !this.props.lessonIndexDisplay.novice}));
+
         } else if (difficulty === 'Difficult') {
             this.displayArray =
                 this.getDisplayArray({difficult: !this.props.lessonIndexDisplay.difficult});
-            this.props.dispatch(actions.updateLessonIndexDisplay('difficult'));
+            this.props.dispatch(actions.updateLessonIndexDisplay(
+                {difficult: !this.props.lessonIndexDisplay.difficult}));
         }
     }
 
@@ -95,6 +94,10 @@ export class LessonsNavigator extends React.Component {
    }
 
     componentDidMount() {
+        this.focusKey();
+    }
+
+    componentDidUpdate() {
         this.focusKey();
     }
 
@@ -143,6 +146,5 @@ export class LessonsNavigator extends React.Component {
 const mapStateToProps = (state, props) => ({
     lessonIndexDisplay: state.lessonIndexDisplay
 });
-
 
 export default connect(mapStateToProps)(LessonsNavigator);

@@ -1,9 +1,9 @@
 import chordGetter from '../music-logic/';
 
 export const UPDATE_LESSON_INDEX_DISPLAY = 'UPDATE_LESSON_INDEX_DISPLAY';
-export const updateLessonIndexDisplay = (difficultyToToggle) => ({
+export const updateLessonIndexDisplay = (keyValueToUpdate) => ({
     type: UPDATE_LESSON_INDEX_DISPLAY,
-    difficultyToToggle
+    keyValueToUpdate
 });
 
 export const GET_KEY_PRESS = 'GET_KEY_PRESS';

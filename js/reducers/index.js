@@ -1,7 +1,7 @@
 import * as actions from '../actions/';
 
 let initialState = {
-    lessonIndexDisplay: {easy: false, novice: false, difficult: false},
+    lessonIndexDisplay: {easy: false, novice: false, difficult: false, i: 0},
     keyValue: null,
     displayKeyboardShortcuts: null,
     gameType: null,
@@ -27,11 +27,8 @@ export const reducer = (state=initialState, action) => {
     switch(action.type) {
 
     case actions.UPDATE_LESSON_INDEX_DISPLAY:
-        let difficulty = action.difficultyToToggle;
-        let newThing = {};
-        newThing[difficulty] = !state.lessonIndexDisplay[difficulty];
         return {
-            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay, newThing),
+            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay, action.keyValueToUpdate),
             keyValue: '',
             displayKeyboardShortcuts: state.displayKeyboardShortcuts,
             gameType: state.gameType,
