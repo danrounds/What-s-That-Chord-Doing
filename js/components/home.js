@@ -6,6 +6,7 @@ import store from '../store';
 
 import NavBar from './nav-bar';
 import LessonsNavigator from './lessons-navigator';
+import KeyboardNavLessonListOverlay from './keyboard-nav-lesson-list-overlay';
 
 export default class Home extends React.Component {
     componentDidMount() {
@@ -22,6 +23,9 @@ export default class Home extends React.Component {
               </Provider>
               <Provider store={store}>
                 <LessonsNavigator />
+              </Provider>
+              <Provider store={store}>
+                <KeyboardNavLessonListOverlay />
               </Provider>
             </div>
         );
