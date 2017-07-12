@@ -74,26 +74,6 @@ export class LessonsNavigator extends React.Component {
         }
     }
 
-    // getDisplayArray(difficulty={}) {
-    //     this.displayArray = this.alwaysDisplayedRefs;
-     
-    //     let easy = (difficulty.easy === undefined)
-    //             ? this.props.lessonIndexDisplay.easy : difficulty.easy;
-    //     let novice = (difficulty.novice === undefined)
-    //             ? this.props.lessonIndexDisplay.novice : difficulty.novice;
-    //     let difficult = (difficulty.difficult === undefined)
-    //             ? this.props.lessonIndexDisplay.difficult : difficulty.difficult;
-
-    //     if (easy)
-    //         this.displayArray = this.displayArray.concat(this.easyRefs);
-    //     if (novice)
-    //         this.displayArray = this.displayArray.concat(this.noviceRefs);
-    //     if (difficult)
-    //         this.displayArray = this.displayArray.concat(this.difficultRefs);
-
-    //     this.displayArray.sort();
-    // }
-
     getDisplayArray(difficulty={}) {
         let displayArray = this.alwaysDisplayedRefs;
         
