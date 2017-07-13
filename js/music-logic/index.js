@@ -386,7 +386,7 @@ const chordGetter = {
         } else if (this.currentChordNumeral === 'ii°') {
             if (inversion === 2)
                 return true;
-        
+
         } else if (this.currentChordNumeral === '♭VII') {
             if (inversion === 0)
                 return true;
@@ -401,7 +401,7 @@ const chordGetter = {
         }
         return false;
     },
-    
+
     processMinorAccidentals(that, inversion, i) {
         return {
             bassAccidental: this.processMinorBassAccidental(inversion),
