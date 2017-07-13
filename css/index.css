@@ -152,6 +152,13 @@ li :focus {
     padding-right: 20px;
 }
 
+.game-mode-string {
+    color: #666;
+    font-weight: 600;
+    margin-left: 2px;
+    margin-top: 7px;
+}
+
 #staves {
     margin-left: 5px;
 }

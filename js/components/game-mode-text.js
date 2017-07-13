@@ -2,11 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 export class GameModeText extends React.Component {
-    constructor(props) {
-        super(props);
-        this.makeGameModeString = this.makeGameModeString.bind(this);
-    }
-
     makeGameModeString() {
         console.log(this.props.gameInfo);
         if (this.props.gameInfo.inversions) {
@@ -29,7 +24,7 @@ export class GameModeText extends React.Component {
     }
 
     render() {
-        return (<div>{this.makeGameModeString()}</div>);
+        return (<div className="game-mode-string">{this.makeGameModeString()}</div>);
     }
 }
 
