@@ -26,7 +26,7 @@ export const startNewGame = (gameType, inversions) => {
     return {
         type: START_NEW_GAME,
         inversions,
-        gameType,
+        gameType: {gameType, inversions},
         keyNameReadable,
         keyNameNotation,
         introChordSequence,

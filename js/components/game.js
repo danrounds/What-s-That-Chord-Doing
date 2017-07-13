@@ -3,15 +3,15 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import MediaQuery from 'react-responsive';
 
-import Staves from './staves';
-import PlayAudio from './play-audio';
-import AnswerEntry from './answer-entry';
-import KofN from './k-of-n';
-import Next from './next';
-import StartNewGame from './start-new-game';
-import KeyboardShortcutsOnOff from './keyboard-shortcuts-on-off';
-import Status from './status';
 import NavBar from './nav-bar';
+import GameModeText from './game-mode-text';
+import KofN from './k-of-n';
+import Staves from './staves';
+import Status from './status';
+import AnswerEntry from './answer-entry';
+import PlayAudio from './play-audio';
+import StartNewGame from './start-new-game';
+import Next from './next';
 
 import * as actions from '../actions';
 
@@ -48,6 +48,7 @@ export class Game extends React.Component {
                  ref={element => { this.gameContainer = element; }}>
               <NavBar />
               <div className="game">
+                <GameModeText />
                 <KofN />
                 <Staves />
                 <Status mode={this.props.mode} inversions={this.props.inversions}/>
