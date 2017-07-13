@@ -40,7 +40,10 @@
     "watch:assets": "run-s build:assets _watch:assets",
     "_watch:assets": "chokidar assets/**/* -c \"npm run build:assets\""
   },
-  "author": "Joe Turner <joe@oampo.co.uk>",
+  "author": {
+    "name": "Dan Rounds",
+    "email": "dan rounds at g m a i l dot com"
+  },
   "license": "UNLICENSED",
   "devDependencies": {
     "babel-cli": "^6.11.4",
