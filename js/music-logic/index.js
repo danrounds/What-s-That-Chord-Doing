@@ -290,7 +290,6 @@ const chordGetter = {
             bassNote,
             trebleNotes,
             inversion,
-            // accidentalIndices: this.getAccidentals(inversion, trebleVoicesIndex)
             accidentals: this.getAccidentals(inversion, trebleVoicesIndex)
         };
     },
