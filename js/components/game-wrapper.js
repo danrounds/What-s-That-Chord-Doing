@@ -4,7 +4,6 @@ import {Provider} from 'react-redux';
 
 import Game from './game';
 
-import * as actions from '../actions/';
 import store from '../store';
 
 export default class GameWrapper extends React.Component {
