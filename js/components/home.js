@@ -9,26 +9,29 @@ import LessonsNavigator from './lessons-navigator';
 import KeyboardNavLessonListOverlay from './keyboard-nav-lesson-list-overlay';
 
 export default class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.Home = (
+            <div>
+              <NavBar parent="Home"/>
+              <LessonsNavigator />
+              <KeyboardNavLessonListOverlay />
+            </div>
+        );
+    }
+
     componentDidMount() {
         this.props.instrument.then(piano => {
             piano.stop();
         });
     }
 
+
     render(props) {
         return(
-            <div>
               <Provider store={store}>
-                <NavBar parent="Home"/>
+                {this.Home}
               </Provider>
-              <Provider store={store}>
-                <LessonsNavigator />
-              </Provider>
-              <Provider store={store}>
-                <KeyboardNavLessonListOverlay />
-              </Provider>
-            </div>
         );
     }
-
 }
