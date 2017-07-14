@@ -28,18 +28,19 @@ export class WhatIsThis extends React.Component {
         this.howDoesItWork = (
             <div className="what-is-it-section">
               <h1 className="what-is-this-h">How does it work?</h1>
-              <p>This explains the basic mechanics of the game&#8212;what you'll hear and why. <em>If you're not sure what a "function ear trainer" is, then check out the Why This Game section, below.</em></p>
-              <p><em>First,</em> you'll hear a three chord intro, which will unambiguously establish a key:</p>
+              <p>This explains the basic mechanics of the game&#8212;what you'll hear and why.</p>
+              <p><em>If you're not sure what a "function ear trainer" is, check out the <span className="italic">Why This Game</span> section, below.</em></p>
+              <p><em>First,</em> you'll hear a four chord intro (<em>I-IV-V-I</em>), which will unambiguously establish a key:</p>
               <div className="btn-container"><button className="what-is-this-btn" onClick={this.playIntroChords}>Press to hear the intro</button></div>
-              <p><em>After a brief pause, the fourth chord that you hear</em> will be the actual, prompted question that you're to answer:</p>
+              <p><em>After a brief pause, you'll hear a fifth chord:</em> the actual, prompted question that you're to answer:</p>
               <div className="btn-container"><button className="what-is-this-btn" onClick={this.playPrompt}>Press to hear the prompt</button></div>
-              <p>This is what it'll actually sound like, in-game:</p>
+              <p><em>This is what it'll actually sound like, in-game:</em></p>
               <div className="btn-container"><button className="what-is-this-btn" onClick={this.playIntroChordsAndPrompt}>Press to hear the intro and prompt</button></div>
-              <p>Now, you pick the roman numeral of the chord you've just heard. It'll be hard, at first!</p>
+              <p><em>Now, you pick the roman numeral of the chord you've just heard.</em> It'll be hard, at first!</p>
             </div>
         );
         this.whyThisGame = (
-            <div className="what-is-it-section">
+            <div className="what-is-it-section" id="why">
               <h1 className="what-is-this-h">Why this game?</h1>
               <p>
                 <a className="what-is-link" href="http://tonedear.com/ear-training/chord-identification"
@@ -53,7 +54,7 @@ export class WhatIsThis extends React.Component {
                 Again, <span className="italic">this is useful</span>, but we're ignoring part of how people actually hear music.
               </p>
               <p>
-                When we listen to music, we automatically relate chords and notes to the context of a key. A C&nbsp;major chord in the key of C&nbsp;Major sounds very different than a C&nbsp;Major chord in F#&nbsp;minor.
+                When we listen to music, we automatically relate chords and notes to the context of a key (whether we know what a key is or not). A C&nbsp;major chord in the key of C&nbsp;Major sounds very different than a C&nbsp;Major chord in F#&nbsp;minor.
               </p>
               <p>
                 <a className="what-is-link"href="http://www.harding.edu/gclayton/color/images/simultcontr/ch03%20perceiving%20color162.png"
