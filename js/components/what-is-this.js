@@ -118,11 +118,12 @@ export class WhatIsThis extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(actions.startNewGame('easyMajor', true));
+        this.current.focus();
     }
 
     render() {
         return (
-            <div>
+            <div tabIndex="1" ref={(current) => this.current = current}>
               <NavBar parent="WhatIs"/>
               <div className="what-is-this">
                 {this.whatDoesItDo}
