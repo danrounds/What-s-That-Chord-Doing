@@ -23,6 +23,8 @@ export class StartNewGame extends React.Component {
     }
 
     componentDidUpdate() {
+        console.log(`this.props.gameType: ${this.props.gameType}`);
+        console.log(`this.props.inversions: ${this.props.inversions}`);
         if (this.props.keyValue === 'Control Enter') {
             if (this.props.gameOver || this.props.firstQ || this.prompt())
                 this.props.dispatch(actions.startNewGame(this.props.gameType,
@@ -52,7 +54,7 @@ export class StartNewGame extends React.Component {
 const mapStateToProps = (state, props) => ({
     keyValue: state.keyValue,
     displayKeyboardShortcuts: state.displayKeyboardShortcuts,
-    gameType: state.gameType,
+    gameType: state.gameType.gameType,
     inversions: state.inversions,
     firstQ: state.questionNumber === 1 && !state.answeredCorrectly,
     gameOver: state.gameOver

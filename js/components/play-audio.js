@@ -57,17 +57,14 @@ export class PlayAudio extends React.Component {
     }
 
     componentDidMount() {
-        if (!this.props.mountAsInvisible)
-            this.playSounds();
+        this.playSounds();
     }
 
     componentDidUpdate() {
-        if (!this.props.mountAsInvisible) {
-            if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts)
-                this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
-            else
-                this.playSounds();
-        }
+        if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts)
+            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+        else
+            this.playSounds();
     }
 
     render() {
