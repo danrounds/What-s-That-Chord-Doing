@@ -1,6 +1,7 @@
-# What's That Chord Do?
+# What's That Chord Doing?
 
 This is an ear-training app for intermediate musicians&#8212;maybe roughly sophomore-level musicianship students, in college.
+
 
 Project directory structure and build system derived from the [Thinkful React starter kit](https://github.com/oampo/thinkful-react-starter).
 
