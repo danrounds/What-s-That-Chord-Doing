@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 import NavBar from './nav-bar';
-import InvisiblePlayAudio from './play-audio';
 
 export class WhatIsThis extends React.Component {
     // playIntroChords, &c are lifted right out of PlayAudio component. If our

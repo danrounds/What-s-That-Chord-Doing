@@ -71,25 +71,22 @@ export class PlayAudio extends React.Component {
     }
 
     render() {
-        if (this.props.mountAsInvisible)
-            return null
-        else
-            return (
-                    <div className="play-audio-div">
-                    <button onClick={this.playIntroChordsAndPrompt}>
-                    Play intro & chord again<br/>
-                    {this.props.displayKeyboardShortcuts
-                     ? <div className="keyHint miniKeyHintDiv">,</div>
-                     : null}
-                </button>
-                    <button onClick={this.playPrompt}>
-                    Play chord again<br/>
-                    {this.props.displayKeyboardShortcuts
-                     ? <div className="keyHint miniKeyHintDiv">.</div>
-                     : null}
-                </button>
-                    </div>
-            );
+        return (
+            <div className="play-audio-div">
+              <button onClick={this.playIntroChordsAndPrompt}>
+                Play intro & chord again<br/>
+                {this.props.displayKeyboardShortcuts
+                    ? <div className="keyHint miniKeyHintDiv">,</div>
+                : null}
+              </button>
+              <button onClick={this.playPrompt}>
+                Play chord again<br/>
+                {this.props.displayKeyboardShortcuts
+                    ? <div className="keyHint miniKeyHintDiv">.</div>
+                : null}
+              </button>
+            </div>
+        );
     }
 }
 
