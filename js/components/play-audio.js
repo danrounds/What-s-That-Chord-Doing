@@ -57,33 +57,39 @@ export class PlayAudio extends React.Component {
     }
 
     componentDidMount() {
-        this.playSounds();
-    }
-
-    componentDidUpdate() {
-        if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts)
-            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
-        else
+        if (!this.props.mountAsInvisible)
             this.playSounds();
     }
 
+    componentDidUpdate() {
+        if (!this.props.mountAsInvisible) {
+            if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts)
+                this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+            else
+                this.playSounds();
+        }
+    }
+
     render() {
-        return (
-            <div className="play-audio-div">
-              <button onClick={this.playIntroChordsAndPrompt}>
-                Play intro & chord again<br/>
-                {this.props.displayKeyboardShortcuts
-                    ? <div className="keyHint miniKeyHintDiv">,</div>
-                : null}
-              </button>
-              <button onClick={this.playPrompt}>
-                Play chord again<br/>
-                {this.props.displayKeyboardShortcuts
-                 ? <div className="keyHint miniKeyHintDiv">.</div>
-                : null}
-              </button>
-            </div>
-        );
+        if (this.props.mountAsInvisible)
+            return null
+        else
+            return (
+                    <div className="play-audio-div">
+                    <button onClick={this.playIntroChordsAndPrompt}>
+                    Play intro & chord again<br/>
+                    {this.props.displayKeyboardShortcuts
+                     ? <div className="keyHint miniKeyHintDiv">,</div>
+                     : null}
+                </button>
+                    <button onClick={this.playPrompt}>
+                    Play chord again<br/>
+                    {this.props.displayKeyboardShortcuts
+                     ? <div className="keyHint miniKeyHintDiv">.</div>
+                     : null}
+                </button>
+                    </div>
+            );
     }
 }
 

@@ -12,6 +12,61 @@ body {
     background-color: beige;
 }
 
+p {
+    font-size: 16px;
+    line-height: 18px;
+    margin-bottom: 20px;
+}
+
+em {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.what-is-this {
+    color: #666;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.what-is-this-h {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.btn-container {
+    margin-bottom: 10px;
+    margin-top: -10px;
+    text-align: center;
+}
+
+.what-is-this-btn {
+    width: 221px;
+}
+
+.what-is-link {
+    color: green;
+    font-weight: bold;
+}
+
+.what-is-link:hover {
+    text-shadow: 1px 1px 3px #9991f9;
+}
+
+.what-is-link:active {
+    color: pink;
+}
+
+.what-is-it-section {
+    margin-bottom: 60px;
+}
+
 #app {
     background-color: #fcfaff;
     color: #333;
