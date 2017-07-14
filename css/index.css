@@ -263,6 +263,8 @@ button {
 .buttonStyle {
     font-size: 20px;
     height: 60px;
+    padding: 0;
+    text-align: center;
     width: 50px;
 }
 
