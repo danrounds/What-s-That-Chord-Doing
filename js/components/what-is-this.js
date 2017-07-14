@@ -62,7 +62,7 @@ export class WhatIsThis extends React.Component {
               </p>
               <p>
                 The <a className="what-is-link" href="https://www.youtube.com/watch?v=WZ6qEomjWM4"
-                       target="_blank" rel="noopener noreferrer">I-IV-vi-V chord progression sounds familiar precisely</a> because of contextual hearing.
+                       target="_blank" rel="noopener noreferrer">I-IV-vi-V chord progression sounds familiar</a> precisely because of contextual hearing.
               </p>
               <p>
                 Even though songs that use this progression aren't always (or even usually) in the same key, we still hear them as "the same," in some sense, <span className="italic">precisely</span> because our hearing is contextual.
