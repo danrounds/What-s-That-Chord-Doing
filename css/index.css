@@ -100,6 +100,17 @@ em {
     padding-right: 7px;
 }
 
+/* .nav-button2 { */
+/*     background-color: #ffe4e1; */
+/*     border-radius: 4px; */
+/*     display: inline-block; */
+/*     font-size: 14px; */
+/*     height: 38px; */
+/*     padding-top: 11px; */
+/*     padding-left: 7px; */
+/*     padding-right: 7px; */
+/* } */
+
 .nav-button:hover {
     background-color: #fff1f0;
 }
@@ -119,6 +130,14 @@ em {
     padding: 0;
     width: 100%;
     text-decoration: none;
+}
+
+.nav-text-keybrd {
+    position: relative;
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 3.5px;
+    top: 8px;
 }
 
 .nav-off {
