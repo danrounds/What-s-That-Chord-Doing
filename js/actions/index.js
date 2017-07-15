@@ -25,8 +25,8 @@ export const startNewGame = (gameType, inversions) => {
     let {chordName, currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
     return {
         type: START_NEW_GAME,
+        gameType,
         inversions,
-        gameType: {gameType, inversions},
         keyNameReadable,
         keyNameNotation,
         introChordSequence,
