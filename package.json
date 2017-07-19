@@ -1,7 +1,7 @@
 {
-  "name": "thinkful-react-starter",
+  "name": "what-s-that-chord-doing",
   "version": "0.0.1",
-  "description": "A React template",
+  "description": "An audio-based, \"tonally-functional\" chord identification game",
   "main": "js/index.js",
   "engines": {
     "node": "7.2.1"
