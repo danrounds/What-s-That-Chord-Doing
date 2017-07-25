@@ -7,9 +7,9 @@ import {Router, Route, hashHistory} from 'react-router';
 
 import Soundfont from 'soundfont-player';
 
-import GameWrapper from './components/game-wrapper';
-import Home from './components/home';
-import WhatIsThisWrapper from './components/what-is-this-wrapper';
+import GameWrapper from './components/GameWrapper';
+import Home from './components/Home';
+import WhatIsThisWrapper from './components/WhatIsThisWrapper';
 
 const ac = new AudioContext();
 const instrument = Soundfont.instrument(ac, 'acoustic_grand_piano');
