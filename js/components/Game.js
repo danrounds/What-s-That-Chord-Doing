@@ -50,9 +50,9 @@ export class Game extends React.Component {
                 <GameModeText />
                 <KofN />
                 <Staves />
-                <Status mode={this.props.mode} inversions={this.props.inversions}/>
+                <Status mode={this.props.mode} inversions={this.props.inversions} />
                 <AnswerEntry />
-                <PlayAudio instrument={this.props.instrument} ac={this.props.ac}/>
+                <PlayAudio instrument={this.props.instrument} ac={this.props.ac} />
                 <StartNewGame />
                 <Next />
               </div>
