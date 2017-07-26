@@ -13,6 +13,17 @@ export class PlayAudio extends React.Component {
         // in the event that it changes
     }
 
+    componentDidMount() {
+        this.playSounds();
+    }
+
+    componentDidUpdate() {
+        if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts)
+            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+        else
+            this.playSounds();
+    }
+
     playIntroChordsAndPrompt() {
         // This plays a chord progression (I-IV-V-I or i-iv-V-i) to introduce
         // our key and then plays the question prompt (playPrompt())
@@ -54,17 +65,6 @@ export class PlayAudio extends React.Component {
         } else if (this.props.keyPress === '.') {
             this.playPrompt();
         }
-    }
-
-    componentDidMount() {
-        this.playSounds();
-    }
-
-    componentDidUpdate() {
-        if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts)
-            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
-        else
-            this.playSounds();
     }
 
     render() {

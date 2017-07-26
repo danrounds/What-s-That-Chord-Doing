@@ -13,6 +13,14 @@ export class Staves extends React.Component {
         this.drawMusic = this.drawMusic.bind(this);
     }
 
+    componentDidMount() {
+        this.drawMusic();
+    }
+
+    componentDidUpdate() {
+        this.drawMusic();
+    }
+
     deleteCanvas() {
         try {
             const staves = document.getElementById('staves');
@@ -119,14 +127,6 @@ export class Staves extends React.Component {
         return function(symbol, note) {
             return { '#':'#', 'b': note.length === 3 ? 'bb' : 'b' }[symbol] || 'n';
         }(symbol, note);
-    }
-
-    componentDidMount() {
-        this.drawMusic();
-    }
-
-    componentDidUpdate() {
-        this.drawMusic();
     }
 
     render() {

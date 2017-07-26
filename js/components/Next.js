@@ -12,11 +12,6 @@ export class Next extends React.Component {
         // in the event that it changes
     }
 
-    onClick() {
-        if (this.props.questionNumber !== 10)
-            this.props.dispatch(actions.getNextQuestion());
-    }
-
     componentDidUpdate() {
         if (['ArrowRight', ' '].indexOf(this.props.keyValue) !== -1) {
             if (this.props.questionNumber !== 10)
@@ -25,6 +20,11 @@ export class Next extends React.Component {
             this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
             this.forceUpdate();
         }
+    }
+
+    onClick() {
+        if (this.props.questionNumber !== 10)
+            this.props.dispatch(actions.getNextQuestion());
     }
 
     render() {

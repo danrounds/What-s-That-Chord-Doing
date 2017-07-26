@@ -69,6 +69,11 @@ export class WhatIsThis extends React.Component {
             </div>);
     }
 
+    componentDidMount() {
+        this.props.dispatch(actions.startNewGame('easyMajor', true));
+        this.current.focus();
+    }
+
     playIntroChords() {
         // This plays a chord progression (I-IV-V-I) to introduce
         // our key
@@ -113,11 +118,6 @@ export class WhatIsThis extends React.Component {
                 piano.play(i, this.props.ac.currentTime + timeOffset, {duration: 0.68});
             }
         });
-    }
-
-    componentDidMount() {
-        this.props.dispatch(actions.startNewGame('easyMajor', true));
-        this.current.focus();
     }
 
     render() {

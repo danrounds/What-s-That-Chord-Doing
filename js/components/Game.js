@@ -23,6 +23,14 @@ export class Game extends React.Component {
                                                  this.props.inversions));
     }
 
+    componentDidMount() {
+        this.getFocus();
+    }
+
+    componentDidUpdate() {
+        this.getFocus();
+    }
+
     getFocus() {
         this.gameContainer.focus();
     };
@@ -31,14 +39,6 @@ export class Game extends React.Component {
         this.props.dispatch(actions.getKeyPress(e.ctrlKey ?
                                                 'Control '+e.key : e.key));
     };
-
-    componentDidMount() {
-        this.getFocus();
-    }
-
-    componentDidUpdate() {
-        this.getFocus();
-    }
 
     render() {
         return (

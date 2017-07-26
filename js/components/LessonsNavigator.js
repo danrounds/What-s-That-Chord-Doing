@@ -24,6 +24,14 @@ export class LessonsNavigator extends React.Component {
         this.displayArray = this.getDisplayArray();
     }
 
+    componentDidMount() {
+        this.focusKey();
+    }
+
+    componentDidUpdate() {
+        this.focusKey();
+    }
+
     clickLink() {
         ReactDOM.findDOMNode(this.refs[this.displayArray[this.props.lessonIndexDisplay.i]]).click();
     }
@@ -92,14 +100,6 @@ export class LessonsNavigator extends React.Component {
 
         return displayArray.sort(); 
    }
-
-    componentDidMount() {
-        this.focusKey();
-    }
-
-    componentDidUpdate() {
-        this.focusKey();
-    }
 
     render() {
         return (

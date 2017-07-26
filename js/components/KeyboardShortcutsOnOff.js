@@ -9,14 +9,14 @@ export class KeyboardShortcutsOnOff extends React.Component {
         this.onClick = this.onClick.bind(this);
     }
 
-    onClick() {
-        this.props.dispatch(actions.toggleKeyboardShortcutDisplay(
-            !this.props.displayKeyboardShortcuts));
-    }
-
     componentWillMount() {
         this.props.dispatch(actions.toggleKeyboardShortcutDisplay(
             this.props.showHints));
+    }
+
+    onClick() {
+        this.props.dispatch(actions.toggleKeyboardShortcutDisplay(
+            !this.props.displayKeyboardShortcuts));
     }
 
     render() {

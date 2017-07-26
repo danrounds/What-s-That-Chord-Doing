@@ -12,21 +12,11 @@ export class StartNewGame extends React.Component {
         // in the event that it changes
     }
 
-    prompt() {
-        return confirm('Are you sure you discard your progress?');
-    }
-
-    startNewGame() {
-        if (this.props.gameOver || this.props.firstQ || this.prompt())
-            this.props.dispatch(actions.startNewGame(this.props.gameType,
-                                                     this.props.inversions));
-    }
-
     componentDidUpdate() {
         if (this.props.keyValue === 'Control Enter') {
             if (this.props.gameOver || this.props.firstQ || this.prompt())
                 this.props.dispatch(actions.startNewGame(this.props.gameType,
-                                                     this.props.inversions));
+                                                         this.props.inversions));
 
         } else if (this.props.keyValue === 'Enter' && this.props.gameOver) {
             this.props.dispatch(actions.startNewGame(this.props.gameType,
@@ -35,6 +25,16 @@ export class StartNewGame extends React.Component {
             this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
             this.forceUpdate();
         }
+    }
+
+    prompt() {
+        return confirm('Are you sure you discard your progress?');
+    }
+
+    startNewGame() {
+        if (this.props.gameOver || this.props.firstQ || this.prompt())
+            this.props.dispatch(actions.startNewGame(this.props.gameType,
+                                                     this.props.inversions));
     }
 
     render() {
