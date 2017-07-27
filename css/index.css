@@ -1,0 +1,391 @@
+* {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: beige;
+}
+
+p {
+    font-size: 16px;
+    line-height: 18px;
+    margin-bottom: 20px;
+}
+
+em {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.what-is-this {
+    color: #666;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.what-is-this-h {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.btn-container {
+    margin-bottom: 10px;
+    margin-top: -10px;
+    text-align: center;
+}
+
+.what-is-this-btn {
+    width: 221px;
+}
+
+.what-is-link {
+    color: green;
+    font-weight: bold;
+}
+
+.what-is-link:hover {
+    text-shadow: 1px 1px 3px #9991f9;
+}
+
+.what-is-link:active {
+    color: pink;
+}
+
+.what-is-it-section {
+    margin-bottom: 60px;
+}
+
+#app {
+    background-color: #fcfaff;
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    height: 100%;
+    width: 520px;
+    left: auto;
+    right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+}
+
+#app :focus {
+    outline: 1px dashed pink;
+}
+
+.nav-bar {
+    background-color: #ffe4e1;
+    height: 60px;
+}
+
+.nav-button {
+    background-color: #ffe4e1;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 14px;
+    height: 49px;
+    margin-top: 4.5px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+/* .nav-button2 { */
+/*     background-color: #ffe4e1; */
+/*     border-radius: 4px; */
+/*     display: inline-block; */
+/*     font-size: 14px; */
+/*     height: 38px; */
+/*     padding-top: 11px; */
+/*     padding-left: 7px; */
+/*     padding-right: 7px; */
+/* } */
+
+.nav-button:hover {
+    background-color: #fff1f0;
+}
+
+.nav-button:active {
+    background-color: #ffe4e1;
+}
+
+.nav-button-selected, .nav-button-selected:hover {
+    background-color: #ffd966;
+}
+  
+.nav-text {
+    display: block;
+    height: 100%;
+    line-height: 49px;
+    padding: 0;
+    width: 100%;
+    text-decoration: none;
+}
+
+.nav-text-keybrd {
+    position: relative;
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 3.5px;
+    top: 8px;
+}
+
+.nav-off {
+    color: #ff3333;
+    font-weight: bold;
+    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333, 0 -1px;
+}
+
+.nav-on {
+    color: lightblue;
+    font-weight: bold;
+    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333, 0 -1px;
+}
+
+.nav-link {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+li :focus {
+    /* background-color: lightgreen; */
+    background-color: #91f999;
+    /* background-color: coral; */
+    /* background-image: url('brushed-alum.png'); */
+}
+
+.modes-primary {
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+.difficultyLvl {
+    display: block;
+    /* background-color: coral; */
+    /* background-color: #f88379; */
+    background-color: #f99991;
+    border-bottom: 1px solid white;
+    font-size: 20px;
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.difficultyLvl:focus {
+    /* background-color: #8379f8; */
+    background-color: #9991f9;
+    color: white;
+}
+
+.difficultyLvl:active {
+    /* background-color: coral; */
+    /* background-color: #f88379; */
+    background-color: #f99991;
+}
+
+.easy-container, .novice-container, .difficult-container {
+    display: block;
+    height: 0px;
+    transition: all 0.3s ease-out;
+    width: 100%;
+    overflow: hidden;
+}
+
+.easy-container:not(:empty) {
+    height: 160px;
+}
+
+.novice-container:not(:empty) {
+    height: 240px;
+}
+
+.difficult-container:not(:empty) {
+    height: 80px;
+}
+
+.game {
+    height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.game-mode-string {
+    color: #666;
+    font-weight: 600;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+#staves {
+    margin-left: 5px;
+}
+
+.status-box {
+    height: 100px;
+    margin: 0 5px 10px 5px;
+}
+
+.status-feedback {
+    color: #000;
+    font-size: 18px;
+    margin-bottom: 7px;
+}
+
+.status-primary {
+    font-size: 21px;
+    margin-top: 10px;
+}
+
+.status-secondary {
+    color: #363;
+    font-size: 18px;
+    margin-left: 2px;
+}
+
+.k-of-n {
+    border: 2px solid #ffe4e1;
+    border-radius: 5px;
+    color: #577;
+    font-size: 28px;
+    height: 35px;
+    line-height: 35px;
+    margin: 10px 5px 0 5px;
+    padding-left: 10px;
+    width: 230px;
+}
+
+button {
+    height: 40px;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    -webkit-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+.buttonStyle {
+    font-size: 20px;
+    height: 60px;
+    padding: 0;
+    text-align: center;
+    width: 50px;
+}
+
+.buttonWrongStyle {
+    background-color: #ff3333;
+    border: 1px solid #9c9c9c;
+    border-radius: 2px;
+    color: beige;
+    font-size: 20px;
+    height: 60px;
+    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333, 0 -1px 5px #555;
+    width: 50px;
+}
+
+.buttonRightStyle  {
+    background-color: cornflowerblue;
+    border: 1px solid #9c9c9c;
+    border-radius: 2px;
+    color: beige;
+    font-size: 20px;
+    height: 60px;
+    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333, 0 -1px 5px black;
+    width: 50px;
+}
+
+button:hover {
+    box-shadow: inset 2px -1px 20px 0 #ffd966;
+}
+
+.nxtBtn {
+    background-color: #e5cdca;
+    border-width: 1px;
+    font-weight: bold;
+}
+
+.nxtBtn:hover {
+    box-shadow: inset 2px -1px 20px 0 #yellow;
+}
+
+
+.keyHint {
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 2px;
+    color: white;
+    margin: auto;
+}
+
+.answerKeyHint {
+    font-size: 14px;
+    width: 15px;
+}
+
+.miniKeyHint {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.miniKeyHintDiv {
+    font-size: 10px;
+    font-weight: bold;
+    width: 10px;
+}
+
+.miniCtrlHint, .miniPlus, .miniEnterHint {
+    display: inline-block;
+}
+
+.miniPlus {
+    width: 10px;
+}
+
+.miniCtrlHint {
+    width: 27px;
+}
+
+.miniEnterHint {
+    width: 35px;
+}
+
+.game-link:hover {
+    text-shadow: 1px 1px 3px #ffd966;
+}
+
+.play-audio-div {
+    display: inline-block;
+}
+
+.lesson-nav-hint {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.lesson-nav-keyboard-hints {
+    font-size: 24px;
+    position: absolute;
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    line-height: 28px;
+    margin-top: 500px;;
+    pointer-events: none;
+    text-align: center;
+    width: 100%;
+}

@@ -1,10 +1,11 @@
-# What's That Chord Do?
+# What's That Chord Doing?
 
-This ~~is~~will be an app for ear training for intermediate musicians.
+This is an ear-training app for intermediate musicians&#8212;maybe roughly sophomore-level musicianship students, in college.
 
-Project directory structure, etc based on the [Thinkful React project build system](https://github.com/oampo/thinkful-react-starter)
 
-### Working on the project
+Project directory structure and build system derived from the [Thinkful React starter kit](https://github.com/oampo/thinkful-react-starter).
+
+### Working on OR trying out the project:
 
 * Run the development task: `npm run dev`
     * Starts a server running at http://localhost:8080

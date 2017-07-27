@@ -211,7 +211,7 @@ const chordSets = {
     easyMajor: ['I','ii','iii','IV','V','vi','vii°'],
     hardMajor: ['I','♭II','ii','iii','iv','IV','V','♭VI','vi','♭VII','vii°'],
     easyMinor: ['i','ii°','♭III','iv','V','♭VI','♭VII'],
-    intmd8Minor: ['i','ii°','♭III','iv','V','♭VI','vi','♭VII','vii°'],
+    intermediateMinor: ['i','ii°','♭III','iv','V','♭VI','vi','♭VII','vii°'],
     hardMinor: ['i','♭II','ii°','ii','♭III','iv','v','V','♭VI','vi','♭VII','vii°'],
     all: ['i','I','♭II','ii°','ii','♭III','iii','iv','IV','v','V','♭VI','vi','♭VII','vii°']
 };
@@ -238,14 +238,15 @@ const chordGetter = {
         const [major, minor] = [keys.major, keys.minor];
         this.ourSubsetOfKeys = {
             easyMajor: major, hardMajor: major, easyMinor: minor,
-            hardMinor: minor, all: major
+            intermediateMinor: minor, hardMinor: minor, all: major
         }[gameType];
         
         this.pickKey(this.ourSubsetOfKeys, gameType);
         return {
             keyNameReadable: this.keyNameReadable,
             keyNameNotation: this.keyNameNotation,
-            introChordSequence: this.getIntroProgression()
+            introChordSequence: this.getIntroProgression(),
+            chordSubset: this.ourChordSubset
         };
     },
 
@@ -280,15 +281,15 @@ const chordGetter = {
         const {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
         const chord = chordVoicings[chordType];
 
-        const [inversion, bassNote] = this.getBassNote(chord);
+        const [inversion, bassNote, chordName] = this.getBassNote(chord);
         const [trebleVoicesIndex, trebleNotes] = this.getTrebleNotes(chord);
 
         return {
             currentChordNumeral: this.currentChordNumeral,
+            chordName,
             bassNote,
             trebleNotes,
             inversion,
-            // accidentalIndices: this.getAccidentals(inversion, trebleVoicesIndex)
             accidentals: this.getAccidentals(inversion, trebleVoicesIndex)
         };
     },
@@ -301,7 +302,8 @@ const chordGetter = {
         const offset = chord['bass'][i];
         return [
             i,
-            noteNameMap[this.keyDisplacement + offset + displacement]
+            noteNameMap[this.keyDisplacement + offset + displacement],
+            `${noteNameMap[this.keyDisplacement + displacement].split('/')[0]} ${chordType}`
         ];
     },
 
@@ -383,7 +385,7 @@ const chordGetter = {
         } else if (this.currentChordNumeral === 'ii°') {
             if (inversion === 2)
                 return true;
-        
+
         } else if (this.currentChordNumeral === '♭VII') {
             if (inversion === 0)
                 return true;
@@ -398,7 +400,7 @@ const chordGetter = {
         }
         return false;
     },
-    
+
     processMinorAccidentals(that, inversion, i) {
         return {
             bassAccidental: this.processMinorBassAccidental(inversion),
