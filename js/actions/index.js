@@ -18,7 +18,6 @@ export const toggleKeyboardShortcutDisplay = (displayBool) => ({
     displayBool
 });
 
-
 export const START_NEW_GAME = 'START_NEW_GAME';
 export const startNewGame = (gameType, inversions) => {
     let {keyNameReadable, keyNameNotation, introChordSequence, chordSubset} = chordGetter.init(gameType, inversions);
