@@ -13,7 +13,7 @@ mongoose.Promise = global.Promise;
 ///
 // app-config & routes
 const app = express();
-app.use(morgan('common'));
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 app.use('/', router);
