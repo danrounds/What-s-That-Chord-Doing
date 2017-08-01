@@ -73,7 +73,7 @@ router.put('/my-scores*', (req, res) => {
                     });
             }
         })
-        .catch(err => res.status(500).json({error: err}));
+        .catch(err => res.status(500).send());
 });
 
 router.get('/high-scores/:gameType', (req, res) => {
