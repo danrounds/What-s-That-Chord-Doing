@@ -4,8 +4,6 @@
 // implement user accounts (with accompanying password security)
 const mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
-
 const individualScoreSchema = mongoose.Schema(
     {
         totalClicks: {
