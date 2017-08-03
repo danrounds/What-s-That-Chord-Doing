@@ -74,16 +74,11 @@ scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}),
                         if (err.errors.scores.name === 'ValidatorError')
                             res.status(400).send();
                         else
-                            // res.status(500).send();
-                            res.status(500).json(err);
+                            res.status(500).send();
                     });
             }
         })
-        // .catch(err => res.status(500).send());
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+        .catch(err => res.status(500).send());
 });
 
 scoreRouter.get('/high-scores/:gameType', (req, res) => {

@@ -41,15 +41,15 @@ accountRouter.post('*', (req, res) => {
                     scores: {},
                 })
                 .then(user => res.status(201).json())
-                .catch(err => res.status(500).send());
+                .catch(() => res.status(500).send());
         });
 });
 
 accountRouter.put('/:name', passport.authenticate('basic', {session: false}), (req, res) => {
     if (!(req.body.name && req.body.newPassword))
         return res.status(400).json({error: 'Requests need `name` and `newPassword`'});
-    if (req.body.name !== req.params.name)
-        return res.status(400).json({error: '`name` in body & URL don\'t match'});
+    if (req.params.name !== req.user.name || req.user.name !== req.body.name)
+        return res.status(400).json({error: 'Authenticated `name`, URL name, and request body don\'t match'});
     if (req.body.newPassword.trim().length < 6)
         return res.status(400).json({error: 'Password must be at least six non-whitespace characters long'});
 
@@ -62,7 +62,7 @@ accountRouter.put('/:name', passport.authenticate('basic', {session: false}), (r
                     {runValidators: true}
                 )
                 .then(updated => res.status(204).send())
-                .catch(err => res.status(500).json({message: 'Server error'}));
+                .catch(() => res.status(500).send());
         });
 });
 
