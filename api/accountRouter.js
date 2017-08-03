@@ -32,11 +32,11 @@ accountRouter.post('*', (req, res) => {
     if (req.body.password.trim().length < 6)
         return res.status(400).json({error: 'Password must be at least six non-whitespace characters long'});
 
-    UserScore.hashPassword(req.body.password.trim())
+    UserScore.hashPassword(req.body.password)
         .then(hashed => {
             UserScore
                 .create({
-                    name: req.body.name.trim(),
+                    name: req.body.name,
                     password: hashed,
                     scores: {},
                 })
@@ -53,11 +53,11 @@ accountRouter.put('/:name', passport.authenticate('basic', {session: false}), (r
     if (req.body.newPassword.trim().length < 6)
         return res.status(400).json({error: 'Password must be at least six non-whitespace characters long'});
 
-    return UserScore.hashPassword(req.body.newPassword.trim())
+    return UserScore.hashPassword(req.body.newPassword)
         .then(hashed => {
             UserScore
                 .update(
-                    {name: req.user.name.trim()},
+                    {name: req.user.name},
                     {$set: {'password': hashed}},
                     {runValidators: true}
                 )

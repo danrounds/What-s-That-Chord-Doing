@@ -29,6 +29,7 @@ const userScoreSchema = mongoose.Schema(
         name: {
             type: String,
             required: true,
+            trim: true,
             unique: true,
             validate: {
                 validator: (str) => /[a-zA-Z0-9_]+/.test(str),
@@ -38,6 +39,7 @@ const userScoreSchema = mongoose.Schema(
         password: {
             type: String,
             require: true,
+            trim: true,
         },
         scores: {
             easyMajor: individualScoreSchema,
@@ -72,7 +74,7 @@ userScoreSchema.methods.validatePassword = function(password) {
 
 userScoreSchema.statics.hashPassword = function(password) {
     return bcrypt
-        .hash(password, 10)
+        .hash(password.trim(), 10)
         .then(hash => hash);
 };
 
