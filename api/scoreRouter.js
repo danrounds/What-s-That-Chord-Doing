@@ -69,7 +69,7 @@ scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}),
                 newScore.name = req.user.name;
                 newScore.scores = req.body.scores;
                 newScore.save()
-                    .then(record => res.status(201).send())
+                    .then(() => res.status(201).send())
                     .catch(err => {
                         if (err.errors.scores.name === 'ValidatorError')
                             res.status(400).send();
@@ -78,7 +78,7 @@ scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}),
                     });
             }
         })
-        .catch(err => res.status(500).send());
+        .catch(() => res.status(500).send());
 });
 
 scoreRouter.get('/high-scores/:gameType', (req, res) => {

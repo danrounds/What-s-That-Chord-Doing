@@ -40,7 +40,7 @@ accountRouter.post('*', (req, res) => {
                     password: hashed,
                     scores: {},
                 })
-                .then(user => res.status(201).json())
+                .then(() => res.status(201).send())
                 .catch(() => res.status(500).send());
         });
 });
@@ -61,7 +61,7 @@ accountRouter.put('/:name', passport.authenticate('basic', {session: false}), (r
                     {$set: {'password': hashed}},
                     {runValidators: true}
                 )
-                .then(updated => res.status(204).send())
+                .then(() => res.status(204).send())
                 .catch(() => res.status(500).send());
         });
 });
