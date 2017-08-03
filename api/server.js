@@ -3,8 +3,9 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
-const {router} = require('./routes');
 const {DATABASE_URL, PORT} = require('./config');
+const {accountRouter} = require('./accountRouter');
+const {scoreRouter} = require('./scoreRouter');
 
 // ES6-style promises for mongoose
 mongoose.Promise = global.Promise;
@@ -16,7 +17,8 @@ const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-app.use('/', router);
+app.use('/accounts/', accountRouter);
+app.use('/', scoreRouter);      // /my-scores* and /high-scores
 
 app.use('*', function(req, res) {
     res.status(404).json({message: 'Resource not found'});
