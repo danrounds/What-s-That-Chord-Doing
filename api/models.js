@@ -1,7 +1,6 @@
-// schema and wrapper method(s) for our our journal entries
+// Schema and wrapper methods for user scores
 
-// const bcrypt = require('bcryptjs'); // leaving this here in case we want to
-// implement user accounts (with accompanying password security)
+const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
 const individualScoreSchema = mongoose.Schema(
@@ -30,6 +29,15 @@ const userScoreSchema = mongoose.Schema(
         name: {
             type: String,
             required: true,
+            unique: true,
+            validate: {
+                validator: (str) => /[a-zA-Z0-9_]+/.test(str),
+                message: 'Poorly-formed name'
+            },
+        },
+        password: {
+            type: String,
+            require: true,
         },
         scores: {
             easyMajor: individualScoreSchema,
@@ -56,15 +64,24 @@ const userScoreSchema = mongoose.Schema(
     }
 );
 
-// userScoreSchema.methods.apiRepr = function() {
-//     return {
-//         // id: this._id,
-//         name: this.name,
-//         totalClicks: this.totalClicks,
-//         nAnsweredRight: this.nAnsweredRight,
-//         nQuestionNumber: this.nQuestionNumber,
-//     };
-// };
+userScoreSchema.methods.validatePassword = function(password) {
+    return bcrypt
+        .compare(password, this.password)
+        .then(isValid => isValid);
+};
+
+userScoreSchema.statics.hashPassword = function(password) {
+    return bcrypt
+        .hash(password, 10)
+        .then(hash => hash);
+};
+
+userScoreSchema.methods.apiRepr = function() {
+    return {
+        name: this.name,
+        scores: this.scores,
+    };
+};
 
 // mongoose automagically pluralizes its model names for you. Thanks, mongoose!
 const UserScore = mongoose.model('UserScore', userScoreSchema);
