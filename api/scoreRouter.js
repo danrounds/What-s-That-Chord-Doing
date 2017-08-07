@@ -28,14 +28,15 @@ scoreRouter.get('/my-scores*', passport.authenticate('basic', {session: false}),
 scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}), (req, res) => {
     // Endpoint for updating individual user scores
     // Intent is to only submit one gameMode of updated scores, at once
+    console.log('req.body.scores');
+    console.log(req.body.scores);
     const gameMode = Object.keys(req.body.scores)[0];
     const requestScores = req.body.scores[gameMode];
 
     if (['easyMajor','easyMajorInvs','easyMinor','easyMinorInvs',
          'intermediateMinor','intermediateMinorInvs','hardMajor',
          'hardMajorInvs','hardMinor','hardMinorInvs','allChords',
-         'allChordsInvs'].indexOf(gameMode) === -1
-        || !req.body.name) {
+         'allChordsInvs'].indexOf(gameMode) === -1) {
         return res.status(400).send();
     }
 
@@ -62,7 +63,7 @@ scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}),
                         if (record.nModified)
                             res.status(200).send();
                         else
-                            res.status(400).send();
+                            res.status(304).send();
                     });
             } else {
                 const newScore = new UserScore;
