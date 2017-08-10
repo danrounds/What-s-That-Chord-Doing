@@ -1,4 +1,4 @@
-import chordGetter from '../music-logic/';
+import chordGetter from '../musicLogic/';
 
 export const UPDATE_LESSON_INDEX_DISPLAY = 'UPDATE_LESSON_INDEX_DISPLAY';
 export const updateLessonIndexDisplay = (keyValueToUpdate) => ({
@@ -20,8 +20,10 @@ export const toggleKeyboardShortcutDisplay = (displayBool) => ({
 
 export const START_NEW_GAME = 'START_NEW_GAME';
 export const startNewGame = (gameType, inversions) => {
-    let {keyNameReadable, keyNameNotation, introChordSequence, chordSubset} = chordGetter.init(gameType, inversions);
-    let {chordName, currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
+    let {keyNameReadable, keyNameNotation, introChordSequence, chordSubset} =
+            chordGetter.init(gameType, inversions);
+    let {chordName, currentChordNumeral, bassNote, trebleNotes, accidentals} =
+            chordGetter.getChord();
     return {
         type: START_NEW_GAME,
         gameType,
@@ -40,7 +42,8 @@ export const startNewGame = (gameType, inversions) => {
 
 export const GET_NEXT_QUESTION = 'GET_NEXT_QUESTION';
 export const getNextQuestion = () => {
-    let {chordName, currentChordNumeral, bassNote, trebleNotes, accidentals} = chordGetter.getChord();
+    let {chordName, currentChordNumeral, bassNote, trebleNotes, accidentals} =
+            chordGetter.getChord();
     return {
         type: GET_NEXT_QUESTION,
         chordName,
