@@ -144,7 +144,7 @@ export class LessonsNavigator extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    lessonIndexDisplay: state.lessonIndexDisplay
+    lessonIndexDisplay: state.game.lessonIndexDisplay
 });
 
 export default connect(mapStateToProps)(LessonsNavigator);

@@ -135,10 +135,10 @@ export class Staves extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    notes: state.notes,
-    accidentals: state.accidentals,
-    keySignature: state.keyNameNotation,
-    answeredCorrectly: state.answeredCorrectly
+    notes: state.game.notes,
+    accidentals: state.game.accidentals,
+    keySignature: state.game.keyNameNotation,
+    answeredCorrectly: state.game.answeredCorrectly
 });
 
 export default connect(mapStateToProps)(Staves);

@@ -136,17 +136,17 @@ export class WhatIsThis extends React.Component {
 
 const mapStateToProps = (state, props) => {
     const processNotes = (val) => val.split('/').join('');
-    let notes = state.notes;
+    let notes = state.game.notes;
 
     return {
-        keyPress: state.keyValue,
-        displayKeyboardShortcuts: state.displayKeyboardShortcuts,
+        keyPress: state.game.keyValue,
+        displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
         answer: notes.bass ? [notes.bass, ...notes.treble].map(
             processNotes) : [],
-        introChordSequence: state.introChordSequence.map(
+        introChordSequence: state.game.introChordSequence.map(
             (array) => array.map(processNotes)),
-        guessN: state.guessN,
-        answeredCorrectly: state.answeredCorrectly
+        guessN: state.game.guessN,
+        answeredCorrectly: state.game.answeredCorrectly
     };
 };
 

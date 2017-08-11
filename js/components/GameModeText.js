@@ -28,8 +28,8 @@ export class GameModeText extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    gameType: state.gameType,
-    inversions: state.inversions
+    gameType: state.game.gameType,
+    inversions: state.game.inversions
 });
 
 export default connect(mapStateToProps)(GameModeText);

@@ -35,7 +35,7 @@ export class NavBar extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    displayKeyboardShortcuts: state.displayKeyboardShortcuts
+    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts
 });
 
 export default connect(mapStateToProps)(NavBar);

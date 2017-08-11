@@ -50,12 +50,12 @@ export class StartNewGame extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    keyValue: state.keyValue,
-    displayKeyboardShortcuts: state.displayKeyboardShortcuts,
-    gameType: state.gameType,
-    inversions: state.inversions,
-    firstQ: state.questionNumber === 1 && !state.answeredCorrectly,
-    gameOver: state.gameOver
+    keyValue: state.game.keyValue,
+    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
+    gameType: state.game.gameType,
+    inversions: state.game.inversions,
+    firstQ: state.game.questionNumber === 1 && !state.game.answeredCorrectly,
+    gameOver: state.game.gameOver
 });
 
 export default connect(mapStateToProps)(StartNewGame);

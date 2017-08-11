@@ -119,12 +119,12 @@ export class AnswerEntry extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    keyValue: state.keyValue,
-    displayKeyboardShortcuts: state.displayKeyboardShortcuts,
-    chordSubset: state.chordSubset,
-    currentChord: state.chord,
-    guessN: state.guessN,
-    answeredCorrectly: state.answeredCorrectly
+    keyValue: state.game.keyValue,
+    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
+    chordSubset: state.game.chordSubset,
+    currentChord: state.game.chord,
+    guessN: state.game.guessN,
+    answeredCorrectly: state.game.answeredCorrectly
 });
 
 export default connect(mapStateToProps)(AnswerEntry);

@@ -98,16 +98,16 @@ export class Status extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    keyValue: state.keyValue,
-    displayKeyboardShortcuts: state.displayKeyboardShortcuts,
-    key_: state.keyNameReadable,
-    chordName: state.chordName,
-    chord: state.chord,
-    guessN: state.guessN,
-    answeredCorrectly: state.answeredCorrectly,
-    nAnsweredRight: state.nAnsweredRight,
-    clicksPerRightAnswer: state.clicksPerRightAnswer,
-    gameOver: state.gameOver
+    keyValue: state.game.keyValue,
+    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
+    key_: state.game.keyNameReadable,
+    chordName: state.game.chordName,
+    chord: state.game.chord,
+    guessN: state.game.guessN,
+    answeredCorrectly: state.game.answeredCorrectly,
+    nAnsweredRight: state.game.nAnsweredRight,
+    clicksPerRightAnswer: state.game.clicksPerRightAnswer,
+    gameOver: state.game.gameOver
 });
 
 export default connect(mapStateToProps)(Status);

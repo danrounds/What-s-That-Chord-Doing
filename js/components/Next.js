@@ -40,9 +40,9 @@ export class Next extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    keyValue: state.keyValue,
-    displayKeyboardShortcuts: state.displayKeyboardShortcuts,
-    questionNumber: state.questionNumber
+    keyValue: state.game.keyValue,
+    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
+    questionNumber: state.game.questionNumber
 });
 
 export default connect(mapStateToProps)(Next);

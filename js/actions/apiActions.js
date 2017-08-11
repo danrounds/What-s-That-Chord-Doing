@@ -11,7 +11,7 @@ const getScores = {
                 .catch((e) => dispatch(getScores.getUserScoresFailure(e)));
         },
 
-    GET_USER_SCORES_PENDING: 'GET_USER_SCORES_PENDINGS',
+    GET_USER_SCORES_PENDING: 'GET_USER_SCORES_PENDING',
     getUserScoresPending: () => ({
         type: GET_USER_SCORES_PENDING
     }),
