@@ -20,8 +20,7 @@ function getReqUserScores(name='joel27', password='abc123') {
     return fetch(userScoreUrl, {
         headers: { Authorization: 'Basic '+ btoa(name + ':' + password)}
     })
-        .then(response => response.json())
-        .catch((err) => err);
+        .then(response => response.json());
 }
 
 function putReqUserScores(name='joel27', password='abc123', scores=scores_) {
@@ -33,15 +32,12 @@ function putReqUserScores(name='joel27', password='abc123', scores=scores_) {
         },
         body: JSON.stringify(scores)
     })
-        .then(response => response)
-        .then(___ => ___.ok);
+        .then(response => response);
 }
 
 function getReqHighScores(gameType='intermediateMinor') {
     return fetch(highScoreUrl+gameType)
-        .then(response => response.json())
-        .then(jsonBody => jsonBody)
-        .catch(() => null);
+        .then(response => response.json());
 }
 
 //////
@@ -55,8 +51,7 @@ function postReqAccount(name='joel29', password='abc123') {
         },
         body: JSON.stringify({ name, password })
     })
-        .then(response => response)
-        .then(___ => console.log(___.ok));
+        .then(response => response);
 }
 
 function putReqAccountPassword(name='joel29', password='abc123') {
@@ -68,8 +63,7 @@ function putReqAccountPassword(name='joel29', password='abc123') {
         },
         body: JSON.stringify({ name, password })
     })
-        .then(response => response)
-        .then(___ => console.log(___.ok));
+        .then(response => response);
 }
 
 function deleteReqAccount(name='joel29', password='abc123') {
