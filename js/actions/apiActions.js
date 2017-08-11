@@ -2,111 +2,134 @@ import { getReqUserScores, getReqHighScores, postReqAccount,
          putReqUserScores, putReqAccountPassword, deleteReqAccount }
 from '../apiCalls';
 
-export const getUserScores = (name, password) =>
-    dispatch => {
-        dispatch(getUserScoresPending());
-        return getReqUserScores(name, password)
-            .then(scores => dispatch(getUserScoresSuccess(scores)))
-            .catch((e) => dispatch(getUserScoresFailure(e)));
+const getScores = {
+    getUserScores: (name, password) =>
+        dispatch => {
+            dispatch(getScores.getUserScoresPending());
+            return getReqUserScores(name, password)
+                .then(scores => dispatch(getScores.getUserScoresSuccess(scores)))
+                .catch((e) => dispatch(getScores.getUserScoresFailure(e)));
+        },
+
+    GET_USER_SCORES_PENDING: 'GET_USER_SCORES_PENDINGS',
+    getUserScoresPending: () => ({
+        type: GET_USER_SCORES_PENDING
+    }),
+
+    GET_USER_SCORES_SUCCESS: 'GET_USER_SCORES_SUCCESS',
+    getUserScoresSuccess: (scores) => ({
+        type: GET_USER_SCORES_SUCCESS,
+        scores
+    }),
+
+    GET_USER_SCORES_FAILURE: 'GET_USER_SCORES_FAILURE',
+    getUserScoresFailure: (error) => ({
+        type: GET_USER_SCORES_FAILURE,
+        error
+    }),
 };
 
-export const GET_USER_SCORES_PENDING = 'GET_USER_SCORES_PENDINGS';
-export const getUserScoresPending = () => ({
-    type: GET_USER_SCORES_PENDING
-});
+export const { getUserScores, GET_USER_SCORES_PENDING, getUserScoresPending,
+               GET_USER_SCORES_SUCCESS, getUserScoresSuccess,
+               GET_USER_SCORES_FAILURE, getUserScoresFailure } = getScores;
 
-export const GET_USER_SCORES_SUCCESS = 'GET_USER_SCORES_SUCCESS';
-export const getUserScoresSuccess = (scores) => ({
-    type: GET_USER_SCORES_SUCCESS,
-    scores
-});
+const updateScores = {
+    updateUserScores: (name, password, scores) =>
+        dispatch => putReqUserScores(name, password, scores)
+        .then(() => dispatch(updateScores.updateUserScoresSuccess()))
+        .catch((e) => dispatch(updateScores.updateUserScoresFailure())),
 
-export const GET_USER_SCORES_FAILURE = 'GET_USER_SCORES_FAILURE';
-export const getUserScoresFailure = (error) => ({
-    type: GET_USER_SCORES_FAILURE,
-    error
-});
-///
-///
+    UPDATE_USER_SCORES_SUCCESS: 'UPDATE_USER_SCORES_SUCCESS',
+    updateUserScoresSuccess: () => ({
+        type: UPDATE_USER_SCORES_SUCCESS
+    }),
 
-export const updateUserScores = (name, password, scores) =>
-    dispatch => putReqUserScores(name, password, scores)
-        .then(() => dispatch(updateUserScoresSuccess()))
-        .catch((e) => dispatch(updateUserScoresFailure()));
+    UPDATE_USER_SCORES_FAILURE: 'UPDATE_USER_SCORES_FAILURE',
+    updateUserScoresFailure: (error) => ({
+        type: UPDATE_USER_SCORES_FAILURE,
+        error
+    }),
+};
 
-export const UPDATE_USER_SCORES_SUCCESS = 'UPDATE_USER_SCORES_SUCCESS';
-export const updateUserScoresSuccess = () => ({
-    type: UPDATE_USER_SCORES_SUCCESS
-});
+export const { updateUserScores, UPDATE_USER_SCORES_SUCCESS,
+               updateUserScoresSuccess, UPDATE_USER_SCORES_FAILURE,
+               updateUserScoresFailure } = updateScores;
 
-export const UPDATE_USER_SCORES_FAILURE = 'UPDATE_USER_SCORES_FAILURE';
-export const updateUserScoresFailure = (error) => ({
-    type: UPDATE_USER_SCORES_FAILURE,
-    error
-});
-///
-///
+const getHighScores_ = {
+    getHighScores: (gameType) =>
+        dispatch => {
+            dispatch(getHighScores_.getHighScoresPending());
+            return getReqHighScores(gameType)
+                .then(highScores => dispatch(getHighScores_.getHighScoresSuccess()))
+                .catch((e) => dispatch(getHighScores_.getHighScoresFailure()));
+        },
 
-export const getHighScores = (gameType) =>
-    dispatch => {
-        dispatch(getHighScoresPending());
-        return getReqHighScores(gameType)
-            .then(highScores => dispatch(getHighScoresSuccess()))
-            .catch((e) => dispatch(getHighScoresFailure()));
-    };
+    GET_HIGH_SCORES_PENDING: 'GET_HIGH_SCORES_PENDING',
+    getHighScoresPending: () => ({
+        type: GET_HIGH_SCORES_PENDING
+    }),
 
-export const GET_HIGH_SCORES_PENDING = 'GET_HIGH_SCORES_PENDING';
-export const getHighScoresPending = () => ({
-    type: GET_HIGH_SCORES_PENDING
-});
+    GET_HIGH_SCORES_SUCCESS: 'GET_HIGH_SCORES_SUCCESS',
+    getHighScoresSuccess: (highScores) => ({
+        type: GET_HIGH_SCORES_SUCCESS,
+        highScores
+    }),
 
-export const GET_HIGH_SCORES_SUCCESS = 'GET_HIGH_SCORES_SUCCESS';
-export const getHighScoresSuccess = (highScores) => ({
-    type: GET_HIGH_SCORES_SUCCESS,
-    highScores
-});
+    GET_HIGH_SCORES_FAILURE: 'GET_HIGH_SCORES_FAILURE',
+    getHighScoresFailure: (error) => ({
+        type: GET_HIGH_SCORES_FAILURE,
+        error
+    }),
+}
 
-export const GET_HIGH_SCORES_FAILURE = 'GET_HIGH_SCORES_FAILURE';
-export const getHighScoresFailure = (error) => ({
-    type: GET_HIGH_SCORES_FAILURE,
-    error
-});
-///
-///
+export const { getHighScores, GET_HIGH_SCORES_PENDING, getHighScoresPending,
+               GET_HIGH_SCORES_SUCCESS, getHighScoresSuccess,
+               GET_HIGH_SCORES_FAILURE, getHighScoresFailure } = getHighScores_;
 
-export const makeUserAccount = (name, password) =>
-    dispatch => postReqAccount(name, password)
-    .then(() => dispatch(makeUserAccountSuccess()))
-    .catch(() => dispatch(makeUserAccountFailure()));
+const makeAccount = {
+    makeUserAccount: (name, password) =>
+        dispatch => postReqAccount(name, password)
+        .then(() => dispatch(makeAccount.makeUserAccountSuccess()))
+        .catch(() => dispatch(makeAccount.makeUserAccountFailure())),
 
-export const MAKE_USER_ACCOUNT_SUCCESS = 'MAKE_USER_ACCOUNT_SUCCESS';
-export const makeUserAccountSuccess = () => ({
-    type: MAKE_USER_ACCOUNT_SUCCESS
-});
+    MAKE_USER_ACCOUNT_SUCCESS: 'MAKE_USER_ACCOUNT_SUCCESS',
+    makeUserAccountSuccess: () => ({
+        type: MAKE_USER_ACCOUNT_SUCCESS
+    }),
 
-export const MAKE_USER_ACCOUNT_FAILURE = 'MAKE_USER_ACCOUNT_FAILURE';
-export const makeUserAccountFailure = (error) => ({
-    type: MAKE_USER_ACCOUNT_FAILURE,
-    error
-});
+    MAKE_USER_ACCOUNT_FAILURE: 'MAKE_USER_ACCOUNT_FAILURE',
+    makeUserAccountFailure: (error) => ({
+        type: MAKE_USER_ACCOUNT_FAILURE,
+        error
+    }),
+};
 
-///
-///
-export const changeUserPassword = (name, password) =>
-    dispatch => putReqAccountPassword(name, password)
-    .then(() => dispatch(changeUserPasswordSuccess()))
-    .catch((e) => dispatch(changeUserPasswordFailure()));
+export const { makeUserAccount, MAKE_USER_ACCOUNT_SUCCESS,
+               makeUserAccountSuccess, MAKE_USER_ACCOUNT_FAILURE,
+               makeUserAccountFailure } = makeAccount;
 
-export const CHANGE_USER_PASSWORD_SUCCESS = 'CHANGE_USER_PASSWORD_SUCCESS';
-export const changeUserPasswordSuccess = () => ({
-    type: CHANGE_USER_PASSWORD_SUCCESS
-});
 
-export const CHANGE_USER_PASSWORD_FAILURE = 'CHANGE_USER_PASSWORD_FAILURE';
-export const changeUserPasswordFailure = (error) => ({
-    type: CHANGE_USER_PASSWORD_FAILURE,
-    error
-});
+const changePass = {
+    changeUserPassword: (name, password) =>
+        dispatch => putReqAccountPassword(name, password)
+        .then(() => dispatch(changePass.changeUserPasswordSuccess()))
+        .catch((e) => dispatch(changePass.changeUserPasswordFailure())),
+
+    CHANGE_USER_PASSWORD_SUCCESS: 'CHANGE_USER_PASSWORD_SUCCESS',
+    changeUserPasswordSuccess: () => ({
+        type: CHANGE_USER_PASSWORD_SUCCESS
+    }),
+
+    CHANGE_USER_PASSWORD_FAILURE: 'CHANGE_USER_PASSWORD_FAILURE',
+    changeUserPasswordFailure: (error) => ({
+        type: CHANGE_USER_PASSWORD_FAILURE,
+        error
+    }),
+};
+
+export const { changeUserPassword, CHANGE_USER_PASSWORD_SUCCESS,
+               changeUserPasswordSuccess, CHANGE_USER_PASSWORD_FAILURE,
+               changeUserPasswordFailure } = changePass;
 
 ///
 ///
