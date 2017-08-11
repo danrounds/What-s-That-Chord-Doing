@@ -1,7 +1,7 @@
 import gameReducer from './gameReducer';
 import apiReducer from './apiReducer';
 
-let initialState = {
+const initialState = {
     lessonIndexDisplay: {easy: false, novice: false, difficult: false, i: 0},
     keyValue: null,
     displayKeyboardShortcuts: null,
