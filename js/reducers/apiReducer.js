@@ -8,6 +8,8 @@ const initialState = {
 };
 
 function copyUserScores(obj) {
+    // Makes a copy of our userScore entr[y|ies] without mutation
+    // Now we know why people use `immutable.js`
     if (!obj.name || !obj.scores)
         return Object.assign(obj);
 
@@ -21,6 +23,7 @@ function copyUserScores(obj) {
 }
 
 function copyHighScores(oldScores) {
+    // Makes a copy of our highScores entry, without mutation
     return oldScores.map(score => copyUserScores(score));
 }
 
