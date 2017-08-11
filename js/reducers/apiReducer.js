@@ -1,8 +1,8 @@
 import * as actions from '../actions/apiActions';
 
 const initialState = {
-    highScores: {},
-    userScores: [],
+    highScores: [],
+    userScores: {},
     error: null,
     pending: null,
 };
