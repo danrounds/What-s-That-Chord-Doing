@@ -29,10 +29,6 @@ const getScores = {
     }),
 };
 
-export const { getUserScores, GET_USER_SCORES_PENDING, getUserScoresPending,
-               GET_USER_SCORES_SUCCESS, getUserScoresSuccess,
-               GET_USER_SCORES_FAILURE, getUserScoresFailure } = getScores;
-
 const updateScores = {
     updateUserScores: (name, password, scores) =>
         dispatch => putReqUserScores(name, password, scores)
@@ -50,10 +46,6 @@ const updateScores = {
         error
     }),
 };
-
-export const { updateUserScores, UPDATE_USER_SCORES_SUCCESS,
-               updateUserScoresSuccess, UPDATE_USER_SCORES_FAILURE,
-               updateUserScoresFailure } = updateScores;
 
 const getHighScores_ = {
     getHighScores: (gameType) =>
@@ -82,10 +74,6 @@ const getHighScores_ = {
     }),
 }
 
-export const { getHighScores, GET_HIGH_SCORES_PENDING, getHighScoresPending,
-               GET_HIGH_SCORES_SUCCESS, getHighScoresSuccess,
-               GET_HIGH_SCORES_FAILURE, getHighScoresFailure } = getHighScores_;
-
 const makeAccount = {
     makeUserAccount: (name, password) =>
         dispatch => postReqAccount(name, password)
@@ -103,11 +91,6 @@ const makeAccount = {
         error
     }),
 };
-
-export const { makeUserAccount, MAKE_USER_ACCOUNT_SUCCESS,
-               makeUserAccountSuccess, MAKE_USER_ACCOUNT_FAILURE,
-               makeUserAccountFailure } = makeAccount;
-
 
 const changePass = {
     changeUserPassword: (name, password) =>
@@ -127,11 +110,29 @@ const changePass = {
     }),
 };
 
-export const { changeUserPassword, CHANGE_USER_PASSWORD_SUCCESS,
-               changeUserPasswordSuccess, CHANGE_USER_PASSWORD_FAILURE,
-               changeUserPasswordFailure } = changePass;
-
 ///
 ///
 // I've not bothered to write an action for account deletion, because that
 // doesn't belong in the MVP client
+
+// We end up with a bit more code by grouping associated actions together, but
+// it at least tells us which goes with which
+export const { getUserScores, GET_USER_SCORES_PENDING, getUserScoresPending,
+               GET_USER_SCORES_SUCCESS, getUserScoresSuccess,
+               GET_USER_SCORES_FAILURE, getUserScoresFailure } = getScores;
+
+export const { updateUserScores, UPDATE_USER_SCORES_SUCCESS,
+               updateUserScoresSuccess, UPDATE_USER_SCORES_FAILURE,
+               updateUserScoresFailure } = updateScores;
+
+export const { getHighScores, GET_HIGH_SCORES_PENDING, getHighScoresPending,
+               GET_HIGH_SCORES_SUCCESS, getHighScoresSuccess,
+               GET_HIGH_SCORES_FAILURE, getHighScoresFailure } = getHighScores_;
+
+export const { makeUserAccount, MAKE_USER_ACCOUNT_SUCCESS,
+               makeUserAccountSuccess, MAKE_USER_ACCOUNT_FAILURE,
+               makeUserAccountFailure } = makeAccount;
+
+export const { changeUserPassword, CHANGE_USER_PASSWORD_SUCCESS,
+               changeUserPasswordSuccess, CHANGE_USER_PASSWORD_FAILURE,
+               changeUserPasswordFailure } = changePass;
