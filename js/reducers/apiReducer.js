@@ -8,7 +8,8 @@ const initialState = {
 };
 
 function copyUserScores(obj) {
-    if (!obj.name) { return {}; }
+    if (!obj.name || !obj.scores)
+        return Object.assign(obj);
 
     const newObj = {name: obj.name}, scores = {};
     const keys = Object.keys(obj.scores);
