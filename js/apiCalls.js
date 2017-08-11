@@ -1,11 +1,9 @@
-const fetch = require('isomorphic-fetch');
-
-const btoa = require('btoa');   // delete this
+import fetch from 'isomorphic-fetch';
+import btoa from 'btoa';   // delete this
 
 const accountsUrl = 'http://localhost:8081/accounts/';
 const userScoreUrl = 'http://localhost:8081/my-scores/';
 const highScoreUrl = 'http://localhost:8081/high-scores/';
-
 const scores_ = {                // delete, once you have tests
     scores: {
         intermediateMinor: {
@@ -79,5 +77,5 @@ function deleteReqAccount(name='joel29', password='abc123') {
         .then(___ => console.log(___.ok));
 }
 
-module.exports = { getReqUserScores, getReqHighScores, postReqAccount,
-                   putReqUserScores, putReqAccountPassword, deleteReqAccount };
+export { getReqUserScores, getReqHighScores, postReqAccount,
+         putReqUserScores, putReqAccountPassword, deleteReqAccount };
