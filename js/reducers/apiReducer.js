@@ -29,7 +29,7 @@ export default (state=initialState, action) => {
 
     case 'GET_USER_SCORES_PENDING':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: copyUserScores(state.userScores),
             error: false,
             pending: true,
@@ -37,7 +37,7 @@ export default (state=initialState, action) => {
 
     case 'GET_USER_SCORES_SUCCESS':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: action.scores,
             error: false,
             pending: false,
@@ -45,7 +45,7 @@ export default (state=initialState, action) => {
 
     case 'GET_USER_SCORES_FAILURE':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: copyUserScores(state.userScores),
             error: action.error,
             pending: false,
@@ -56,7 +56,7 @@ export default (state=initialState, action) => {
 
     case 'UPDATE_USER_SCORES_SUCCESS':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: copyUserScores(state.userScores),
             error: false,
             pending: false,
@@ -64,7 +64,7 @@ export default (state=initialState, action) => {
 
     case 'UPDATE_USER_SCORES_FAILURE':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: copyUserScores(state.userScores),
             error: action.error,
             pending: false,
@@ -75,7 +75,7 @@ export default (state=initialState, action) => {
 
     case 'GET_HIGH_SCORES_PENDING':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: copyUserScores(state.userScores),
             error: false,
             pending: true,
@@ -91,7 +91,7 @@ export default (state=initialState, action) => {
 
     case 'GET_HIGH_SCORES_FAILURE':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: copyUserScores(state.userScores),
             error: action.error,
             pending: false,
@@ -102,7 +102,7 @@ export default (state=initialState, action) => {
 
     case 'MAKE_USER_ACCOUNT_SUCCESS':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: copyUserScores(state.userScores),
             error: false,
             pending: false,
@@ -110,7 +110,7 @@ export default (state=initialState, action) => {
 
     case 'MAKE_USER_ACCOUNT_FAILURE':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: copyUserScores(state.userScores),
             error: action.error,
             pending: false,
@@ -121,7 +121,7 @@ export default (state=initialState, action) => {
         
     case 'CHANGE_USER_PASSWORD_SUCCESS':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: copyUserScores(state.userScores),
             error: false,
             pending: false,
@@ -129,7 +129,7 @@ export default (state=initialState, action) => {
 
     case 'CHANGE_USER_PASSWORD_FAILURE':
         return {
-            highScores: copyHighScores(state.userScore),
+            highScores: copyHighScores(state.highScores),
             userScores: copyUserScores(state.userScores),
             error: true,
             pending: false,
