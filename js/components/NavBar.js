@@ -16,8 +16,10 @@ export class NavBar extends React.Component {
 
               <div className={this.props.parent === 'WhatIs'
                    ? "nav-button nav-button-selected" : "nav-button"}>
-                <Link className="nav-text" to="/what_is_this">What is this?</Link>
+                <Link className="nav-text" to="/what-is-this">What is this?</Link>
               </div>
+
+
 
               <MediaQuery minDeviceWidth={800}>
                 {(matches) => {
@@ -29,6 +31,16 @@ export class NavBar extends React.Component {
                     return (<KeyboardShortcutsOnOff showButton={matches} showHints={showHints}/>);
                 }}
               </MediaQuery>
+
+              <div className={this.props.parent === 'Scores'
+                   ? "nav-button nav-button-selected" : "nav-button"}>
+                <Link className="nav-text" to="/scores">Scores</Link>
+              </div>
+
+              <div className={this.props.parent === 'LogIn'
+                   ? "nav-button nav-button-selected" : "nav-button"}>
+                <Link className="nav-text" to="/log-in-or-register">Log in</Link>
+              </div>
             </div>
         );
     }

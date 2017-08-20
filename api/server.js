@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
@@ -14,12 +15,10 @@ mongoose.Promise = global.Promise;
 ///
 // app-config & routes
 const app = express();
-app.use(morgan('dev'));
-app.use(bodyParser.json());
+app.use(morgan('dev'), bodyParser.json(), cors());
 
 app.use('/accounts/', accountRouter);
 app.use('/', scoreRouter);      // /my-scores* and /high-scores
-
 app.use('*', function(req, res) {
     res.status(404).json({message: 'Resource not found'});
 });
