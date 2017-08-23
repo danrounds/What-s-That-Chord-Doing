@@ -29,11 +29,16 @@ const getScores = {
     }),
 };
 
+export const LOG_OFF = 'LOG_OFF';
+export const logOff = () => ({
+    type: LOG_OFF
+});
+
 const updateScores = {
     updateUserScores: (name, password, scores) =>
         dispatch => putReqUserScores(name, password, scores)
-        .then(() => dispatch(updateScores.updateUserScoresSuccess()))
-        .catch((e) => dispatch(updateScores.updateUserScoresFailure())),
+        .then(() => dispatch(updateScores.updateUserScoresSuccess(scores)))
+        .catch((e) => dispatch(updateScores.updateUserScoresFailure(e))),
 
     UPDATE_USER_SCORES_SUCCESS: 'UPDATE_USER_SCORES_SUCCESS',
     updateUserScoresSuccess: () => ({
@@ -52,8 +57,8 @@ const getHighScores_ = {
         dispatch => {
             dispatch(getHighScores_.getHighScoresPending());
             return getReqHighScores(gameType)
-                .then(highScores => dispatch(getHighScores_.getHighScoresSuccess()))
-                .catch((e) => dispatch(getHighScores_.getHighScoresFailure()));
+                .then(highScores => dispatch(getHighScores_.getHighScoresSuccess(highScores)))
+                .catch((e) => dispatch(getHighScores_.getHighScoresFailure(e)));
         },
 
     GET_HIGH_SCORES_PENDING: 'GET_HIGH_SCORES_PENDING',

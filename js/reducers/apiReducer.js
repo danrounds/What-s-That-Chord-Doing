@@ -47,6 +47,15 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
+
+    case 'LOG_OFF':
+        return {
+            highScores: copyHighScores(state.highScores),
+            userScores: {},
+            error: true,
+            pending: false,
+        };
+
     case 'GET_USER_SCORES_FAILURE':
         return {
             highScores: copyHighScores(state.highScores),

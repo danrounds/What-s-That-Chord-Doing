@@ -41,7 +41,12 @@ accountRouter.post('*', (req, res) => {
                     scores: {},
                 })
                 .then(() => res.status(201).send())
-                .catch(() => res.status(500).send());
+                .catch(e => {
+                    if (e.code === 11000)
+                        res.status(409).send();
+                    else
+                        res.status(500).send();
+                });
         });
 });
 

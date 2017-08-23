@@ -3,10 +3,23 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import MediaQuery from 'react-responsive';
 
+import * as actions from '../actions';
+
 import KeyboardShortcutsOnOff from './KeyboardShortcutsOnOff';
 
 export class NavBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.test = this.test.bind(this);
+    }
+    
+    test() {
+        console.log(actions);
+        this.props.dispatch(actions.logOff());
+    }
+
     render() {
+        const loggedIn = Boolean(this.props.api.userScores.name);
         return (
             <div className='nav-bar'>
               <div className={this.props.parent === 'Home'
@@ -18,8 +31,6 @@ export class NavBar extends React.Component {
                    ? "nav-button nav-button-selected" : "nav-button"}>
                 <Link className="nav-text" to="/what-is-this">What is this?</Link>
               </div>
-
-
 
               <MediaQuery minDeviceWidth={800}>
                 {(matches) => {
@@ -37,9 +48,9 @@ export class NavBar extends React.Component {
                 <Link className="nav-text" to="/scores">Scores</Link>
               </div>
 
-              <div className={this.props.parent === 'LogIn'
-                   ? "nav-button nav-button-selected" : "nav-button"}>
-                <Link className="nav-text" to="/log-in-or-register">Log in</Link>
+              <div className={this.props.parent === 'LogIn' ? "nav-button nav-button-selected" : "nav-button"}>
+                {loggedIn ? <a className="nav-text" href="javascript:void(0)" onClick={this.test}>Log off</a>
+                   : <Link className="nav-text" to="/log-in-or-register">Log in</Link>}
               </div>
             </div>
         );
@@ -47,7 +58,8 @@ export class NavBar extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts
+    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
+    api: state.api,
 });
 
 export default connect(mapStateToProps)(NavBar);

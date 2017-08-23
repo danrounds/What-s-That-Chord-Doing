@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Router, Redirect, hashHistory} from 'react-router';
 
 import NavBar from './NavBar';
 import * as actions from '../actions';
@@ -14,11 +15,12 @@ export class LogInOrRegister extends React.Component {
         this.onRegister = this.onRegister.bind(this);
     }
 
+    componentDidUpdate() {
+        console.log(this.props.api.error);
+    }
+
     onLogIn() {
-        // this.props.dispatch(actions.getUserScores(this.name.value, this.password.value));
-        this.props.dispatch(actions.getHighScores('easyMajor'));
-        console.log('logged in');
-        console.log(this.name.value);
+        this.props.dispatch(actions.getUserScores(this.name.value, this.password.value));
     }
 
     onRegister() {
@@ -26,8 +28,6 @@ export class LogInOrRegister extends React.Component {
             this.setState({register: true});
         } else
             console.log('register now');
-        // this.forceUpdate();
-        console.log(this.props.api);
     }
 
     render() {
@@ -35,6 +35,17 @@ export class LogInOrRegister extends React.Component {
         console.log(this.name);
         console.log(this.password);
         console.log(this.passwordConfirm);
+
+        console.log(this.props);
+
+        if (this.props.api.userScores.name) {
+            return (
+                <Router history={hashHistory}>
+                  <Redirect from="log-in-or-register" to="/" />
+                </Router>
+            );
+        }
+
         return (
             <div>
               <NavBar/>
