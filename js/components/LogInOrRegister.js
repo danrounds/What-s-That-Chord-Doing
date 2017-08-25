@@ -17,13 +17,14 @@ export class LogInOrRegister extends React.Component {
     }
 
     onLogIn() {
+        this.setState({ register: false });
         this.props.dispatch(actions.getUserScores(this.name.value, this.password.value));
         return false;           // Keeps page from refreshing
     }
 
     onRegister() {
         if (!this.state.register) {
-            this.setState({ register: true });
+            this.setState({ register: true, statusText: '' });
         } else {
             try {
                 const name = this.name.value, pw = this.password.value,
@@ -68,7 +69,7 @@ export class LogInOrRegister extends React.Component {
             <div>
               <NavBar/>
 
-              <div className="game-mode-string">{this.state.statusText}</div>
+              <div className="log-in-status">{this.state.statusText}</div>
 
               <form className="log-in-and-registration-form">
                 <label>
@@ -83,7 +84,7 @@ export class LogInOrRegister extends React.Component {
                 </label>
 
                 {this.state.register ?
-                    (<label>Confirm password:<br/>
+                    (<label>Confirm password<br/>
                       <input ref={el => { this.passwordConfirm = el; }}
                             type="password" required /><br/>
                      </label>)

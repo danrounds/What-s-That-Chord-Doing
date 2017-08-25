@@ -370,3 +370,42 @@ button:hover {
     text-align: center;
     width: 100%;
 }
+
+.log-in-and-registration-form {
+    font-size: 26px;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+.log-in-and-registration-form input {
+    padding: 0 8px 0 8px;
+    font-size: 24px;
+    height: 34px;
+    width: 100%;
+}
+
+.log-in-and-registration-form input,
+.log-in-and-registration-form label,
+.log-in-and-registration-form button {
+    margin: 5px 0 5px 0;
+}
+
+.log-in-and-registration-form input {
+    margin-bottom: 15px;
+}
+
+.log-in-and-registration-form button {
+    font-size: 14px;
+    padding: 7px 14px 7px 14px;
+}
+
+.log-in-status {
+    color: coral;
+    height: 90px;
+    margin: 30px 5px 10px 5px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: -1px 0 #eee, 0 1px #eee, 1px 0 #eee, 0 1px #eee, 0 -1px;
+}
