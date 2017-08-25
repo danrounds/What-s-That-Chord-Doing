@@ -100,17 +100,6 @@ em {
     padding-right: 7px;
 }
 
-/* .nav-button2 { */
-/*     background-color: #ffe4e1; */
-/*     border-radius: 4px; */
-/*     display: inline-block; */
-/*     font-size: 14px; */
-/*     height: 38px; */
-/*     padding-top: 11px; */
-/*     padding-left: 7px; */
-/*     padding-right: 7px; */
-/* } */
-
 .nav-button:hover {
     background-color: #fff1f0;
 }
@@ -161,10 +150,7 @@ em {
 }
 
 li :focus {
-    /* background-color: lightgreen; */
     background-color: #91f999;
-    /* background-color: coral; */
-    /* background-image: url('brushed-alum.png'); */
 }
 
 .modes-primary {
@@ -176,8 +162,6 @@ li :focus {
 
 .difficultyLvl {
     display: block;
-    /* background-color: coral; */
-    /* background-color: #f88379; */
     background-color: #f99991;
     border-bottom: 1px solid white;
     font-size: 20px;
@@ -189,14 +173,11 @@ li :focus {
 }
 
 .difficultyLvl:focus {
-    /* background-color: #8379f8; */
     background-color: #9991f9;
     color: white;
 }
 
 .difficultyLvl:active {
-    /* background-color: coral; */
-    /* background-color: #f88379; */
     background-color: #f99991;
 }
 
