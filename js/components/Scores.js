@@ -6,7 +6,7 @@ import NavBar from './NavBar';
 export class Scores extends React.Component {
     render() {
         return (
-            <NavBar/>
+            <NavBar parent="Scores"/>
         );
     }
 }

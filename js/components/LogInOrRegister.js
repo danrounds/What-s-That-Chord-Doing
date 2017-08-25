@@ -67,7 +67,7 @@ export class LogInOrRegister extends React.Component {
 
         return (
             <div>
-              <NavBar/>
+              <NavBar parent="LogIn"/>
 
               <div className="log-in-status">{this.state.statusText}</div>
 
