@@ -10,14 +10,14 @@ export class GameModeText extends React.Component {
                 intermediateMinor: 'Intermediate minor, with inversions',
                 hardMajor: 'Hard major, with inversions',
                 hardMinor: 'Hard minor, with inversions',
-                all: 'All our chords, with inversions'}
+                allChords: 'All our chords, with inversions'}
             [this.props.gameType];
         } else {
             return {
                 easyMajor: 'Easy major', easyMinor: 'Easy minor',
                 intermediateMinor: 'Intermediate minor',
                 hardMajor: 'Hard major',
-                hardMinor: 'Hard minor', all: 'All our chords'}
+                hardMinor: 'Hard minor', allChords: 'All our chords'}
             [this.props.gameType];
         }
     }

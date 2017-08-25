@@ -213,7 +213,7 @@ const chordSets = {
     easyMinor: ['i','ii°','♭III','iv','V','♭VI','♭VII'],
     intermediateMinor: ['i','ii°','♭III','iv','V','♭VI','vi','♭VII','vii°'],
     hardMinor: ['i','♭II','ii°','ii','♭III','iv','v','V','♭VI','vi','♭VII','vii°'],
-    all: ['i','I','♭II','ii°','ii','♭III','iii','iv','IV','v','V','♭VI','vi','♭VII','vii°']
+    allChords: ['i','I','♭II','ii°','ii','♭III','iii','iv','IV','v','V','♭VI','vi','♭VII','vii°']
 };
 
 const keys = {
@@ -238,7 +238,7 @@ const chordGetter = {
         const [major, minor] = [keys.major, keys.minor];
         this.ourSubsetOfKeys = {
             easyMajor: major, hardMajor: major, easyMinor: minor,
-            intermediateMinor: minor, hardMinor: minor, all: major
+            intermediateMinor: minor, hardMinor: minor, allChords: major
         }[gameType];
         
         this.pickKey(this.ourSubsetOfKeys, gameType);
@@ -322,7 +322,7 @@ const chordGetter = {
 
     pickKey(keySubset, gameType) {
         this.currentKey = this.getRandom(keySubset);
-        if (['easyMajor', 'hardMajor', 'all'].indexOf(gameType) !== -1) {
+        if (['easyMajor', 'hardMajor', 'allChords'].indexOf(gameType) !== -1) {
             this.keyNameReadable = this.currentKey + ' Major';
             this.keyNameNotation = this.currentKey;
             this.tonality = 'major';
