@@ -32,7 +32,7 @@ const userScoreSchema = mongoose.Schema(
             trim: true,
             unique: true,
             validate: {
-                validator: (str) => /[a-zA-Z0-9_]+/.test(str),
+                validator: (str) => /[a-zA-Z0-9_]+/.exec(str)[0] === str,
                 message: 'Poorly-formed name'
             },
         },

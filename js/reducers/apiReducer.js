@@ -116,7 +116,7 @@ export default (state=initialState, action) => {
     case 'MAKE_USER_ACCOUNT_SUCCESS':
         return {
             highScores: copyHighScores(state.highScores),
-            userScores: copyUserScores(state.userScores),
+            userScores: { name: action.name },
             error: false,
             pending: false,
         };
@@ -124,7 +124,7 @@ export default (state=initialState, action) => {
     case 'MAKE_USER_ACCOUNT_FAILURE':
         return {
             highScores: copyHighScores(state.highScores),
-            userScores: copyUserScores(state.userScores),
+            userScores: {},
             error: action.error,
             pending: false,
         };

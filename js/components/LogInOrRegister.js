@@ -10,34 +10,52 @@ export class LogInOrRegister extends React.Component {
         super(props);
         this.state = {
             register: false,
+            statusText: '',
         };
         this.onLogIn = this.onLogIn.bind(this);
         this.onRegister = this.onRegister.bind(this);
     }
 
-    componentDidUpdate() {
-        console.log(this.props.api.error);
-    }
-
     onLogIn() {
         this.props.dispatch(actions.getUserScores(this.name.value, this.password.value));
+        return false;           // Keeps page from refreshing
     }
 
     onRegister() {
         if (!this.state.register) {
-            this.setState({register: true});
-        } else
-            console.log('register now');
+            this.setState({ register: true });
+        } else {
+            try {
+                const name = this.name.value, pw = this.password.value,
+                      pw_ = this.passwordConfirm.value;
+
+                if (name && pw === pw_) {
+                    const matchingRegEx = /[a-zA-Z0-9_]+/.exec(name) || [];
+                    if (matchingRegEx[0] !== name)
+                        this.setState({ statusText: 'Username should be letters, numbers, and underscores' });
+                    else if (pw.length < 6)
+                        this.setState({ statusText: 'Please choose a password of at least six characters'});
+                    else
+                        this.props.dispatch(actions.makeUserAccount(name, pw));
+                } else if (pw !== pw_)
+                    this.setState({ statusText: 'Passwords don\'t match'});
+            } catch(e) {;;;;}
+        }
+        return false;           // Keeps page from refreshing
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.api.error !== this.props.api.error) {
+            if (nextProps.api.error === 401)
+                this.setState({ statusText: 'Invalid password or username' });
+            else if (nextProps.api.error === 409)
+                this.setState({ statusText: 'Username already exists; try a new one' });
+            else if (nextProps.api.error)            
+                this.setState({ statusText: 'Submit failed; try again' });
+        }
     }
 
     render() {
-        // console.log(this.register);
-        console.log(this.name);
-        console.log(this.password);
-        console.log(this.passwordConfirm);
-
-        console.log(this.props);
-
         if (this.props.api.userScores.name) {
             return (
                 <Router history={hashHistory}>
@@ -50,14 +68,16 @@ export class LogInOrRegister extends React.Component {
             <div>
               <NavBar/>
 
-              <form>
+              <div className="game-mode-string">{this.state.statusText}</div>
+
+              <form className="log-in-and-registration-form">
                 <label>
-                  Name:<br/>
+                  Name<br/>
                   <input ref={el => { this.name = el; }}
                     type="text" autoFocus required /><br/>
                 </label>
                 <label>
-                  Password:<br/>
+                  Password<br/>
                   <input ref={el => { this.password = el; }}
                     type="password" required /><br/>
                 </label>

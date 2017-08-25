@@ -18,7 +18,12 @@ function getReqUserScores(name='joel27', password='abc123') {
     return fetch(userScoreUrl, {
         headers: { Authorization: 'Basic '+ btoa(name + ':' + password)}
     })
-        .then(response => response.json());
+        .then(response => {
+            if (response.ok)
+                return response.json();
+            else
+                throw response.status;
+        });
 }
 
 function putReqUserScores(name='joel27', password='abc123', scores=scores_) {
@@ -30,12 +35,22 @@ function putReqUserScores(name='joel27', password='abc123', scores=scores_) {
         },
         body: JSON.stringify(scores)
     })
-        .then(response => response);
+        .then(response => {
+            if (response.ok)
+                return response.json();
+            else
+                throw response.status;
+        });
 }
 
 function getReqHighScores(gameType='intermediateMinor') {
     return fetch(highScoreUrl+gameType)
-        .then(response => response.json());
+        .then(response => {
+            if (response.ok)
+                return response.json();
+            else
+                throw response.status;
+        });
 }
 
 //////
@@ -44,12 +59,16 @@ function postReqAccount(name='joel29', password='abc123') {
     return fetch(accountsUrl, {
         method: 'POST',
         headers: {
-            Authorization: 'Basic '+ btoa(name + ':' + password),
             'Content-type': 'application/json',
         },
         body: JSON.stringify({ name, password })
     })
-        .then(response => response);
+        .then(response => {
+            if (response.ok)
+                return response;
+            else
+                throw response.status;
+        });
 }
 
 function putReqAccountPassword(name='joel29', password='abc123') {
@@ -61,7 +80,12 @@ function putReqAccountPassword(name='joel29', password='abc123') {
         },
         body: JSON.stringify({ name, password })
     })
-        .then(response => response);
+        .then(response => {
+            if (response.ok)
+                return response;
+            else
+                throw response.status;
+        });
 }
 
 function deleteReqAccount(name='joel29', password='abc123') {
@@ -73,8 +97,12 @@ function deleteReqAccount(name='joel29', password='abc123') {
         },
         body: JSON.stringify({ name })
     })
-        .then(response => response)
-        .then(___ => console.log(___.ok));
+        .then(response => {
+            if (response.ok)
+                return response;
+            else
+                throw response;
+        });
 }
 
 export { getReqUserScores, getReqHighScores, postReqAccount,

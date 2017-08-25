@@ -82,12 +82,13 @@ const getHighScores_ = {
 const makeAccount = {
     makeUserAccount: (name, password) =>
         dispatch => postReqAccount(name, password)
-        .then(() => dispatch(makeAccount.makeUserAccountSuccess()))
-        .catch(() => dispatch(makeAccount.makeUserAccountFailure())),
+        .then(() => dispatch(makeAccount.makeUserAccountSuccess(name)))
+        .catch((e) => dispatch(makeAccount.makeUserAccountFailure(e))),
 
     MAKE_USER_ACCOUNT_SUCCESS: 'MAKE_USER_ACCOUNT_SUCCESS',
-    makeUserAccountSuccess: () => ({
-        type: MAKE_USER_ACCOUNT_SUCCESS
+    makeUserAccountSuccess: (name) => ({
+        type: MAKE_USER_ACCOUNT_SUCCESS,
+        name
     }),
 
     MAKE_USER_ACCOUNT_FAILURE: 'MAKE_USER_ACCOUNT_FAILURE',

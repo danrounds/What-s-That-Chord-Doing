@@ -15,6 +15,7 @@ accountRouter.use(passport.initialize());
 accountRouter.get('*', passport.authenticate('basic', {session: false}), (req, res) => {
     // endpoint for getting all of a user's scores. This is identical to
     // scoreRouter's GET *, and changes should occur at both places at once.
+    
     UserScore
         .findOne({name: req.user.name})
         .then(record => {
@@ -32,22 +33,23 @@ accountRouter.post('*', (req, res) => {
     if (req.body.password.trim().length < 6)
         return res.status(400).json({error: 'Password must be at least six non-whitespace characters long'});
 
-    UserScore.hashPassword(req.body.password)
-        .then(hashed => {
-            UserScore
-                .create({
-                    name: req.body.name,
-                    password: hashed,
-                    scores: {},
-                })
-                .then(() => res.status(201).send())
-                .catch(e => {
-                    if (e.code === 11000)
-                        res.status(409).send();
-                    else
-                        res.status(500).send();
-                });
-        });
+    let exists;
+    UserScore.findOne({name: req.body.name})
+        .then(exists => {
+            if (exists)
+                return res.status(409).send(); // name conflict
+        })
+        .then(() => UserScore.hashPassword(req.body.password)
+              .then(hashed => {
+                  UserScore
+                      .create({
+                          name: req.body.name,
+                          password: hashed,
+                          scores: {},
+                      })
+                      .then(() => res.status(201).send())
+                      .catch(() => res.status(500).json());
+              }));
 });
 
 accountRouter.put('/:name', passport.authenticate('basic', {session: false}), (req, res) => {
