@@ -57,7 +57,7 @@ const getHighScores_ = {
         dispatch => {
             dispatch(getHighScores_.getHighScoresPending());
             return getReqHighScores(gameType)
-                .then(highScores => dispatch(getHighScores_.getHighScoresSuccess(highScores)))
+                .then(highScores => dispatch(getHighScores_.getHighScoresSuccess(highScores, gameType)))
                 .catch((e) => dispatch(getHighScores_.getHighScoresFailure(e)));
         },
 
@@ -67,9 +67,10 @@ const getHighScores_ = {
     }),
 
     GET_HIGH_SCORES_SUCCESS: 'GET_HIGH_SCORES_SUCCESS',
-    getHighScoresSuccess: (highScores) => ({
+    getHighScoresSuccess: (highScores, gameType) => ({
         type: GET_HIGH_SCORES_SUCCESS,
-        highScores
+        highScores,
+        gameType
     }),
 
     GET_HIGH_SCORES_FAILURE: 'GET_HIGH_SCORES_FAILURE',

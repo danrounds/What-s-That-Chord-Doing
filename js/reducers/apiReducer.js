@@ -2,6 +2,7 @@ import * as actions from '../actions/apiActions';
 
 const initialState = {
     highScores: [],
+    lastHighScoreAccessed: null,
     userScores: {},
     error: null,
     pending: null,
@@ -34,6 +35,7 @@ export default (state=initialState, action) => {
     case 'GET_USER_SCORES_PENDING':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: copyUserScores(state.userScores),
             error: false,
             pending: true,
@@ -42,6 +44,7 @@ export default (state=initialState, action) => {
     case 'GET_USER_SCORES_SUCCESS':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: action.scores,
             error: false,
             pending: false,
@@ -51,6 +54,7 @@ export default (state=initialState, action) => {
     case 'LOG_OFF':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: {},
             error: true,
             pending: false,
@@ -59,6 +63,7 @@ export default (state=initialState, action) => {
     case 'GET_USER_SCORES_FAILURE':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: copyUserScores(state.userScores),
             error: action.error,
             pending: false,
@@ -70,6 +75,7 @@ export default (state=initialState, action) => {
     case 'UPDATE_USER_SCORES_SUCCESS':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: copyUserScores(state.userScores),
             error: false,
             pending: false,
@@ -78,6 +84,7 @@ export default (state=initialState, action) => {
     case 'UPDATE_USER_SCORES_FAILURE':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: copyUserScores(state.userScores),
             error: action.error,
             pending: false,
@@ -89,6 +96,7 @@ export default (state=initialState, action) => {
     case 'GET_HIGH_SCORES_PENDING':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: copyUserScores(state.userScores),
             error: false,
             pending: true,
@@ -97,6 +105,7 @@ export default (state=initialState, action) => {
     case 'GET_HIGH_SCORES_SUCCESS':
         return {
             highScores: action.highScores,
+            lastHighScoreAccessed: action.gameType,
             userScores: copyUserScores(state.userScores),
             error: false,
             pending: false,
@@ -105,6 +114,7 @@ export default (state=initialState, action) => {
     case 'GET_HIGH_SCORES_FAILURE':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: copyUserScores(state.userScores),
             error: action.error,
             pending: false,
@@ -116,6 +126,7 @@ export default (state=initialState, action) => {
     case 'MAKE_USER_ACCOUNT_SUCCESS':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: { name: action.name },
             error: false,
             pending: false,
@@ -124,6 +135,7 @@ export default (state=initialState, action) => {
     case 'MAKE_USER_ACCOUNT_FAILURE':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: {},
             error: action.error,
             pending: false,
@@ -135,6 +147,7 @@ export default (state=initialState, action) => {
     case 'CHANGE_USER_PASSWORD_SUCCESS':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: copyUserScores(state.userScores),
             error: false,
             pending: false,
@@ -143,6 +156,7 @@ export default (state=initialState, action) => {
     case 'CHANGE_USER_PASSWORD_FAILURE':
         return {
             highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
             userScores: copyUserScores(state.userScores),
             error: true,
             pending: false,

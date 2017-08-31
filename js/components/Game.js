@@ -19,8 +19,10 @@ export class Game extends React.Component {
         super(props);
         this.handleKey = this.handleKey.bind(this);
         this.getFocus = this.getFocus.bind(this);
-        this.props.dispatch(actions.startNewGame(this.props.mode,
-                                                 this.props.inversions));
+
+        let mode = this.props.mode, inv = this.props.inversions;
+        this.props.dispatch(actions.startNewGame(mode, inv));
+        this.props.dispatch(actions.getHighScores(mode + (inv ? 'Inv' : '')));
     }
 
     componentDidMount() {
