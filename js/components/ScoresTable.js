@@ -7,11 +7,11 @@ export class ScoresTable extends React.Component {
 
     render() {
         if (this.props.api.pending)
-            return <div>'Loading...'</div>;
+            return <div>Loading...</div>;
         else if (!this.props.api.highScores.length)
-            return <div>'No relevant scores posted'</div>;
+            return <div>No relevant scores posted</div>;
         else if (this.props.api.error)
-            return <div>'Error loading scores'</div>;
+            return <div>Error loading scores</div>;
             
         let entries = [];
         const scoresArray = this.props.api.highScores;
