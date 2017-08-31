@@ -70,7 +70,7 @@ export class WhatIsThis extends React.Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(actions.startNewGame('easyMajor', true));
+        this.props.dispatch(actions.startNewGame('easyMajor', false));
         this.current.focus();
     }
 
