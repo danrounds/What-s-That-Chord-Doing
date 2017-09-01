@@ -46,36 +46,36 @@ export class ScoresTable extends React.Component {
     }
 
     processUserScores(key=0) {
-        // These two arrays correspond, [i] for [i]
         const entries = [];
-        const scoreTypes =  ['easyMajor','easyMajorInv','hardMajor','hardMajorInv','easyMinor','easyMinorInv',
-         'intermediateMinor','intermediateMinorInv','hardMinor','hardMinorInv','allChords',
-         'allChordsInv'];
 
-        const scoreTexts = ['Easy major',
-         'Easy major, w/inversions',
-         'Hard major',
-         'Hard major, w/inversions',
-         'Easy minor',
-         'Easy minor, w/inversions',
-         'Intermediate minor',
-         'Intermediate minor, w/inversions',
-         'Hard minor',
-         'Hard minor, w/inversions',
-         'All our chords',
-         'All our chords, w/inversions'];
+        // scoreTypes and scoreTexts correspond, [i] to [i]. scoreTypes is used
+        // as keys for our api.userScores.scores object; scoreTexts is used as
+        // cell values for the `Game Type` column in our scores table:
+        const scoreTypes = [
+            'easyMajor','easyMajorInv','hardMajor','hardMajorInv','easyMinor',
+            'easyMinorInv','intermediateMinor','intermediateMinorInv',
+            'hardMinor','hardMinorInv','allChords','allChordsInv'
+        ];
+
+        const scoreTexts = [
+            'Easy major','Easy major, w/inversions','Hard major',
+            'Hard major, w/inversions','Easy minor','Easy minor, w/inversions',
+            'Intermediate minor','Intermediate minor, w/inversions','Hard minor',
+            'Hard minor, w/inversions','All our chords',
+            'All our chords, w/inversions'
+        ];
 
         for (let i in scoreTypes) {
             if (this.props.api.userScores.scores[scoreTypes[i]]) {
                 let gameType = scoreTexts[i];
                 let { nAnsweredRight, nQuestionNumber, totalClicks, winRatio }
                         = this.props.api.userScores.scores[scoreTypes[i]];
+
                 winRatio = this.processWinRatio(winRatio);
 
-                entries.push(this.rowOutput(gameType,nAnsweredRight,nQuestionNumber,totalClicks,
-                                   winRatio,key++));
-
-                console.log(this.props.api.userScores.scores[scoreTypes[i]]);
+                entries.push(this.rowOutput(gameType, nAnsweredRight,
+                                            nQuestionNumber, totalClicks,
+                                            winRatio, key++));
             }
         }
         return entries;
