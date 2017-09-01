@@ -95,7 +95,7 @@ export class HighScoresDisplay extends React.Component {
                   </div>
               ) : null}
 
-              <ScoresTable />
+              <ScoresTable tableType="highScore"/>
 
             </div>
         );
