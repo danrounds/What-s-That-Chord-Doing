@@ -43,22 +43,22 @@ const userScoreSchema = mongoose.Schema(
         },
         scores: {
             easyMajor: individualScoreSchema,
-            easyMajorInvs: individualScoreSchema,
+            easyMajorInv: individualScoreSchema,
 
             easyMinor: individualScoreSchema,
-            easyMinorInvs: individualScoreSchema,
+            easyMinorInv: individualScoreSchema,
 
             intermediateMinor: individualScoreSchema,
-            intermediateMinorInvs: individualScoreSchema,
+            intermediateMinorInv: individualScoreSchema,
 
             hardMajor: individualScoreSchema,
-            hardMajorInvs: individualScoreSchema,
+            hardMajorInv: individualScoreSchema,
 
             hardMinor: individualScoreSchema,
-            hardMinorInvs: individualScoreSchema,
+            hardMinorInv: individualScoreSchema,
 
             allChords: individualScoreSchema,
-            allChordsInvs: individualScoreSchema,
+            allChordsInv: individualScoreSchema,
 
             type: Object,
             required: true,

@@ -33,10 +33,10 @@ scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}),
     const gameMode = Object.keys(req.body.scores)[0];
     const requestScores = req.body.scores[gameMode];
 
-    if (['easyMajor','easyMajorInvs','easyMinor','easyMinorInvs',
-         'intermediateMinor','intermediateMinorInvs','hardMajor',
-         'hardMajorInvs','hardMinor','hardMinorInvs','allChords',
-         'allChordsInvs'].indexOf(gameMode) === -1) {
+    if (['easyMajor','easyMajorInv','easyMinor','easyMinorInv',
+         'intermediateMinor','intermediateMinorInv','hardMajor',
+         'hardMajorInv','hardMinor','hardMinorInv','allChords',
+         'allChordsInv'].indexOf(gameMode) === -1) {
         return res.status(400).send();
     }
 
