@@ -19,7 +19,7 @@ export class NavBar extends React.Component {
     }
 
     render() {
-        const loggedIn = Boolean(this.props.api.userScores.name);
+        const loggedIn = Boolean(this.props.api.myScores.name);
         return (
             <div className='nav-bar'>
               <div className={this.props.parent === 'Home'

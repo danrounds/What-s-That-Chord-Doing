@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import HighScoresDisplay from './HighScoresDisplay';
-import UserScoresDisplay from './UserScoresDisplay';
+import MyScoresDisplay from './MyScoresDisplay';
 import NavBar from './NavBar';
 import * as actions from '../actions';
 
@@ -12,7 +12,7 @@ export class Scores extends React.Component {
         this.state = { showScores: 'highScores' };
         this.setColor = this.setColor.bind(this);
         this.showHighScores = this.showHighScores.bind(this);
-        this.showUserScores = this.showUserScores.bind(this);
+        this.showMyScores = this.showMyScores.bind(this);
     }
 
     setColor(selected) {
@@ -25,14 +25,9 @@ export class Scores extends React.Component {
         this.setState({ showScores: 'highScores' });
     }
 
-    showUserScores() {
-        this.setState({ showScores: 'userScores' });
+    showMyScores() {
+        this.setState({ showScores: 'myScores' });
     }
-
-    // componentDidMount() {
-    //     this.props.dispatch(actions.getHighScores(this.props.gameType));
-    //     this.props.dispatch(actions.getUserScores('bobby16', 'abc123'));
-    // }
 
     render() {
         return (
@@ -43,12 +38,12 @@ export class Scores extends React.Component {
                 High Scores
               </button>
 
-              <button onClick={this.showUserScores} style={this.setColor('userScores')}>
-                User Scores
+              <button onClick={this.showMyScores} style={this.setColor('myScores')}>
+                My Scores
               </button>
 
               {this.state.showScores === 'highScores' ? <HighScoresDisplay /> : null}
-              {this.state.showScores === 'userScores' ? <UserScoresDisplay /> : null }
+              {this.state.showScores === 'myScores' ? <MyScoresDisplay /> : null }
 
             </div>
         );

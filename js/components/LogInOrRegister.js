@@ -18,7 +18,7 @@ export class LogInOrRegister extends React.Component {
 
     onLogIn() {
         this.setState({ register: false });
-        this.props.dispatch(actions.getUserScores(this.name.value, this.password.value));
+        this.props.dispatch(actions.getMyScores(this.name.value, this.password.value));
         return false;           // Keeps page from refreshing
     }
 
@@ -57,7 +57,7 @@ export class LogInOrRegister extends React.Component {
     }
 
     render() {
-        if (this.props.api.userScores.name) {
+        if (this.props.api.myScores.name) {
             return (
                 <Router history={hashHistory}>
                   <Redirect from="log-in-or-register" to="/" />

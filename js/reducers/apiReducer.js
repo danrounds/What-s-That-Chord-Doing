@@ -3,12 +3,12 @@ import * as actions from '../actions/apiActions';
 const initialState = {
     highScores: [],
     lastHighScoreAccessed: null,
-    userScores: {},
+    myScores: {},
     error: null,
     pending: null,
 };
 
-function copyUserScores(obj) {
+function copyMyScores(obj) {
     // Makes a copy of our userScore entr[y|ies] without mutation
     // Now we know why people use `immutable.js`
     if (!obj.name || !obj.scores)
@@ -25,67 +25,66 @@ function copyUserScores(obj) {
 
 function copyHighScores(oldScores) {
     // Makes a copy of our highScores entry, without mutation
-    return oldScores.map(score => copyUserScores(score));
+    return oldScores.map(score => copyMyScores(score));
 }
 
 // Our reducer for the API interaction part of our app
 export default (state=initialState, action) => {
     switch(action.type) {
 
-    case 'GET_USER_SCORES_PENDING':
+    case 'GET_MY_SCORES_PENDING':
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: copyUserScores(state.userScores),
+            myScores: copyMyScores(state.myScores),
             error: false,
             pending: true,
         };
 
-    case 'GET_USER_SCORES_SUCCESS':
+    case 'GET_MY_SCORES_SUCCESS':
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: action.scores,
+            myScores: action.scores,
             error: false,
             pending: false,
         };
 
+    case 'GET_MY_SCORES_FAILURE':
+        return {
+            highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
+            myScores: copyMyScores(state.myScores),
+            error: action.error,
+            pending: false,
+        };
 
     case 'LOG_OFF':
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: {},
+            myScores: {},
             error: true,
             pending: false,
         };
 
-    case 'GET_USER_SCORES_FAILURE':
-        return {
-            highScores: copyHighScores(state.highScores),
-            lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: copyUserScores(state.userScores),
-            error: action.error,
-            pending: false,
-        };
-
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case 'UPDATE_USER_SCORES_SUCCESS':
+    case 'UPDATE_MY_SCORES_SUCCESS':
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: copyUserScores(state.userScores),
+            myScores: copyMyScores(state.myScores),
             error: false,
             pending: false,
         };
 
-    case 'UPDATE_USER_SCORES_FAILURE':
+    case 'UPDATE_MY_SCORES_FAILURE':
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: copyUserScores(state.userScores),
+            myScores: copyMyScores(state.myScores),
             error: action.error,
             pending: false,
         };
@@ -97,7 +96,7 @@ export default (state=initialState, action) => {
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: copyUserScores(state.userScores),
+            myScores: copyMyScores(state.myScores),
             error: false,
             pending: true,
         };
@@ -106,7 +105,7 @@ export default (state=initialState, action) => {
         return {
             highScores: action.highScores,
             lastHighScoreAccessed: action.gameType,
-            userScores: copyUserScores(state.userScores),
+            myScores: copyMyScores(state.myScores),
             error: false,
             pending: false,
         };
@@ -115,7 +114,7 @@ export default (state=initialState, action) => {
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: copyUserScores(state.userScores),
+            myScores: copyMyScores(state.myScores),
             error: action.error,
             pending: false,
         };
@@ -127,7 +126,7 @@ export default (state=initialState, action) => {
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: { name: action.name },
+            myScores: { name: action.name },
             error: false,
             pending: false,
         };
@@ -136,7 +135,7 @@ export default (state=initialState, action) => {
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: {},
+            myScores: {},
             error: action.error,
             pending: false,
         };
@@ -148,7 +147,7 @@ export default (state=initialState, action) => {
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: copyUserScores(state.userScores),
+            myScores: copyMyScores(state.myScores),
             error: false,
             pending: false,
         };
@@ -157,7 +156,7 @@ export default (state=initialState, action) => {
         return {
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
-            userScores: copyUserScores(state.userScores),
+            myScores: copyMyScores(state.myScores),
             error: true,
             pending: false,
         };

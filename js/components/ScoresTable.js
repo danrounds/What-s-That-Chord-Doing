@@ -8,7 +8,7 @@ export class ScoresTable extends React.Component {
         if (this.props.tableType === 'highScore') {
             if (!this.props.api.highScores.length)
                 return <div>No relevant scores posted</div>;
-        } else if (!Object.keys(this.props.api.userScores).length) {
+        } else if (!Object.keys(this.props.api.myScores).length) {
             return <div>No relevant scores posted</div>;
         }
 
@@ -45,11 +45,11 @@ export class ScoresTable extends React.Component {
         return entries;
     }
 
-    processUserScores(key=0) {
+    processMyScores(key=0) {
         const entries = [];
 
         // scoreTypes and scoreTexts correspond, [i] to [i]. scoreTypes is used
-        // as keys for our api.userScores.scores object; scoreTexts is used as
+        // as keys for our api.myScores.scores object; scoreTexts is used as
         // cell values for the `Game Type` column in our scores table:
         const scoreTypes = [
             'easyMajor','easyMajorInv','hardMajor','hardMajorInv','easyMinor',
@@ -66,10 +66,10 @@ export class ScoresTable extends React.Component {
         ];
 
         for (let i in scoreTypes) {
-            if (this.props.api.userScores.scores[scoreTypes[i]]) {
+            if (this.props.api.myScores.scores[scoreTypes[i]]) {
                 let gameType = scoreTexts[i];
                 let { nAnsweredRight, nQuestionNumber, totalClicks, winRatio }
-                        = this.props.api.userScores.scores[scoreTypes[i]];
+                        = this.props.api.myScores.scores[scoreTypes[i]];
 
                 winRatio = this.processWinRatio(winRatio);
 
@@ -100,7 +100,7 @@ export class ScoresTable extends React.Component {
             entries = this.processHighScores();
             columns = ['Name','# Right','# Total','Guesses:Right','% Right'];
         } else{
-            entries = this.processUserScores();
+            entries = this.processMyScores();
             columns = ['Game type','# Right','# Total','Guesses:Right','% Right'];
         }
 

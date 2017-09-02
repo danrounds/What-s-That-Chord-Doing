@@ -3,28 +3,28 @@ import { getReqUserScores, getReqHighScores, postReqAccount,
 from '../apiCalls';
 
 const getScores = {
-    getUserScores: (name, password) =>
+    getMyScores: (name, password) =>
         dispatch => {
-            dispatch(getScores.getUserScoresPending());
+            dispatch(getScores.getMyScoresPending());
             return getReqUserScores(name, password)
-                .then(scores => dispatch(getScores.getUserScoresSuccess(scores)))
-                .catch((e) => dispatch(getScores.getUserScoresFailure(e)));
+                .then(scores => dispatch(getScores.getMyScoresSuccess(scores)))
+                .catch((e) => dispatch(getScores.getMyScoresFailure(e)));
         },
 
-    GET_USER_SCORES_PENDING: 'GET_USER_SCORES_PENDING',
-    getUserScoresPending: () => ({
-        type: GET_USER_SCORES_PENDING
+    GET_MY_SCORES_PENDING: 'GET_MY_SCORES_PENDING',
+    getMyScoresPending: () => ({
+        type: GET_MY_SCORES_PENDING
     }),
 
-    GET_USER_SCORES_SUCCESS: 'GET_USER_SCORES_SUCCESS',
-    getUserScoresSuccess: (scores) => ({
-        type: GET_USER_SCORES_SUCCESS,
+    GET_MY_SCORES_SUCCESS: 'GET_MY_SCORES_SUCCESS',
+    getMyScoresSuccess: (scores) => ({
+        type: GET_MY_SCORES_SUCCESS,
         scores
     }),
 
-    GET_USER_SCORES_FAILURE: 'GET_USER_SCORES_FAILURE',
-    getUserScoresFailure: (error) => ({
-        type: GET_USER_SCORES_FAILURE,
+    GET_MY_SCORES_FAILURE: 'GET_MY_SCORES_FAILURE',
+    getMyScoresFailure: (error) => ({
+        type: GET_MY_SCORES_FAILURE,
         error
     }),
 };
@@ -35,19 +35,19 @@ export const logOff = () => ({
 });
 
 const updateScores = {
-    updateUserScores: (name, password, scores) =>
+    updateMyScores: (name, password, scores) =>
         dispatch => putReqUserScores(name, password, scores)
-        .then(() => dispatch(updateScores.updateUserScoresSuccess(scores)))
-        .catch((e) => dispatch(updateScores.updateUserScoresFailure(e))),
+        .then(() => dispatch(updateScores.updateMyScoresSuccess(scores)))
+        .catch((e) => dispatch(updateScores.updateMyScoresFailure(e))),
 
-    UPDATE_USER_SCORES_SUCCESS: 'UPDATE_USER_SCORES_SUCCESS',
-    updateUserScoresSuccess: () => ({
-        type: UPDATE_USER_SCORES_SUCCESS
+    UPDATE_MY_SCORES_SUCCESS: 'UPDATE_MY_SCORES_SUCCESS',
+    updateMyScoresSuccess: () => ({
+        type: UPDATE_MY_SCORES_SUCCESS
     }),
 
-    UPDATE_USER_SCORES_FAILURE: 'UPDATE_USER_SCORES_FAILURE',
-    updateUserScoresFailure: (error) => ({
-        type: UPDATE_USER_SCORES_FAILURE,
+    UPDATE_MY_SCORES_FAILURE: 'UPDATE_MY_SCORES_FAILURE',
+    updateMyScoresFailure: (error) => ({
+        type: UPDATE_MY_SCORES_FAILURE,
         error
     }),
 };
@@ -124,13 +124,13 @@ const changePass = {
 
 // We end up with a bit more code by grouping associated actions together, but
 // it at least tells us which goes with which
-export const { getUserScores, GET_USER_SCORES_PENDING, getUserScoresPending,
-               GET_USER_SCORES_SUCCESS, getUserScoresSuccess,
-               GET_USER_SCORES_FAILURE, getUserScoresFailure } = getScores;
+export const { getMyScores, GET_MY_SCORES_PENDING, getMyScoresPending,
+               GET_MY_SCORES_SUCCESS, getMyScoresSuccess,
+               GET_MY_SCORES_FAILURE, getMyScoresFailure } = getScores;
 
-export const { updateUserScores, UPDATE_USER_SCORES_SUCCESS,
-               updateUserScoresSuccess, UPDATE_USER_SCORES_FAILURE,
-               updateUserScoresFailure } = updateScores;
+export const { updateMyScores, UPDATE_MY_SCORES_SUCCESS,
+               updateMyScoresSuccess, UPDATE_MY_SCORES_FAILURE,
+               updateMyScoresFailure } = updateScores;
 
 export const { getHighScores, GET_HIGH_SCORES_PENDING, getHighScoresPending,
                GET_HIGH_SCORES_SUCCESS, getHighScoresSuccess,
