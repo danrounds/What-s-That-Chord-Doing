@@ -10,11 +10,10 @@ import KeyboardShortcutsOnOff from './KeyboardShortcutsOnOff';
 export class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.test = this.test.bind(this);
+        this.logOff = this.logOff.bind(this);
     }
     
-    test() {
-        console.log(actions);
+    logOff() {
         this.props.dispatch(actions.logOff());
     }
 
@@ -49,7 +48,7 @@ export class NavBar extends React.Component {
               </div>
 
               <div className={this.props.parent === 'LogIn' ? "nav-button nav-button-selected" : "nav-button"}>
-                {loggedIn ? <a className="nav-text" href="javascript:void(0)" onClick={this.test}>Log off</a>
+                {loggedIn ? <a className="nav-text" href="javascript:void(0)" onClick={this.logOff}>Log off</a>
                    : <Link className="nav-text" to="/log-in-or-register">Log in</Link>}
               </div>
             </div>
