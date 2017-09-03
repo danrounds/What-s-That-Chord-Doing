@@ -7,7 +7,7 @@ export class StartNewGame extends React.Component {
     constructor(props) {
         super(props);
         this.startNewGame = this.startNewGame.bind(this);
-        this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
+        this.state = { showKeyboardShortcuts: this.props.displayKeyboardShortcuts };
         // /\ this is kept as a "last state" variable, and compared to props
         // in the event that it changes
     }
@@ -21,9 +21,8 @@ export class StartNewGame extends React.Component {
         } else if (this.props.keyValue === 'Enter' && this.props.gameOver) {
             this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                      this.props.inversions));
-        } else if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts) {
-            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
-            this.forceUpdate();
+        } else if (this.state.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts) {
+            this.setState({ showKeyboardShortcuts: this.props.displayKeyboardShortcuts });
         }
     }
 
