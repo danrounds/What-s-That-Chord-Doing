@@ -6,7 +6,7 @@ export class PlayAudio extends React.Component {
     // to a new question, and when the player has answered a question correctly
     constructor(props) {
         super(props);
-        this.playPrompt = this.playPrompt.bind(this);
+        this.replayPrompt = this.replayPrompt.bind(this);
         this.playIntroChordsAndPrompt = this.playIntroChordsAndPrompt.bind(this);
         this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
         // /\ this is kept as a "last state" variable, and compared to props
@@ -33,8 +33,10 @@ export class PlayAudio extends React.Component {
 
     playIntroChordsAndPrompt() {
         // This plays a chord progression (I-IV-V-I or i-iv-V-i) to introduce
-        // our key and then plays the question prompt (playPrompt())
+        // our key and then plays the question prompt
         let timeOffset = 0;
+
+        // Prompt (I-IV-V-I)
         this.props.instrument.then(piano => {
             piano.stop();
             for (let chord of this.props.introChordSequence) {
@@ -43,18 +45,24 @@ export class PlayAudio extends React.Component {
                 }
                 timeOffset += 0.68;
             }
-            this.playPrompt(null, null, 3.5);
+            // Question chord
+            this.props.instrument.then(piano => {
+                for (let i of this.props.answer) {
+                    piano.play(i, this.props.ac.currentTime + timeOffset, {duration: 0.68});
+                }
+            });
         });
     }
 
-    playPrompt(null_, null__, timeOffset=0) {
-        // This plays the actual "question" chord. It also plays after the
+    replayPrompt(null_, null__, timeOffset=0) {
+        // This replays the actual "question" chord. It also plays after the
         // player has made a correct guess.
         // Weird function signature is due to a quirk of our version of React,
         // in which superfluous (for our purposes) arguments are sent to
         // functions called by React with onClick. Documented: 
         // https://github.com/facebook/react/issues/8354
         this.props.instrument.then(piano => {
+            piano.stop();
             for (let i of this.props.answer) {
                 piano.play(i, this.props.ac.currentTime + timeOffset, {duration: 0.68});
             }
@@ -64,13 +72,13 @@ export class PlayAudio extends React.Component {
     playSounds() {
         if (!this.props.keyPress) {
             if (this.props.answeredCorrectly)
-                this.playPrompt();
+                this.replayPrompt();
             else if (!this.props.guessN)
                 this.playIntroChordsAndPrompt();
         } else if (this.props.keyPress === ',') {
             this.playIntroChordsAndPrompt();
         } else if (this.props.keyPress === '.') {
-            this.playPrompt();
+            this.replayPrompt();
         }
     }
 
@@ -83,7 +91,7 @@ export class PlayAudio extends React.Component {
                     ? <div className="keyHint miniKeyHintDiv">,</div>
                 : null}
               </button>
-              <button onClick={this.playPrompt}>
+              <button onClick={this.replayPrompt}>
                 Play chord again<br/>
                 {this.props.displayKeyboardShortcuts
                     ? <div className="keyHint miniKeyHintDiv">.</div>

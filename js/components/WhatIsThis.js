@@ -70,6 +70,7 @@ export class WhatIsThis extends React.Component {
     }
 
     componentDidMount() {
+        this.props.instrument.then(piano => piano.stop());
         this.props.dispatch(actions.startNewGame('easyMajor', false));
         this.current.focus();
     }

@@ -45,6 +45,10 @@ export class LogInOrRegister extends React.Component {
         return false;           // Keeps page from refreshing
     }
 
+    componentDidMount() {
+        this.props.instrument.then(piano => piano.stop());
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.api.error !== this.props.api.error) {
             if (nextProps.api.error === 401)

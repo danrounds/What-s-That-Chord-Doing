@@ -10,9 +10,7 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
-        this.props.instrument.then(piano => {
-            piano.stop();
-        });
+        this.props.instrument.then(piano => piano.stop());
     }
 
     render(props) {

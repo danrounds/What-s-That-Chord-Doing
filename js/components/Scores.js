@@ -29,6 +29,10 @@ export class Scores extends React.Component {
         this.setState({ showScores: 'myScores' });
     }
 
+    componentDidMount() {
+        this.props.instrument.then(piano => piano.stop());
+    }
+
     render() {
         return (
             <div>
