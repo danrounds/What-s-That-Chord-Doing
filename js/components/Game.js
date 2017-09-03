@@ -22,7 +22,6 @@ export class Game extends React.Component {
 
         let mode = this.props.mode, inv = this.props.inversions;
         this.props.dispatch(actions.startNewGame(mode, inv));
-        this.props.dispatch(actions.getHighScores(mode + (inv ? 'Inv' : '')));
     }
 
     componentDidMount() {
