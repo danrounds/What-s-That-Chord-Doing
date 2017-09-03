@@ -48,16 +48,22 @@ export class Status extends React.Component {
                       Game over! Press&nbsp;
                       <span className="keyHint">ENTER</span> to&nbsp;
                       <a className="game-link" href="javascript:void(0)"
-                         onClick={() => this.props.dispatch(
-                        actions.startNewGame(this.props.mode,this.props.inversions))}>
+                         onClick={() => {
+                             this.props.dispatch(
+                                 actions.startNewGame(this.props.mode,this.props.inversions));
+                             this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+                        }}>
                         play again
                       </a>
                     </div>);
             else
                 return (
-                    <div>Game over! <a className="game-link" href="javascript:void(0)"
-                                       onClick={() => this.props.dispatch(
-                        actions.startNewGame(this.props.mode,this.props.inversions))}>
+                    <div>Game over!&nbsp;
+                      <a className="game-link" href="javascript:void(0)"
+                         onClick={
+                             () => {this.props.dispatch(actions.startNewGame(this.props.mode,this.props.inversions));
+                                    this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+                        }}>
                         Play again?
                     </a></div>);
         } else if (this.props.answeredCorrectly) {

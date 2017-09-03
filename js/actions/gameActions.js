@@ -24,9 +24,14 @@ export const startNewGame = (gameType, inversions) => {
             chordGetter.init(gameType, inversions);
     let {chordName, currentChordNumeral, bassNote, trebleNotes, accidentals} =
             chordGetter.getChord();
+    let gameNumber = Math.random() * Math.pow(2,52) | 0;
+    // ^ This is not a seed number; it's merely a[n ostensibly] unique
+    // identifier, that we'll used to decide whether components should update
+
     return {
         type: START_NEW_GAME,
         gameType,
+        gameNumber,
         inversions,
         keyNameReadable,
         keyNameNotation,

@@ -17,6 +17,12 @@ export class PlayAudio extends React.Component {
         this.playSounds();
     }
 
+    shouldComponentUpdate(nextProps) {
+        return ([',','.',' '].indexOf(nextProps.keyPress) !== -1)
+            || this.props.questionNumber !== nextProps.questionNumber
+            || this.props.gameNumber !== nextProps.gameNumber;
+    }
+
     componentDidUpdate() {
         if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts)
             this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
@@ -94,12 +100,14 @@ const mapStateToProps = (state, props) => {
     return {
         keyPress: state.game.keyValue,
         displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
+        gameNumber: state.game.gameNumber,
         answer: notes.bass ? [notes.bass, ...notes.treble].map(
             processNotes) : [],
         introChordSequence: state.game.introChordSequence.map(
             (array) => array.map(processNotes)),
         guessN: state.game.guessN,
-        answeredCorrectly: state.game.answeredCorrectly
+        answeredCorrectly: state.game.answeredCorrectly,
+        questionNumber: state.game.questionNumber,
     };
 };
 

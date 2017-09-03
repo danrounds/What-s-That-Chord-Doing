@@ -14,13 +14,15 @@ export class StartNewGame extends React.Component {
 
     componentDidUpdate() {
         if (this.props.keyValue === 'Control Enter') {
-            if (this.props.gameOver || this.props.firstQ || this.prompt())
+            if (this.props.gameOver || this.props.firstQ || this.prompt()) {
                 this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                          this.props.inversions));
-
+                this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+            }
         } else if (this.props.keyValue === 'Enter' && this.props.gameOver) {
             this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                      this.props.inversions));
+            this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
         } else if (this.state.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts) {
             this.setState({ showKeyboardShortcuts: this.props.displayKeyboardShortcuts });
         }
@@ -31,9 +33,11 @@ export class StartNewGame extends React.Component {
     }
 
     startNewGame() {
-        if (this.props.gameOver || this.props.firstQ || this.prompt())
+        if (this.props.gameOver || this.props.firstQ || this.prompt()) {
             this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                      this.props.inversions));
+            this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+        }
     }
 
     render() {
