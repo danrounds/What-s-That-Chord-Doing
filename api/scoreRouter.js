@@ -28,8 +28,6 @@ scoreRouter.get('/my-scores*', passport.authenticate('basic', {session: false}),
 scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}), (req, res) => {
     // Endpoint for updating individual user scores
     // Intent is to only submit one gameMode of updated scores, at once
-    console.log('req.body.scores');
-    console.log(req.body.scores);
     const gameMode = Object.keys(req.body.scores)[0];
     const requestScores = req.body.scores[gameMode];
 
