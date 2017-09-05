@@ -4,6 +4,14 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 export class SubmitHighScores extends React.Component {
+    // Our method of updating high scores at the server involves taking the
+    // .api data we retrieved when we started our game and augmenting it with
+    // the data we generated during the game.
+    //
+    // This is non-robust, in the sense that if (for some reason) we had two
+    // games going on different computers/in different browsers, we could
+    // generate conflicting data
+
     constructor() {
         super();
         this.state = { submitted: false };
