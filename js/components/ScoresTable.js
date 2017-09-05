@@ -21,11 +21,16 @@ export class ScoresTable extends React.Component {
     }
 
     processWinRatio(winRatio) {
-        winRatio = String(winRatio * 100 || '').split('.');
-        if (winRatio.length === 2)
-            winRatio = [winRatio[0], '.', winRatio[1].substr(0,2)].join('');
-        return winRatio;
+        return this.processPercentDisplay(winRatio * 100);
     }
+
+    processPercentDisplay(number=String(number || '').split('.')) {
+        number = String(number || '').split('.');
+        if (number.length === 2)
+            number = [number[0], '.', number[1].substr(0,2)].join('');
+        return number;
+    }
+
 
     processHighScores(key=0) {
         const entries = [];
@@ -38,9 +43,12 @@ export class ScoresTable extends React.Component {
             let name = scoresArray[i].name;
             let { nAnsweredRight, nQuestionNumber, totalClicks, winRatio }
                     = scoresArray[i].scores[mode];
+
             winRatio = this.processWinRatio(winRatio);
+            let clicksPerRight = this.processPercentDisplay(winRatio/totalClicks);
+
             entries.push(this.rowOutput(name,nAnsweredRight,nQuestionNumber,
-                                        totalClicks,winRatio,key++));
+                                        clicksPerRight,winRatio,key++));
         }
         return entries;
     }
@@ -72,20 +80,26 @@ export class ScoresTable extends React.Component {
                         = this.props.api.myScores.scores[scoreTypes[i]];
 
                 winRatio = this.processWinRatio(winRatio);
+                let clicksPerRight = this.processPercentDisplay(winRatio/totalClicks);
 
                 entries.push(this.rowOutput(gameType, nAnsweredRight,
-                                            nQuestionNumber, totalClicks,
+                                            nQuestionNumber, clicksPerRight,
                                             winRatio, key++));
             }
         }
         return entries;
     }
 
-    rowOutput(nameOrGameType, nAnsweredRight, nQuestionNumber, totalClicks, winRatio, key) {
+    rowOutput(nameOrGameType, nAnsweredRight, nQuestionNumber, clicksPerRight, winRatio, key) {
         return (
             <tr key={key++}>
-              {[nameOrGameType,nAnsweredRight,nQuestionNumber,totalClicks,winRatio]
-              .map((el) => <th key={key++}>{el}</th>)}
+                {[
+                    nameOrGameType,
+                    nAnsweredRight,
+                    nQuestionNumber,
+                    clicksPerRight,
+                    winRatio
+                ].map((el) => <th key={key++}>{el}</th>)}
             </tr>
         );
     }
@@ -98,10 +112,10 @@ export class ScoresTable extends React.Component {
         let columns, entries;
         if (this.props.tableType === 'highScore') {
             entries = this.processHighScores();
-            columns = ['Name','# Right','# Total','Guesses:Right','% Right'];
+            columns = ['Name','?s Right','?s Total','Guesses:Right Answer','% Right'];
         } else{
             entries = this.processMyScores();
-            columns = ['Game type','# Right','# Total','Guesses:Right','% Right'];
+            columns = ['Game type','?s Right','?s Total','Guesses:Right Answer','% Right'];
         }
 
         return (
