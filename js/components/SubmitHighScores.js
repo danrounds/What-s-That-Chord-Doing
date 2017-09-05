@@ -12,8 +12,14 @@ export class SubmitHighScores extends React.Component {
     submitHighScores(props) {
         const gameMode = props.gameType + (props.inv ? 'Inv' : '');
 
-        let { totalClicks, nAnsweredRight, nQuestionNumber }
-                = props.api.myScores.scores[gameMode];
+        const scoresObj = props.api.myScores.scores;
+        totalClicks = nAnsweredRight = nQuestionNumber = 0;
+        if (scoresObj)
+            if (scoresObj[gameMode])
+                var { totalClicks, nAnsweredRight, nQuestionNumber }
+                        = scoresObj[gameMode];
+        // function-level variable necessary, here
+
         totalClicks += props.clicksPerRightAnswer.reduce((a,b) => a + b);
         nAnsweredRight += props.nAnsweredRight;
         nQuestionNumber += 10;
