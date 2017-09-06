@@ -409,3 +409,41 @@ button:hover {
     text-align: center;
     text-shadow: -1px 0 #eee, 0 1px #eee, 1px 0 #eee, 0 1px #eee, 0 -1px;
 }
+
+.scores-btn-div {
+    height: 150px;
+}
+
+.scores-container {
+    margin-top: 50px;
+}
+
+.scores-err-txt {
+    width: 300px;
+    margin: 50px auto 0 auto;
+}
+
+table {
+    font-size: 13px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead {
+    font-weight: bold;
+}
+
+thead tr th {
+    background-color: lightgreen;
+    vertical-align: text-bottom;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

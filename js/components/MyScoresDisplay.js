@@ -11,7 +11,7 @@ export class MyScoresDisplay extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="scores-btn-div">
               <ScoresTable tableType="myScores" />
             </div>
         );

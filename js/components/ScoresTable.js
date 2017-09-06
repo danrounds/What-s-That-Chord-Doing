@@ -9,15 +9,15 @@ export class ScoresTable extends React.Component {
     errorCheck() {
         if (this.props.tableType === 'highScore') {
             if (!this.props.api.highScores.length)
-                return <div>No relevant scores posted</div>;
+                return 'No relevant scores posted';
         } else if (!Object.keys(this.props.api.myScores).length) {
-            return <div>No relevant scores posted</div>;
+            return 'No relevant scores posted';
         }
 
         if (this.props.api.pending)
-            return <div>Loading...</div>;
+            return 'Loading...';
         else if (this.props.api.error)
-            return <div>Error loading scores</div>;
+            return 'Error loading scores';
 
         return false;
     }
@@ -109,19 +109,19 @@ export class ScoresTable extends React.Component {
     render() {
         const error = this.errorCheck();
         if (error)
-            return error;
+            return <div className="scores-err-txt">{error}</div>;
 
         let columns, entries;
         if (this.props.tableType === 'highScore') {
             entries = this.processHighScores();
-            columns = ['Name','?s Right','?s Total','Guesses:Right Answer','% Right'];
+            columns = ['Name','?s Right','?s Total','Guesses per Right Answer','% Right'];
         } else{
             entries = this.processMyScores();
-            columns = ['Game type','?s Right','?s Total','Guesses:Right Answer','% Right'];
+            columns = ['Game type','?s Right','?s Total','Guesses per Right Answer','% Right'];
         }
 
         return (
-            <table style={{width: '100%'}}>
+            <table className="scores-container">
               <thead>
                 <tr>{columns.map((el) => <th key={el}>{el}</th>)}</tr>
               </thead>

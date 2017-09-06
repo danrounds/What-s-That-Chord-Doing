@@ -63,38 +63,39 @@ export class HighScoresDisplay extends React.Component {
         return (
             <div>
 
-              Chord subsets
-              <button onClick={() => this.clickBigButton('major')} style={this.bigButtonIsSelected('major')}>Major</button>
-              <button onClick={() => this.clickBigButton('minor')} style={this.bigButtonIsSelected('minor')}>Minor</button>
-              <button onClick={() => this.clickBigButton('all')} style={this.bigButtonIsSelected('all')}>All our chords</button>
+              <div className="scores-btn-div"> 
+                Chord subsets
+                <button onClick={() => this.clickBigButton('major')} style={this.bigButtonIsSelected('major')}>Major</button>
+                <button onClick={() => this.clickBigButton('minor')} style={this.bigButtonIsSelected('minor')}>Minor</button>
+                <button onClick={() => this.clickBigButton('all')} style={this.bigButtonIsSelected('all')}>All our chords</button>
+                
+                {this.state.showButtonSubset === 'major' && (
+                    <div>
+                      <button onClick={() => this.trigger('easyMajor', false)} style={this.isTriggered('easyMajor')}>Easy</button>
+                      <button onClick={() => this.trigger('easyMajor', true)} style={this.isTriggered('easyMajorInv')}>Easy, inversions</button>
+                      <button onClick={() => this.trigger('hardMajor', false)} style={this.isTriggered('hardMajor')}>Hard</button>
+                      <button onClick={() => this.trigger('hardMajor', true)} style={this.isTriggered('hardMajorInv')}>Hard, inversions</button>
+                    </div>
+                )}
 
-              {this.state.showButtonSubset === 'major' && (
-                  <div>
-                    <button onClick={() => this.trigger('easyMajor', false)} style={this.isTriggered('easyMajor')}>Easy</button>
-                    <button onClick={() => this.trigger('easyMajor', true)} style={this.isTriggered('easyMajorInv')}>Easy, inversions</button>
-                    <button onClick={() => this.trigger('hardMajor', false)} style={this.isTriggered('hardMajor')}>Hard</button>
-                    <button onClick={() => this.trigger('hardMajor', true)} style={this.isTriggered('hardMajorInv')}>Hard, inversions</button>
-                  </div>
-              )}
+                {this.state.showButtonSubset === 'minor' && (
+                    <div>
+                      <button onClick={() => this.trigger('easyMinor', false)} style={this.isTriggered('easyMinor')}>Easy</button>
+                      <button onClick={() => this.trigger('easyMinor', true)}  style={this.isTriggered('easyMinorInv')}>Easy, inversions</button>
+                      <button onClick={() => this.trigger('intermediateMinor', false)} style={this.isTriggered('intermediateMinor')}>Intermediate</button>
+                      <button onClick={() => this.trigger('intermediateMinor', true)} style={this.isTriggered('intermediateMinorInv')}>Intermediate, inversions</button>
+                      <button onClick={() => this.trigger('hardMinor', false)} style={this.isTriggered('hardMinor')}>Hard</button>
+                      <button onClick={() => this.trigger('hardMinor', true)} style={this.isTriggered('hardMinorInv')}>Hard, inversions</button>
+                    </div>
+                )}
 
-              {this.state.showButtonSubset === 'minor' && (
-                  <div>
-                    <button onClick={() => this.trigger('easyMinor', false)} style={this.isTriggered('easyMinor')}>Easy</button>
-                    <button onClick={() => this.trigger('easyMinor', true)}  style={this.isTriggered('easyMinorInv')}>Easy, inversions</button>
-                    <button onClick={() => this.trigger('intermediateMinor', false)} style={this.isTriggered('intermediateMinor')}>Intermediate</button>
-                    <button onClick={() => this.trigger('intermediateMinor', true)} style={this.isTriggered('intermediateMinorInv')}>Intermediate, inversions</button>
-                    <button onClick={() => this.trigger('hardMinor', false)} style={this.isTriggered('hardMinor')}>Hard</button>
-                    <button onClick={() => this.trigger('hardMinor', true)} style={this.isTriggered('hardMinorInv')}>Hard, inversions</button>
-                  </div>
-              )}
-
-              {this.state.showButtonSubset === 'all' && (
-                  <div>
-                    <button onClick={() => this.trigger('allChords', false)} style={this.isTriggered('allChords')}>All our chords</button>
-                    <button onClick={() => this.trigger('allChords', true)} style={this.isTriggered('allChordsInv')}>All our chord, inversions</button>
-                  </div>
-              )}
-
+                  {this.state.showButtonSubset === 'all' && (
+                      <div>
+                        <button onClick={() => this.trigger('allChords', false)} style={this.isTriggered('allChords')}>All our chords</button>
+                        <button onClick={() => this.trigger('allChords', true)} style={this.isTriggered('allChordsInv')}>All our chord, inversions</button>
+                      </div>
+                  )}
+              </div>
               <ScoresTable tableType="highScore"/>
 
             </div>
