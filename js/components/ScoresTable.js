@@ -7,18 +7,17 @@ export class ScoresTable extends React.Component {
     // This outputs the actual <table>SCORES</table> for our scores--
     // i.e. <table/>, in the HTML sense
     errorCheck() {
+        if (this.props.api.pending)
+            return 'Loading...';
+        else if (this.props.api.error)
+            return 'Error loading scores';
+
         if (this.props.tableType === 'highScore') {
             if (!this.props.api.highScores.length)
                 return 'No relevant scores posted';
         } else if (!Object.keys(this.props.api.myScores).length) {
             return 'No relevant scores posted';
         }
-
-        if (this.props.api.pending)
-            return 'Loading...';
-        else if (this.props.api.error)
-            return 'Error loading scores';
-
         return false;
     }
 
