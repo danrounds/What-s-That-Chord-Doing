@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import * as actions from '../actions';
 
 export class LogInOrRegister extends React.Component {
+    // Log-in/Registration "page" endpoint. /log-in-or-register endpoint
     constructor(props) {
         super(props);
         this.state = {
@@ -14,6 +15,21 @@ export class LogInOrRegister extends React.Component {
         };
         this.onLogIn = this.onLogIn.bind(this);
         this.onRegister = this.onRegister.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.instrument.then(piano => piano.stop());
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.api.error !== this.props.api.error) {
+            if (nextProps.api.error === 401)
+                this.setState({ statusText: 'Invalid password or username' });
+            else if (nextProps.api.error === 409)
+                this.setState({ statusText: 'Username already exists; try a new one' });
+            else if (nextProps.api.error)            
+                this.setState({ statusText: 'Submit failed; try again' });
+        }
     }
 
     onLogIn() {
@@ -40,24 +56,9 @@ export class LogInOrRegister extends React.Component {
                         this.props.dispatch(actions.makeUserAccount(name, pw));
                 } else if (pw !== pw_)
                     this.setState({ statusText: 'Passwords don\'t match'});
-            } catch(e) {;;;;}
+            } catch(e) {;}      // swallow .reference for undefined
         }
         return false;           // Keeps page from refreshing
-    }
-
-    componentDidMount() {
-        this.props.instrument.then(piano => piano.stop());
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.api.error !== this.props.api.error) {
-            if (nextProps.api.error === 401)
-                this.setState({ statusText: 'Invalid password or username' });
-            else if (nextProps.api.error === 409)
-                this.setState({ statusText: 'Username already exists; try a new one' });
-            else if (nextProps.api.error)            
-                this.setState({ statusText: 'Submit failed; try again' });
-        }
     }
 
     render() {
@@ -103,7 +104,7 @@ export class LogInOrRegister extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     api: state.api,
 });
 

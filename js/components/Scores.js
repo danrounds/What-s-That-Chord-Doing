@@ -7,6 +7,8 @@ import NavBar from './NavBar';
 import * as actions from '../actions';
 
 export class Scores extends React.Component {
+    // This is the component associated with our /scores endpoint--i.e.,
+    // the component that displays when we click "Scores," on our NavBar
     constructor() {
         super();
         this.state = { showScores: 'highScores' };
@@ -46,15 +48,15 @@ export class Scores extends React.Component {
                 My Scores
               </button>
 
-              {this.state.showScores === 'highScores' ? <HighScoresDisplay /> : null}
-              {this.state.showScores === 'myScores' ? <MyScoresDisplay /> : null }
+              {this.state.showScores === 'highScores' && <HighScoresDisplay />}
+              {this.state.showScores === 'myScores' && <MyScoresDisplay />}
 
             </div>
         );
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     gameType: state.game.gameType || 'allChords',
     api: state.api,
 });

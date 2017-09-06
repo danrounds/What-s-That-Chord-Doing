@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 export class ScoresTable extends React.Component {
+    // This outputs the actual <table>SCORES</table> for our scores--
+    // i.e. <table/>, in the HTML sense
     errorCheck() {
         if (this.props.tableType === 'highScore') {
             if (!this.props.api.highScores.length)
@@ -129,7 +131,7 @@ export class ScoresTable extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     api: state.api,
 });
 

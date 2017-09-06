@@ -14,6 +14,18 @@ export class HighScoresDisplay extends React.Component {
         this.trigger = this.trigger.bind(this);
     }
 
+    componentDidMount(gT=this.props.gameType) {
+        this.props.dispatch(actions.getHighScores(
+            this.props.gameType + (this.props.inv ? 'Inv' : '')));
+
+        if (/Minor/.test(gT))
+            this.setState({ showButtonSubset: 'minor' });
+        else if (/Major/.test(gT))
+            this.setState({ showButtonSubset: 'major' });
+        else
+            this.setState({ showButtonSubset: 'all' });
+    }
+
     bigButtonIsSelected(selected) {
         if (selected === this.state.showButtonSubset)
             return { backgroundColor: 'orange' };
@@ -47,18 +59,6 @@ export class HighScoresDisplay extends React.Component {
         this.props.dispatch(actions.getHighScores(mode + (inversions ? 'Inv' : '')));
     }
 
-    componentDidMount(gT=this.props.gameType) {
-        this.props.dispatch(actions.getHighScores(
-            this.props.gameType + (this.props.inv ? 'Inv' : '')));
-
-        if (/Minor/.test(gT))
-            this.setState({ showButtonSubset: 'minor' });
-        else if (/Major/.test(gT))
-            this.setState({ showButtonSubset: 'major' });
-        else
-            this.setState({ showButtonSubset: 'all' });
-    }
-
     render() {
         return (
             <div>
@@ -68,16 +68,16 @@ export class HighScoresDisplay extends React.Component {
               <button onClick={() => this.clickBigButton('minor')} style={this.bigButtonIsSelected('minor')}>Minor</button>
               <button onClick={() => this.clickBigButton('all')} style={this.bigButtonIsSelected('all')}>All our chords</button>
 
-              {this.state.showButtonSubset === 'major' ? (
+              {this.state.showButtonSubset === 'major' && (
                   <div>
                     <button onClick={() => this.trigger('easyMajor', false)} style={this.isTriggered('easyMajor')}>Easy</button>
                     <button onClick={() => this.trigger('easyMajor', true)} style={this.isTriggered('easyMajorInv')}>Easy, inversions</button>
                     <button onClick={() => this.trigger('hardMajor', false)} style={this.isTriggered('hardMajor')}>Hard</button>
                     <button onClick={() => this.trigger('hardMajor', true)} style={this.isTriggered('hardMajorInv')}>Hard, inversions</button>
                   </div>
-              ) : null}
+              )}
 
-              {this.state.showButtonSubset === 'minor' ? (
+              {this.state.showButtonSubset === 'minor' && (
                   <div>
                     <button onClick={() => this.trigger('easyMinor', false)} style={this.isTriggered('easyMinor')}>Easy</button>
                     <button onClick={() => this.trigger('easyMinor', true)}  style={this.isTriggered('easyMinorInv')}>Easy, inversions</button>
@@ -86,14 +86,14 @@ export class HighScoresDisplay extends React.Component {
                     <button onClick={() => this.trigger('hardMinor', false)} style={this.isTriggered('hardMinor')}>Hard</button>
                     <button onClick={() => this.trigger('hardMinor', true)} style={this.isTriggered('hardMinorInv')}>Hard, inversions</button>
                   </div>
-              ) : null}
+              )}
 
-              {this.state.showButtonSubset === 'all' ? (
+              {this.state.showButtonSubset === 'all' && (
                   <div>
                     <button onClick={() => this.trigger('allChords', false)} style={this.isTriggered('allChords')}>All our chords</button>
                     <button onClick={() => this.trigger('allChords', true)} style={this.isTriggered('allChordsInv')}>All our chord, inversions</button>
                   </div>
-              ) : null}
+              )}
 
               <ScoresTable tableType="highScore"/>
 
@@ -103,7 +103,7 @@ export class HighScoresDisplay extends React.Component {
 
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
     let lastHighScore, inv;
     if (state.api.lastHighScoreAccessed) {
         lastHighScore = state.api.lastHighScoreAccessed.split('Inv');

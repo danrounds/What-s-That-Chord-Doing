@@ -17,6 +17,16 @@ export class SubmitHighScores extends React.Component {
         this.state = { submitted: false };
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.gameOver)
+            if (!this.state.submitted) {
+                this.submitHighScores(nextProps);
+                this.setState({ submitted: true });
+            }
+        else if (nextProps.questionNumber === 1 && this.state.submitted === true)
+            this.setState({ submitted: false });
+    }
+
     submitHighScores(props) {
         const gameMode = props.gameType + (props.inv ? 'Inv' : '');
 
@@ -43,17 +53,9 @@ export class SubmitHighScores extends React.Component {
         this.props.dispatch(actions.updateMyScores('bobby4','abc123',request));
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.gameOver)
-            if (!this.state.submitted) {
-                this.submitHighScores(nextProps);
-                this.setState({ submitted: true });
-            }
-        else if (nextProps.questionNumber === 1 && this.state.submitted === true)
-            this.setState({ submitted: false });
-    }
-
     render() {
+        // This is a non-display component; it only exists for the "logic,"
+        // associated with it
         return null;
     }
 }
