@@ -103,7 +103,7 @@ export class Status extends React.Component {
 
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     keyValue: state.game.keyValue,
     displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     key_: state.game.keyNameReadable,

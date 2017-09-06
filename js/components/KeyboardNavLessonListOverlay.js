@@ -34,7 +34,7 @@ export class KeyboardNavLessonListOverlay extends React.Component {
 }
 
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     displayKeyboardShortcuts: state.game.displayKeyboardShortcuts
 });
 

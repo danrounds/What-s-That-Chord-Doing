@@ -61,7 +61,7 @@ export class SubmitHighScores extends React.Component {
 }
 
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     api: state.api,
     gameType: state.game.gameType,
     inv: state.game.inversions,

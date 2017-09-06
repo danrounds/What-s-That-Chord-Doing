@@ -134,7 +134,7 @@ export class Staves extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     notes: state.game.notes,
     accidentals: state.game.accidentals,
     keySignature: state.game.keyNameNotation,

@@ -143,7 +143,7 @@ export class LessonsNavigator extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     lessonIndexDisplay: state.game.lessonIndexDisplay
 });
 

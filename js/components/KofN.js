@@ -7,7 +7,7 @@ export class KofN extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     questionNumber: state.game.questionNumber
 });
 

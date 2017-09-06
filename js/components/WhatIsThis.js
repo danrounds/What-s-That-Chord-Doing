@@ -135,7 +135,7 @@ export class WhatIsThis extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
     const processNotes = (val) => val.split('/').join('');
     let notes = state.game.notes;
 
