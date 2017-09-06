@@ -103,7 +103,7 @@ export class LessonsNavigator extends React.Component {
 
     render() {
         return (
-            <div ref="main" className="game" onKeyDown={this.handleKey} onMouseLeave={this.focusKey}>
+            <div ref="main" className="game lesson-nav" onKeyDown={this.handleKey} onMouseLeave={this.focusKey}>
               <h2 className="modes-primary">Game modes:</h2>
               <a ref="a" className="difficultyLvl" href="javascript:this.onDifficultyClick" onClick={this.onDifficultyClick}>Easy</a>
               <div className="easy-container">

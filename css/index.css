@@ -80,13 +80,15 @@ em {
     overflow: auto;
 }
 
-#app :focus {
+#app :focus:not(button) {
     outline: 1px dashed pink;
 }
 
 .nav-bar {
     background-color: #ffe4e1;
+    cursor: pointer;
     height: 60px;
+    user-select: none;
 }
 
 .nav-button {
@@ -258,6 +260,7 @@ button {
     -o-transition: all 0.1s linear;
     -webkit-transition: all 0.1s linear;
     transition: all 0.1s linear;
+    user-select: none;
 }
 
 .buttonStyle {
@@ -303,7 +306,6 @@ button:hover {
 .nxtBtn:hover {
     box-shadow: inset 2px -1px 20px 0 #yellow;
 }
-
 
 .keyHint {
     background-color: green;
@@ -351,6 +353,10 @@ button:hover {
 
 .play-audio-div {
     display: inline-block;
+}
+
+.lesson-nav {
+    user-select: none;
 }
 
 .lesson-nav-hint {
@@ -411,21 +417,91 @@ button:hover {
 }
 
 .scores-btn-div {
-    height: 150px;
+    height: 175px;
+}
+
+.scores-h-txt {
+    font-size: 35px;
+    font-weight: bold;
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.huge-btn,
+.big-btn,
+.small-btn {
+    font-family: 'Dosis', sans-serif;
+}
+
+.huge-btn {
+    border: 1px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 30px;
+    height: 90px;
+    width: 260px;
+}
+
+.huge-btn-active {
+    background-color: cornflowerblue;
+}
+
+.big-btn-div {
+    box-sizing: border-box;
+    display: block;
+}
+
+.big-btn {
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 20px;
+    width: 173px;
+}
+
+.big-btn-selected {
+    background-color: #ffd966;
+}
+
+.small-btns {
+    box-sizing: border-box;
+    vertical-align: bottom;
+}
+
+.small-btns-major button {
+    width: 130px;
+}
+
+.small-btns-minor button {
+    width: 86.6px;
+}
+
+.small-btns-all button {
+    width: 260px;
+}
+
+.small-btn {
+    border: 1px solid black;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+.small-btn-selected {
+    background-color: pink;
 }
 
 .scores-container {
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 .scores-err-txt {
-    width: 300px;
-    margin: 50px auto 0 auto;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
 }
 
 table {
-    font-size: 13px;
     border-collapse: collapse;
+    font-size: 13px;
     width: 100%;
 }
 

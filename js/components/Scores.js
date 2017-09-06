@@ -12,15 +12,13 @@ export class Scores extends React.Component {
     constructor() {
         super();
         this.state = { showScores: 'highScores' };
-        this.setColor = this.setColor.bind(this);
+        this.getStyle = this.getStyle.bind(this);
         this.showHighScores = this.showHighScores.bind(this);
         this.showMyScores = this.showMyScores.bind(this);
     }
 
-    setColor(selected) {
-        if (selected === this.state.showScores)
-            return { backgroundColor: 'pink' };
-        return {};
+    getStyle(selected) {
+        return selected === this.state.showScores ? 'huge-btn huge-btn-active' : 'huge-btn';
     }
 
     showHighScores() {
@@ -40,13 +38,15 @@ export class Scores extends React.Component {
             <div>
               <NavBar parent="Scores"/>
 
-              <button onClick={this.showHighScores} style={this.setColor('highScores')}>
-                High Scores
-              </button>
+              <div className="huge-btn-div">
+                <button onClick={this.showHighScores} className={this.getStyle('highScores')}>
+                  High Scores
+                </button>
 
-              <button onClick={this.showMyScores} style={this.setColor('myScores')}>
-                My Scores
-              </button>
+                <button onClick={this.showMyScores} className={this.getStyle('myScores')}>
+                  My Scores
+                </button>
+              </div>
 
               {this.state.showScores === 'highScores' && <HighScoresDisplay />}
               {this.state.showScores === 'myScores' && <MyScoresDisplay />}

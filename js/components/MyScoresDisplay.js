@@ -11,7 +11,10 @@ export class MyScoresDisplay extends React.Component {
 
     render() {
         return (
-            <div className="scores-btn-div">
+            <div>
+              <div className="scores-btn-div">
+                <h1 className="scores-h-txt">Scores for bobby4</h1>
+              </div>
               <ScoresTable tableType="myScores" />
             </div>
         );

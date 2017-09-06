@@ -27,9 +27,7 @@ export class HighScoresDisplay extends React.Component {
     }
 
     bigButtonIsSelected(selected) {
-        if (selected === this.state.showButtonSubset)
-            return { backgroundColor: 'orange' };
-        return {};
+        return selected === this.state.showButtonSubset ? 'big-btn big-btn-selected' : 'big-btn';
     }
 
     clickBigButton(buttonType) {
@@ -51,7 +49,7 @@ export class HighScoresDisplay extends React.Component {
         else
             check = this.props.gameType + (this.props.inv ? 'Inv' : '');
 
-        return (buttonQual === check) ? { backgroundColor: 'lime' } : {};
+        return (buttonQual === check) ? 'small-btn small-btn-selected' : 'small-btn';
     }
 
     trigger(mode, inversions) {
@@ -63,40 +61,42 @@ export class HighScoresDisplay extends React.Component {
         return (
             <div>
 
-              <div className="scores-btn-div"> 
-                Chord subsets
-                <button onClick={() => this.clickBigButton('major')} style={this.bigButtonIsSelected('major')}>Major</button>
-                <button onClick={() => this.clickBigButton('minor')} style={this.bigButtonIsSelected('minor')}>Minor</button>
-                <button onClick={() => this.clickBigButton('all')} style={this.bigButtonIsSelected('all')}>All our chords</button>
-                
+              <div className="scores-btn-div">
+                <h1 className="scores-h-txt">Chord subsets</h1>
+                <div className="big-btn-div">
+                  <button onClick={() => this.clickBigButton('major')} className={this.bigButtonIsSelected('major')}>Major</button>
+                  <button onClick={() => this.clickBigButton('minor')} className={this.bigButtonIsSelected('minor')}>Minor</button>
+                  <button onClick={() => this.clickBigButton('all')} className={this.bigButtonIsSelected('all')}>All our chords</button>
+                </div>
+
                 {this.state.showButtonSubset === 'major' && (
-                    <div>
-                      <button onClick={() => this.trigger('easyMajor', false)} style={this.isTriggered('easyMajor')}>Easy</button>
-                      <button onClick={() => this.trigger('easyMajor', true)} style={this.isTriggered('easyMajorInv')}>Easy, inversions</button>
-                      <button onClick={() => this.trigger('hardMajor', false)} style={this.isTriggered('hardMajor')}>Hard</button>
-                      <button onClick={() => this.trigger('hardMajor', true)} style={this.isTriggered('hardMajorInv')}>Hard, inversions</button>
+                    <div className="small-btns small-btns-major">
+                      <button onClick={() => this.trigger('easyMajor', false)} className={this.isTriggered('easyMajor')}>Easy</button>
+                      <button onClick={() => this.trigger('easyMajor', true)} className={this.isTriggered('easyMajorInv')}>Easy<br/>inversions</button>
+                      <button onClick={() => this.trigger('hardMajor', false)} className={this.isTriggered('hardMajor')}>Hard</button>
+                      <button onClick={() => this.trigger('hardMajor', true)} className={this.isTriggered('hardMajorInv')}>Hard<br/>inversions</button>
                     </div>
                 )}
 
                 {this.state.showButtonSubset === 'minor' && (
-                    <div>
-                      <button onClick={() => this.trigger('easyMinor', false)} style={this.isTriggered('easyMinor')}>Easy</button>
-                      <button onClick={() => this.trigger('easyMinor', true)}  style={this.isTriggered('easyMinorInv')}>Easy, inversions</button>
-                      <button onClick={() => this.trigger('intermediateMinor', false)} style={this.isTriggered('intermediateMinor')}>Intermediate</button>
-                      <button onClick={() => this.trigger('intermediateMinor', true)} style={this.isTriggered('intermediateMinorInv')}>Intermediate, inversions</button>
-                      <button onClick={() => this.trigger('hardMinor', false)} style={this.isTriggered('hardMinor')}>Hard</button>
-                      <button onClick={() => this.trigger('hardMinor', true)} style={this.isTriggered('hardMinorInv')}>Hard, inversions</button>
+                    <div className="small-btns small-btns-minor">
+                      <button onClick={() => this.trigger('easyMinor', false)} className={this.isTriggered('easyMinor')}>Easy</button>
+                      <button onClick={() => this.trigger('easyMinor', true)}  className={this.isTriggered('easyMinorInv')}>Easy<br/>inversions</button>
+                      <button onClick={() => this.trigger('intermediateMinor', false)} className={this.isTriggered('intermediateMinor')}>Intermediate</button>
+                      <button onClick={() => this.trigger('intermediateMinor', true)} className={this.isTriggered('intermediateMinorInv')}>Intermediate<br/>inversions</button>
+                      <button onClick={() => this.trigger('hardMinor', false)} className={this.isTriggered('hardMinor')}>Hard</button>
+                      <button onClick={() => this.trigger('hardMinor', true)} className={this.isTriggered('hardMinorInv')}>Hard<br/> inversions</button>
                     </div>
                 )}
 
-                  {this.state.showButtonSubset === 'all' && (
-                      <div>
-                        <button onClick={() => this.trigger('allChords', false)} style={this.isTriggered('allChords')}>All our chords</button>
-                        <button onClick={() => this.trigger('allChords', true)} style={this.isTriggered('allChordsInv')}>All our chord, inversions</button>
-                      </div>
-                  )}
+                {this.state.showButtonSubset === 'all' && (
+                    <div className="small-btns small-btns-all">
+                      <button onClick={() => this.trigger('allChords', false)} className={this.isTriggered('allChords')}>All our chords</button>
+                      <button onClick={() => this.trigger('allChords', true)} className={this.isTriggered('allChordsInv')}>All our chords<br/>inversions</button>
+                    </div>
+                )}
               </div>
-              <ScoresTable tableType="highScore"/>
+              <ScoresTable tableType="highScore" />
 
             </div>
         );
