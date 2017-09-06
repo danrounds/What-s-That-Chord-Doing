@@ -88,14 +88,12 @@ export class PlayAudio extends React.Component {
               <button onClick={this.playIntroChordsAndPrompt}>
                 Play intro & chord again<br/>
                 {this.props.displayKeyboardShortcuts
-                    ? <div className="keyHint miniKeyHintDiv">,</div>
-                : null}
+                    && <div className="keyHint miniKeyHintDiv">,</div>}
               </button>
               <button onClick={this.replayPrompt}>
                 Play chord again<br/>
                 {this.props.displayKeyboardShortcuts
-                    ? <div className="keyHint miniKeyHintDiv">.</div>
-                : null}
+                    && <div className="keyHint miniKeyHintDiv">.</div>}
               </button>
             </div>
         );

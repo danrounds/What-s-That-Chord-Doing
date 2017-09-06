@@ -88,12 +88,12 @@ export class LogInOrRegister extends React.Component {
                     type="password" required /><br/>
                 </label>
 
-                {this.state.register ?
+                {this.state.register &&
                     (<label>Confirm password<br/>
                       <input ref={el => { this.passwordConfirm = el; }}
                             type="password" required /><br/>
                      </label>)
-                 : null}
+                }
 
                 <button onClick={this.onLogIn}>Log in</button>
                 <button onClick={this.onRegister}>Register</button>

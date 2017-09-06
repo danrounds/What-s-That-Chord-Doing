@@ -45,8 +45,7 @@ export class StartNewGame extends React.Component {
             <button className="ctrlBtns" onClick={this.startNewGame}>
               Start New Game
               {this.props.displayKeyboardShortcuts
-                  ? <div className="miniKeyHint"><div className="keyHint miniCtrlHint">CTRL</div><div className="miniPlus"> + </div><div className="keyHint miniEnterHint">ENTER</div></div>
-              : null}
+                  && <div className="miniKeyHint"><div className="keyHint miniCtrlHint">CTRL</div><div className="miniPlus"> + </div><div className="keyHint miniEnterHint">ENTER</div></div>}
             </button>
         );
     }

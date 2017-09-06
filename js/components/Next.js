@@ -30,14 +30,13 @@ export class Next extends React.Component {
             <button className="nxtBtn" onClick={this.onClick}>
               next ?
               {this.props.displayKeyboardShortcuts
-                  ? <div className="keyHint miniKeyHint">SPACE</div>
-              : null}
+                  && <div className="keyHint miniKeyHint">SPACE</div>}
             </button>
         );
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     keyValue: state.game.keyValue,
     displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     questionNumber: state.game.questionNumber

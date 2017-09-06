@@ -90,8 +90,7 @@ export class AnswerEntry extends React.Component {
                         key={numeral} onClick={this.onClick}>
                   {numeral}<br/>
                   {this.props.displayKeyboardShortcuts
-                      ? <div className="keyHint answerKeyHint">{k}</div>
-                  : null}
+                      && <div className="keyHint answerKeyHint">{k}</div>}
                 </button>
             );
         });
@@ -118,7 +117,7 @@ export class AnswerEntry extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     keyValue: state.game.keyValue,
     displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     chordSubset: state.game.chordSubset,

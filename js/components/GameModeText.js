@@ -27,7 +27,7 @@ export class GameModeText extends React.Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     gameType: state.game.gameType,
     inversions: state.game.inversions
 });
