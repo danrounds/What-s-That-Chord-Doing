@@ -427,14 +427,17 @@ button:hover {
     text-align: center;
 }
 
-.huge-btn,
-.big-btn,
-.small-btn {
-    font-family: 'Dosis', sans-serif;
+.huge-btn:hover {
+    box-shadow: inset 2px -2px 130px #ff6699;
+}
+
+.big-btn:hover,
+.small-btn:hover {
+    box-shadow: inset 2px -2px 90px #ff6699;
 }
 
 .huge-btn {
-    border: 1px solid black;
+    border: 1px solid #666;
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 30px;
@@ -452,7 +455,7 @@ button:hover {
 }
 
 .big-btn {
-    border: 1px solid black;
+    border: 1px solid #666;
     border-radius: 3px;
     font-size: 20px;
     width: 173px;
@@ -480,7 +483,7 @@ button:hover {
 }
 
 .small-btn {
-    border: 1px solid black;
+    border: 1px solid #666;
     border-radius: 3px;
     vertical-align: middle;
 }
