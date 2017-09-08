@@ -1,6 +1,5 @@
 const express = require('express');
 const accountRouter = express.Router();
-// const {BasicStrategy} = require('passport-http');
 const passport = require('passport');
 
 const {UserScore} = require('./models');
