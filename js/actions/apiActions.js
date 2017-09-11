@@ -7,7 +7,7 @@ const logIn_ = {
         dispatch => {
             dispatch(logIn_.logInPending());
             return postReqLogIn(name, password)
-                .then(token => dispatch(logIn_.logInSuccess(token)))
+                .then(token => dispatch(logIn_.logInSuccess(name, token)))
                 .catch((e) => dispatch(logIn_.logInFailure(e)));
         },
 
@@ -17,15 +17,16 @@ const logIn_ = {
     }),
 
     LOG_IN_SUCCESS: 'LOG_IN_SUCCESS',
-    logInSuccess: (token) => ({
+    logInSuccess: (name, token) => ({
         type: LOG_IN_SUCCESS,
-        token
+        name,
+        token,
     }),
 
     LOG_IN_FAILURE: 'LOG_IN__FAILURE',
     logInFailure: (error) => ({
         type: LOG_IN_FAILURE,
-        error
+        error,
     }),
 };
 

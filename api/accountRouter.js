@@ -38,7 +38,8 @@ accountRouter.post('/log-in', (req, res) => {
                             console.log(isValid);
                             let payload = { id: userScore._id };
                             let token = jwt.encode(payload, cfg.JWT_SECRET);
-                            res.json({ token });
+                            // res.json({ token });
+                            res.json(token);
                         } else {
                             res.sendStatus(401);
                         }

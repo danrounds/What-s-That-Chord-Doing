@@ -50,7 +50,7 @@ export class SubmitHighScores extends React.Component {
         };
 
         const request = { name: props.api.myScores.name, scores };
-        this.props.dispatch(actions.updateMyScores('bobby4','abc123',request));
+        this.props.dispatch(actions.updateMyScores(this.props.api.authToken));
     }
 
     render() {

@@ -33,10 +33,11 @@ export class LogInOrRegister extends React.Component {
     }
 
     onLogIn(e) {
-        e.preventDefault();
+        // e.preventDefault();
 
         this.setState({ register: false });
-        this.props.dispatch(actions.getMyScores(this.name.value, this.password.value));
+        // this.props.dispatch(actions.getMyScores(this.name.value, this.password.value));
+        this.props.dispatch(actions.logIn(this.name.value, this.password.value));
         return false;           // Keeps page from refreshing
     }
 

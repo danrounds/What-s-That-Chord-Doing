@@ -1,8 +1,5 @@
-// import fetch from 'isomorphic-fetch';
-// import btoa from 'btoa';   // delete this
-
-const fetch = require('isomorphic-fetch');
-const btoa = require('btoa');
+import fetch from 'isomorphic-fetch';
+import btoa from 'btoa';   // delete this
 
 const token_ = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU5YjVmMGY0MjhmYTE3MWRiNzg4MzgyMCJ9.yalTBvUlq6paFLdaD1JLbixHmIzutA-N8Tin9Ez17cA';
 const accountsUrl = 'http://localhost:8081/accounts/';
@@ -33,7 +30,8 @@ function postReqLogIn(name='bobby4', password='abc123') {
         },
         body: JSON.stringify({ name, password }),
     };
-    return fetch(accountsUrl+'log-in');
+    return fetch(accountsUrl+'log-in', payload)
+        .then(response => testResponse(response));
 }
 
 function getReqUserScores(token=token_) {
@@ -99,5 +97,5 @@ function deleteReqAccount(token=token_, name='bobby4', password='abc123') {
         .then(response => testResponse(response));
 }
 
-// export { postReqLogIn, getReqUserScores, getReqHighScores, postReqAccount,
-//          putReqUserScores, putReqAccountPassword, deleteReqAccount };
+export { postReqLogIn, getReqUserScores, getReqHighScores, postReqAccount,
+         putReqUserScores, putReqAccountPassword, deleteReqAccount };

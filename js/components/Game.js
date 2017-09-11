@@ -24,7 +24,7 @@ export class Game extends React.Component {
         const mode = this.props.mode, inv = this.props.inversions;
         this.props.dispatch(actions.startNewGame(mode, inv));
         this.props.dispatch(actions.getHighScores(mode + (inv ? 'Inv' : '')));
-        this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+        this.props.dispatch(actions.getMyScores(this.props.api.authToken));
     }
 
     componentDidMount() {
@@ -66,4 +66,4 @@ export class Game extends React.Component {
     }
 }
 
-export default connect()(Game);
+export default connect((state) => ({ api: state.api }))(Game);

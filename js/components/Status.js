@@ -51,7 +51,7 @@ export class Status extends React.Component {
                          onClick={() => {
                              this.props.dispatch(
                                  actions.startNewGame(this.props.mode,this.props.inversions));
-                             this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+                             this.props.dispatch(actions.getMyScores(this.props.api.authToken));
                         }}>
                         play again
                       </a>
@@ -62,7 +62,7 @@ export class Status extends React.Component {
                       <a className="game-link" href="javascript:void(0)"
                          onClick={
                              () => {this.props.dispatch(actions.startNewGame(this.props.mode,this.props.inversions));
-                                    this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+                                    this.props.dispatch(actions.getMyScores(this.props.api.authToken));
                         }}>
                         Play again?
                     </a></div>);
@@ -104,6 +104,7 @@ export class Status extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    api: state.api,
     keyValue: state.game.keyValue,
     displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     key_: state.game.keyNameReadable,
@@ -113,7 +114,7 @@ const mapStateToProps = (state) => ({
     answeredCorrectly: state.game.answeredCorrectly,
     nAnsweredRight: state.game.nAnsweredRight,
     clicksPerRightAnswer: state.game.clicksPerRightAnswer,
-    gameOver: state.game.gameOver
+    gameOver: state.game.gameOver,
 });
 
 export default connect(mapStateToProps)(Status);
