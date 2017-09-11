@@ -17,9 +17,9 @@ scoreRouter.get('/my-scores*', auth.authenticate(), (req, res) => {
             if (record)
                 res.json(record.apiRepr());
             else
-                res.status(404).send();
+                res.sendStatus(404);
         })
-        .catch(() => res.status(500).send());
+        .catch(() => res.sendStatus(500));
 });
 
 scoreRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
@@ -32,12 +32,12 @@ scoreRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
          'intermediateMinor','intermediateMinorInv','hardMajor',
          'hardMajorInv','hardMinor','hardMinorInv','allChords',
          'allChordsInv'].indexOf(gameMode) === -1) {
-        return res.status(400).send();
+        return res.sendStatus(400);
     }
 
     for (let el of ['totalClicks','nAnsweredRight','nQuestionNumber'])
         if (!(el in requestScores)) {
-            return res.status(400).send();
+            return res.sendStatus(400);
         }
 
     // Add win ratio:
@@ -56,25 +56,25 @@ scoreRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
                     .update({ $set: newFields })
                     .then(record => {
                         if (record.nModified)
-                            res.status(200).send();
+                            res.sendStatus(200);
                         else
-                            res.status(304).send();
+                            res.sendStatus(304);
                     });
             } else {
                 const newScore = new UserScore;
                 newScore.name = req.user.name;
                 newScore.scores = req.body.scores;
                 newScore.save()
-                    .then(() => res.status(201).send())
+                    .then(() => res.sendStatus(201))
                     .catch(err => {
                         if (err.errors.scores.name === 'ValidatorError')
-                            res.status(400).send();
+                            res.sendStatus(400);
                         else
-                            res.status(500).send();
+                            res.sendStatus(500);
                     });
             }
         })
-        .catch(() => res.status(500).send());
+        .catch(() => res.sendStatus(500));
 });
 
 scoreRouter.get('/high-scores/:gameType', (req, res) => {
@@ -87,7 +87,7 @@ scoreRouter.get('/high-scores/:gameType', (req, res) => {
         .sort(sort)
         .then(results => res.json(
             results.map(result => result.apiRepr())))
-        .catch(() => res.status(500).send());
+        .catch(() => res.sendStatus(500).send());
 });
 
 module.exports = {scoreRouter};
