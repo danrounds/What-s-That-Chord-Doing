@@ -15,12 +15,6 @@ let params = {
 module.exports = (() => {
     let strategy = new Strategy(params, (payload, done) => {
 
-        // let user = UserScore.findById(payload.id).exec();
-        // if (user)
-        //     return done(null, { id: user.id });
-        // else
-        //     return done(new Error('User not found'), null);
-
         UserScore
             .findById(payload.id)
             .exec()
