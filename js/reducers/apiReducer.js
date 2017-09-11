@@ -66,7 +66,7 @@ export default (state=initialState, action) => {
         localStorage.setItem('authToken', null);
         localStorage.setItem('name', null);
         return {
-            authToken: state.authToken,
+            authToken: null,
             name: null,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
