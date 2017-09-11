@@ -23,7 +23,7 @@ const logIn_ = {
         token,
     }),
 
-    LOG_IN_FAILURE: 'LOG_IN__FAILURE',
+    LOG_IN_FAILURE: 'LOG_IN_FAILURE',
     logInFailure: (error) => ({
         type: LOG_IN_FAILURE,
         error,
