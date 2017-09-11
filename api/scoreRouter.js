@@ -1,21 +1,18 @@
 const express = require('express');
 const scoreRouter = express.Router();
-const passport = require('passport');
 
 const {UserScore} = require('./models');
-const {basicStrategy} = require('./basicAuthentication');
-
+const auth = require('./jwtAuthentication');
 
 // Our authenication
-passport.use(basicStrategy);
-scoreRouter.use(passport.initialize());
+scoreRouter.use(auth.initialize());
 
-// ROUTES 
-scoreRouter.get('/my-scores*', passport.authenticate('basic', {session: false}), (req, res) => {
+// ROUTES
+scoreRouter.get('/my-scores*', auth.authenticate(), (req, res) => {
     // endpoint for getting all of a user's scores. This is identical to
     // accountRouter's GET *, and changes should occur at both places at once.
     UserScore
-        .findOne({name: req.user.name})
+        .findById(req.user.id)
         .then(record => {
             if (record)
                 res.json(record.apiRepr());
@@ -25,7 +22,7 @@ scoreRouter.get('/my-scores*', passport.authenticate('basic', {session: false}),
         .catch(() => res.status(500).send());
 });
 
-scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}), (req, res) => {
+scoreRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
     // Endpoint for updating individual user scores
     // Intent is to only submit one gameMode of updated scores, at once
     const gameMode = Object.keys(req.body.scores)[0];
@@ -45,17 +42,17 @@ scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}),
 
     // Add win ratio:
     Object.assign(requestScores, {
-        winRatio:requestScores.nAnsweredRight / requestScores.nQuestionNumber
+        winRatio: requestScores.nAnsweredRight / requestScores.nQuestionNumber
     });
 
-    UserScore.findOne({name: req.user.name})
+    UserScore.findById(req.user.id)
         .then(record => {
             if (record) {
                 const newFields = {
                     scores: Object.assign(record.scores || {}, req.body.scores)
                 };
                 UserScore
-                    .findOne({name: req.user.name})
+                    .findById(req.user.id)
                     .update({ $set: newFields })
                     .then(record => {
                         if (record.nModified)
