@@ -1,12 +1,44 @@
-import { getReqUserScores, getReqHighScores, postReqAccount,
+import { postReqLogIn, getReqUserScores, getReqHighScores, postReqAccount,
          putReqUserScores, putReqAccountPassword, deleteReqAccount }
 from '../apiCalls';
 
+const logIn_ = {
+    logIn: (name, password) =>
+        dispatch => {
+            dispatch(logIn_.logInPending());
+            return postReqLogIn(name, password)
+                .then(token => dispatch(logIn_.logInSuccess(token)))
+                .catch((e) => dispatch(logIn_.logInFailure(e)));
+        },
+
+    LOG_IN_PENDING: 'LOG_IN_PENDING',
+    logInPending: () => ({
+        type: LOG_IN_PENDING,
+    }),
+
+    LOG_IN_SUCCESS: 'LOG_IN_SUCCESS',
+    logInSuccess: (token) => ({
+        type: LOG_IN_SUCCESS,
+        token
+    }),
+
+    LOG_IN_FAILURE: 'LOG_IN__FAILURE',
+    logInFailure: (error) => ({
+        type: LOG_IN_FAILURE,
+        error
+    }),
+};
+
+export const LOG_OFF = 'LOG_OFF';
+export const logOff = () => ({
+    type: LOG_OFF
+});
+
 const getScores = {
-    getMyScores: (name, password) =>
+    getMyScores: (token) =>
         dispatch => {
             dispatch(getScores.getMyScoresPending());
-            return getReqUserScores(name, password)
+            return getReqUserScores(token)
                 .then(scores => dispatch(getScores.getMyScoresSuccess(scores)))
                 .catch((e) => dispatch(getScores.getMyScoresFailure(e)));
         },
@@ -29,14 +61,9 @@ const getScores = {
     }),
 };
 
-export const LOG_OFF = 'LOG_OFF';
-export const logOff = () => ({
-    type: LOG_OFF
-});
-
 const updateScores = {
-    updateMyScores: (name, password, scores) =>
-        dispatch => putReqUserScores(name, password, scores)
+    updateMyScores: (token, scores) =>
+        dispatch => putReqUserScores(token, scores)
         .then(() => dispatch(updateScores.updateMyScoresSuccess(scores)))
         .catch((e) => dispatch(updateScores.updateMyScoresFailure(e))),
 
@@ -100,6 +127,7 @@ const makeAccount = {
 };
 
 const changePass = {
+    // This hasn't actually been incorporated into the client
     changeUserPassword: (name, password) =>
         dispatch => putReqAccountPassword(name, password)
         .then(() => dispatch(changePass.changeUserPasswordSuccess()))
@@ -124,6 +152,9 @@ const changePass = {
 
 // We end up with a bit more code by grouping associated actions together, but
 // it at least tells us which goes with which
+export const { logIn, LOG_IN_PENDING, logInPending, LOG_IN_SUCCESS,
+               logInSuccess, LOG_IN_FAILURE, logInFailure } = logIn_;
+
 export const { getMyScores, GET_MY_SCORES_PENDING, getMyScoresPending,
                GET_MY_SCORES_SUCCESS, getMyScoresSuccess,
                GET_MY_SCORES_FAILURE, getMyScoresFailure } = getScores;

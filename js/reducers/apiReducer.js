@@ -1,6 +1,7 @@
 import * as actions from '../actions/apiActions';
 
 const initialState = {
+    authToken: null,
     highScores: [],
     lastHighScoreAccessed: null,
     myScores: {},
@@ -31,9 +32,32 @@ function copyHighScores(oldScores) {
 // Our reducer for the API interaction part of our app
 export default (state=initialState, action) => {
     switch(action.type) {
-
-    case 'GET_MY_SCORES_PENDING':
+        
+    case 'LOG_IN_SUCCESS':
         return {
+            authToken: action.authToken,
+            highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
+            myScores: copyMyScores(state.myScores),
+            error: false,
+            pending: false,
+        };
+
+    case 'LOG_IN_FAILURE':
+        return {
+            authToken: state.authToken,
+            highScores: copyHighScores(state.highScores),
+            lastHighScoreAccessed: state.lastHighScoreAccessed,
+            myScores: copyMyScores(state.myScores),
+            error: action.error,
+            pending: false,
+        };
+
+    case 'LOG_IN_PENDING':
+    case 'GET_MY_SCORES_PENDING':
+    case 'GET_HIGH_SCORES_PENDING':
+        return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: copyMyScores(state.myScores),
@@ -43,6 +67,7 @@ export default (state=initialState, action) => {
 
     case 'GET_MY_SCORES_SUCCESS':
         return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: action.scores,
@@ -52,6 +77,7 @@ export default (state=initialState, action) => {
 
     case 'GET_MY_SCORES_FAILURE':
         return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: copyMyScores(state.myScores),
@@ -61,10 +87,11 @@ export default (state=initialState, action) => {
 
     case 'LOG_OFF':
         return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: {},
-            error: true,
+            error: false,
             pending: false,
         };
 
@@ -73,6 +100,7 @@ export default (state=initialState, action) => {
 
     case 'UPDATE_MY_SCORES_SUCCESS':
         return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: copyMyScores(state.myScores),
@@ -82,6 +110,7 @@ export default (state=initialState, action) => {
 
     case 'UPDATE_MY_SCORES_FAILURE':
         return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: copyMyScores(state.myScores),
@@ -92,17 +121,9 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case 'GET_HIGH_SCORES_PENDING':
-        return {
-            highScores: copyHighScores(state.highScores),
-            lastHighScoreAccessed: state.lastHighScoreAccessed,
-            myScores: copyMyScores(state.myScores),
-            error: false,
-            pending: true,
-        };
-
     case 'GET_HIGH_SCORES_SUCCESS':
         return {
+            authToken: state.authToken,
             highScores: action.highScores,
             lastHighScoreAccessed: action.gameType,
             myScores: copyMyScores(state.myScores),
@@ -112,6 +133,7 @@ export default (state=initialState, action) => {
 
     case 'GET_HIGH_SCORES_FAILURE':
         return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: copyMyScores(state.myScores),
@@ -124,6 +146,7 @@ export default (state=initialState, action) => {
 
     case 'MAKE_USER_ACCOUNT_SUCCESS':
         return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: { name: action.name },
@@ -133,6 +156,7 @@ export default (state=initialState, action) => {
 
     case 'MAKE_USER_ACCOUNT_FAILURE':
         return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: {},
@@ -145,6 +169,7 @@ export default (state=initialState, action) => {
         
     case 'CHANGE_USER_PASSWORD_SUCCESS':
         return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: copyMyScores(state.myScores),
@@ -154,6 +179,7 @@ export default (state=initialState, action) => {
 
     case 'CHANGE_USER_PASSWORD_FAILURE':
         return {
+            authToken: state.authToken,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: copyMyScores(state.myScores),
