@@ -26,6 +26,8 @@ accountRouter.get('*', auth.authenticate(), (req, res) => {
 });
 
 accountRouter.post('/log-in', (req, res) => {
+    // Log in endpoint -- returns the relevant JWT token
+
     if (req.body.name && req.body.password) {
         return UserScore.findOne({name: req.body.name})
             .then(userScore => {
@@ -35,11 +37,9 @@ accountRouter.post('/log-in', (req, res) => {
                 return userScore.validatePassword(req.body.password)
                     .then(isValid => {
                         if (isValid) {
-                            console.log(isValid);
-                            let payload = { id: userScore._id };
-                            let token = jwt.encode(payload, cfg.JWT_SECRET);
-                            // res.json({ token });
-                            res.json(token);
+                            const payload = { id: userScore._id };
+                            const token = jwt.encode(payload, cfg.JWT_SECRET);
+                            res.status(200).json(token);
                         } else {
                             res.sendStatus(401);
                         }
@@ -51,6 +51,9 @@ accountRouter.post('/log-in', (req, res) => {
 });
 
 accountRouter.post('*', (req, res) => {
+    // Account (username/name/whatever) registration -- returns the relevant
+    // JWT for the newly-created account
+
     if (!(req.body.name && req.body.password))
         return res.status(400).json({error: 'Requests need `name` and `password`'});
     if (req.body.password.trim().length < 6)
@@ -70,7 +73,11 @@ accountRouter.post('*', (req, res) => {
                           password: hashed,
                           scores: {},
                       })
-                      .then(() => res.sendStatus(201))
+                      .then((userScore) => {
+                          const payload = { id: userScore._id };
+                          const token = jwt.encode(payload, cfg.JWT_SECRET);
+                          res.status(201).json(token);
+                      })
                       .catch(() => res.sendStatus(500));
               }));
 });

@@ -33,8 +33,6 @@ export class LogInOrRegister extends React.Component {
     }
 
     onLogIn(e) {
-        // e.preventDefault();
-
         this.setState({ register: false });
         // this.props.dispatch(actions.getMyScores(this.name.value, this.password.value));
         this.props.dispatch(actions.logIn(this.name.value, this.password.value));
@@ -42,8 +40,6 @@ export class LogInOrRegister extends React.Component {
     }
 
     onRegister(e) {
-        e.preventDefault();
-
         if (!this.state.register) {
             this.setState({ register: true, statusText: '' });
         } else {

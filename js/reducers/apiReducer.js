@@ -1,7 +1,8 @@
 import * as actions from '../actions/apiActions';
 
 // Not only do we define actions for dispatching to our reducer, here, we also
-// update `localStorage`, on logIn and retrieve from it when we start our app
+// update `localStorage`, on logIn/account-creation and retrieve from it when we
+// start our app
 
 const initialState = {
     authToken: localStorage.getItem('authToken'),
@@ -170,9 +171,11 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
 
     case 'MAKE_USER_ACCOUNT_SUCCESS':
+        localStorage.setItem('authToken', action.token);
+        localStorage.setItem('name', action.name);
         return {
-            authToken: state.authToken,
-            name: state.name,
+            authToken: action.token,
+            name: action.name,
             highScores: copyHighScores(state.highScores),
             lastHighScoreAccessed: state.lastHighScoreAccessed,
             myScores: { name: action.name },
