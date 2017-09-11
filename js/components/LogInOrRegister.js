@@ -23,8 +23,12 @@ export class LogInOrRegister extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.api.error !== this.props.api.error) {
-            if (nextProps.api.error === 401)
-                this.setState({ statusText: 'Invalid password or username' });
+            // Log-in errors:
+            if (nextProps.api.error === 404)
+                this.setState({ statusText: 'Username doesn\'t exist' });
+            else if (nextProps.api.error === 401)
+                this.setState({ statusText: 'Invalid Password or username' });
+            // Registration errors:
             else if (nextProps.api.error === 409)
                 this.setState({ statusText: 'Username already exists; try a new one' });
             else if (nextProps.api.error)            
@@ -34,7 +38,6 @@ export class LogInOrRegister extends React.Component {
 
     onLogIn(e) {
         this.setState({ register: false });
-        // this.props.dispatch(actions.getMyScores(this.name.value, this.password.value));
         this.props.dispatch(actions.logIn(this.name.value, this.password.value));
         return false;           // Keeps page from refreshing
     }
@@ -65,7 +68,7 @@ export class LogInOrRegister extends React.Component {
     }
 
     render() {
-        if (this.props.api.myScores.name) {
+        if (this.props.api.authToken) {
             return (
                 <Router history={hashHistory}>
                   <Redirect from="log-in-or-register" to="/" />
