@@ -67,7 +67,7 @@ function postReqAccount(name='bobby4', password='abc123') {
         },
         body: JSON.stringify({ name, password }),
     };
-    return fetch(accountsUrl, payload)
+    return fetch(accountsUrl+'register', payload)
         .then(response => testResponse(response));
 }
 

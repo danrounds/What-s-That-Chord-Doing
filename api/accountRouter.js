@@ -50,7 +50,7 @@ accountRouter.post('/log-in', (req, res) => {
     res.sendStatus(401);
 });
 
-accountRouter.post('*', (req, res) => {
+accountRouter.post('/register', (req, res) => {
     // Account (username/name/whatever) registration -- returns the relevant
     // JWT for the newly-created account
 
