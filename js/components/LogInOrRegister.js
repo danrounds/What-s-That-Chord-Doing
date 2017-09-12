@@ -80,15 +80,14 @@ export class LogInOrRegister extends React.Component {
                 if (matchingRegEx[0] !== name) {
                     this.setState({ statusText: 'Username should be letters, numbers, and underscores' });
                 } else if (name && pw === pw_) {
-                    const matchingRegEx = /[a-zA-Z0-9_]+/.exec(name) || [];
-                    if (matchingRegEx[0] !== name)
-                        this.setState({ statusText: 'Username should be letters, numbers, and underscores' });
-                    else if (pw.length < 6)
+                    if (pw.length < 6)
                         this.setState({ statusText: 'Please choose a password of at least six characters'});
                     else if (pw.includes(' ') || pw.includes('\t') || pw.includes('\n'))
                         this.setState({ statusText: 'Password shouldn\'t contain whitespace characters'});
                     else
                         this.props.dispatch(actions.makeUserAccount(name, pw));
+                } else if (!pw || !pw_) {
+                    this.setState({ statusText: 'Fill in both password fields'});
                 } else if (pw !== pw_)
                     this.setState({ statusText: 'Passwords don\'t match'});
             } catch(e) {;}      // swallow .reference for undefined
