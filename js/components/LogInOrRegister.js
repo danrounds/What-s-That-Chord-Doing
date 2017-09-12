@@ -27,7 +27,7 @@ export class LogInOrRegister extends React.Component {
             if (nextProps.api.error === 404)
                 this.setState({ statusText: 'Username doesn\'t exist' });
             else if (nextProps.api.error === 401)
-                this.setState({ statusText: 'Invalid Password or username' });
+                this.setState({ statusText: 'Invalid password' });
             // Registration errors:
             else if (nextProps.api.error === 409)
                 this.setState({ statusText: 'Username already exists; try a new one' });
@@ -82,7 +82,7 @@ export class LogInOrRegister extends React.Component {
 
               <div className="log-in-status">{this.state.statusText}</div>
 
-              <form className="log-in-and-registration-form">
+                <form action="javascript:void(0)" className="log-in-and-registration-form">
                 <label>
                   Name<br/>
                   <input ref={el => { this.name = el; }}
