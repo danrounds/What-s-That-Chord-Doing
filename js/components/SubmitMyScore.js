@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import * as actions from '../actions';
 
-export class SubmitHighScores extends React.Component {
+export class SubmitMyScore extends React.Component {
     // Our method of updating high scores at the server involves taking the
     // .api data we retrieved when we started our game and augmenting it with
     // the data we generated during the game.
@@ -20,14 +20,14 @@ export class SubmitHighScores extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.gameOver)
             if (!this.state.submitted) {
-                this.submitHighScores(nextProps);
+                this.submitMyScore(nextProps);
                 this.setState({ submitted: true });
             }
         else if (nextProps.questionNumber === 1 && this.state.submitted === true)
             this.setState({ submitted: false });
     }
 
-    submitHighScores(props) {
+    submitMyScore(props) {
         const gameMode = props.gameType + (props.inv ? 'Inv' : '');
 
         const scoresObj = props.api.myScores.scores;
@@ -72,4 +72,4 @@ const mapStateToProps = (state) => ({
     gameOver: state.game.gameOver,
 });
 
-export default connect(mapStateToProps)(SubmitHighScores);
+export default connect(mapStateToProps)(SubmitMyScore);
