@@ -13,6 +13,7 @@ export class LogInOrRegister extends React.Component {
             register: false,
             statusText: '',
         };
+        this.handleEnter = this.handleEnter.bind(this);
         this.onLogIn = this.onLogIn.bind(this);
         this.onRegister = this.onRegister.bind(this);
     }
@@ -45,6 +46,14 @@ export class LogInOrRegister extends React.Component {
             return { color: 'black', border: '1px solid green' };
         }
         return { color: 'gray' };
+    }
+
+    handleEnter(e) {
+        if (e.key === 'Enter') {
+            if (this.state.register)
+                return this.onRegister(e);
+            return this.onLogIn(e);
+        }
     }
 
     onLogIn(e) {
@@ -97,7 +106,7 @@ export class LogInOrRegister extends React.Component {
         }
         
         return (
-            <div>
+            <div onKeyDown={this.handleEnter}>
               <NavBar parent="LogIn"/>
 
               <div className="log-in-status">{this.state.statusText}</div>
