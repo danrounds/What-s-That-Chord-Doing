@@ -12,6 +12,7 @@ export class LogInOrRegister extends React.Component {
         this.state = {
             register: false,
             statusText: '',
+            errorText: false,
         };
         this.handleEnter = this.handleEnter.bind(this);
         this.onLogIn = this.onLogIn.bind(this);
@@ -23,7 +24,12 @@ export class LogInOrRegister extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.api.error !== this.props.api.error) {
+        // Everything below pertains to our status text:
+        if (nextProps.api.pending) {
+            this.setState({ statusText: 'Checking...', errorText: false });
+        } else if (nextProps.api.error !== this.props.api.error) {
+            this.setState({ errorText: true });
+
             // Log-in errors:
             if (nextProps.api.error === 404)
                 this.setState({ statusText: 'Username doesn\'t exist' });
@@ -37,13 +43,13 @@ export class LogInOrRegister extends React.Component {
         }
     }
 
-    getStyle(type) {
+    getButtonStyle(type) {
         if (this.state.register) {
             if (type === 'reg') {
-                return { color: 'black', border: '1px solid green' };
+                return { color: '#333', border: '1px solid green' };
             }
         } else if (type === 'log') {
-            return { color: 'black', border: '1px solid green' };
+            return { color: '#333', border: '1px solid green' };
         }
         return { color: 'gray' };
     }
@@ -54,6 +60,10 @@ export class LogInOrRegister extends React.Component {
                 return this.onRegister(e);
             return this.onLogIn(e);
         }
+    }
+
+    logInStyle() {
+        return this.state.errorText ? 'log-in-status log-in-err' : 'log-in-status';
     }
 
     onLogIn(e) {
@@ -68,6 +78,7 @@ export class LogInOrRegister extends React.Component {
 
     onRegister(e) {
         e.preventDefault();
+        this.setState({ errorText: true });
 
         if (!this.state.register) {
             this.setState({ register: true, statusText: '' });
@@ -108,7 +119,7 @@ export class LogInOrRegister extends React.Component {
             <div onKeyDown={this.handleEnter}>
               <NavBar parent="LogIn"/>
 
-              <div className="log-in-status">{this.state.statusText}</div>
+                <div className={this.logInStyle()}>{this.state.statusText}</div>
 
               <form action="javascript:void(0)" className="log-in-and-registration-form">
                 <label>
@@ -129,8 +140,8 @@ export class LogInOrRegister extends React.Component {
                      </label>)
                 }
 
-                <button style={this.getStyle('log')} onClick={this.onLogIn}>Log in</button>
-                <button style={this.getStyle('reg')} onClick={this.onRegister}>Register</button>
+                <button style={this.getButtonStyle('log')} onClick={this.onLogIn}>Log in</button>
+                <button style={this.getButtonStyle('reg')} onClick={this.onRegister}>Register</button>
               </form>
 
             </div>

@@ -411,13 +411,17 @@ button:hover {
 }
 
 .log-in-status {
-    color: coral;
+    color: #0d3;
     height: 90px;
     margin: 30px 5px 10px 5px;
     font-size: 30px;
     font-weight: bold;
     text-align: center;
     text-shadow: -1px 0 #eee, 0 1px #eee, 1px 0 #eee, 0 1px #eee, 0 -1px;
+}
+
+.log-in-err {
+    color: #f32;
 }
 
 .scores-btn-div {
