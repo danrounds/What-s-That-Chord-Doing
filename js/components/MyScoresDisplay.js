@@ -6,14 +6,18 @@ import ScoresTable from './ScoresTable';
 
 export class MyScoresDisplay extends React.Component {
     componentDidMount() {
-        this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+        this.props.dispatch(actions.getMyScores(this.props.api.authToken));
     }
 
     render() {
+        const name = this.props.api.name;
+        let hText = name ?
+                `Scores for ${this.props.api.name}` : 'Log in for user scores';
+
         return (
             <div>
               <div className="scores-btn-div">
-                <h1 className="scores-h-txt">Scores for bobby4</h1>
+                <h1 className="scores-h-txt">{hText}</h1>
               </div>
               <ScoresTable tableType="myScores" />
             </div>
@@ -22,8 +26,8 @@ export class MyScoresDisplay extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    gameType: state.game.gameType || 'allChords',
     api: state.api,
+    gameType: state.game.gameType || 'allChords',
 });
 
 export default connect(mapStateToProps)(MyScoresDisplay);

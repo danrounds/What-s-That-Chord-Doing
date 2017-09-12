@@ -17,12 +17,12 @@ export class StartNewGame extends React.Component {
             if (this.props.gameOver || this.props.firstQ || this.prompt()) {
                 this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                          this.props.inversions));
-                this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+                this.props.dispatch(actions.getMyScores(this.props.api.authToken));
             }
         } else if (this.props.keyValue === 'Enter' && this.props.gameOver) {
             this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                      this.props.inversions));
-            this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+            this.props.dispatch(actions.getMyScores(this.props.api.authToken));
         } else if (this.state.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts) {
             this.setState({ showKeyboardShortcuts: this.props.displayKeyboardShortcuts });
         }
@@ -36,7 +36,7 @@ export class StartNewGame extends React.Component {
         if (this.props.gameOver || this.props.firstQ || this.prompt()) {
             this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                      this.props.inversions));
-            this.props.dispatch(actions.getMyScores('bobby4', 'abc123'));
+            this.props.dispatch(actions.getMyScores(this.props.api.authToken));
         }
     }
 
@@ -52,12 +52,13 @@ export class StartNewGame extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    api: state.api,
     keyValue: state.game.keyValue,
     displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     gameType: state.game.gameType,
     inversions: state.game.inversions,
     firstQ: state.game.questionNumber === 1 && !state.game.answeredCorrectly,
-    gameOver: state.game.gameOver
+    gameOver: state.game.gameOver,
 });
 
 export default connect(mapStateToProps)(StartNewGame);

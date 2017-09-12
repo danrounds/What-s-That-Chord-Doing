@@ -80,7 +80,7 @@ em {
     overflow: auto;
 }
 
-#app :focus:not(button) {
+#app :focus:not(button):focus:not(input) {
     outline: 1px dashed pink;
 }
 
@@ -399,6 +399,10 @@ button:hover {
 
 .log-in-and-registration-form input {
     margin-bottom: 15px;
+}
+
+.log-in-and-registration-form input:focus {
+    outline: 1px solid cornflowerblue;
 }
 
 .log-in-and-registration-form button {

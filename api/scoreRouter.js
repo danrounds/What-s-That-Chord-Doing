@@ -1,31 +1,28 @@
 const express = require('express');
 const scoreRouter = express.Router();
-const passport = require('passport');
 
 const {UserScore} = require('./models');
-const {basicStrategy} = require('./basicAuthentication');
-
+const auth = require('./jwtAuthentication');
 
 // Our authenication
-passport.use(basicStrategy);
-scoreRouter.use(passport.initialize());
+scoreRouter.use(auth.initialize());
 
-// ROUTES 
-scoreRouter.get('/my-scores*', passport.authenticate('basic', {session: false}), (req, res) => {
+// ROUTES
+scoreRouter.get('/my-scores*', auth.authenticate(), (req, res) => {
     // endpoint for getting all of a user's scores. This is identical to
     // accountRouter's GET *, and changes should occur at both places at once.
     UserScore
-        .findOne({name: req.user.name})
+        .findById(req.user.id)
         .then(record => {
             if (record)
                 res.json(record.apiRepr());
             else
-                res.status(404).send();
+                res.sendStatus(404);
         })
-        .catch(() => res.status(500).send());
+        .catch(() => res.sendStatus(500));
 });
 
-scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}), (req, res) => {
+scoreRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
     // Endpoint for updating individual user scores
     // Intent is to only submit one gameMode of updated scores, at once
     const gameMode = Object.keys(req.body.scores)[0];
@@ -35,49 +32,49 @@ scoreRouter.put('/my-scores*', passport.authenticate('basic', {session: false}),
          'intermediateMinor','intermediateMinorInv','hardMajor',
          'hardMajorInv','hardMinor','hardMinorInv','allChords',
          'allChordsInv'].indexOf(gameMode) === -1) {
-        return res.status(400).send();
+        return res.sendStatus(400);
     }
 
     for (let el of ['totalClicks','nAnsweredRight','nQuestionNumber'])
         if (!(el in requestScores)) {
-            return res.status(400).send();
+            return res.sendStatus(400);
         }
 
     // Add win ratio:
     Object.assign(requestScores, {
-        winRatio:requestScores.nAnsweredRight / requestScores.nQuestionNumber
+        winRatio: requestScores.nAnsweredRight / requestScores.nQuestionNumber
     });
 
-    UserScore.findOne({name: req.user.name})
+    UserScore.findById(req.user.id)
         .then(record => {
             if (record) {
                 const newFields = {
                     scores: Object.assign(record.scores || {}, req.body.scores)
                 };
                 UserScore
-                    .findOne({name: req.user.name})
+                    .findById(req.user.id)
                     .update({ $set: newFields })
                     .then(record => {
                         if (record.nModified)
-                            res.status(200).send();
+                            res.sendStatus(200);
                         else
-                            res.status(304).send();
+                            res.sendStatus(304);
                     });
             } else {
                 const newScore = new UserScore;
                 newScore.name = req.user.name;
                 newScore.scores = req.body.scores;
                 newScore.save()
-                    .then(() => res.status(201).send())
+                    .then(() => res.sendStatus(201))
                     .catch(err => {
                         if (err.errors.scores.name === 'ValidatorError')
-                            res.status(400).send();
+                            res.sendStatus(400);
                         else
-                            res.status(500).send();
+                            res.sendStatus(500);
                     });
             }
         })
-        .catch(() => res.status(500).send());
+        .catch(() => res.sendStatus(500));
 });
 
 scoreRouter.get('/high-scores/:gameType', (req, res) => {
@@ -90,7 +87,7 @@ scoreRouter.get('/high-scores/:gameType', (req, res) => {
         .sort(sort)
         .then(results => res.json(
             results.map(result => result.apiRepr())))
-        .catch(() => res.status(500).send());
+        .catch(() => res.sendStatus(500).send());
 });
 
 module.exports = {scoreRouter};

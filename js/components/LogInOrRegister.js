@@ -13,6 +13,7 @@ export class LogInOrRegister extends React.Component {
             register: false,
             statusText: '',
         };
+        this.handleEnter = this.handleEnter.bind(this);
         this.onLogIn = this.onLogIn.bind(this);
         this.onRegister = this.onRegister.bind(this);
     }
@@ -23,8 +24,12 @@ export class LogInOrRegister extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.api.error !== this.props.api.error) {
-            if (nextProps.api.error === 401)
-                this.setState({ statusText: 'Invalid password or username' });
+            // Log-in errors:
+            if (nextProps.api.error === 404)
+                this.setState({ statusText: 'Username doesn\'t exist' });
+            else if (nextProps.api.error === 401)
+                this.setState({ statusText: 'Invalid password' });
+            // Registration errors:
             else if (nextProps.api.error === 409)
                 this.setState({ statusText: 'Username already exists; try a new one' });
             else if (nextProps.api.error)            
@@ -32,11 +37,32 @@ export class LogInOrRegister extends React.Component {
         }
     }
 
-    onLogIn(e) {
-        e.preventDefault();
+    getStyle(type) {
+        if (this.state.register) {
+            if (type === 'reg') {
+                return { color: 'black', border: '1px solid green' };
+            }
+        } else if (type === 'log') {
+            return { color: 'black', border: '1px solid green' };
+        }
+        return { color: 'gray' };
+    }
 
-        this.setState({ register: false });
-        this.props.dispatch(actions.getMyScores(this.name.value, this.password.value));
+    handleEnter(e) {
+        if (e.key === 'Enter') {
+            if (this.state.register)
+                return this.onRegister(e);
+            return this.onLogIn(e);
+        }
+    }
+
+    onLogIn(e) {
+        if (this.state.register) {
+            this.setState({ register: false });
+            e.preventDefault();
+        }
+        if (this.name.value && this.password.value)
+            this.props.dispatch(actions.logIn(this.name.value, this.password.value));
         return false;           // Keeps page from refreshing
     }
 
@@ -50,16 +76,18 @@ export class LogInOrRegister extends React.Component {
                 const name = this.name.value, pw = this.password.value,
                       pw_ = this.passwordConfirm.value;
 
-                if (name && pw === pw_) {
-                    const matchingRegEx = /[a-zA-Z0-9_]+/.exec(name) || [];
-                    if (matchingRegEx[0] !== name)
-                        this.setState({ statusText: 'Username should be letters, numbers, and underscores' });
-                    else if (pw.length < 6)
+                const matchingRegEx = /[a-zA-Z0-9_]+/.exec(name) || [];
+                if (matchingRegEx[0] !== name) {
+                    this.setState({ statusText: 'Username should be letters, numbers, and underscores' });
+                } else if (name && pw === pw_) {
+                    if (pw.length < 6)
                         this.setState({ statusText: 'Please choose a password of at least six characters'});
                     else if (pw.includes(' ') || pw.includes('\t') || pw.includes('\n'))
                         this.setState({ statusText: 'Password shouldn\'t contain whitespace characters'});
                     else
                         this.props.dispatch(actions.makeUserAccount(name, pw));
+                } else if (!pw || !pw_) {
+                    this.setState({ statusText: 'Fill in both password fields'});
                 } else if (pw !== pw_)
                     this.setState({ statusText: 'Passwords don\'t match'});
             } catch(e) {;}      // swallow .reference for undefined
@@ -68,21 +96,21 @@ export class LogInOrRegister extends React.Component {
     }
 
     render() {
-        if (this.props.api.myScores.name) {
+        if (this.props.api.authToken) {
             return (
                 <Router history={hashHistory}>
                   <Redirect from="log-in-or-register" to="/" />
                 </Router>
             );
         }
-
+        
         return (
-            <div>
+            <div onKeyDown={this.handleEnter}>
               <NavBar parent="LogIn"/>
 
               <div className="log-in-status">{this.state.statusText}</div>
 
-              <form className="log-in-and-registration-form">
+              <form action="javascript:void(0)" className="log-in-and-registration-form">
                 <label>
                   Name<br/>
                   <input ref={el => { this.name = el; }}
@@ -90,7 +118,7 @@ export class LogInOrRegister extends React.Component {
                 </label>
                 <label>
                   Password<br/>
-                  <input ref={el => { this.password = el; }}
+                  <input className="log-in-input" ref={el => { this.password = el; }}
                     type="password" required /><br/>
                 </label>
 
@@ -101,8 +129,8 @@ export class LogInOrRegister extends React.Component {
                      </label>)
                 }
 
-                <button onClick={this.onLogIn}>Log in</button>
-                <button onClick={this.onRegister}>Register</button>
+                <button style={this.getStyle('log')} onClick={this.onLogIn}>Log in</button>
+                <button style={this.getStyle('reg')} onClick={this.onRegister}>Register</button>
               </form>
 
             </div>

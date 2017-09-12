@@ -15,7 +15,7 @@ export class ScoresTable extends React.Component {
         if (this.props.tableType === 'highScore') {
             if (!this.props.api.highScores.length)
                 return 'No relevant scores posted';
-        } else if (!Object.keys(this.props.api.myScores).length) {
+        } else if (!this.props.api.myScores.scores) {
             return 'No relevant scores posted';
         }
         return false;
