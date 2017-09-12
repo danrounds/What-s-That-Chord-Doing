@@ -36,13 +36,30 @@ export class LogInOrRegister extends React.Component {
         }
     }
 
+    getStyle(type) {
+        if (this.state.register) {
+            if (type === 'reg') {
+                return { color: 'black', border: '1px solid green' };
+            }
+        } else if (type === 'log') {
+            return { color: 'black', border: '1px solid green' };
+        }
+        return { color: 'gray' };
+    }
+
     onLogIn(e) {
-        this.setState({ register: false });
-        this.props.dispatch(actions.logIn(this.name.value, this.password.value));
+        if (this.state.register) {
+            this.setState({ register: false });
+            e.preventDefault();
+        }
+        if (this.name.value && this.password.value)
+            this.props.dispatch(actions.logIn(this.name.value, this.password.value));
         return false;           // Keeps page from refreshing
     }
 
     onRegister(e) {
+        e.preventDefault();
+
         if (!this.state.register) {
             this.setState({ register: true, statusText: '' });
         } else {
@@ -50,7 +67,10 @@ export class LogInOrRegister extends React.Component {
                 const name = this.name.value, pw = this.password.value,
                       pw_ = this.passwordConfirm.value;
 
-                if (name && pw === pw_) {
+                const matchingRegEx = /[a-zA-Z0-9_]+/.exec(name) || [];
+                if (matchingRegEx[0] !== name) {
+                    this.setState({ statusText: 'Username should be letters, numbers, and underscores' });
+                } else if (name && pw === pw_) {
                     const matchingRegEx = /[a-zA-Z0-9_]+/.exec(name) || [];
                     if (matchingRegEx[0] !== name)
                         this.setState({ statusText: 'Username should be letters, numbers, and underscores' });
@@ -75,14 +95,14 @@ export class LogInOrRegister extends React.Component {
                 </Router>
             );
         }
-
+        
         return (
             <div>
               <NavBar parent="LogIn"/>
 
               <div className="log-in-status">{this.state.statusText}</div>
 
-                <form action="javascript:void(0)" className="log-in-and-registration-form">
+              <form action="javascript:void(0)" className="log-in-and-registration-form">
                 <label>
                   Name<br/>
                   <input ref={el => { this.name = el; }}
@@ -90,7 +110,7 @@ export class LogInOrRegister extends React.Component {
                 </label>
                 <label>
                   Password<br/>
-                  <input ref={el => { this.password = el; }}
+                  <input className="log-in-input" ref={el => { this.password = el; }}
                     type="password" required /><br/>
                 </label>
 
@@ -101,8 +121,8 @@ export class LogInOrRegister extends React.Component {
                      </label>)
                 }
 
-                <button onClick={this.onLogIn}>Log in</button>
-                <button onClick={this.onRegister}>Register</button>
+                <button style={this.getStyle('log')} onClick={this.onLogIn}>Log in</button>
+                <button style={this.getStyle('reg')} onClick={this.onRegister}>Register</button>
               </form>
 
             </div>
