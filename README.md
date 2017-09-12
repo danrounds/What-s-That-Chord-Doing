@@ -5,11 +5,16 @@ This is an ear-training app for intermediate musicians&#8212;maybe roughly sopho
 
 Project directory structure and build system derived from the [Thinkful React starter kit](https://github.com/oampo/thinkful-react-starter).
 
-### Working on OR trying out the project:
+### Working on OR trying the project:
 
-* Run the development task: `npm run dev`
-    * Starts a server running at http://localhost:8080
-    * Automatically rebuilds when any of your files change
+* Run the client: `npm run dev`
+    * Serves our client at http://localhost:8080 (try it out in your browser)
+    * Automatically rebuilds when files in our build change
+
+* Run the API server (optional):
+  1. `mongod&` to open the mongo daemon
+  2. `node api/server.js` to start the server
+    * Starts server running at http://localhost:8081
 
 ----------------------------------------------------------
 
