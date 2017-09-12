@@ -79,7 +79,7 @@ function putReqAccountPassword(token=token_, name='bobby4', password='abc123') {
         },
         body: JSON.stringify({ name, password }),
     };
-    return fetch(accountsUrl, payload)
+    return fetch(accountsUrl+'change-password', payload)
         .then(response => testResponse(response));
 }
 
@@ -92,7 +92,7 @@ function deleteReqAccount(token=token_, name='bobby4', password='abc123') {
         },
         body: JSON.stringify({ name }),
     };
-    return fetch(accountsUrl+name, payload)
+    return fetch(accountsUrl, payload)
         .then(response => testResponse(response));
 }
 

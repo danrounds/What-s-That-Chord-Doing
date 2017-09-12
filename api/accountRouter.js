@@ -82,7 +82,8 @@ accountRouter.post('/register', (req, res) => {
               }));
 });
 
-accountRouter.put('/:name', auth.authenticate(), (req, res) => {
+accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
+    // Update password
     if (!(req.body.name && req.body.newPassword))
         return res.status(400).json({error: 'Requests need `name` and `newPassword`'});
     if (req.body.newPassword.trim().length < 6)
@@ -91,7 +92,7 @@ accountRouter.put('/:name', auth.authenticate(), (req, res) => {
     UserScore
         .findById(req.user.id)
         .then(record => {
-            if (req.params.name !== record.name || record.name !== req.body.name)
+            if (record.name !== req.body.name)
                 return res.status(400).json({error: 'Authenticated `name`, URL name, and request body don\'t match'});
 
             return UserScore.hashPassword(req.body.newPassword)
@@ -108,12 +109,12 @@ accountRouter.put('/:name', auth.authenticate(), (req, res) => {
         });
 });
 
-accountRouter.delete('/:name', auth.authenticate(), (req, res) => {
+accountRouter.delete('/', auth.authenticate(), (req, res) => {
     UserScore
         .findById(req.user.id)
         .exec()
         .then(record => {
-            if (req.params.name !== record.name || record.name !== req.body.name)
+            if (record.name !== req.body.name)
                 return res.status(400).json({error: 'Authenticated `name`, URL name, and request body don\'t match'});
 
             return record.validatePassword(req.body.password);
