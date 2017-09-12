@@ -64,8 +64,8 @@ export default (state=initialState, action) => {
 
 
     case 'LOG_OFF':
-        localStorage.setItem('authToken', null);
-        localStorage.setItem('name', null);
+        localStorage.setItem('authToken', JSON.stringify(null));
+        localStorage.setItem('name', JSON.stringify(null));
         return {
             authToken: null,
             name: null,
