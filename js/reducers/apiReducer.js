@@ -39,8 +39,8 @@ export default (state=initialState, action) => {
     switch(action.type) {
         
     case 'LOG_IN_SUCCESS':
-        localStorage.setItem('authToken', action.token);
-        localStorage.setItem('name', action.name);
+        localStorage.setItem('authToken', JSON.stringify(action.token));
+        localStorage.setItem('name', JSON.stringify(action.name));
         return {
             authToken: action.token,
             name: action.name,
@@ -171,8 +171,8 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
 
     case 'MAKE_USER_ACCOUNT_SUCCESS':
-        localStorage.setItem('authToken', action.token);
-        localStorage.setItem('name', action.name);
+        localStorage.setItem('authToken', JSON.stringify(action.token));
+        localStorage.setItem('name', JSON.stringify(action.name));
         return {
             authToken: action.token,
             name: action.name,
