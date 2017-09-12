@@ -5,8 +5,8 @@ import * as actions from '../actions/apiActions';
 // start our app
 
 const initialState = {
-    authToken: localStorage.getItem('authToken'),
-    name: localStorage.getItem('name'),
+    authToken: JSON.parse(localStorage.getItem('authToken')),
+    name: JSON.parse(localStorage.getItem('name')),
     highScores: [],
     lastHighScoreAccessed: null,
     myScores: {},
@@ -64,8 +64,8 @@ export default (state=initialState, action) => {
 
 
     case 'LOG_OFF':
-        localStorage.setItem('authToken', JSON.stringify(null));
-        localStorage.setItem('name', JSON.stringify(null));
+        localStorage.setItem('authToken', null);
+        localStorage.setItem('name', null);
         return {
             authToken: null,
             name: null,
