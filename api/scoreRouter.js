@@ -79,9 +79,9 @@ scoreRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
 
 scoreRouter.get('/high-scores/:gameType', (req, res) => {
     const query = {}, match = { name: 1 }, sort = {};
-    query['scores.'+req.params.gameType] = { $exists: true };
-    match['scores.'+req.params.gameType] = 1;
-    sort['scores.'+req.params.gameType+'.winRatio'] = -1;
+    query[`scores.${req.params.gameType}`] = { $exists: true };
+    match[`scores.${req.params.gameType}`] = 1;
+    sort[ `scores.${req.params.gameType}.winRatio`] = -1;
 
     UserScore.find(query, match)
         .sort(sort)
