@@ -1,8 +1,8 @@
 import * as actions from '../actions/apiActions';
 
 const initialState = {
-    authToken: JSON.parse(localStorage.getItem('@WTCD/authToken')),
-    name: JSON.parse(localStorage.getItem('@WTCD/name')),
+    authToken: localStorage.getItem('@WTCD/authToken'),
+    name: localStorage.getItem('@WTCD/name'),
     highScores: [],
     lastHighScoreAccessed: null,
     myScores: {},

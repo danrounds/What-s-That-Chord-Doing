@@ -22,8 +22,8 @@ const logIn_ = {
 
     LOG_IN_SUCCESS: 'LOG_IN_SUCCESS',
     logInSuccess: (name, token) => {
-        localStorage.setItem('@WTCD/authToken', JSON.stringify(token));
-        localStorage.setItem('@WTCD/name', JSON.stringify(name));
+        localStorage.setItem('@WTCD/authToken', token);
+        localStorage.setItem('@WTCD/name', name);
         return {
             type: LOG_IN_SUCCESS,
             name,
@@ -40,8 +40,8 @@ const logIn_ = {
 
 export const LOG_OFF = 'LOG_OFF';
 export const logOff = () => {
-    localStorage.setItem('@WTCD/authToken', null);
-    localStorage.setItem('@WTCD/name', null);
+    localStorage.removeItem('@WTCD/authToken');
+    localStorage.removeItem('@WTCD/name');
     return {
         type: LOG_OFF
     };
@@ -136,8 +136,9 @@ const makeAccount = {
 
     MAKE_USER_ACCOUNT_SUCCESS: 'MAKE_USER_ACCOUNT_SUCCESS',
     makeUserAccountSuccess: (name, token) => {
-        localStorage.setItem('@WTCD/authToken', JSON.stringify(token));
-        localStorage.setItem('@WTCD/name', JSON.stringify(name));
+        console.log('okokok');
+        localStorage.setItem('@WTCD/authToken', token);
+        localStorage.setItem('@WTCD/name', name);
         return {
             type: MAKE_USER_ACCOUNT_SUCCESS,
             name,
