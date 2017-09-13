@@ -26,7 +26,11 @@ export class LogInOrRegister extends React.Component {
     componentWillReceiveProps(nextProps) {
         // Everything below pertains to our status text:
         if (nextProps.api.pending) {
-            this.setState({ statusText: 'Checking...', errorText: false });
+            if (this.state.register)
+                this.setState({ statusText: 'Registering...', errorText: false });
+            else
+                this.setState({ statusText: 'Checking...', errorText: false });
+
         } else if (nextProps.api.error !== this.props.api.error) {
             this.setState({ errorText: true });
 
@@ -35,6 +39,7 @@ export class LogInOrRegister extends React.Component {
                 this.setState({ statusText: 'Username doesn\'t exist' });
             else if (nextProps.api.error === 401)
                 this.setState({ statusText: 'Invalid password' });
+
             // Registration errors:
             else if (nextProps.api.error === 409)
                 this.setState({ statusText: 'Username already exists; try a new one' });
