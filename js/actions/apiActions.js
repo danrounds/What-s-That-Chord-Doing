@@ -2,6 +2,10 @@ import { postReqLogIn, getReqUserScores, getReqHighScores, postReqAccount,
          putReqUserScores, putReqAccountPassword, deleteReqAccount }
 from '../apiCalls';
 
+// The logInSuccess, logOff, makeUserAccount actions success all update
+// `authToken` and `name` fields in localStorage. These are retrieved as our
+// initial state for our reducer.
+
 const logIn_ = {
     logIn: (name, password) =>
         dispatch => {
@@ -17,11 +21,15 @@ const logIn_ = {
     }),
 
     LOG_IN_SUCCESS: 'LOG_IN_SUCCESS',
-    logInSuccess: (name, token) => ({
-        type: LOG_IN_SUCCESS,
-        name,
-        token,
-    }),
+    logInSuccess: (name, token) => {
+        localStorage.setItem('@WTCD/authToken', JSON.stringify(token));
+        localStorage.setItem('@WTCD/name', JSON.stringify(name));
+        return {
+            type: LOG_IN_SUCCESS,
+            name,
+            token,
+        };
+    },
 
     LOG_IN_FAILURE: 'LOG_IN_FAILURE',
     logInFailure: (error) => ({
@@ -31,9 +39,13 @@ const logIn_ = {
 };
 
 export const LOG_OFF = 'LOG_OFF';
-export const logOff = () => ({
-    type: LOG_OFF
-});
+export const logOff = () => {
+    localStorage.setItem('@WTCD/authToken', null);
+    localStorage.setItem('@WTCD/name', null);
+    return {
+        type: LOG_OFF
+    };
+};
 
 const getScores = {
     getMyScores: (token) =>
@@ -110,16 +122,28 @@ const getHighScores_ = {
 
 const makeAccount = {
     makeUserAccount: (name, password) =>
-        dispatch => postReqAccount(name, password)
-        .then(token => dispatch(makeAccount.makeUserAccountSuccess(name, token)))
-        .catch((e) => dispatch(makeAccount.makeUserAccountFailure(e))),
+        dispatch => {
+            dispatch(makeAccount.makeUserAccountPending());
+            return postReqAccount(name, password)
+                .then(token => dispatch(makeAccount.makeUserAccountSuccess(name, token)))
+                .catch((e) => dispatch(makeAccount.makeUserAccountFailure(e)));
+        },
+
+    MAKE_USER_ACCOUNT_PENDING: 'MAKE_USER_ACCOUNT_PENDING',
+    makeUserAccountPending: () => ({
+        type: MAKE_USER_ACCOUNT_PENDING,
+    }),
 
     MAKE_USER_ACCOUNT_SUCCESS: 'MAKE_USER_ACCOUNT_SUCCESS',
-    makeUserAccountSuccess: (name, token) => ({
-        type: MAKE_USER_ACCOUNT_SUCCESS,
-        name,
-        token,
-    }),
+    makeUserAccountSuccess: (name, token) => {
+        localStorage.setItem('@WTCD/authToken', JSON.stringify(token));
+        localStorage.setItem('@WTCD/name', JSON.stringify(name));
+        return {
+            type: MAKE_USER_ACCOUNT_SUCCESS,
+            name,
+            token,
+        };
+    },
 
     MAKE_USER_ACCOUNT_FAILURE: 'MAKE_USER_ACCOUNT_FAILURE',
     makeUserAccountFailure: (error) => ({
@@ -169,9 +193,9 @@ export const { getHighScores, GET_HIGH_SCORES_PENDING, getHighScoresPending,
                GET_HIGH_SCORES_SUCCESS, getHighScoresSuccess,
                GET_HIGH_SCORES_FAILURE, getHighScoresFailure } = getHighScores_;
 
-export const { makeUserAccount, MAKE_USER_ACCOUNT_SUCCESS,
-               makeUserAccountSuccess, MAKE_USER_ACCOUNT_FAILURE,
-               makeUserAccountFailure } = makeAccount;
+export const { makeUserAccount,MAKE_USER_ACCOUNT_PENDING,makeUserAccountPending,
+               MAKE_USER_ACCOUNT_SUCCESS, makeUserAccountSuccess,
+               MAKE_USER_ACCOUNT_FAILURE,makeUserAccountFailure } = makeAccount;
 
 export const { changeUserPassword, CHANGE_USER_PASSWORD_SUCCESS,
                changeUserPasswordSuccess, CHANGE_USER_PASSWORD_FAILURE,

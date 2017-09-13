@@ -1,12 +1,8 @@
 import * as actions from '../actions/apiActions';
 
-// Not only do we define actions for dispatching to our reducer, here, we also
-// update `localStorage`, on logIn/account-creation and retrieve from it when we
-// start our app
-
 const initialState = {
-    authToken: JSON.parse(localStorage.getItem('authToken')),
-    name: JSON.parse(localStorage.getItem('name')),
+    authToken: JSON.parse(localStorage.getItem('@WTCD/authToken')),
+    name: JSON.parse(localStorage.getItem('@WTCD/name')),
     highScores: [],
     lastHighScoreAccessed: null,
     myScores: {},
@@ -39,8 +35,6 @@ export default (state=initialState, action) => {
     switch(action.type) {
         
     case 'LOG_IN_SUCCESS':
-        localStorage.setItem('authToken', JSON.stringify(action.token));
-        localStorage.setItem('name', JSON.stringify(action.name));
         return {
             authToken: action.token,
             name: action.name,
@@ -64,8 +58,6 @@ export default (state=initialState, action) => {
 
 
     case 'LOG_OFF':
-        localStorage.setItem('authToken', null);
-        localStorage.setItem('name', null);
         return {
             authToken: null,
             name: null,
@@ -82,6 +74,7 @@ export default (state=initialState, action) => {
     case 'LOG_IN_PENDING':
     case 'GET_MY_SCORES_PENDING':
     case 'GET_HIGH_SCORES_PENDING':
+    case 'MAKE_USER_ACCOUNT_PENDING':
         return {
             authToken: state.authToken,
             name: state.name,
@@ -171,8 +164,6 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
 
     case 'MAKE_USER_ACCOUNT_SUCCESS':
-        localStorage.setItem('authToken', JSON.stringify(action.token));
-        localStorage.setItem('name', JSON.stringify(action.name));
         return {
             authToken: action.token,
             name: action.name,
