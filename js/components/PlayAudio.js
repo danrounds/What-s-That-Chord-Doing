@@ -8,9 +8,6 @@ export class PlayAudio extends React.Component {
         super(props);
         this.replayPrompt = this.replayPrompt.bind(this);
         this.playIntroChordsAndPrompt = this.playIntroChordsAndPrompt.bind(this);
-        this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
-        // /\ this is kept as a "last state" variable, and compared to props
-        // in the event that it changes
     }
 
     componentDidMount() {
@@ -24,10 +21,8 @@ export class PlayAudio extends React.Component {
             || this.props.displayKeyboardShortcuts !== nextProps.displayKeyboardShortcuts;
     }
 
-    componentDidUpdate() {
-        if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts)
-            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
-        else
+    componentWillUpdate(nextProps) {
+        if (nextProps.displayKeyboardShortcuts === this.props.displayKeyboardShortcuts)
             this.playSounds();
     }
 
@@ -85,13 +80,13 @@ export class PlayAudio extends React.Component {
     render() {
         return (
             <div className="play-audio-div">
-              <button onClick={this.playIntroChordsAndPrompt}>
-                Play intro & chord again<br/>
+              <button className="ctrl-btn" onClick={this.playIntroChordsAndPrompt}>
+                Play intro &<br/>chord again<br/>
                 {this.props.displayKeyboardShortcuts
                     && <div className="keyHint miniKeyHintDiv">,</div>}
               </button>
-              <button onClick={this.replayPrompt}>
-                Play chord again<br/>
+              <button className="ctrl-btn" onClick={this.replayPrompt}>
+                Play chord,<br/>again<br/>
                 {this.props.displayKeyboardShortcuts
                     && <div className="keyHint miniKeyHintDiv">.</div>}
               </button>

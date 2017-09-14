@@ -1,6 +1,7 @@
 * {
     color: #333;
     font-family: 'Raleway', sans-serif;
+    font-weight: normal;
 }
 
 html {
@@ -297,15 +298,17 @@ button:hover {
     box-shadow: inset 2px -1px 20px 0 #ffd966;
 }
 
-.nxtBtn {
-    background-color: #e5cdca;
-    border-width: 1px;
+.nxt-btn {
     font-weight: bold;
 }
 
-.nxtBtn:hover {
-    box-shadow: inset 2px -1px 20px 0 #yellow;
+.nxt-text {
+    margin-top: 6px;
 }
+
+/* .nxt-btn:hover { */
+/*     box-shadow: inset 2px -1px 20px 0 #yellow; */
+/* } */
 
 .keyHint {
     background-color: green;
@@ -323,16 +326,22 @@ button:hover {
 .miniKeyHint {
     font-size: 10px;
     font-weight: bold;
+    margin-top: 3px;
 }
 
 .miniKeyHintDiv {
     font-size: 10px;
     font-weight: bold;
+    margin-top: 3px;
     width: 10px;
 }
 
 .miniCtrlHint, .miniPlus, .miniEnterHint {
     display: inline-block;
+}
+
+.nxtKeyHint {
+    margin-top: 12px;
 }
 
 .miniPlus {
@@ -353,6 +362,11 @@ button:hover {
 
 .play-audio-div {
     display: inline-block;
+}
+
+.ctrl-btn {
+    height: 66px;
+    vertical-align: top;
 }
 
 .lesson-nav {

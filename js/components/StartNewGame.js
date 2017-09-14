@@ -7,9 +7,6 @@ export class StartNewGame extends React.Component {
     constructor(props) {
         super(props);
         this.startNewGame = this.startNewGame.bind(this);
-        this.state = { showKeyboardShortcuts: this.props.displayKeyboardShortcuts };
-        // /\ this is kept as a "last state" variable, and compared to props
-        // in the event that it changes
     }
 
     componentDidUpdate() {
@@ -23,8 +20,6 @@ export class StartNewGame extends React.Component {
             this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                      this.props.inversions));
             this.props.dispatch(actions.getMyScores(this.props.api.authToken));
-        } else if (this.state.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts) {
-            this.setState({ showKeyboardShortcuts: this.props.displayKeyboardShortcuts });
         }
     }
 
@@ -42,8 +37,8 @@ export class StartNewGame extends React.Component {
 
     render() {
         return (
-            <button className="ctrlBtns" onClick={this.startNewGame}>
-              Start New Game
+            <button className="ctrl-btn" onClick={this.startNewGame}>
+              Start new<br/>game
               {this.props.displayKeyboardShortcuts
                   && <div className="miniKeyHint"><div className="keyHint miniCtrlHint">CTRL</div><div className="miniPlus"> + </div><div className="keyHint miniEnterHint">ENTER</div></div>}
             </button>
