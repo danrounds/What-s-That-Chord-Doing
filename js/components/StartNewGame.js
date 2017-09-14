@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 export class StartNewGame extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.startNewGame = this.startNewGame.bind(this);
     }
 

@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 export class Next extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.onClick = this.onClick.bind(this);
     }
 

@@ -8,8 +8,8 @@ export class Staves extends React.Component {
     // This is the ugliest of our components; VexFlow is very "low level",
     // in terms of the abstractions it uses for representing musical objects.
     // The code here has to wrangle with that complexity.
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.drawMusic = this.drawMusic.bind(this);
     }
 
@@ -25,7 +25,7 @@ export class Staves extends React.Component {
         try {
             const staves = document.getElementById('staves');
             staves.removeChild(staves.childNodes[0]);
-        } catch(err) { ; }
+        } catch(err) {;}        // Can't remove something if it doesn't exist
     }
 
     drawMusic() {

@@ -5,8 +5,8 @@ import * as actions from '../actions';
 import ScoresTable from './ScoresTable';
 
 export class HighScoresDisplay extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {};
         this.clickBigButton = this.clickBigButton.bind(this);
         this.bigButtonIsSeleted = this.bigButtonIsSelected.bind(this);

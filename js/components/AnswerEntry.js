@@ -16,7 +16,6 @@ export class AnswerEntry extends React.Component {
         // in the event that it changes
     }
 
-
     componentWillUpdate() {
         this.buttons = this.makeButtons();
     }

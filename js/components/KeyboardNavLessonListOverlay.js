@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 export class KeyboardNavLessonListOverlay extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.thing = (
             <div>
               use&nbsp;
