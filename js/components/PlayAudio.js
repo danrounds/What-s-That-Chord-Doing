@@ -23,7 +23,7 @@ export class PlayAudio extends React.Component {
 
     componentWillUpdate(nextProps) {
         if (nextProps.displayKeyboardShortcuts === this.props.displayKeyboardShortcuts)
-            this.playSounds();
+            this.playSounds(nextProps);
     }
 
     playIntroChordsAndPrompt() {
@@ -64,15 +64,15 @@ export class PlayAudio extends React.Component {
         });
     }
 
-    playSounds() {
-        if (!this.props.keyPress) {
-            if (this.props.answeredCorrectly)
+    playSounds(props=this.props) {
+        if (!props.keyPress) {
+            if (props.answeredCorrectly)
                 this.replayPrompt();
-            else if (!this.props.guessN)
+            else if (!props.guessN)
                 this.playIntroChordsAndPrompt();
-        } else if (this.props.keyPress === ',') {
+        } else if (props.keyPress === ',') {
             this.playIntroChordsAndPrompt();
-        } else if (this.props.keyPress === '.') {
+        } else if (props.keyPress === '.') {
             this.replayPrompt();
         }
     }
