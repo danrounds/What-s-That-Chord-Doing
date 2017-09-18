@@ -1,9 +1,9 @@
 import fetch from 'isomorphic-fetch';
 
 const token_ = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU5YjVmMGY0MjhmYTE3MWRiNzg4MzgyMCJ9.yalTBvUlq6paFLdaD1JLbixHmIzutA-N8Tin9Ez17cA';
-const accountsUrl = 'http://localhost:8081/accounts/';
-const userScoreUrl = 'http://localhost:8081/my-scores/';
-const highScoreUrl = 'http://localhost:8081/high-scores/';
+const accountsUrl = 'http://localhost:8080/accounts/';
+const userScoreUrl = 'http://localhost:8080/my-scores/';
+const highScoreUrl = 'http://localhost:8080/high-scores/';
 const scores_ = {                // delete, once you have tests
     scores: {
         intermediateMinor: {

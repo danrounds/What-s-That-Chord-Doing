@@ -5,7 +5,7 @@ module.exports = {
     TEST_DATABASE_URL: process.env.TEST_DATABASE_URL
         || 'mongodb://localhost/what-s-this-chord-doing-scores',
 
-    PORT: process.env.PORT || 8081,
+    PORT: process.env.PORT || 8080,
 
     JWT_SECRET: process.env.JWT_SECRET || 's3cret_r3dux',
     JWT_SESSION: { session: false },

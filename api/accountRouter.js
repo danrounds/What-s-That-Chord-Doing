@@ -4,7 +4,7 @@ const jwt = require('jwt-simple');
 
 const {UserScore} = require('./models');
 const auth = require('./jwtAuthentication');
-const cfg = require('./config');
+const cfg = require('../config');
 
 // Our authenication
 accountRouter.use(auth.initialize());

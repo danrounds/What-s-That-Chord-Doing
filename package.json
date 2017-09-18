@@ -7,7 +7,7 @@
     "node": "7.2.1"
   },
   "scripts": {
-    "start": "http-server -c-1 build",
+    "start": "nodemon server.js",
     "dev": "run-p watch serve",
     "test": "mocha --recursive --compilers js:babel-core/register",
     "build": "run-s build:*",
