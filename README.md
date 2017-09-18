@@ -14,7 +14,7 @@ Project directory structure and build system derived from the [Thinkful React st
 
 ----------------------------------------------------------
 
-### Rational
+### Rationale
 
 Hearing chords in the context of a key is a crucial musical skill. Every ear training app ignores this and instead has us identify chords outside a context—by "character," instead of function.
 
