@@ -7,14 +7,10 @@ Project directory structure and build system derived from the [Thinkful React st
 
 ### Working on OR trying the project:
 
-* Run the client: `npm run dev`
-    * Serves our client at http://localhost:8080 (try it out in your browser)
-    * Automatically rebuilds when files in our build change
-
-* Run the API server (optional):
   1. `mongod&` to open the mongo daemon
-  2. `node api/server.js` to start the server
-    * Starts server running at http://localhost:8081
+  2. `npm run dev` to start the server and update our app, whenever we make changes&#8212;OR `npm start` to just start our server.
+    * Serves our client at http://localhost:8080 (try it out in your browser)
+    * Services our API endpoints
 
 ----------------------------------------------------------
 
