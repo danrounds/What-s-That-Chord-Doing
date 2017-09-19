@@ -8,91 +8,46 @@ export class AnswerEntry extends React.Component {
         super(props);
         this.onClick = this.onClick.bind(this);
         this.onKey = this.onKey.bind(this);
-        this.buttons = this.makeButtons();
+
         this.keyMap = this.makeKeyMap();
-        this.guess = null;
-        this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
-        // /\ this is kept as a "last state" variable, and compared to props
-        // in the event that it changes
+        this.state = { guess: null };
     }
 
-    componentWillUpdate() {
-        this.buttons = this.makeButtons();
+    componentWillReceiveProps(nextProps) {
+        if (!nextProps.answeredCorrectly && nextProps.keyValue)
+            this.onKey(nextProps);
+        else if (!nextProps.guessN && this.state.guess !== null)
+            this.setState({ guess: null });
     }
 
-    componentDidUpdate() {
-        if (this.props.keyValue)
-            this.onKey();
-
-        if (this.props.answeredCorrectly)
-            this.endTurn = true;
-
-        if (this.endTurn) {
-            if (!this.props.guessN) {
-                this.endTurn = false;
-                this.guess = null;
-                this.forceUpdate();
-            }
-        }
-
-        if (this.showKeyboardShortcuts !== this.props.displayKeyboardShortcuts) {
-            this.showKeyboardShortcuts = this.props.displayKeyboardShortcuts;
-            this.forceUpdate();
-        }
-
-        this.buttons = this.makeButtons();
-    }
-
-    onClick(e) {
+    onClick(e){
         if (!this.props.answeredCorrectly) {
+            let guess;
 
             // We're either clicking a button or something deeper in our tree
             if (e.target.parentElement.nodeName === 'BUTTON')
-                this.guess = e.target.parentElement.innerText.split('\n')[0];
+                guess =  e.target.parentElement.innerText.split('\n')[0];
             else
-                this.guess = e.target.innerText.split('\n')[0];
+                guess = e.target.innerText.split('\n')[0];
+
+            this.setState({ guess });
 
             // actions
-            if (this.guess === this.props.currentChord)
+            if (guess === this.props.currentChord)
                 this.props.dispatch(actions.markTurnCorrect());
             else
                 this.props.dispatch(actions.incrementGuessN());
         }
     }
 
-    onKey() {
-        if (!this.props.answeredCorrectly) {
-            this.guess = this.keyMap[this.props.keyValue] || null;
-            if (this.keyMap[this.props.keyValue]) {
-                if (this.keyMap[this.props.keyValue] === this.props.currentChord)
-                    this.props.dispatch(actions.markTurnCorrect());
-                else
-                    this.props.dispatch(actions.incrementGuessN());
-            }
+    onKey(props) {
+        this.setState({ guess: this.keyMap[props.keyValue] || null });
+        if (this.keyMap[props.keyValue]) {
+            if (this.keyMap[props.keyValue] === props.currentChord)
+                this.props.dispatch(actions.markTurnCorrect());
+            else
+                this.props.dispatch(actions.incrementGuessN());
         }
-    }
-
-    makeButtons() {
-        const keys = ['a','s','d','f','g','h','j','k','l',';',
-                     'z','x','c','v','b','n','m',',','.','/'];
-
-        return this.props.chordSubset.map((numeral) => {
-            let k = keys.shift();
-
-            return (
-                <button className={this.guess === numeral
-                                   ? (numeral === this.props.currentChord
-                                      ? "buttonRightStyle"
-                                      : "buttonWrongStyle"
-                                     )
-                        : "buttonStyle"}
-                        key={numeral} onClick={this.onClick}>
-                  {numeral}<br/>
-                  {this.props.displayKeyboardShortcuts
-                      && <div className="keyHint answerKeyHint">{k}</div>}
-                </button>
-            );
-        });
     }
 
     makeKeyMap() {
@@ -107,10 +62,34 @@ export class AnswerEntry extends React.Component {
         return keyMap;
     }
 
+    makeButtons() {
+        const keys = ['a','s','d','f','g','h','j','k','l',';',
+                      'z','x','c','v','b','n','m',',','.','/'];
+
+
+        return this.props.chordSubset.map((numeral) => {
+            let k = keys.shift();
+
+            return (
+                <button className={this.state.guess === numeral
+                                   ? (numeral === this.props.currentChord
+                                      ? "buttonRightStyle"
+                                      : "buttonWrongStyle"
+                                     )
+                        : "buttonStyle"}
+                        key={numeral} onClick={this.onClick}>
+                  {numeral}<br/>
+                  {this.props.displayKeyboardShortcuts
+                  && <div className="keyHint answerKeyHint">{k}</div>}
+                </button>
+            );
+        });
+    }
+
     render() {
         return (
             <div>
-              {this.buttons}
+              {this.makeButtons()}
             </div>
         );
     }
