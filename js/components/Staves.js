@@ -17,6 +17,10 @@ export class Staves extends React.Component {
         this.drawMusic();
     }
 
+    shouldComponentUpdate(nextProps) {
+        return !nextProps.guessN || nextProps.answeredCorrectly;
+    }
+
     componentDidUpdate() {
         this.drawMusic();
     }
@@ -138,6 +142,7 @@ const mapStateToProps = (state) => ({
     notes: state.game.notes,
     accidentals: state.game.accidentals,
     keySignature: state.game.keyNameNotation,
+    guessN: state.game.guessN,
     answeredCorrectly: state.game.answeredCorrectly
 });
 
