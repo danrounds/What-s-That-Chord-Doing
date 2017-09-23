@@ -29,13 +29,13 @@ const routes = (
       <Route path="/hard-major" component={() =>
         <Game mode="hardMajor" inversions={false} ac={ac} instrument={instrument}/>} />
       <Route path="/easy-minor" component={() =>
-        <Game mode="easyMinor" inversions={false} ac={ac}  instrument={instrument}/>} />
+        <Game mode="easyMinor" inversions={false} ac={ac} instrument={instrument}/>} />
       <Route path="/intermediate-minor" component={() =>
-        <Game mode="intermediateMinor" inversions={false} ac={ac}  instrument={instrument}/>} />
+        <Game mode="intermediateMinor" inversions={false} ac={ac} instrument={instrument}/>} />
       <Route path="/hard-minor" component={() =>
         <Game mode="hardMinor" inversions={false} ac={ac} instrument={instrument}/>} />
       <Route path="/all-chords" component={() =>
-        <Game mode="allChords" inversions={false} ac={ac}  instrument={instrument}/>} />
+        <Game mode="allChords" inversions={false} ac={ac} instrument={instrument}/>} />
       <Route path="/easy-major-inv" component={() =>
         <Game mode="easyMajor" inversions={true} ac={ac} instrument={instrument}/>} />
       <Route path="/hard-major-inv" component={() =>
@@ -43,7 +43,7 @@ const routes = (
       <Route path="/easy-minor-inv" component={() =>
         <Game mode="easyMinor" inversions={true} ac={ac} instrument={instrument}/>} />
       <Route path="/intermediate-minor-inv" component={() =>
-        <Game mode="intermediateMinor" inversions={true} ac={ac}  instrument={instrument}/>} />
+        <Game mode="intermediateMinor" inversions={true} ac={ac} instrument={instrument}/>} />
       <Route path="/hard-minor-inv" component={() =>
         <Game mode="hardMinor" inversions={true} ac={ac} instrument={instrument}/>} />
       <Route path="/all-chords-inv" component={() =>
