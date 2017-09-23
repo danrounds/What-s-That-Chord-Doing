@@ -140,14 +140,10 @@ const mapStateToProps = (state) => {
     let notes = state.game.notes;
 
     return {
-        keyPress: state.game.keyValue,
-        displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
         answer: notes.bass ? [notes.bass, ...notes.treble].map(
             processNotes) : [],
         introChordSequence: state.game.introChordSequence.map(
             (array) => array.map(processNotes)),
-        guessN: state.game.guessN,
-        answeredCorrectly: state.game.answeredCorrectly
     };
 };
 

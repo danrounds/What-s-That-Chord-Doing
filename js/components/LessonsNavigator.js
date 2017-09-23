@@ -83,7 +83,7 @@ export class LessonsNavigator extends React.Component {
 
     getDisplayArray(difficulty={}) {
         let displayArray = this.alwaysDisplayedRefs;
-        
+
         let easy = (difficulty.easy === undefined)
                 ? this.props.lessonIndexDisplay.easy : difficulty.easy;
         let novice = (difficulty.novice === undefined)

@@ -25,9 +25,4 @@ export class MyScoresDisplay extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    api: state.api,
-    gameType: state.game.gameType || 'allChords',
-});
-
-export default connect(mapStateToProps)(MyScoresDisplay);
+export default connect((state) => ({ api: state.api }))(MyScoresDisplay);

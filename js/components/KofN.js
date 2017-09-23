@@ -7,8 +7,4 @@ export class KofN extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    questionNumber: state.game.questionNumber
-});
-
-export default connect(mapStateToProps)(KofN);
+export default connect((state) => ({ questionNumber: state.game.questionNumber }))(KofN);
