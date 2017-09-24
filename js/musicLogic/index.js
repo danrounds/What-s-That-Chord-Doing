@@ -207,7 +207,7 @@ const accidentalMap = {
     rootThirdAndFifth: [ [0,1,2], [0,1,2], [0,1,2] ]
 };
 
-const chordSets = {
+export const chordSets = {
     easyMajor: ['I','ii','iii','IV','V','vi','vii°'],
     hardMajor: ['I','♭II','ii','iii','iv','IV','V','♭VI','vi','♭VII','vii°'],
     easyMinor: ['i','ii°','♭III','iv','V','♭VI','♭VII'],
