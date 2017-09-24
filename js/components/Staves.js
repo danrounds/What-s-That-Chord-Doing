@@ -134,7 +134,7 @@ export class Staves extends React.Component {
     }
 
     render() {
-        return (<div ref={(div) => this.stavesDiv = div } id="staves"></div>);
+        return (<div ref={(div) => this.stavesDiv = div} id="staves"></div>);
     }
 }
 
