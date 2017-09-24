@@ -36,7 +36,7 @@ export class Staves extends React.Component {
         this.deleteCanvas();
 
         const VF = Vex.Flow;
-        const div = document.getElementById('staves');
+        const div = this.stavesDiv;
         const renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
         // Configure the rendering context.
@@ -134,7 +134,7 @@ export class Staves extends React.Component {
     }
 
     render() {
-        return (<div id="staves"></div>);
+        return (<div ref={(div) => this.stavesDiv = div } id="staves"></div>);
     }
 }
 
