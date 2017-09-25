@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import HighScoresDisplay from './HighScoresDisplay';
 import MyScoresDisplay from './MyScoresDisplay';
 import NavBar from './NavBar';
-import * as actions from '../actions';
+// import * as actions from '../actions';
 
-export class Scores extends React.Component {
+export default class Scores extends React.Component {
     // This is the component associated with our /scores endpoint--i.e.,
     // the component that displays when we click "Scores," on our NavBar
     constructor() {
@@ -55,9 +55,3 @@ export class Scores extends React.Component {
         );
     }
 }
-
-const mapStateToProps = (state) => ({
-    gameType: state.game.gameType || 'allChords',
-});
-
-export default connect(mapStateToProps)(Scores);

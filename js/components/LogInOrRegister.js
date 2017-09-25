@@ -122,10 +122,8 @@ export class LogInOrRegister extends React.Component {
         
         return (
             <div onKeyDown={this.handleEnter}>
-              <NavBar parent="LogIn"/>
-
-                <div className={this.logInStyle()}>{this.state.statusText}</div>
-
+              <NavBar parent="LogIn"/>             
+              <div className={this.logInStyle()}>{this.state.statusText}</div>
               <form action="javascript:void(0)" className="log-in-and-registration-form">
                 <label>
                   Name<br/>
@@ -154,8 +152,4 @@ export class LogInOrRegister extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    api: state.api,
-});
-
-export default connect(mapStateToProps)(LogInOrRegister);
+export default connect((state) => ({ api: state.api, }))(LogInOrRegister);
