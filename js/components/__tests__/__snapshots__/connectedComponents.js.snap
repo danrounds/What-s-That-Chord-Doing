@@ -1,0 +1,329 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Score-based components Game 1`] = `
+<div
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+  tabIndex="0"
+>
+  <Connect(NavBar) />
+  <div
+    className="game"
+  >
+    <Connect(GameModeText) />
+    <Connect(KofN) />
+    <Connect(Staves) />
+    <Connect(Status)
+      inversions={false}
+      mode="allChords"
+    />
+    <Connect(AnswerEntry) />
+    <Connect(PlayAudio) />
+    <Connect(StartNewGame) />
+    <Connect(Next) />
+    <Connect(SubmitMyScore) />
+  </div>
+</div>
+`;
+
+exports[`Score-based components Home 1`] = `
+<div>
+  <Connect(NavBar)
+    parent="Home"
+  />
+  <Connect(LessonsNavigator) />
+  <Connect(KeyboardNavLessonListOverlay) />
+</div>
+`;
+
+exports[`Score-based components NavBar 1`] = `
+<div
+  className="nav-bar"
+>
+  <div
+    className="nav-button nav-button-selected"
+  >
+    <Link
+      className="nav-text"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/"
+    >
+      Exercises
+    </Link>
+  </div>
+  <div
+    className="nav-button"
+  >
+    <Link
+      className="nav-text"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/what-is-this"
+    >
+      What is this?
+    </Link>
+  </div>
+  <MediaQuery
+    minDeviceWidth={800}
+    values={Object {}}
+  />
+  <div
+    className="nav-button"
+  >
+    <Link
+      className="nav-text"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/scores"
+    >
+      Scores
+    </Link>
+  </div>
+  <div
+    className="nav-button"
+  >
+    <a
+      className="nav-text"
+      href="javascript:void(0)"
+      onClick={[Function]}
+    >
+      Log off
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Score-based components Scores 1`] = `
+<div>
+  <Connect(NavBar)
+    parent="Scores"
+  />
+  <div
+    className="huge-btn-div"
+  >
+    <button
+      className="huge-btn huge-btn-active"
+      onClick={[Function]}
+    >
+      High Scores
+    </button>
+    <button
+      className="huge-btn"
+      onClick={[Function]}
+    >
+      My Scores
+    </button>
+  </div>
+  <Connect(HighScoresDisplay) />
+</div>
+`;
+
+exports[`Score-based components WhatIsThis 1`] = `
+<div
+  tabIndex="1"
+>
+  <Connect(NavBar)
+    parent="WhatIs"
+  />
+  <div
+    className="what-is-this"
+  >
+    <div
+      className="what-is-it-section"
+    >
+      <h1
+        className="what-is-this-h"
+      >
+        What does it do?
+      </h1>
+      <p>
+        If you've played music, you've heard of the 
+        <em>
+          I-IV-V
+        </em>
+         chord progression.
+      </p>
+      <p>
+        Or maybe you've 
+        <a
+          className="what-is-link"
+          href="https://www.youtube.com/watch?v=oOlDewpCfZQ"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          seen the video on the ubiquitous I-IV-vi-V chord progression.
+        </a>
+      </p>
+      <p>
+        This app teaches you to hear that 
+        <em>
+          I-IV-V
+        </em>
+        ... or 
+        <em>
+          vii°
+        </em>
+        ... 
+        <em>
+          ♭II
+        </em>
+         ...
+      </p>
+    </div>
+    <div
+      className="what-is-it-section"
+    >
+      <h1
+        className="what-is-this-h"
+      >
+        How does it work?
+      </h1>
+      <p>
+        This explains the basic mechanics of the game—what you'll hear and why.
+      </p>
+      <p>
+        <em>
+          If you're not sure what a "function ear trainer" is, check out the 
+          <span
+            className="italic"
+          >
+            Why This Game
+          </span>
+           section, below.
+        </em>
+      </p>
+      <p>
+        <em>
+          First,
+        </em>
+         you'll hear a four chord intro (
+        <em>
+          I-IV-V-I
+        </em>
+        ), which will unambiguously establish a key:
+      </p>
+      <div
+        className="btn-container"
+      >
+        <button
+          className="what-is-this-btn"
+          onClick={[Function]}
+        >
+          Press to hear the intro
+        </button>
+      </div>
+      <p>
+        <em>
+          After a brief pause, you'll hear a fifth chord:
+        </em>
+         the actual, prompted question that you're to answer:
+      </p>
+      <div
+        className="btn-container"
+      >
+        <button
+          className="what-is-this-btn"
+          onClick={[Function]}
+        >
+          Press to hear the prompt
+        </button>
+      </div>
+      <p>
+        <em>
+          This is what it'll actually sound like, in-game:
+        </em>
+      </p>
+      <div
+        className="btn-container"
+      >
+        <button
+          className="what-is-this-btn"
+          onClick={[Function]}
+        >
+          Press to hear the intro and prompt
+        </button>
+      </div>
+      <p>
+        <em>
+          Now, you pick the roman numeral of the chord you've just heard.
+        </em>
+         It'll be hard, at first!
+      </p>
+    </div>
+    <div
+      className="what-is-it-section"
+      id="why"
+    >
+      <h1
+        className="what-is-this-h"
+      >
+        Why this game?
+      </h1>
+      <p>
+        <a
+          className="what-is-link"
+          href="http://tonedear.com/ear-training/chord-identification"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Conventional chord training apps
+        </a>
+         are useful, but they have a problem: 
+        <em>
+          They ignore musical context.
+        </em>
+      </p>
+      <p>
+        They have you identify chords based on their "chord quality"—
+        <em>
+          major, minor, diminished, add6, etc.
+        </em>
+      </p>
+      <p>
+        Again, 
+        <span
+          className="italic"
+        >
+          this is useful
+        </span>
+        , but we're ignoring part of how people actually hear music.
+      </p>
+      <p>
+        When we listen to music, we automatically relate chords and notes to the context of a key (whether we know what a key is or not). A C major chord in the key of C Major sounds very different than a C Major chord in F# minor.
+      </p>
+      <p>
+        <a
+          className="what-is-link"
+          href="http://www.harding.edu/gclayton/color/images/simultcontr/ch03%20perceiving%20color162.png"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Something very similar happens in the way we perceive color.
+        </a>
+      </p>
+      <p>
+        The 
+        <a
+          className="what-is-link"
+          href="https://www.youtube.com/watch?v=WZ6qEomjWM4"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          I-IV-vi-V chord progression sounds familiar
+        </a>
+         precisely because of contextual hearing.
+      </p>
+      <p>
+        Even though songs that use this progression aren't always (or even usually) in the same key, we still hear them as "the same," in some sense, 
+        <span
+          className="italic"
+        >
+          precisely
+        </span>
+         because our hearing is contextual.
+      </p>
+    </div>
+  </div>
+</div>
+`;

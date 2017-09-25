@@ -1,0 +1,292 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: AnswerEntryTest should register right answers 1`] = `
+<div>
+  <button
+    className="buttonStyle"
+    key="i"
+    onClick={[Function]}
+  >
+    i
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="♭II"
+    onClick={[Function]}
+  >
+    ♭II
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="ii°"
+    onClick={[Function]}
+  >
+    ii°
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="ii"
+    onClick={[Function]}
+  >
+    ii
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="♭III"
+    onClick={[Function]}
+  >
+    ♭III
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="iv"
+    onClick={[Function]}
+  >
+    iv
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="v"
+    onClick={[Function]}
+  >
+    v
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="V"
+    onClick={[Function]}
+  >
+    V
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="♭VI"
+    onClick={[Function]}
+  >
+    ♭VI
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="vi"
+    onClick={[Function]}
+  >
+    vi
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="♭VII"
+    onClick={[Function]}
+  >
+    ♭VII
+    <br />
+  </button>
+  <button
+    className="buttonRightStyle"
+    key="vii°"
+    onClick={[Function]}
+  >
+    vii°
+    <br />
+  </button>
+</div>
+`;
+
+exports[`Component: AnswerEntryTest should register wrong answers 1`] = `
+<div>
+  <button
+    className="buttonStyle"
+    key="i"
+    onClick={[Function]}
+  >
+    i
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="♭II"
+    onClick={[Function]}
+  >
+    ♭II
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="ii°"
+    onClick={[Function]}
+  >
+    ii°
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="ii"
+    onClick={[Function]}
+  >
+    ii
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="♭III"
+    onClick={[Function]}
+  >
+    ♭III
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="iv"
+    onClick={[Function]}
+  >
+    iv
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="v"
+    onClick={[Function]}
+  >
+    v
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="V"
+    onClick={[Function]}
+  >
+    V
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="♭VI"
+    onClick={[Function]}
+  >
+    ♭VI
+    <br />
+  </button>
+  <button
+    className="buttonWrongStyle"
+    key="vi"
+    onClick={[Function]}
+  >
+    vi
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="♭VII"
+    onClick={[Function]}
+  >
+    ♭VII
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    key="vii°"
+    onClick={[Function]}
+  >
+    vii°
+    <br />
+  </button>
+</div>
+`;
+
+exports[`Component: AnswerEntryTest should render 1`] = `
+<div>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    i
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    ♭II
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    ii°
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    ii
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    ♭III
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    iv
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    v
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    V
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    ♭VI
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    vi
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    ♭VII
+    <br />
+  </button>
+  <button
+    className="buttonStyle"
+    onClick={[Function]}
+  >
+    vii°
+    <br />
+  </button>
+</div>
+`;

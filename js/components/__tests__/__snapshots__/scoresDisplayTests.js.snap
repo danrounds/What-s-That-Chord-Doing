@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Score-based components HighScoresDisplay 1`] = `
+<div>
+  <div
+    className="scores-btn-div"
+  >
+    <h1
+      className="scores-h-txt"
+    >
+      Chord subsets
+    </h1>
+    <div
+      className="big-btn-div"
+    >
+      <button
+        className="big-btn big-btn-selected"
+        onClick={[Function]}
+      >
+        Major
+      </button>
+      <button
+        className="big-btn"
+        onClick={[Function]}
+      >
+        Minor
+      </button>
+      <button
+        className="big-btn"
+        onClick={[Function]}
+      >
+        All our chords
+      </button>
+    </div>
+    <div
+      className="small-btns small-btns-major"
+    >
+      <button
+        className="small-btn"
+        onClick={[Function]}
+      >
+        Easy
+      </button>
+      <button
+        className="small-btn"
+        onClick={[Function]}
+      >
+        Easy
+        <br />
+        inversions
+      </button>
+      <button
+        className="small-btn small-btn-selected"
+        onClick={[Function]}
+      >
+        Hard
+      </button>
+      <button
+        className="small-btn"
+        onClick={[Function]}
+      >
+        Hard
+        <br />
+        inversions
+      </button>
+    </div>
+  </div>
+  <Connect(ScoresTable)
+    tableType="highScore"
+  />
+</div>
+`;
+
+exports[`Score-based components MyScoresDisplay 1`] = `
+<div>
+  <div
+    className="scores-btn-div"
+  >
+    <h1
+      className="scores-h-txt"
+    >
+      Scores for davey
+    </h1>
+  </div>
+  <Connect(ScoresTable)
+    tableType="myScores"
+  />
+</div>
+`;
+
+exports[`Score-based components ScoresTable 1`] = `
+<table
+  className="scores-container"
+>
+  <thead>
+    <tr>
+      <th
+        key="Game type"
+      >
+        Game type
+      </th>
+      <th
+        key="?s Right"
+      >
+        ?s Right
+      </th>
+      <th
+        key="?s Total"
+      >
+        ?s Total
+      </th>
+      <th
+        key="Guesses per Right Answer"
+      >
+        Guesses per Right Answer
+      </th>
+      <th
+        key="% Right"
+      >
+        % Right
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      key="0"
+    >
+      <th
+        key="1"
+      >
+        Easy major
+      </th>
+      <th
+        key="2"
+      >
+        4
+      </th>
+      <th
+        key="3"
+      >
+        10
+      </th>
+      <th
+        key="4"
+      >
+        3.33
+      </th>
+      <th
+        key="5"
+      >
+        40
+      </th>
+    </tr>
+    <tr
+      key="1"
+    >
+      <th
+        key="2"
+      >
+        All our chords, w/inversions
+      </th>
+      <th
+        key="3"
+      >
+        3
+      </th>
+      <th
+        key="4"
+      >
+        10
+      </th>
+      <th
+        key="5"
+      >
+        1.36
+      </th>
+      <th
+        key="6"
+      >
+        30
+      </th>
+    </tr>
+  </tbody>
+</table>
+`;

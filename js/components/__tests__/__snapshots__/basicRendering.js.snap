@@ -1,0 +1,683 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components: Basic rendering GameModeText 1`] = `
+<div
+  className="game-mode-string"
+>
+  Hard minor, with inversions
+</div>
+`;
+
+exports[`Components: Basic rendering KeyboardNavLessonListOverlay, w/ keyboard shortcuts 1`] = `
+<div
+  className="lesson-nav-keyboard-hints"
+>
+  <div>
+    use 
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      w
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      a
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      s
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      d
+    </span>
+      / 
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      ↑
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      ←
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      ↓
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      →
+    </span>
+      and 
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      Enter
+    </span>
+      / 
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      Space
+    </span>
+     
+    <br />
+    to navigate lessons menu
+  </div>
+</div>
+`;
+
+exports[`Components: Basic rendering KeyboardNavLessonListOverlay, w/out keyboard shortcuts 1`] = `
+<div
+  className="lesson-nav-keyboard-hints"
+>
+  <div>
+    use 
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      w
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      a
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      s
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      d
+    </span>
+      / 
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      ↑
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      ←
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      ↓
+    </span>
+     
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      →
+    </span>
+      and 
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      Enter
+    </span>
+      / 
+    <span
+      className="keyHint lesson-nav-hint"
+    >
+      Space
+    </span>
+     
+    <br />
+    to navigate lessons menu
+  </div>
+</div>
+`;
+
+exports[`Components: Basic rendering KofN 1`] = `
+<p
+  className="k-of-n"
+>
+  Question 
+  3
+   of 10
+</p>
+`;
+
+exports[`Components: Basic rendering LessonsNavigator 1`] = `
+<LessonsNavigator
+  lessonIndexDisplay={
+    Object {
+      "difficult": true,
+      "easy": true,
+      "i": 1,
+      "novice": true,
+    }
+  }
+>
+  <div
+    className="game lesson-nav"
+    onKeyDown={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <h2
+      className="modes-primary"
+    >
+      Game modes:
+    </h2>
+    <a
+      className="difficultyLvl"
+      href="javascript:this.onDifficultyClick"
+      onClick={[Function]}
+    >
+      Easy
+    </a>
+    <div
+      className="easy-container"
+    >
+      <ul
+        className="miniLessonList"
+      >
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/easy-major"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              easy major
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/easy-major-inv"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              easy major, inversions
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/easy-minor"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              easy minor
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/easy-minor-inv"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              easy minor, inversions
+            </a>
+          </Link>
+        </li>
+      </ul>
+    </div>
+    <a
+      className="difficultyLvl"
+      href="javascript:this.onDifficultyClick"
+      onClick={[Function]}
+    >
+      Novice
+    </a>
+    <div
+      className="novice-container"
+    >
+      <ul
+        className="miniLessonList"
+      >
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/intermediate-minor"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              intermediate minor
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/intermediate-minor-inv"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              intermediate minor, inversions
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/hard-major"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              hard major
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/hard-major-inv"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              hard major, inversions
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/hard-minor"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              hard minor
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/hard-minor-inv"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              hard minor, inversions
+            </a>
+          </Link>
+        </li>
+      </ul>
+    </div>
+    <a
+      className="difficultyLvl"
+      href="javascript:this.onDifficultyClick"
+      onClick={[Function]}
+    >
+      Difficult
+    </a>
+    <div
+      className="difficult-container"
+    >
+      <ul
+        className="miniLessonList"
+      >
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/all-chords"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              all chords
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            onMouseOver={[Function]}
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/all-chords-inv"
+          >
+            <a
+              className="nav-link"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              style={Object {}}
+            >
+              all chords, inversions
+            </a>
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </div>
+</LessonsNavigator>
+`;
+
+exports[`Components: Basic rendering Next, w/ keyboard shortcuts 1`] = `
+<button
+  className="ctrl-btn nxt-btn"
+  onClick={[Function]}
+>
+  <div
+    className="nxt-text"
+  >
+    next ?
+  </div>
+  <div
+    className="keyHint miniKeyHint nxtKeyHint"
+  >
+    SPACE
+  </div>
+</button>
+`;
+
+exports[`Components: Basic rendering Next, w/out keyboard shortcuts 1`] = `
+<button
+  className="ctrl-btn nxt-btn"
+  onClick={[Function]}
+>
+  <div
+    className="nxt-text"
+  >
+    next ?
+  </div>
+</button>
+`;
+
+exports[`Components: Basic rendering PlayAudio, w/ keyboard shortcuts 1`] = `
+<div
+  className="play-audio-div"
+>
+  <button
+    className="ctrl-btn"
+    onClick={[Function]}
+  >
+    Play intro &
+    <br />
+    chord again
+    <br />
+    <div
+      className="keyHint miniKeyHintDiv"
+    >
+      ,
+    </div>
+  </button>
+  <button
+    className="ctrl-btn"
+    onClick={[Function]}
+  >
+    Play chord,
+    <br />
+    again
+    <br />
+    <div
+      className="keyHint miniKeyHintDiv"
+    >
+      .
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Components: Basic rendering PlayAudio, w/out keyboard shortcuts 1`] = `
+<div
+  className="play-audio-div"
+>
+  <button
+    className="ctrl-btn"
+    onClick={[Function]}
+  >
+    Play intro &
+    <br />
+    chord again
+    <br />
+    <div
+      className="keyHint miniKeyHintDiv"
+    >
+      ,
+    </div>
+  </button>
+  <button
+    className="ctrl-btn"
+    onClick={[Function]}
+  >
+    Play chord,
+    <br />
+    again
+    <br />
+    <div
+      className="keyHint miniKeyHintDiv"
+    >
+      .
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Components: Basic rendering StartNewGame, w/ keyboard shortcuts 1`] = `
+<button
+  className="ctrl-btn"
+  onClick={[Function]}
+>
+  Start new
+  <br />
+  game
+  <div
+    className="miniKeyHint"
+  >
+    <div
+      className="keyHint miniCtrlHint"
+    >
+      CTRL
+    </div>
+    <div
+      className="miniPlus"
+    >
+       + 
+    </div>
+    <div
+      className="keyHint miniEnterHint"
+    >
+      ENTER
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Components: Basic rendering StartNewGame, w/out keyboard shortcuts 1`] = `
+<button
+  className="ctrl-btn"
+  onClick={[Function]}
+>
+  Start new
+  <br />
+  game
+</button>
+`;
+
+exports[`Components: Basic rendering Status, correct answer, w/ keyboard shortcuts 1`] = `
+<Status
+  answeredCorrect={true}
+  chordName="G minor"
+  clicksPerRightAnswer={3.12}
+  displayKeyboardShorcuts={true}
+  gameOver={true}
+  key_="Eb Major"
+  nAnsweredRight={4}
+>
+  <div
+    className="status-box"
+  >
+    <h3
+      className="status-feedback"
+    >
+      <br />
+    </h3>
+    <h3
+      className="status-secondary"
+    >
+      4 answered correctly
+    </h3>
+    <h3
+      className="status-secondary"
+    >
+      <br />
+    </h3>
+    <h2
+      className="status-primary"
+    >
+      <div>
+        Game over! 
+        <a
+          className="game-link"
+          href="javascript:void(0)"
+          onClick={[Function]}
+        >
+          Play again?
+        </a>
+      </div>
+    </h2>
+  </div>
+</Status>
+`;
+
+exports[`Components: Basic rendering Status, correct answer, w/out keyboard shortcuts 1`] = `
+<Status
+  answeredCorrect={true}
+  chordName="G minor"
+  clicksPerRightAnswer={3.12}
+  displayKeyboardShorcuts={false}
+  gameOver={true}
+  key_="Eb Major"
+  nAnsweredRight={4}
+>
+  <div
+    className="status-box"
+  >
+    <h3
+      className="status-feedback"
+    >
+      <br />
+    </h3>
+    <h3
+      className="status-secondary"
+    >
+      4 answered correctly
+    </h3>
+    <h3
+      className="status-secondary"
+    >
+      <br />
+    </h3>
+    <h2
+      className="status-primary"
+    >
+      <div>
+        Game over! 
+        <a
+          className="game-link"
+          href="javascript:void(0)"
+          onClick={[Function]}
+        >
+          Play again?
+        </a>
+      </div>
+    </h2>
+  </div>
+</Status>
+`;

@@ -1,0 +1,441 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Score-based components LogInOrRegister, when log-in succeeds 1`] = `
+<Router
+  history={
+    Object {
+      "createHref": [Function],
+      "createKey": [Function],
+      "createLocation": [Function],
+      "createPath": [Function],
+      "getCurrentLocation": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "listen": [Function],
+      "listenBefore": [Function],
+      "push": [Function],
+      "replace": [Function],
+      "transitionTo": [Function],
+    }
+  }
+  render={[Function]}
+>
+  <Redirect
+    from="log-in-or-register"
+    to="/"
+  />
+</Router>
+`;
+
+exports[`Score-based components LogInOrRegister, when logging in & password is wrong 1`] = `
+<div
+  onKeyDown={[Function]}
+>
+  <Connect(NavBar)
+    parent="LogIn"
+  />
+  <div
+    className="log-in-status log-in-err"
+  >
+    Invalid password
+  </div>
+  <form
+    action="javascript:void(0)"
+    className="log-in-and-registration-form"
+  >
+    <label>
+      Name
+      <br />
+      <input
+        autoFocus={true}
+        required={true}
+        type="text"
+      />
+      <br />
+    </label>
+    <label>
+      Password
+      <br />
+      <input
+        className="log-in-input"
+        required={true}
+        type="password"
+      />
+      <br />
+    </label>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "border": "1px solid green",
+          "color": "#333",
+        }
+      }
+    >
+      Log in
+    </button>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "gray",
+        }
+      }
+    >
+      Register
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Score-based components LogInOrRegister, when logging in & pending 1`] = `
+<div
+  onKeyDown={[Function]}
+>
+  <Connect(NavBar)
+    parent="LogIn"
+  />
+  <div
+    className="log-in-status"
+  >
+    Checking...
+  </div>
+  <form
+    action="javascript:void(0)"
+    className="log-in-and-registration-form"
+  >
+    <label>
+      Name
+      <br />
+      <input
+        autoFocus={true}
+        required={true}
+        type="text"
+      />
+      <br />
+    </label>
+    <label>
+      Password
+      <br />
+      <input
+        className="log-in-input"
+        required={true}
+        type="password"
+      />
+      <br />
+    </label>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "border": "1px solid green",
+          "color": "#333",
+        }
+      }
+    >
+      Log in
+    </button>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "gray",
+        }
+      }
+    >
+      Register
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Score-based components LogInOrRegister, when logging in & username doesn't exist 1`] = `
+<div
+  onKeyDown={[Function]}
+>
+  <Connect(NavBar)
+    parent="LogIn"
+  />
+  <div
+    className="log-in-status log-in-err"
+  >
+    Username doesn't exist
+  </div>
+  <form
+    action="javascript:void(0)"
+    className="log-in-and-registration-form"
+  >
+    <label>
+      Name
+      <br />
+      <input
+        autoFocus={true}
+        required={true}
+        type="text"
+      />
+      <br />
+    </label>
+    <label>
+      Password
+      <br />
+      <input
+        className="log-in-input"
+        required={true}
+        type="password"
+      />
+      <br />
+    </label>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "border": "1px solid green",
+          "color": "#333",
+        }
+      }
+    >
+      Log in
+    </button>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "gray",
+        }
+      }
+    >
+      Register
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Score-based components LogInOrRegister, when registering & pending 1`] = `
+<div
+  onKeyDown={[Function]}
+>
+  <Connect(NavBar)
+    parent="LogIn"
+  />
+  <div
+    className="log-in-status"
+  >
+    Registering...
+  </div>
+  <form
+    action="javascript:void(0)"
+    className="log-in-and-registration-form"
+  >
+    <label>
+      Name
+      <br />
+      <input
+        autoFocus={true}
+        required={true}
+        type="text"
+      />
+      <br />
+    </label>
+    <label>
+      Password
+      <br />
+      <input
+        className="log-in-input"
+        required={true}
+        type="password"
+      />
+      <br />
+    </label>
+    <label>
+      Confirm password
+      <br />
+      <input
+        required={true}
+        type="password"
+      />
+      <br />
+    </label>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "gray",
+        }
+      }
+    >
+      Log in
+    </button>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "border": "1px solid green",
+          "color": "#333",
+        }
+      }
+    >
+      Register
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Score-based components LogInOrRegister, when registering & username already exists 1`] = `
+<div
+  onKeyDown={[Function]}
+>
+  <Connect(NavBar)
+    parent="LogIn"
+  />
+  <div
+    className="log-in-status log-in-err"
+  >
+    Username already exists; try a new one
+  </div>
+  <form
+    action="javascript:void(0)"
+    className="log-in-and-registration-form"
+  >
+    <label>
+      Name
+      <br />
+      <input
+        autoFocus={true}
+        required={true}
+        type="text"
+      />
+      <br />
+    </label>
+    <label>
+      Password
+      <br />
+      <input
+        className="log-in-input"
+        required={true}
+        type="password"
+      />
+      <br />
+    </label>
+    <label>
+      Confirm password
+      <br />
+      <input
+        required={true}
+        type="password"
+      />
+      <br />
+    </label>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "gray",
+        }
+      }
+    >
+      Log in
+    </button>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "border": "1px solid green",
+          "color": "#333",
+        }
+      }
+    >
+      Register
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Score-based components LogInOrRegister, when registration succeeds 1`] = `
+<Router
+  history={
+    Object {
+      "createHref": [Function],
+      "createKey": [Function],
+      "createLocation": [Function],
+      "createPath": [Function],
+      "getCurrentLocation": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "listen": [Function],
+      "listenBefore": [Function],
+      "push": [Function],
+      "replace": [Function],
+      "transitionTo": [Function],
+    }
+  }
+  render={[Function]}
+>
+  <Redirect
+    from="log-in-or-register"
+    to="/"
+  />
+</Router>
+`;
+
+exports[`Score-based components LogInOrRegister, when server doesn't respond 1`] = `
+<div
+  onKeyDown={[Function]}
+>
+  <Connect(NavBar)
+    parent="LogIn"
+  />
+  <div
+    className="log-in-status log-in-err"
+  >
+    Submit failed; try again
+  </div>
+  <form
+    action="javascript:void(0)"
+    className="log-in-and-registration-form"
+  >
+    <label>
+      Name
+      <br />
+      <input
+        autoFocus={true}
+        required={true}
+        type="text"
+      />
+      <br />
+    </label>
+    <label>
+      Password
+      <br />
+      <input
+        className="log-in-input"
+        required={true}
+        type="password"
+      />
+      <br />
+    </label>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "border": "1px solid green",
+          "color": "#333",
+        }
+      }
+    >
+      Log in
+    </button>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "gray",
+        }
+      }
+    >
+      Register
+    </button>
+  </form>
+</div>
+`;
