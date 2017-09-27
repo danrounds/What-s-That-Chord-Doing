@@ -1,0 +1,629 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`apiReducer -- the syncronous bits should have a consistent initial state 1`] = `
+Object {
+  "authToken": null,
+  "error": null,
+  "highScores": Array [],
+  "lastHighScoreAccessed": null,
+  "myScores": Object {},
+  "name": "null",
+  "pending": null,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should log off 1`] = `
+Object {
+  "authToken": null,
+  "error": false,
+  "highScores": Array [
+    Object {
+      "name": "ijijijij",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 10,
+          "nQuestionNumber": 10,
+          "totalClicks": 47,
+          "winRatio": 1,
+        },
+      },
+    },
+    Object {
+      "name": "bobby4",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 124,
+          "nQuestionNumber": 129,
+          "totalClicks": 12346,
+          "winRatio": 0.9612403100775194,
+        },
+      },
+    },
+    Object {
+      "name": "aseofj_",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 9,
+          "nQuestionNumber": 10,
+          "totalClicks": 43,
+          "winRatio": 0.9,
+        },
+      },
+    },
+  ],
+  "lastHighScoreAccessed": "hardMajor",
+  "myScores": Object {},
+  "name": null,
+  "pending": false,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should pend while we wait for log-in status 1`] = `
+Object {
+  "authToken": null,
+  "error": false,
+  "highScores": Array [],
+  "lastHighScoreAccessed": null,
+  "myScores": Object {},
+  "name": "null",
+  "pending": true,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should pend while we wait on account creation (POST) 1`] = `
+Object {
+  "authToken": null,
+  "error": false,
+  "highScores": Array [],
+  "lastHighScoreAccessed": null,
+  "myScores": Object {},
+  "name": "null",
+  "pending": true,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should pend while we wait to GET high-scores 1`] = `
+Object {
+  "authToken": undefined,
+  "error": false,
+  "highScores": Array [
+    Object {
+      "name": "ijijijij",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 10,
+          "nQuestionNumber": 10,
+          "totalClicks": 47,
+          "winRatio": 1,
+        },
+      },
+    },
+    Object {
+      "name": "bobby4",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 124,
+          "nQuestionNumber": 129,
+          "totalClicks": 12346,
+          "winRatio": 0.9612403100775194,
+        },
+      },
+    },
+    Object {
+      "name": "aseofj_",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 9,
+          "nQuestionNumber": 10,
+          "totalClicks": 43,
+          "winRatio": 0.9,
+        },
+      },
+    },
+  ],
+  "lastHighScoreAccessed": "hardMajor",
+  "myScores": Object {
+    "name": "joey",
+    "scores": Object {
+      "allChordsInv": Object {
+        "nAnsweredRight": 3,
+        "nQuestionNumber": 10,
+        "totalClicks": 22,
+        "winRatio": 0.3,
+      },
+      "easyMajor": Object {
+        "nAnsweredRight": 4,
+        "nQuestionNumber": 10,
+        "totalClicks": 12,
+        "winRatio": 0.4,
+      },
+    },
+  },
+  "name": "joey",
+  "pending": true,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should pend while we wait to GET my-scores 1`] = `
+Object {
+  "authToken": undefined,
+  "error": false,
+  "highScores": Array [
+    Object {
+      "name": "ijijijij",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 10,
+          "nQuestionNumber": 10,
+          "totalClicks": 47,
+          "winRatio": 1,
+        },
+      },
+    },
+    Object {
+      "name": "bobby4",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 124,
+          "nQuestionNumber": 129,
+          "totalClicks": 12346,
+          "winRatio": 0.9612403100775194,
+        },
+      },
+    },
+    Object {
+      "name": "aseofj_",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 9,
+          "nQuestionNumber": 10,
+          "totalClicks": 43,
+          "winRatio": 0.9,
+        },
+      },
+    },
+  ],
+  "lastHighScoreAccessed": "hardMajor",
+  "myScores": Object {
+    "name": "joey",
+    "scores": Object {
+      "allChordsInv": Object {
+        "nAnsweredRight": 3,
+        "nQuestionNumber": 10,
+        "totalClicks": 22,
+        "winRatio": 0.3,
+      },
+      "easyMajor": Object {
+        "nAnsweredRight": 4,
+        "nQuestionNumber": 10,
+        "totalClicks": 12,
+        "winRatio": 0.4,
+      },
+    },
+  },
+  "name": "joey",
+  "pending": true,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should tell us when fail to make an account (POST) 1`] = `
+Object {
+  "authToken": null,
+  "error": 409,
+  "highScores": Array [],
+  "lastHighScoreAccessed": null,
+  "myScores": Object {},
+  "name": "null",
+  "pending": false,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should tell us when login-in fails 1`] = `
+Object {
+  "authToken": null,
+  "error": 401,
+  "highScores": Array [],
+  "lastHighScoreAccessed": null,
+  "myScores": Object {},
+  "name": null,
+  "pending": false,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should tell us when login-in succeeds 1`] = `
+Object {
+  "authToken": "some_string_of_token_or_other2DFS3",
+  "error": false,
+  "highScores": Array [],
+  "lastHighScoreAccessed": null,
+  "myScores": Object {},
+  "name": "jerry",
+  "pending": false,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should tell us when successfully make an account (POST) 1`] = `
+Object {
+  "authToken": "auth_token_goes_here",
+  "error": false,
+  "highScores": Array [],
+  "lastHighScoreAccessed": null,
+  "myScores": Object {
+    "name": "franklin3",
+  },
+  "name": "franklin3",
+  "pending": false,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should tell us when we PUT our updated scores 1`] = `
+Object {
+  "authToken": undefined,
+  "error": false,
+  "highScores": Array [
+    Object {
+      "name": "ijijijij",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 10,
+          "nQuestionNumber": 10,
+          "totalClicks": 47,
+          "winRatio": 1,
+        },
+      },
+    },
+    Object {
+      "name": "bobby4",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 124,
+          "nQuestionNumber": 129,
+          "totalClicks": 12346,
+          "winRatio": 0.9612403100775194,
+        },
+      },
+    },
+    Object {
+      "name": "aseofj_",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 9,
+          "nQuestionNumber": 10,
+          "totalClicks": 43,
+          "winRatio": 0.9,
+        },
+      },
+    },
+  ],
+  "lastHighScoreAccessed": "hardMajor",
+  "myScores": Object {
+    "name": "joey",
+    "scores": Object {
+      "allChordsInv": Object {
+        "nAnsweredRight": 3,
+        "nQuestionNumber": 10,
+        "totalClicks": 22,
+        "winRatio": 0.3,
+      },
+      "easyMajor": Object {
+        "nAnsweredRight": 4,
+        "nQuestionNumber": 10,
+        "totalClicks": 12,
+        "winRatio": 0.4,
+      },
+    },
+  },
+  "name": "joey",
+  "pending": false,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should tell us when we fail to GET high-scores 1`] = `
+Object {
+  "authToken": undefined,
+  "error": 500,
+  "highScores": Array [
+    Object {
+      "name": "ijijijij",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 10,
+          "nQuestionNumber": 10,
+          "totalClicks": 47,
+          "winRatio": 1,
+        },
+      },
+    },
+    Object {
+      "name": "bobby4",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 124,
+          "nQuestionNumber": 129,
+          "totalClicks": 12346,
+          "winRatio": 0.9612403100775194,
+        },
+      },
+    },
+    Object {
+      "name": "aseofj_",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 9,
+          "nQuestionNumber": 10,
+          "totalClicks": 43,
+          "winRatio": 0.9,
+        },
+      },
+    },
+  ],
+  "lastHighScoreAccessed": "hardMajor",
+  "myScores": Object {
+    "name": "joey",
+    "scores": Object {
+      "allChordsInv": Object {
+        "nAnsweredRight": 3,
+        "nQuestionNumber": 10,
+        "totalClicks": 22,
+        "winRatio": 0.3,
+      },
+      "easyMajor": Object {
+        "nAnsweredRight": 4,
+        "nQuestionNumber": 10,
+        "totalClicks": 12,
+        "winRatio": 0.4,
+      },
+    },
+  },
+  "name": "joey",
+  "pending": false,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should tell us when we fail to GET my-scores 1`] = `
+Object {
+  "authToken": undefined,
+  "error": "here's an error",
+  "highScores": Array [
+    Object {
+      "name": "ijijijij",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 10,
+          "nQuestionNumber": 10,
+          "totalClicks": 47,
+          "winRatio": 1,
+        },
+      },
+    },
+    Object {
+      "name": "bobby4",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 124,
+          "nQuestionNumber": 129,
+          "totalClicks": 12346,
+          "winRatio": 0.9612403100775194,
+        },
+      },
+    },
+    Object {
+      "name": "aseofj_",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 9,
+          "nQuestionNumber": 10,
+          "totalClicks": 43,
+          "winRatio": 0.9,
+        },
+      },
+    },
+  ],
+  "lastHighScoreAccessed": "hardMajor",
+  "myScores": Object {
+    "name": "joey",
+    "scores": Object {
+      "allChordsInv": Object {
+        "nAnsweredRight": 3,
+        "nQuestionNumber": 10,
+        "totalClicks": 22,
+        "winRatio": 0.3,
+      },
+      "easyMajor": Object {
+        "nAnsweredRight": 4,
+        "nQuestionNumber": 10,
+        "totalClicks": 12,
+        "winRatio": 0.4,
+      },
+    },
+  },
+  "name": "joey",
+  "pending": false,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should tell us when we fail to PUT our updated scores 1`] = `
+Object {
+  "authToken": undefined,
+  "error": 400,
+  "highScores": Array [
+    Object {
+      "name": "ijijijij",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 10,
+          "nQuestionNumber": 10,
+          "totalClicks": 47,
+          "winRatio": 1,
+        },
+      },
+    },
+    Object {
+      "name": "bobby4",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 124,
+          "nQuestionNumber": 129,
+          "totalClicks": 12346,
+          "winRatio": 0.9612403100775194,
+        },
+      },
+    },
+    Object {
+      "name": "aseofj_",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 9,
+          "nQuestionNumber": 10,
+          "totalClicks": 43,
+          "winRatio": 0.9,
+        },
+      },
+    },
+  ],
+  "lastHighScoreAccessed": "hardMajor",
+  "myScores": Object {
+    "name": "joey",
+    "scores": Object {
+      "allChordsInv": Object {
+        "nAnsweredRight": 3,
+        "nQuestionNumber": 10,
+        "totalClicks": 22,
+        "winRatio": 0.3,
+      },
+      "easyMajor": Object {
+        "nAnsweredRight": 4,
+        "nQuestionNumber": 10,
+        "totalClicks": 12,
+        "winRatio": 0.4,
+      },
+    },
+  },
+  "name": "joey",
+  "pending": false,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should tell us when we successfully GET high-scores 1`] = `
+Object {
+  "authToken": undefined,
+  "error": false,
+  "highScores": Array [
+    Object {
+      "name": "seofij",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 210,
+          "nQuestionNumber": 1000,
+          "totalClicks": 4127,
+          "winRatio": 1,
+        },
+      },
+    },
+    Object {
+      "name": "jake",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 1245,
+          "nQuestionNumber": 1291,
+          "totalClicks": 123466,
+          "winRatio": 0.9612403100775194,
+        },
+      },
+    },
+    Object {
+      "name": "aseos25DSDfj_",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 90,
+          "nQuestionNumber": 100,
+          "totalClicks": 433,
+          "winRatio": 0.9,
+        },
+      },
+    },
+  ],
+  "lastHighScoreAccessed": "easyMajor",
+  "myScores": Object {
+    "name": "joey",
+    "scores": Object {
+      "allChordsInv": Object {
+        "nAnsweredRight": 3,
+        "nQuestionNumber": 10,
+        "totalClicks": 22,
+        "winRatio": 0.3,
+      },
+      "easyMajor": Object {
+        "nAnsweredRight": 4,
+        "nQuestionNumber": 10,
+        "totalClicks": 12,
+        "winRatio": 0.4,
+      },
+    },
+  },
+  "name": "joey",
+  "pending": false,
+}
+`;
+
+exports[`apiReducer -- the syncronous bits should tell us when we successfully GET my-scores 1`] = `
+Object {
+  "authToken": undefined,
+  "error": false,
+  "highScores": Array [
+    Object {
+      "name": "ijijijij",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 10,
+          "nQuestionNumber": 10,
+          "totalClicks": 47,
+          "winRatio": 1,
+        },
+      },
+    },
+    Object {
+      "name": "bobby4",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 124,
+          "nQuestionNumber": 129,
+          "totalClicks": 12346,
+          "winRatio": 0.9612403100775194,
+        },
+      },
+    },
+    Object {
+      "name": "aseofj_",
+      "scores": Object {
+        "intermediateMinor": Object {
+          "nAnsweredRight": 9,
+          "nQuestionNumber": 10,
+          "totalClicks": 43,
+          "winRatio": 0.9,
+        },
+      },
+    },
+  ],
+  "lastHighScoreAccessed": "hardMajor",
+  "myScores": Object {
+    "name": "joey",
+    "scores": Object {
+      "allChordsInv": Object {
+        "nAnsweredRight": 13,
+        "nQuestionNumber": 20,
+        "totalClicks": 33,
+        "winRatio": 0.3,
+      },
+      "easyMajor": Object {
+        "nAnsweredRight": 14,
+        "nQuestionNumber": 20,
+        "totalClicks": 22,
+        "winRatio": 0.4,
+      },
+    },
+  },
+  "name": "joey",
+  "pending": false,
+}
+`;
