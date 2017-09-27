@@ -1,0 +1,608 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`gameReducer -- the reducer for our game actions get the next question 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": false,
+    "trebleIndices": Array [],
+  },
+  "answeredCorrectly": false,
+  "chord": "♭III",
+  "chordName": "Cb major",
+  "chordSubset": Array [
+    "i",
+    "♭II",
+    "ii°",
+    "ii",
+    "♭III",
+    "iv",
+    "v",
+    "V",
+    "♭VI",
+    "vi",
+    "♭VII",
+    "vii°",
+  ],
+  "clicksPerRightAnswer": Array [],
+  "displayKeyboardShortcuts": null,
+  "gameNumber": 392549214,
+  "gameOver": false,
+  "gameType": "easyMinor",
+  "guessN": 0,
+  "introChordSequence": Array [
+    Array [
+      "G#/3",
+      "D#/5",
+      "G#/5",
+      "B/5",
+    ],
+    Array [
+      "C#/4",
+      "C#/5",
+      "E/5",
+      "G#/5",
+    ],
+    Array [
+      "D#/4",
+      "A#/4",
+      "D#/5",
+      "G/5",
+    ],
+    Array [
+      "G#/3",
+      "B/4",
+      "D#/5",
+      "G#/5",
+    ],
+  ],
+  "inversions": false,
+  "keyNameNotation": "Abm",
+  "keyNameReadable": "Ab minor",
+  "keyValue": "",
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 0,
+  "notes": Object {
+    "bass": "Cb/4",
+    "treble": Array [
+      "Cb/5",
+      "Eb/5",
+      "Gb/5",
+    ],
+  },
+  "questionNumber": 2,
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions increment the guess number 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": true,
+    "trebleIndices": Array [
+      0,
+    ],
+  },
+  "answeredCorrectly": false,
+  "chord": "vii°",
+  "chordName": "G diminished",
+  "chordSubset": Array [
+    "i",
+    "♭II",
+    "ii°",
+    "ii",
+    "♭III",
+    "iv",
+    "v",
+    "V",
+    "♭VI",
+    "vi",
+    "♭VII",
+    "vii°",
+  ],
+  "clicksPerRightAnswer": Array [],
+  "displayKeyboardShortcuts": null,
+  "gameNumber": 392549214,
+  "gameOver": false,
+  "gameType": "easyMinor",
+  "guessN": 1,
+  "introChordSequence": Array [
+    Array [
+      "G#/3",
+      "D#/5",
+      "G#/5",
+      "B/5",
+    ],
+    Array [
+      "C#/4",
+      "C#/5",
+      "E/5",
+      "G#/5",
+    ],
+    Array [
+      "D#/4",
+      "A#/4",
+      "D#/5",
+      "G/5",
+    ],
+    Array [
+      "G#/3",
+      "B/4",
+      "D#/5",
+      "G#/5",
+    ],
+  ],
+  "inversions": false,
+  "keyNameNotation": "Abm",
+  "keyNameReadable": "Ab minor",
+  "keyValue": "",
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 0,
+  "notes": Object {
+    "bass": "G/4",
+    "treble": Array [
+      "G/5",
+      "Bb/5",
+      "Db/6",
+    ],
+  },
+  "questionNumber": 1,
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions mark turn correct when the game is about to be over 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": true,
+    "trebleIndices": Array [
+      0,
+    ],
+  },
+  "answeredCorrectly": true,
+  "chord": "vii°",
+  "chordName": "G diminished",
+  "chordSubset": Array [
+    "i",
+    "♭II",
+    "ii°",
+    "ii",
+    "♭III",
+    "iv",
+    "v",
+    "V",
+    "♭VI",
+    "vi",
+    "♭VII",
+    "vii°",
+  ],
+  "clicksPerRightAnswer": Array [
+    1,
+  ],
+  "displayKeyboardShortcuts": null,
+  "gameNumber": 392549214,
+  "gameOver": true,
+  "gameType": "easyMinor",
+  "guessN": 1,
+  "introChordSequence": Array [
+    Array [
+      "G#/3",
+      "D#/5",
+      "G#/5",
+      "B/5",
+    ],
+    Array [
+      "C#/4",
+      "C#/5",
+      "E/5",
+      "G#/5",
+    ],
+    Array [
+      "D#/4",
+      "A#/4",
+      "D#/5",
+      "G/5",
+    ],
+    Array [
+      "G#/3",
+      "B/4",
+      "D#/5",
+      "G#/5",
+    ],
+  ],
+  "inversions": false,
+  "keyNameNotation": "Abm",
+  "keyNameReadable": "Ab minor",
+  "keyValue": "",
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 1,
+  "notes": Object {
+    "bass": "G/4",
+    "treble": Array [
+      "G/5",
+      "Bb/5",
+      "Db/6",
+    ],
+  },
+  "questionNumber": 10,
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions mark turn correct when the game isn't about to over 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": true,
+    "trebleIndices": Array [
+      0,
+    ],
+  },
+  "answeredCorrectly": true,
+  "chord": "vii°",
+  "chordName": "G diminished",
+  "chordSubset": Array [
+    "i",
+    "♭II",
+    "ii°",
+    "ii",
+    "♭III",
+    "iv",
+    "v",
+    "V",
+    "♭VI",
+    "vi",
+    "♭VII",
+    "vii°",
+  ],
+  "clicksPerRightAnswer": Array [
+    1,
+  ],
+  "displayKeyboardShortcuts": null,
+  "gameNumber": 392549214,
+  "gameOver": false,
+  "gameType": "easyMinor",
+  "guessN": 1,
+  "introChordSequence": Array [
+    Array [
+      "G#/3",
+      "D#/5",
+      "G#/5",
+      "B/5",
+    ],
+    Array [
+      "C#/4",
+      "C#/5",
+      "E/5",
+      "G#/5",
+    ],
+    Array [
+      "D#/4",
+      "A#/4",
+      "D#/5",
+      "G/5",
+    ],
+    Array [
+      "G#/3",
+      "B/4",
+      "D#/5",
+      "G#/5",
+    ],
+  ],
+  "inversions": false,
+  "keyNameNotation": "Abm",
+  "keyNameReadable": "Ab minor",
+  "keyValue": "",
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 1,
+  "notes": Object {
+    "bass": "G/4",
+    "treble": Array [
+      "G/5",
+      "Bb/5",
+      "Db/6",
+    ],
+  },
+  "questionNumber": 1,
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions should have a consistent initial state 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": null,
+    "trebleIndices": Array [],
+  },
+  "answeredCorrectly": null,
+  "chord": null,
+  "chordName": null,
+  "chordSubset": Array [],
+  "clicksPerRightAnswer": Array [],
+  "displayKeyboardShortcuts": null,
+  "gameNumber": null,
+  "gameOver": false,
+  "gameType": null,
+  "guessN": 0,
+  "introChordSequence": Array [
+    Array [],
+    Array [],
+    Array [],
+    Array [],
+  ],
+  "inversions": null,
+  "keyNameNotation": null,
+  "keyNameReadable": null,
+  "keyValue": null,
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 0,
+  "notes": Object {
+    "bass": null,
+    "treble": Array [],
+  },
+  "questionNumber": 0,
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions should register key presses 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": null,
+    "trebleIndices": Array [],
+  },
+  "answeredCorrectly": null,
+  "chord": null,
+  "chordName": null,
+  "chordSubset": Array [],
+  "clicksPerRightAnswer": Array [],
+  "displayKeyboardShortcuts": null,
+  "gameNumber": null,
+  "gameOver": false,
+  "gameType": null,
+  "guessN": 0,
+  "introChordSequence": Array [
+    Array [],
+    Array [],
+    Array [],
+    Array [],
+  ],
+  "inversions": null,
+  "keyNameNotation": null,
+  "keyNameReadable": null,
+  "keyValue": "Enter",
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 0,
+  "notes": Object {
+    "bass": null,
+    "treble": Array [],
+  },
+  "questionNumber": 0,
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions should start a new game 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": true,
+    "trebleIndices": Array [
+      0,
+    ],
+  },
+  "answeredCorrectly": false,
+  "chord": "vii°",
+  "chordName": "G diminished",
+  "chordSubset": Array [
+    "i",
+    "♭II",
+    "ii°",
+    "ii",
+    "♭III",
+    "iv",
+    "v",
+    "V",
+    "♭VI",
+    "vi",
+    "♭VII",
+    "vii°",
+  ],
+  "clicksPerRightAnswer": Array [],
+  "displayKeyboardShortcuts": null,
+  "gameNumber": 392549214,
+  "gameOver": false,
+  "gameType": "easyMinor",
+  "guessN": 0,
+  "introChordSequence": Array [
+    Array [
+      "G#/3",
+      "D#/5",
+      "G#/5",
+      "B/5",
+    ],
+    Array [
+      "C#/4",
+      "C#/5",
+      "E/5",
+      "G#/5",
+    ],
+    Array [
+      "D#/4",
+      "A#/4",
+      "D#/5",
+      "G/5",
+    ],
+    Array [
+      "G#/3",
+      "B/4",
+      "D#/5",
+      "G#/5",
+    ],
+  ],
+  "inversions": false,
+  "keyNameNotation": "Abm",
+  "keyNameReadable": "Ab minor",
+  "keyValue": "",
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 0,
+  "notes": Object {
+    "bass": "G/4",
+    "treble": Array [
+      "G/5",
+      "Bb/5",
+      "Db/6",
+    ],
+  },
+  "questionNumber": 1,
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions should toggle display of keyboard shortcuts (to false) 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": null,
+    "trebleIndices": Array [],
+  },
+  "answeredCorrectly": null,
+  "chord": null,
+  "chordName": null,
+  "chordSubset": Array [],
+  "clicksPerRightAnswer": Array [],
+  "displayKeyboardShortcuts": false,
+  "gameNumber": null,
+  "gameOver": false,
+  "gameType": null,
+  "guessN": 0,
+  "introChordSequence": Array [
+    Array [],
+    Array [],
+    Array [],
+    Array [],
+  ],
+  "inversions": null,
+  "keyNameNotation": null,
+  "keyNameReadable": null,
+  "keyValue": "",
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 0,
+  "notes": Object {
+    "bass": null,
+    "treble": Array [],
+  },
+  "questionNumber": 0,
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions should toggle display of keyboard shortcuts (to true) 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": null,
+    "trebleIndices": Array [],
+  },
+  "answeredCorrectly": null,
+  "chord": null,
+  "chordName": null,
+  "chordSubset": Array [],
+  "clicksPerRightAnswer": Array [],
+  "displayKeyboardShortcuts": true,
+  "gameNumber": null,
+  "gameOver": false,
+  "gameType": null,
+  "guessN": 0,
+  "introChordSequence": Array [
+    Array [],
+    Array [],
+    Array [],
+    Array [],
+  ],
+  "inversions": null,
+  "keyNameNotation": null,
+  "keyNameReadable": null,
+  "keyValue": "",
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 0,
+  "notes": Object {
+    "bass": null,
+    "treble": Array [],
+  },
+  "questionNumber": 0,
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions should update the state of our lesson display index 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": null,
+    "trebleIndices": Array [],
+  },
+  "answeredCorrectly": null,
+  "chord": null,
+  "chordName": null,
+  "chordSubset": Array [],
+  "clicksPerRightAnswer": Array [],
+  "displayKeyboardShortcuts": null,
+  "gameNumber": null,
+  "gameOver": false,
+  "gameType": null,
+  "guessN": 0,
+  "introChordSequence": Array [
+    Array [],
+    Array [],
+    Array [],
+    Array [],
+  ],
+  "inversions": null,
+  "keyNameNotation": null,
+  "keyNameReadable": null,
+  "keyValue": "",
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 0,
+  "notes": Object {
+    "bass": null,
+    "treble": Array [],
+  },
+  "questionNumber": 0,
+}
+`;
