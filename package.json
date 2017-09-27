@@ -9,8 +9,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "run-p watch serve",
-    "test": "mocha --recursive --compilers js:babel-core/register",
-    "test-frontend": "jest --watch",
+    "test": "jest --watch",
+    "test-backend": "mocha --recursive --compilers js:babel-core/register",
     "build": "run-s build:*",
     "clean": "rimraf build",
     "serve": "npm start",
