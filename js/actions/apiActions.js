@@ -136,7 +136,6 @@ const makeAccount = {
 
     MAKE_USER_ACCOUNT_SUCCESS: 'MAKE_USER_ACCOUNT_SUCCESS',
     makeUserAccountSuccess: (name, token) => {
-        console.log('okokok');
         localStorage.setItem('@WTCD/authToken', token);
         localStorage.setItem('@WTCD/name', name);
         return {
