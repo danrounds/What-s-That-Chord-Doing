@@ -26,7 +26,7 @@ export const startNewGame = (gameType, inversions) => {
             chordGetter.getChord();
     let gameNumber = Math.random() * Math.pow(2,52) | 0;
     // ^ This is not a seed number; it's merely an [ostensibly] unique
-    // identifier, that we'll used to decide whether components should update
+    // identifier, that we'll use to decide whether components should update
 
     return {
         type: START_NEW_GAME,
