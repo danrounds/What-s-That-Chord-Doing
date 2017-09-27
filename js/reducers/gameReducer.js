@@ -151,7 +151,6 @@ export default (state=initialState, action) => {
             gameOver: false
         };
 
-
     case actions.GET_NEXT_QUESTION:
         return {
             lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
