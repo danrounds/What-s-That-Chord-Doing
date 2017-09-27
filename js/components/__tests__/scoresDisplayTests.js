@@ -66,7 +66,7 @@ const api = {
             }
         }
     ]
-}
+};
 
 describe('Score-based components', () => {
     // This only checks the "behavior" of part of our tree, but it's quick,
