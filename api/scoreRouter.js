@@ -31,7 +31,7 @@ scoreRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
     if (['easyMajor','easyMajorInv','easyMinor','easyMinorInv',
          'intermediateMinor','intermediateMinorInv','hardMajor',
          'hardMajorInv','hardMinor','hardMinorInv','allChords',
-         'allChordsInv'].indexOf(gameMode) === -1) {
+         'allChordsInv'].includes(gameMode)) {
         return res.sendStatus(400);
     }
 

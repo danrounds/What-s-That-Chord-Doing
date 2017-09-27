@@ -15,7 +15,7 @@ export class PlayAudio extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        return ([',','.',' '].indexOf(nextProps.keyPress) !== -1)
+        return ([',','.',' '].includes(nextProps.keyPress))
             || this.props.questionNumber !== nextProps.questionNumber
             || this.props.gameNumber !== nextProps.gameNumber
             || this.props.displayKeyboardShortcuts !== nextProps.displayKeyboardShortcuts;

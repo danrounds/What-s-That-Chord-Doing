@@ -10,7 +10,7 @@ export class Next extends React.Component {
     }
 
     componentDidUpdate() {
-        if (['ArrowRight', ' '].indexOf(this.props.keyValue) !== -1)
+        if (['ArrowRight', ' '].includes(this.props.keyValue))
             if (this.props.questionNumber !== 10)
                 this.props.dispatch(actions.getNextQuestion());
     }

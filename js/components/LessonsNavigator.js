@@ -50,9 +50,9 @@ export class LessonsNavigator extends React.Component {
 
     handleKey(e) {
         let i = this.props.lessonIndexDisplay.i;
-        if (['ArrowDown','ArrowRight','s','d','S','D'].indexOf(e.key) !== -1)
+        if (['ArrowDown','ArrowRight','s','d','S','D'].includes(e.key))
             i = (i + 1) % this.displayArray.length;
-        else if (['ArrowUp','ArrowLeft','w','a','W','A'].indexOf(e.key) !== -1)
+        else if (['ArrowUp','ArrowLeft','w','a','W','A'].includes(e.key))
             i = (i - 1 === -1) ? this.displayArray.length - 1 : i - 1;
         else if (e.key === ' ')
             this.clickLink();

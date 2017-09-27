@@ -322,7 +322,7 @@ const chordGetter = {
 
     pickKey(keySubset, gameType) {
         this.currentKey = this.getRandom(keySubset);
-        if (['easyMajor', 'hardMajor', 'allChords'].indexOf(gameType) !== -1) {
+        if (['easyMajor', 'hardMajor', 'allChords'].includes(gameType)) {
             this.keyNameReadable = this.currentKey + ' Major';
             this.keyNameNotation = this.currentKey;
             this.tonality = 'major';
@@ -362,7 +362,7 @@ const chordGetter = {
                 '♭VII': accidentalMap.root,
 
                 '♭II': function() {
-                    if (['Ab','Db','Gb'].indexOf(that.currentKey) !== -1)
+                    if (['Ab','Db','Gb'].includes(that.currentKey))
                         return accidentalMap.rootThirdAndFifth;
                     else
                         return accidentalMap.rootAndFifth;
@@ -374,12 +374,12 @@ const chordGetter = {
     },
 
     processMajorBassAccidental(inversion) {
-        if (['i','iv','v'].indexOf(this.currentChordNumeral) !== -1) {
+        if (['i','iv','v'].includes(this.currentChordNumeral)) {
             if (inversion === 1)
                 return true;
 
-        } else if (['♭III','♭III+','♭VI'].indexOf(this.currentChordNumeral) !== -1) {
-            if ([0,2].indexOf(inversion) !== -1)
+        } else if (['♭III','♭III+','♭VI'].includes(this.currentChordNumeral)) {
+            if ([0,2].includes(inversion))
                 return true;
 
         } else if (this.currentChordNumeral === 'ii°') {
@@ -391,10 +391,10 @@ const chordGetter = {
                 return true;
 
         } else if (this.currentChordNumeral === '♭II') {
-            if (['Ab','Db','Gb'].indexOf(this.currentKey) !== -1)
+            if (['Ab','Db','Gb'].includes(this.currentKey))
                 return true;        // ([0,1,2])
             else {
-                if ([0,2].indexOf(inversion) !== -1)
+                if ([0,2].includes(inversion))
                     return true;
             }
         }
@@ -418,7 +418,7 @@ const chordGetter = {
                 'vii°': accidentalMap.root,
 
                 '♭II': function() {
-                    if (['Bb','Ab'].indexOf(that.currentKey) !== -1)
+                    if (['Bb','Ab'].includes(that.currentKey))
                         return accidentalMap.rootThirdAndFifth;
                     else
                         return accidentalMap.root;
@@ -430,7 +430,7 @@ const chordGetter = {
     },
 
     processMinorBassAccidental(inversion) {
-        if (['ii','♭III+'].indexOf(this.currentChordNumeral) !== -1) {
+        if (['ii','♭III+'].includes(this.currentChordNumeral)) {
             if (inversion === 2)
                 return true;
 
@@ -439,7 +439,7 @@ const chordGetter = {
                 return true;
 
         } else if (this.currentChordNumeral === 'vi') {
-            if ([0,2].indexOf(inversion) !== -1)
+            if ([0,2].includes(inversion))
                 return true;
 
         } else if (this.currentChordNumeral === 'vii°') {
@@ -449,7 +449,7 @@ const chordGetter = {
         } else if (this.currentChordNumeral === '♭II') {
             if (inversion === 0)
                 return true;
-            else if (['Bb','Ab'].indexOf(this.currentKey) !== -1) {
+            else if (['Bb','Ab'].includes(this.currentKey)) {
                 return true;
             }
         }
