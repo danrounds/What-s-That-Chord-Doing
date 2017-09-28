@@ -1,14 +1,14 @@
 const express = require('express');
-const scoreRouter = express.Router();
+const scoresRouter = express.Router();
 
 const {UserScore} = require('./models');
 const auth = require('./jwtAuthentication');
 
 // Our authenication
-scoreRouter.use(auth.initialize());
+scoresRouter.use(auth.initialize());
 
 // ROUTES
-scoreRouter.get('/my-scores*', auth.authenticate(), (req, res) => {
+scoresRouter.get('/my-scores*', auth.authenticate(), (req, res) => {
     // endpoint for getting all of a user's scores. This is identical to
     // accountRouter's GET *, and changes should occur at both places at once.
     UserScore
@@ -22,7 +22,7 @@ scoreRouter.get('/my-scores*', auth.authenticate(), (req, res) => {
         .catch(() => res.sendStatus(500));
 });
 
-scoreRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
+scoresRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
     // Endpoint for updating individual user scores
     // Intent is to only submit one gameMode of updated scores, at once
     const gameMode = Object.keys(req.body.scores)[0];
@@ -77,7 +77,7 @@ scoreRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
         .catch(() => res.sendStatus(500));
 });
 
-scoreRouter.get('/high-scores/:gameType', (req, res) => {
+scoresRouter.get('/high-scores/:gameType', (req, res) => {
     const query = {}, match = { name: 1 }, sort = {};
     query[`scores.${req.params.gameType}`] = { $exists: true };
     match[`scores.${req.params.gameType}`] = 1;
@@ -90,4 +90,4 @@ scoreRouter.get('/high-scores/:gameType', (req, res) => {
         .catch(() => res.sendStatus(500).send());
 });
 
-module.exports = {scoreRouter};
+module.exports = {scoresRouter};

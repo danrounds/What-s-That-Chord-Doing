@@ -3,7 +3,7 @@ module.exports = {
         || 'mongodb://localhost/what-s-this-chord-doing-scores',
 
     TEST_DATABASE_URL: process.env.TEST_DATABASE_URL
-        || 'mongodb://localhost/what-s-this-chord-doing-scores',
+        || 'mongodb://localhost/what-s-this-chord-doing-scores-test',
 
     PORT: process.env.PORT || 8080,
 

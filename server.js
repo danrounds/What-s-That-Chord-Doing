@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const {DATABASE_URL, PORT} = require('./config');
 const {accountRouter} = require('./api/accountRouter');
-const {scoreRouter} = require('./api/scoreRouter');
+const {scoresRouter} = require('./api/scoresRouter');
 
 // ES6-style promises for mongoose
 mongoose.Promise = global.Promise;
@@ -33,7 +33,7 @@ const options = {
 
 app.use('/accounts/', accountRouter);                     // API route
 app.use('/app', express.static('build/', options));       // app
-app.use('/', scoreRouter);      // /my-scores* and /high-scores API routes
+app.use('/', scoresRouter);      // /my-scores* and /high-scores API routes
 app.use('/', express.static('./build/assets/', options)); // Static files -- splash page
 app.use('*', (req, res) =>                               // Everything else
     res.status(404).json({message: 'Resource not found'}));
