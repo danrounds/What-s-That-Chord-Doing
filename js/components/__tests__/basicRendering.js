@@ -50,29 +50,6 @@ describe('Components: Basic rendering', () => {
         expect(toJson(comp)).toMatchSnapshot();
     });
 
-    // test('NavBar, w/ keyboard shortcuts', () => {
-    //     // console.log(<NavBar
-    //     //             api={{authToken:'some_string_or_other'}}
-    //     //             displayKeyboardShortcuts={true}
-    //     //             parent="LogIn"
-    //     //             />);
-    //     const comp = mount(
-    //         <NavBar api={{authToken:'some_string_or_other'}}
-    //                 displayKeyboardShortcuts={true}
-    //                 />
-    //     );
-    //     expect(toJson(comp)).toMatchSnapshot();
-    // });
-
-    // test('NavBar, w/out keyboard shortcuts', () => {
-    //     const comp = renderer.create(
-    //         <NavBar api={{authToken:'some_string_or_other'}}
-    //                 displayKeyboardShortcuts={false}
-    //                 />
-    //     ).toJSON();
-    //     expect(comp).toMatchSnapshot();
-    // });
-
     test('Next, w/ keyboard shortcuts', () => {
         const comp = renderer.create(
             <Next displayKeyboardShortcuts={true} />
@@ -118,6 +95,7 @@ describe('Components: Basic rendering', () => {
             <Status displayKeyboardShorcuts={true}
                     key_="Eb Major"
                     chordName="G minor"
+                    chord="iii"
                     answeredCorrect={true}
                     nAnsweredRight={4}
                     clicksPerRightAnswer={3.12}
@@ -132,6 +110,7 @@ describe('Components: Basic rendering', () => {
                displayKeyboardShorcuts={false}
                key_="Eb Major"
                chordName="G minor"
+               chord="iii"
                answeredCorrect={true}
                nAnsweredRight={4}
                clicksPerRightAnswer={3.12}
@@ -146,6 +125,7 @@ describe('Components: Basic rendering', () => {
                displayKeyboardShorcuts={true}
                key_="Eb Major"
                chordName="G minor"
+               chord="iii"
                answeredCorrect={false}
                nAnsweredRight={4}
                guessN={4}

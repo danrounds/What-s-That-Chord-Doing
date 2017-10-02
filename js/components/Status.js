@@ -108,6 +108,7 @@ const mapStateToProps = (state) => ({
     displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     key_: state.game.keyNameReadable,
     chordName: state.game.chordName,
+    // chord: state.game.chord,
     guessN: state.game.guessN,
     answeredCorrectly: state.game.answeredCorrectly,
     nAnsweredRight: state.game.nAnsweredRight,

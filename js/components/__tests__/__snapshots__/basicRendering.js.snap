@@ -593,6 +593,7 @@ exports[`Components: Basic rendering StartNewGame, w/out keyboard shortcuts 1`] 
 exports[`Components: Basic rendering Status, correct answer, w/ keyboard shortcuts 1`] = `
 <Status
   answeredCorrect={true}
+  chord="iii"
   chordName="G minor"
   clicksPerRightAnswer={3.12}
   displayKeyboardShorcuts={true}
@@ -639,6 +640,7 @@ exports[`Components: Basic rendering Status, correct answer, w/ keyboard shortcu
 exports[`Components: Basic rendering Status, correct answer, w/out keyboard shortcuts 1`] = `
 <Status
   answeredCorrect={true}
+  chord="iii"
   chordName="G minor"
   clicksPerRightAnswer={3.12}
   displayKeyboardShorcuts={false}
