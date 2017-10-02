@@ -110,6 +110,7 @@ accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
 });
 
 accountRouter.delete('/', auth.authenticate(), (req, res) => {
+    // endpoint for deleting our account
     UserScore
         .findById(req.user.id)
         .exec()
