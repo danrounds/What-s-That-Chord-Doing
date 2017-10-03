@@ -14,7 +14,7 @@ accountRouter.get('*', auth.authenticate(), (req, res) => {
     // endpoint for getting all of a user's scores. This is identical to
     // scoresRouter's GET *, and changes should occur at both places at once.
     
-    UserScore
+    return UserScore
         .findById(req.user.id)
         .then(record => {
             if (record)
@@ -60,7 +60,7 @@ accountRouter.post('/register', (req, res) => {
         return res.status(400).json({error: 'Password must be at least six non-whitespace characters long'});
 
     let exists;
-    UserScore.findOne({name: req.body.name})
+    return UserScore.findOne({name: req.body.name})
         .then(exists => {
             if (exists)
                 return res.sendStatus(409); // name conflict
@@ -89,7 +89,7 @@ accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
     if (req.body.newPassword.trim().length < 6)
         return res.status(400).json({error: 'Password must be at least six non-whitespace characters long'});
 
-    UserScore
+    return UserScore
         .findById(req.user.id)
         .then(record => {
             if (record.name !== req.body.name)
@@ -111,7 +111,7 @@ accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
 
 accountRouter.delete('/', auth.authenticate(), (req, res) => {
     // endpoint for deleting our account
-    UserScore
+    return UserScore
         .findById(req.user.id)
         .exec()
         .then(record => {

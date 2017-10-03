@@ -11,7 +11,7 @@ scoresRouter.use(auth.initialize());
 scoresRouter.get('/my-scores*', auth.authenticate(), (req, res) => {
     // endpoint for getting all of a user's scores. This is identical to
     // accountRouter's GET *, and changes should occur at both places at once.
-    UserScore
+    return UserScore
         .findById(req.user.id)
         .then(record => {
             if (record)
@@ -83,7 +83,7 @@ scoresRouter.get('/high-scores/:gameType', (req, res) => {
     match[`scores.${req.params.gameType}`] = 1;
     sort[ `scores.${req.params.gameType}.winRatio`] = -1;
 
-    UserScore.find(query, match)
+    return UserScore.find(query, match)
         .sort(sort)
         .then(results => res.json(
             results.map(result => result.apiRepr())))
