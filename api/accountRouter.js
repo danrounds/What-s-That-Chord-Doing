@@ -20,7 +20,7 @@ accountRouter.get('*', auth.authenticate(), (req, res) => {
             if (record)
                 res.json(record.apiRepr());
             else
-                res.sendStatus(404).send();
+                res.sendStatus(404);
         })
         .catch(() => res.sendStatus(500));
 });
@@ -110,26 +110,19 @@ accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
         });
 });
 
-accountRouter.delete('/', auth.authenticate(), (req, res) => {
+accountRouter.delete('/delete', auth.authenticate(), (req, res) => {
     // endpoint for deleting our account
     return UserScore
         .findById(req.user.id)
         .exec()
-        .then(record => {
-            if (record.name !== req.body.name)
-                return res.status(400).json({ error: 'Authenticated `name`, URL name, and request body don\'t match' });
-
-            return record.validatePassword(req.body.password);
-
-
-            UserScore.remove({ _id: req.user.id })
-                .then(thing => {
-                    if (thing.result.n)
-                        res.sendStatus(200);
-                    else
-                        res.sendStatus(404);
-                });
-        })
+        .then(record => record.validatePassword(req.body.password))
+        .then(() => UserScore.remove({ _id: req.user.id })
+              .then(thing => {
+                  if (thing.result.n)
+                      res.sendStatus(200);
+                  else
+                      res.sendStatus(404);
+              }))
         .catch(() => res.sendStatus(500));
 });
 
