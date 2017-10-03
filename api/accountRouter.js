@@ -89,9 +89,8 @@ accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
     if (req.body.newPassword.trim().length < 6)
         return res.status(400).json({error: 'Password must be at least six non-whitespace characters long'});
 
-    let _id = req.user.id;
+    const _id = req.user.id;
     return UserScore
-        // .findById(req.user.id)
         .findById(_id)
         .then(record => {
             if (record.name !== req.body.name)
