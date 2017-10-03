@@ -13,7 +13,7 @@ accountRouter.use(auth.initialize());
 accountRouter.get('*', auth.authenticate(), (req, res) => {
     // endpoint for getting all of a user's scores. This is identical to
     // scoresRouter's GET *, and changes should occur at both places at once.
-    
+
     return UserScore
         .findById(req.user.id)
         .then(record => {
