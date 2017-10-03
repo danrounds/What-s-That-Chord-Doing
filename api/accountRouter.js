@@ -97,16 +97,13 @@ accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
                 return res.status(400).json({ error: 'Authenticated `name`, URL name, and request body don\'t match' });
 
             return UserScore.hashPassword(req.body.newPassword)
-                .then(hashed => {
-                    UserScore
-                        .update(
-                            { _id },
-                            { $set: { 'password': hashed }},
-                            { runValidators: true }
-                        )
-                        .then(() => res.sendStatus(204))
-                        .catch(() => res.sendStatus(500));
-                });
+                .then(hashed => UserScore.update(
+                    { _id },
+                    { $set: { 'password': hashed }},
+                    { runValidators: true }
+                ))
+                .then(() => res.sendStatus(204))
+                .catch(() => res.sendStatus(500));
         });
 });
 
@@ -115,14 +112,13 @@ accountRouter.delete('/delete', auth.authenticate(), (req, res) => {
     return UserScore
         .findById(req.user.id)
         .exec()
-        .then(record => record.validatePassword(req.body.password))
-        .then(() => UserScore.remove({ _id: req.user.id })
-              .then(thing => {
-                  if (thing.result.n)
-                      res.sendStatus(200);
-                  else
-                      res.sendStatus(404);
-              }))
+        .then(() => UserScore.remove({ _id: req.user.id }))
+        .then(thing => {
+            if (thing.result.n)
+                res.sendStatus(200);
+            else
+                res.sendStatus(404);
+        })
         .catch(() => res.sendStatus(500));
 });
 
