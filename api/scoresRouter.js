@@ -28,7 +28,7 @@ scoresRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
     const gameMode = Object.keys(req.body.scores)[0];
     const requestScores = req.body.scores[gameMode];
 
-    if (['easyMajor','easyMajorInv','easyMinor','easyMinorInv',
+    if (!['easyMajor','easyMajorInv','easyMinor','easyMinorInv',
          'intermediateMinor','intermediateMinorInv','hardMajor',
          'hardMajorInv','hardMinor','hardMinorInv','allChords',
          'allChordsInv'].includes(gameMode)) {
@@ -45,7 +45,7 @@ scoresRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
         winRatio: requestScores.nAnsweredRight / requestScores.nQuestionNumber
     });
 
-    UserScore.findById(req.user.id)
+    return UserScore.findById(req.user.id)
         .then(record => {
             if (record) {
                 const newFields = {
