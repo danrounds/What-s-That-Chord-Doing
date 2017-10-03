@@ -89,8 +89,10 @@ accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
     if (req.body.newPassword.trim().length < 6)
         return res.status(400).json({error: 'Password must be at least six non-whitespace characters long'});
 
+    let _id = req.user.id;
     return UserScore
-        .findById(req.user.id)
+        // .findById(req.user.id)
+        .findById(_id)
         .then(record => {
             if (record.name !== req.body.name)
                 return res.status(400).json({error: 'Authenticated `name`, URL name, and request body don\'t match'});
@@ -99,9 +101,9 @@ accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
                 .then(hashed => {
                     UserScore
                         .update(
-                            {name: req.user.name},
-                            {$set: {'password': hashed}},
-                            {runValidators: true}
+                            { _id },
+                            { $set: { 'password': hashed }},
+                            { runValidators: true }
                         )
                         .then(() => res.sendStatus(204))
                         .catch(() => res.sendStatus(500));
