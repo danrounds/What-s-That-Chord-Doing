@@ -1,7 +1,7 @@
 const express = require('express');
 const scoresRouter = express.Router();
 
-const {UserScore} = require('./models');
+const { UserScore } = require('./models');
 const auth = require('./jwtAuthentication');
 
 // Our authenication
@@ -79,15 +79,14 @@ scoresRouter.put('/my-scores*', auth.authenticate(), (req, res) => {
 
 scoresRouter.get('/high-scores/:gameType', (req, res) => {
     const query = {}, match = { name: 1 }, sort = {};
-    query[`scores.${req.params.gameType}`] = { $exists: true };
-    match[`scores.${req.params.gameType}`] = 1;
-    sort[ `scores.${req.params.gameType}.winRatio`] = -1;
+    query[`scores.${ req.params.gameType }`] = { $exists: true };
+    match[`scores.${ req.params.gameType }`] = 1;
+    sort[ `scores.${ req.params.gameType }.winRatio`] = -1;
 
     return UserScore.find(query, match)
         .sort(sort)
-        .then(results => res.json(
-            results.map(result => result.apiRepr())))
+        .then(results => res.json(results.map(result => result.apiRepr())))
         .catch(() => res.sendStatus(500).send());
 });
 
-module.exports = {scoresRouter};
+module.exports = { scoresRouter };
