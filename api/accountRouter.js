@@ -2,7 +2,7 @@ const express = require('express');
 const accountRouter = express.Router();
 const jwt = require('jwt-simple');
 
-const {UserScore} = require('./models');
+const { UserScore } = require('./models');
 const auth = require('./jwtAuthentication');
 const cfg = require('../config');
 
@@ -29,7 +29,7 @@ accountRouter.post('/log-in', (req, res) => {
     // Log in endpoint -- returns the relevant JWT token
 
     if (req.body.name && req.body.password) {
-        return UserScore.findOne({name: req.body.name})
+        return UserScore.findOne({ name: req.body.name })
             .then(userScore => {
                 if (!userScore)
                     return res.sendStatus(404); // name doesn't exist
@@ -55,12 +55,12 @@ accountRouter.post('/register', (req, res) => {
     // JWT for the newly-created account
 
     if (!(req.body.name && req.body.password))
-        return res.status(400).json({error: 'Requests need `name` and `password`'});
+        return res.status(400).json({ error: 'Requests need `name` and `password`' });
     if (req.body.password.trim().length < 6)
-        return res.status(400).json({error: 'Password must be at least six non-whitespace characters long'});
+        return res.status(400).json({ error: 'Password must be at least six non-whitespace characters long' });
 
     let exists;
-    return UserScore.findOne({name: req.body.name})
+    return UserScore.findOne({ name: req.body.name })
         .then(exists => {
             if (exists)
                 return res.sendStatus(409); // name conflict
@@ -85,16 +85,16 @@ accountRouter.post('/register', (req, res) => {
 accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
     // Update password
     if (!(req.body.name && req.body.newPassword))
-        return res.status(400).json({error: 'Requests need `name` and `newPassword`'});
+        return res.status(400).json({ error: 'Requests need `name` and `newPassword`' });
     if (req.body.newPassword.trim().length < 6)
-        return res.status(400).json({error: 'Password must be at least six non-whitespace characters long'});
+        return res.status(400).json({ error: 'Password must be at least six non-whitespace characters long' });
 
     const _id = req.user.id;
     return UserScore
         .findById(_id)
         .then(record => {
             if (record.name !== req.body.name)
-                return res.status(400).json({error: 'Authenticated `name`, URL name, and request body don\'t match'});
+                return res.status(400).json({ error: 'Authenticated `name`, URL name, and request body don\'t match' });
 
             return UserScore.hashPassword(req.body.newPassword)
                 .then(hashed => {
@@ -117,12 +117,12 @@ accountRouter.delete('/', auth.authenticate(), (req, res) => {
         .exec()
         .then(record => {
             if (record.name !== req.body.name)
-                return res.status(400).json({error: 'Authenticated `name`, URL name, and request body don\'t match'});
+                return res.status(400).json({ error: 'Authenticated `name`, URL name, and request body don\'t match' });
 
             return record.validatePassword(req.body.password);
 
 
-            UserScore.remove({_id: req.user.id})
+            UserScore.remove({ _id: req.user.id })
                 .then(thing => {
                     if (thing.result.n)
                         res.sendStatus(200);
@@ -133,4 +133,4 @@ accountRouter.delete('/', auth.authenticate(), (req, res) => {
         .catch(() => res.sendStatus(500));
 });
 
-module.exports = {accountRouter};
+module.exports = { accountRouter };
