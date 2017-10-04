@@ -434,19 +434,20 @@ exports[`Component: Staves should render a chord 1`] = `
       x="400"
       y="164.5"
     />
-    <rect
-      fill="black"
+    <path
+      d="M117.28336 50L140.66488 50"
+      fill="none"
       font-family="Arial"
       font-size="10pt"
       font-style="normal"
       font-weight="normal"
-      height="1"
-      stroke="black"
+      height="41"
+      stroke="#999999"
       stroke-dasharray="none"
-      stroke-width="0.3"
-      width="23.38152000000001"
-      x="117.28336"
-      y="50"
+      stroke-width="1"
+      width="1"
+      x="400"
+      y="164.5"
     />
     <g
       class="vf-stavenote"
@@ -467,13 +468,13 @@ exports[`Component: Staves should render a chord 1`] = `
             font-size="10pt"
             font-style="normal"
             font-weight="normal"
-            height="1"
+            height="41"
             stroke="none"
             stroke-dasharray="none"
             stroke-width="0.3"
-            width="23.38152000000001"
-            x="117.28336"
-            y="50"
+            width="1"
+            x="400"
+            y="164.5"
           />
         </g>
         <g
@@ -487,33 +488,19 @@ exports[`Component: Staves should render a chord 1`] = `
             font-size="10pt"
             font-style="normal"
             font-weight="normal"
-            height="1"
+            height="41"
             stroke="none"
             stroke-dasharray="none"
             stroke-width="0.3"
-            width="23.38152000000001"
-            x="117.28336"
-            y="50"
+            width="1"
+            x="400"
+            y="164.5"
           />
         </g>
         <g
           class="vf-notehead"
           pointer-events="bounding-box"
         >
-          <rect
-            fill="black"
-            font-family="Arial"
-            font-size="10pt"
-            font-style="normal"
-            font-weight="normal"
-            height="1"
-            stroke="black"
-            stroke-dasharray="none"
-            stroke-width="0.3"
-            width="23.381520000000002"
-            x="117.28336"
-            y="50"
-          />
           <path
             d="M120.28336 50M127.97728000000001 44.83328C128.28616 44.77712,128.59504 44.77712,128.90392 44.77712C133.34056 44.77712,137.04712 46.74272,137.58064000000002 49.38224C137.60872 49.63496,137.66488 49.8596,137.66488 50.02808C137.66488 52.920320000000004,133.846 55.25096,128.93200000000002 55.25096C124.018 55.25096,120.28336 52.86416,120.28336 50.02808C120.28336 49.69112,120.31144 49.35416,120.42376 48.98912C121.09768 46.7708,124.24264000000001 45.05792,127.97728000000001 44.83328M128.39848 45.47912C128.25808 45.45104,128.06152 45.45104,127.92112 45.45104C126.15208 45.45104,125.08504 46.96736,125.08504 48.84872C125.08504 49.8596,125.39392000000001 50.95472,126.03976 52.04984C127.1068 53.73464,128.65120000000002 54.57704,129.97096 54.57704C131.09416 54.57704,132.07696 53.98736,132.52624 52.75184C132.7228 52.2464,132.80704 51.74096,132.80704 51.20744C132.80704 48.68024,130.86952 45.87224,128.39848 45.47912"
             fill="black"
@@ -521,13 +508,13 @@ exports[`Component: Staves should render a chord 1`] = `
             font-size="10pt"
             font-style="normal"
             font-weight="normal"
-            height="1"
+            height="41"
             stroke="none"
             stroke-dasharray="none"
             stroke-width="0.3"
-            width="23.381520000000002"
-            x="117.28336"
-            y="50"
+            width="1"
+            x="400"
+            y="164.5"
           />
         </g>
       </g>
@@ -535,33 +522,35 @@ exports[`Component: Staves should render a chord 1`] = `
         class="vf-modifiers"
       />
     </g>
-    <rect
-      fill="black"
+    <path
+      d="M118.78096000000001 155L142.16248000000002 155"
+      fill="none"
       font-family="Arial"
       font-size="10pt"
       font-style="normal"
       font-weight="normal"
-      height="1"
-      stroke="black"
+      height="41"
+      stroke="#999999"
       stroke-dasharray="none"
-      stroke-width="0.3"
-      width="23.38152000000001"
-      x="118.78096000000001"
-      y="155"
+      stroke-width="1"
+      width="1"
+      x="400"
+      y="164.5"
     />
-    <rect
-      fill="black"
+    <path
+      d="M118.78096000000001 145L142.16248000000002 145"
+      fill="none"
       font-family="Arial"
       font-size="10pt"
       font-style="normal"
       font-weight="normal"
-      height="1"
-      stroke="black"
+      height="41"
+      stroke="#999999"
       stroke-dasharray="none"
-      stroke-width="0.3"
-      width="23.38152000000001"
-      x="118.78096000000001"
-      y="145"
+      stroke-width="1"
+      width="1"
+      x="400"
+      y="164.5"
     />
     <g
       class="vf-stavenote"
@@ -575,20 +564,6 @@ exports[`Component: Staves should render a chord 1`] = `
           class="vf-notehead"
           pointer-events="bounding-box"
         >
-          <rect
-            fill="black"
-            font-family="Arial"
-            font-size="10pt"
-            font-style="normal"
-            font-weight="normal"
-            height="1"
-            stroke="black"
-            stroke-dasharray="none"
-            stroke-width="0.3"
-            width="23.381520000000002"
-            x="118.78096000000001"
-            y="145"
-          />
           <path
             d="M121.78096000000001 145M129.47488 139.83328C129.78376 139.77712,130.09264000000002 139.77712,130.40152 139.77712C134.83816000000002 139.77712,138.54472 141.74272,139.07824 144.38224C139.10632 144.63496,139.16248000000002 144.8596,139.16248000000002 145.02808C139.16248000000002 147.92032,135.3436 150.25096,130.4296 150.25096C125.5156 150.25096,121.78096000000001 147.86416,121.78096000000001 145.02808C121.78096000000001 144.69112,121.80904000000001 144.35416,121.92136 143.98912C122.59528 141.7708,125.74024000000001 140.05792,129.47488 139.83328M129.89608 140.47912C129.75568 140.45104,129.55912 140.45104,129.41872 140.45104C127.64968 140.45104,126.58264000000001 141.96736,126.58264000000001 143.84872C126.58264000000001 144.8596,126.89152000000001 145.95472,127.53736 147.04984C128.6044 148.73464,130.1488 149.57704,131.46856 149.57704C132.59176000000002 149.57704,133.57456000000002 148.98736,134.02384 147.75184C134.2204 147.2464,134.30464 146.74096,134.30464 146.20744C134.30464 143.68024,132.36712 140.87224,129.89608 140.47912"
             fill="black"
@@ -596,13 +571,13 @@ exports[`Component: Staves should render a chord 1`] = `
             font-size="10pt"
             font-style="normal"
             font-weight="normal"
-            height="1"
+            height="41"
             stroke="none"
             stroke-dasharray="none"
             stroke-width="0.3"
-            width="23.381520000000002"
-            x="118.78096000000001"
-            y="145"
+            width="1"
+            x="400"
+            y="164.5"
           />
         </g>
       </g>
@@ -1041,23 +1016,24 @@ exports[`Component: Staves should render a chord 1`] = `
       x="400"
       y="164.5"
     />
-    <rect
-      fill="black"
+    <path
+      d="M117.28336 50L140.66488 50"
+      fill="none"
       font-family="Arial"
       font-size="10pt"
       font-style="normal"
       font-weight="normal"
-      height="1"
-      stroke="black"
+      height="41"
+      stroke="#999999"
       stroke-dasharray="none"
-      stroke-width="0.3"
-      width="23.38152000000001"
-      x="117.28336"
-      y="50"
+      stroke-width="1"
+      width="1"
+      x="400"
+      y="164.5"
     />
     <g
       class="vf-stavenote"
-      id="vf-auto1111"
+      id="vf-auto1112"
     >
       <g
         class="vf-note"
@@ -1074,13 +1050,13 @@ exports[`Component: Staves should render a chord 1`] = `
             font-size="10pt"
             font-style="normal"
             font-weight="normal"
-            height="1"
+            height="41"
             stroke="none"
             stroke-dasharray="none"
             stroke-width="0.3"
-            width="23.38152000000001"
-            x="117.28336"
-            y="50"
+            width="1"
+            x="400"
+            y="164.5"
           />
         </g>
         <g
@@ -1094,33 +1070,19 @@ exports[`Component: Staves should render a chord 1`] = `
             font-size="10pt"
             font-style="normal"
             font-weight="normal"
-            height="1"
+            height="41"
             stroke="none"
             stroke-dasharray="none"
             stroke-width="0.3"
-            width="23.38152000000001"
-            x="117.28336"
-            y="50"
+            width="1"
+            x="400"
+            y="164.5"
           />
         </g>
         <g
           class="vf-notehead"
           pointer-events="bounding-box"
         >
-          <rect
-            fill="black"
-            font-family="Arial"
-            font-size="10pt"
-            font-style="normal"
-            font-weight="normal"
-            height="1"
-            stroke="black"
-            stroke-dasharray="none"
-            stroke-width="0.3"
-            width="23.381520000000002"
-            x="117.28336"
-            y="50"
-          />
           <path
             d="M120.28336 50M127.97728000000001 44.83328C128.28616 44.77712,128.59504 44.77712,128.90392 44.77712C133.34056 44.77712,137.04712 46.74272,137.58064000000002 49.38224C137.60872 49.63496,137.66488 49.8596,137.66488 50.02808C137.66488 52.920320000000004,133.846 55.25096,128.93200000000002 55.25096C124.018 55.25096,120.28336 52.86416,120.28336 50.02808C120.28336 49.69112,120.31144 49.35416,120.42376 48.98912C121.09768 46.7708,124.24264000000001 45.05792,127.97728000000001 44.83328M128.39848 45.47912C128.25808 45.45104,128.06152 45.45104,127.92112 45.45104C126.15208 45.45104,125.08504 46.96736,125.08504 48.84872C125.08504 49.8596,125.39392000000001 50.95472,126.03976 52.04984C127.1068 53.73464,128.65120000000002 54.57704,129.97096 54.57704C131.09416 54.57704,132.07696 53.98736,132.52624 52.75184C132.7228 52.2464,132.80704 51.74096,132.80704 51.20744C132.80704 48.68024,130.86952 45.87224,128.39848 45.47912"
             fill="black"
@@ -1128,13 +1090,13 @@ exports[`Component: Staves should render a chord 1`] = `
             font-size="10pt"
             font-style="normal"
             font-weight="normal"
-            height="1"
+            height="41"
             stroke="none"
             stroke-dasharray="none"
             stroke-width="0.3"
-            width="23.381520000000002"
-            x="117.28336"
-            y="50"
+            width="1"
+            x="400"
+            y="164.5"
           />
         </g>
       </g>
@@ -1142,37 +1104,39 @@ exports[`Component: Staves should render a chord 1`] = `
         class="vf-modifiers"
       />
     </g>
-    <rect
-      fill="black"
+    <path
+      d="M118.78096000000001 155L142.16248000000002 155"
+      fill="none"
       font-family="Arial"
       font-size="10pt"
       font-style="normal"
       font-weight="normal"
-      height="1"
-      stroke="black"
+      height="41"
+      stroke="#999999"
       stroke-dasharray="none"
-      stroke-width="0.3"
-      width="23.38152000000001"
-      x="118.78096000000001"
-      y="155"
+      stroke-width="1"
+      width="1"
+      x="400"
+      y="164.5"
     />
-    <rect
-      fill="black"
+    <path
+      d="M118.78096000000001 145L142.16248000000002 145"
+      fill="none"
       font-family="Arial"
       font-size="10pt"
       font-style="normal"
       font-weight="normal"
-      height="1"
-      stroke="black"
+      height="41"
+      stroke="#999999"
       stroke-dasharray="none"
-      stroke-width="0.3"
-      width="23.38152000000001"
-      x="118.78096000000001"
-      y="145"
+      stroke-width="1"
+      width="1"
+      x="400"
+      y="164.5"
     />
     <g
       class="vf-stavenote"
-      id="vf-auto1125"
+      id="vf-auto1126"
     >
       <g
         class="vf-note"
@@ -1182,20 +1146,6 @@ exports[`Component: Staves should render a chord 1`] = `
           class="vf-notehead"
           pointer-events="bounding-box"
         >
-          <rect
-            fill="black"
-            font-family="Arial"
-            font-size="10pt"
-            font-style="normal"
-            font-weight="normal"
-            height="1"
-            stroke="black"
-            stroke-dasharray="none"
-            stroke-width="0.3"
-            width="23.381520000000002"
-            x="118.78096000000001"
-            y="145"
-          />
           <path
             d="M121.78096000000001 145M129.47488 139.83328C129.78376 139.77712,130.09264000000002 139.77712,130.40152 139.77712C134.83816000000002 139.77712,138.54472 141.74272,139.07824 144.38224C139.10632 144.63496,139.16248000000002 144.8596,139.16248000000002 145.02808C139.16248000000002 147.92032,135.3436 150.25096,130.4296 150.25096C125.5156 150.25096,121.78096000000001 147.86416,121.78096000000001 145.02808C121.78096000000001 144.69112,121.80904000000001 144.35416,121.92136 143.98912C122.59528 141.7708,125.74024000000001 140.05792,129.47488 139.83328M129.89608 140.47912C129.75568 140.45104,129.55912 140.45104,129.41872 140.45104C127.64968 140.45104,126.58264000000001 141.96736,126.58264000000001 143.84872C126.58264000000001 144.8596,126.89152000000001 145.95472,127.53736 147.04984C128.6044 148.73464,130.1488 149.57704,131.46856 149.57704C132.59176000000002 149.57704,133.57456000000002 148.98736,134.02384 147.75184C134.2204 147.2464,134.30464 146.74096,134.30464 146.20744C134.30464 143.68024,132.36712 140.87224,129.89608 140.47912"
             fill="black"
@@ -1203,13 +1153,13 @@ exports[`Component: Staves should render a chord 1`] = `
             font-size="10pt"
             font-style="normal"
             font-weight="normal"
-            height="1"
+            height="41"
             stroke="none"
             stroke-dasharray="none"
             stroke-width="0.3"
-            width="23.381520000000002"
-            x="118.78096000000001"
-            y="145"
+            width="1"
+            x="400"
+            y="164.5"
           />
         </g>
       </g>
