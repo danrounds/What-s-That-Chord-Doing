@@ -9,7 +9,7 @@ chai.use(require('chai-http'));
 
 const { UserScore } = require('../api/models');
 const { app, runServer, closeServer } = require('../server');
-const { TEST_DATABASE_URL, JWT_SECRET } = require('../config');
+const { TEST_DATABASE_URL, TEST_PORT, JWT_SECRET } = require('../config');
 const { tearDownDb, seedDb } = require('./_setup');
 
 // T E S T S :
@@ -17,7 +17,7 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
 
     let dataToSend;           // We'll be using this throughout our tests
     before(() => {
-        runServer( TEST_DATABASE_URL);
+        runServer(TEST_DATABASE_URL, TEST_PORT);
         return tearDownDb();
     });
 

@@ -43,6 +43,7 @@ app.use('*', (req, res) =>                               // Everything else
 //  server can be opened and closed by tests
 let server;
 function runServer(databaseUrl=DATABASE_URL, port=PORT) {
+    console.log(port);
     return new Promise((resolve, reject) => {
         mongoose.connect(databaseUrl, err => {
             if (err) {
