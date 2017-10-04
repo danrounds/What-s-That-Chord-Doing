@@ -48,27 +48,19 @@ describe('What\'s That Chord Doing API score endpoints', () => {
         it('should update scores', () => {
             const replacementScore = generateReplacementScore();
             const scoreType = Object.keys(replacementScore.scores)[0];
-            const relevantScore = replacementScore.scores[scoreType];
-            
+            const dataSubmitted = replacementScore.scores[scoreType];
+
             return chai.request(app)
                 .put('/my-scores/')
                 .set('Content-Type', 'application/json')
                 .set('Authorization', `Bearer ${dataToSend.token}`)
                 .send(replacementScore)
-                .then((res) => {
-                    expect(res.status).to.equal(200);
-                    return chai.request(app)
-                        .get('/my-scores')
-                        .set('Content-Type', 'application/json')
-                        .set('Authorization', `Bearer ${dataToSend.token}`)
-                        .then(res => {
-                            const updated = res.body.scores[scoreType];
-                            relevantScore.winRatio =
-                                relevantScore.nAnsweredRight/relevantScore.nQuestionNumber;
-                            // ^ taking advantage of mutability
-                            areDeepEqual(updated, relevantScore);
-                        });
-                });
+                .then((res) => UserScore
+                      .findOne({ name: dataToSend.name })
+                      .then(dbScoresList => {
+                          expect(res.status).to.equal(200);
+                          areDeepEqual(dbScoresList.scores[scoreType], dataSubmitted);
+                      }));
         });
     });
     
