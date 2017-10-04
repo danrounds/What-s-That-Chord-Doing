@@ -19,7 +19,7 @@ function _makeScore() {
     const winRatio = nAnsweredRight / nQuestionNumber;
     // /\ winRatio won't submit for PUT endpoints. The server takes care of that
 
-    return { totalClicks, nAnsweredRight, nQuestionNumber };
+    return { totalClicks, nAnsweredRight, nQuestionNumber, winRatio };
 }
 
 function generateAccount() {

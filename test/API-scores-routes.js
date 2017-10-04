@@ -87,7 +87,6 @@ describe('What\'s That Chord Doing API score endpoints', () => {
 
                           let priorWinRatio;
                           scores.forEach((score) => {
-                              console.log(score.scores[scoreType]);
                               let currentWinRatio = score.scores[scoreType].winRatio;
                               if (priorWinRatio)
                                   // Test whether we have records in order
