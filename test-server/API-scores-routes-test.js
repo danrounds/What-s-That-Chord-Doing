@@ -18,8 +18,10 @@ const { generateReplacementScore, generateHighScores }
 describe('What\'s That Chord Doing API score endpoints', () => {
 
     let dataToSend;           // We'll be using this throughout our tests
-    before(() => runServer( TEST_DATABASE_URL)
-           .then(() => tearDownDb()));
+    before(() => {
+        runServer( TEST_DATABASE_URL);
+        return tearDownDb();
+    });
 
     beforeEach(() => seedDb()
                .then(data => dataToSend = data));
