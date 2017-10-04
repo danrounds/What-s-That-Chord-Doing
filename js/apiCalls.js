@@ -1,21 +1,9 @@
 import fetch from 'isomorphic-fetch';
 
-const token_ = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU5YjVmMGY0MjhmYTE3MWRiNzg4MzgyMCJ9.yalTBvUlq6paFLdaD1JLbixHmIzutA-N8Tin9Ez17cA';
-
 const url = window.location.origin;
 const accountsUrl = url+'/accounts/';
 const userScoreUrl = url+'/my-scores/';
 const highScoreUrl = url+'/high-scores/';
-
-const scores_ = {                // delete, once you have tests
-    scores: {
-        intermediateMinor: {
-			      totalClicks: 12346,
-			      nAnsweredRight: 124,
-			      nQuestionNumber: 129,
-        }
-    }
-};
 
 function testResponse(response) {
     if (response.ok)
@@ -24,7 +12,7 @@ function testResponse(response) {
         throw response.status;
 }
 
-function postReqLogIn(name='bobby4', password='abc123') {
+function postReqLogIn(name, password) {
     const payload = {
         method: 'POST',
         headers: {
@@ -36,12 +24,12 @@ function postReqLogIn(name='bobby4', password='abc123') {
         .then(response => testResponse(response));
 }
 
-function getReqUserScores(token=token_) {
+function getReqUserScores(token) {
     return fetch(userScoreUrl, { headers: { Authorization: 'Bearer '+ token } })
         .then(response => testResponse(response));
 }
 
-function putReqUserScores(token=token_, scores=scores_) {
+function putReqUserScores(token, scores) {
     const payload = {
         method: 'PUT',
         headers: {
@@ -54,14 +42,14 @@ function putReqUserScores(token=token_, scores=scores_) {
         .then(response => testResponse(response));
 }
 
-function getReqHighScores(gameType='intermediateMinor') {
+function getReqHighScores(gameType) {
     return fetch(highScoreUrl+gameType)
         .then(response => testResponse(response));
 }
 
 //////
 
-function postReqAccount(name='bobby4', password='abc123') {
+function postReqAccount(name, password) {
     const payload = {
         method: 'POST',
         headers: {
@@ -73,7 +61,7 @@ function postReqAccount(name='bobby4', password='abc123') {
         .then(response => testResponse(response));
 }
 
-function putReqAccountPassword(token=token_, name='bobby4', password='abc123') {
+function putReqAccountPassword(token, name, password) {
     const payload = {
         method: 'PUT',
         headers: {
@@ -86,7 +74,7 @@ function putReqAccountPassword(token=token_, name='bobby4', password='abc123') {
         .then(response => testResponse(response));
 }
 
-function deleteReqAccount(token=token_, name='bobby4', password='abc123') {
+function deleteReqAccount(token, name, password) {
     const payload = {
         method: 'DELETE',
         headers: {
