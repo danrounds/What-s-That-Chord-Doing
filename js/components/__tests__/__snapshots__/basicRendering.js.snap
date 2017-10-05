@@ -590,59 +590,15 @@ exports[`Components: Basic rendering StartNewGame, w/out keyboard shortcuts 1`] 
 </button>
 `;
 
-exports[`Components: Basic rendering Status, correct answer, w/ keyboard shortcuts 1`] = `
+exports[`Components: Basic rendering Status, basic render w/ keyboard shortcuts 1`] = `
 <Status
-  answeredCorrect={true}
   chord="iii"
   chordName="G minor"
-  clicksPerRightAnswer={3.12}
-  displayKeyboardShorcuts={true}
-  gameOver={true}
-  key_="Eb Major"
-  nAnsweredRight={4}
->
-  <div
-    className="status-box"
-  >
-    <h3
-      className="status-feedback"
-    >
-      <br />
-    </h3>
-    <h3
-      className="status-secondary"
-    >
-      4 answered correctly
-    </h3>
-    <h3
-      className="status-secondary"
-    >
-      <br />
-    </h3>
-    <h2
-      className="status-primary"
-    >
-      <div>
-        Game over! 
-        <a
-          className="game-link"
-          href="javascript:void(0)"
-          onClick={[Function]}
-        >
-          Play again?
-        </a>
-      </div>
-    </h2>
-  </div>
-</Status>
-`;
-
-exports[`Components: Basic rendering Status, correct answer, w/out keyboard shortcuts 1`] = `
-<Status
-  answeredCorrect={true}
-  chord="iii"
-  chordName="G minor"
-  clicksPerRightAnswer={3.12}
+  clicksPerRightAnswer={
+    Array [
+      3.12,
+    ]
+  }
   displayKeyboardShorcuts={false}
   gameOver={true}
   key_="Eb Major"
@@ -664,7 +620,58 @@ exports[`Components: Basic rendering Status, correct answer, w/out keyboard shor
     <h3
       className="status-secondary"
     >
+      3.12 guesses per correct answer
+    </h3>
+    <h2
+      className="status-primary"
+    >
+      <div>
+        Game over! 
+        <a
+          className="game-link"
+          href="javascript:void(0)"
+          onClick={[Function]}
+        >
+          Play again?
+        </a>
+      </div>
+    </h2>
+  </div>
+</Status>
+`;
+
+exports[`Components: Basic rendering Status, basic render, w/out keyboard shortcuts 1`] = `
+<Status
+  chord="iii"
+  chordName="G minor"
+  clicksPerRightAnswer={
+    Array [
+      3,
+      12,
+    ]
+  }
+  displayKeyboardShorcuts={false}
+  gameOver={true}
+  key_="Eb Major"
+  nAnsweredRight={4}
+>
+  <div
+    className="status-box"
+  >
+    <h3
+      className="status-feedback"
+    >
       <br />
+    </h3>
+    <h3
+      className="status-secondary"
+    >
+      4 answered correctly
+    </h3>
+    <h3
+      className="status-secondary"
+    >
+      7.5 guesses per correct answer
     </h3>
     <h2
       className="status-primary"
