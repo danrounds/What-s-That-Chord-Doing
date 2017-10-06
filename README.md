@@ -1,23 +1,30 @@
 # What's That Chord Doing?
 
-This is an ear-training app for intermediate musicians&#8212;maybe roughly sophomore-level musicianship students, in college.
-
+This is an ear-training app for intermediate musicians&#8212;roughly sophomore-level musicianship students, in college.
 
 Project directory structure and build system derived from the [Thinkful React starter kit](https://github.com/oampo/thinkful-react-starter).
 
 ### Working on OR trying the project:
+  1. [Make sure you have MongoDB](#installmongodb)
   1. Clone this repo
-  2. `npm install`
+  2. `npm i` or `yarn install`
   3. `mongod&` to open the mongo daemon
-  4. `npm run dev` to start the server and update our app, whenever we make changes&#8212;OR `npm start` to just start our server.
+  4. `npm run dev` or `yard dev` to start the server and update our app, whenever we make changes&#8212;OR `npm start` to just start our server.
     * Serves our client at http://localhost:8080 (try it out in your browser)
     * Services our API endpoints
 
 ----------------------------------------------------------
 
+### Install MongoDB
+
+* Homebrew: `brew install mongodb`
+* Debian/Ubuntu: `apt-get install mongodb` 
+
+----------------------------------------------------------
+
 ### Rationale
 
-Hearing chords in the context of a key is a crucial musical skill. Every ear training app ignores this and instead has us identify chords outside a context—by "character," instead of function.
+Hearing chords in the context of a key is a crucial musical skill. Most ear training apps ignore this and instead have us identify chords outside a context—by "character," instead of function.
 
 ### Description
 
