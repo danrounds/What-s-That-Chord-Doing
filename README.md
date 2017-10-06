@@ -5,7 +5,7 @@ This is an ear-training app for intermediate musicians&#8212;roughly sophomore-l
 Project directory structure and build system derived from the [Thinkful React starter kit](https://github.com/oampo/thinkful-react-starter).
 
 ### Working on OR trying the project:
-  1. [Make sure you have MongoDB](# InstallMongoDB)
+  1. [Make sure you have MongoDB](#InstallMongoDB)
   2. Clone this repo
   3. `npm i` or `yarn install`
   4. `mongod&` to open the mongo daemon
