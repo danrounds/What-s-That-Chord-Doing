@@ -102,8 +102,7 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
                expect(res.status).to.equal(200);
                return UserScore.findOne({ name: dataToSend.name });
            })
-           .then(queryResult => expect(queryResult).to.be.null)
+           .then(queryResult => expect(queryResult).to.be.null));
            // ^ We're expecting the record to be deleted
-           .catch((err) => console.log(err)));
     });
 });
