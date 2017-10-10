@@ -1,11 +1,8 @@
 const chai = require('chai');
+const expect = chai.expect;
 const mongoose = require('mongoose');
 const jwt = require('jwt-simple');
 const areDeepEqual = require('assert').deepEqual;
-
-mongoose.Promise = global.Promise;
-const expect = chai.expect;
-chai.use(require('chai-http'));
 
 const { UserScore } = require('../api/models');
 const { app, runServer, closeServer } = require('../server');

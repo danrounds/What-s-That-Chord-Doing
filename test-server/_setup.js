@@ -1,3 +1,4 @@
+const chai = require('chai');
 const mongoose = require('mongoose');
 const jwt = require('jwt-simple');
 
@@ -5,6 +6,9 @@ const { UserScore } = require('../api/models');
 const { generateAccount, generateReplacementScore, generateHighScores }
           = require('../api/_fake');
 const { JWT_SECRET } = require('../config');
+
+mongoose.Promise = global.Promise;
+chai.use(require('chai-http'));
 
 function tearDownDb() {
     console.warn('Clearing db records');

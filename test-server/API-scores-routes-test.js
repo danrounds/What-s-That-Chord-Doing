@@ -1,11 +1,8 @@
 const chai = require('chai');
+const expect = chai.expect;
 const mongoose = require('mongoose');
 const jwt = require('jwt-simple');
 const areDeepEqual = require('assert').deepEqual;
-
-mongoose.Promise = global.Promise;
-const expect = chai.expect;
-chai.use(require('chai-http'));
 
 const { UserScore } = require('../api/models');
 const { app, runServer, closeServer } = require('../server');
@@ -74,19 +71,18 @@ describe('What\'s That Chord Doing API score endpoints', () => {
                 .then(() => chai.request(app)
                       .get(`/high-scores/${scoreType}`)
                       .then(result => {
-                          let scores = result.body;
-                          let topScore = scores[0].scores[scoreType];
+                          const scores = result.body;
+                          const topScore = scores[0].scores[scoreType];
 
                           let priorWinRatio;
                           scores.forEach((score) => {
-                              let currentWinRatio = score.scores[scoreType].winRatio;
+                              const currentWinRatio = score.scores[scoreType].winRatio;
                               if (priorWinRatio)
                                   // Test whether we have records in order
                                   expect(priorWinRatio).to.be.gte(currentWinRatio);
 
                               priorWinRatio = score.scores[scoreType].winRatio;
                           });
-
 
                           expect(topScore).to.have.all.keys([
                               'totalClicks','nAnsweredRight','nQuestionNumber',
