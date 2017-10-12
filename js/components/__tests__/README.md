@@ -36,7 +36,7 @@ Component testing is almost exclusively snapshot-based. Different renderers are 
 * Audio (webaudio/MIDI) tests. These should use the `web-audio-test-api`:
   
   Mock data, for the event that audio tests actually get written (for `PlayAudio` component):
-~~~~js-code-follows~~~~
+~~~javascript
 const props = {
     introChordSequence: [[ "F#3","C#5","F#5","A#5",],
                          ["B3","B4","D#5","F#5",],
@@ -44,4 +44,4 @@ const props = {
                          ["F#3","A#4","C#5","F#5",]],
     answer: ["B3","F#4","B4","D#5",]
 };
-~~~~
+~~~
