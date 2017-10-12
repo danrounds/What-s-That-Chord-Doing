@@ -1,3 +1,5 @@
+# ![What's That Chord Doing?](docs/img/logo.png)
+
 _What's That Chord Doing?_'s API is built on Node/Express
 
 Dependencies:
