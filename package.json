@@ -61,7 +61,6 @@
     "chai-http": "^3.0.0",
     "chokidar-cli": "^1.2.0",
     "cpr": "^2.0.0",
-    "deep-equal": "file://node_modules/deep-equal",
     "enzyme": "^2.4.1",
     "http-server": "^0.9.0",
     "jest": "^21.1.0",
