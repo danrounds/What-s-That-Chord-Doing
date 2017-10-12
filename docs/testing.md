@@ -1,4 +1,4 @@
-# ![What's That Chord Doing?](docs/img/logo.png)
+# ![What's That Chord Doing?](img/logo.png)
 
 Our [backend tests](../test-server/README.txt) are done with Mocha/Chai.
 

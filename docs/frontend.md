@@ -1,4 +1,4 @@
-# ![What's That Chord Doing?](docs/img/logo.png)
+# ![What's That Chord Doing?](img/logo.png)
 
 _What's That Chord Doing_? is a single-page app made with React and Redux.
 
