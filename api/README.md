@@ -2,7 +2,7 @@
 
 ## General info
 
-Endpoints accept and return JSON as request data. Authenticated endpoints want [JSON Web Tokens](https://jwt.io/introduction/), which our [`POST /accounts/register`](#post-accounts-register) and [`POST /accounts/log-in`](#post-accounts-log-in) endpoints return to us.
+Endpoints accept and return JSON as request data. Authenticated endpoints want [JSON Web Tokens](https://jwt.io/introduction/), which our [`POST /accounts/register`](#post-accountsregister) and [`POST /accounts/log-in`](#post-accountslog-in) endpoints return to us.
 
 ### Request data types:
 
