@@ -4,6 +4,20 @@
 
 Project directory structure and build system derived from the [Thinkful React starter kit](https://github.com/oampo/thinkful-react-starter).
 
+----------------------------------------------------------
+
+### Tech used
+
+_What's That Chord Doing?_ is a full-stack JS app, built on Node/Express, with React/Redux, and MongoDB as the data store.
+
+* [Frontend](docs/frontend.md)
+
+* [Backend](docs/backend.md)
+
+* [Testing](docs/testing.md)
+
+----------------------------------------------------------
+
 ### Working on OR trying the project:
   1. [Make sure you have MongoDB](#install-mongodb)
   2. Clone this repo
@@ -34,15 +48,6 @@ This is an app for musical intermediates that want to start transcribing or get 
 
 [See the API README](api/README.md)
 
-### Tech used
-
-_What's That Chord Doing_ is a full-stack JS app, built on Node/Express, with React/Redux, and MongoDB as the data store.
-
-* [Frontend](docs/frontend.md)
-
-* [Backend](docs/backend.md)
-
-* [Testing](docs/testing.md)
 
 _-DR, 2017_
 
