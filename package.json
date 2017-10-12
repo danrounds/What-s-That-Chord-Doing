@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
+    "postinstall": "run-s build",
     "dev": "run-p watch serve",
     "test": "run-s test-frontend test-backend",
     "test-frontend": "jest",
