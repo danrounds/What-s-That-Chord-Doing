@@ -7,3 +7,5 @@ deploy:
   app: what-s-that-chord-doing
   on:
     repo: danrounds/What-s-That-Chord-Doing
+services:
+  - mongodb
