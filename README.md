@@ -1,5 +1,7 @@
 # ![What's That Chord Doing?](docs/img/logo.png)
 
+### What is this?
+
 [What's That Chord Doing?](https://what-s-that-chord-doing.herokuapp.com/) is an ear-training app for intermediate musicians&#8212;roughly sophomore-level musicianship students, in college.
 
 Project directory structure and build system derived from the [Thinkful React starter kit](https://github.com/oampo/thinkful-react-starter).
@@ -36,6 +38,12 @@ _What's That Chord Doing?_ is a full-stack JS app, built on Node/Express, with R
 
 ----------------------------------------------------------
 
+### API documentation
+
+[See the API README](api/README.md)
+
+----------------------------------------------------------
+
 ### Rationale
 
 Hearing chords in the context of a key is a crucial musical skill. Most ear training apps ignore this and instead have us identify chords outside a context—by "character," instead of function.
@@ -43,11 +51,6 @@ Hearing chords in the context of a key is a crucial musical skill. Most ear trai
 ### Description
 
 This is an app for musical intermediates that want to start transcribing or get better at playing by ear.
-
-### API documentation
-
-[See the API README](api/README.md)
-
 
 _-DR, 2017_
 
