@@ -2,7 +2,7 @@
 
 _What's That Chord Doing?_'s API is built on Node/Express
 
-Dependencies:
+### Dependencies:
 
 * Node
 
