@@ -1,4 +1,4 @@
-# What's That Chord Doing?
+# ![What's That Chord Doing?](docs/img/logo.png)
 
 [What's That Chord Doing?](https://what-s-that-chord-doing.herokuapp.com/) is an ear-training app for intermediate musicians&#8212;roughly sophomore-level musicianship students, in college.
 
