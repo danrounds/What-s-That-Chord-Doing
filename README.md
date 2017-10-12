@@ -30,4 +30,8 @@ Hearing chords in the context of a key is a crucial musical skill. Most ear trai
 
 This is an app for musical intermediates that want to start transcribing or get better at playing by ear.
 
+### API documentation
+
+[See the API README](api/README.md)
+
 _-DR, 2017_
