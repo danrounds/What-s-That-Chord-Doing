@@ -7,5 +7,5 @@ Our front-end tests are primarily snapshot-based, and are a mix of
 [Enzyme](https://github.com/airbnb/enzyme), and accompanying fake-renderers
 and DOM fakers.
 
-We test our [React components](../js/components/__tests__/README.md) and Redux 
+We [test our React components](../js/components/__tests__/README.md) and Redux 
 reducers.
