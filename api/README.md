@@ -2,16 +2,17 @@
 
 ## General info
 
+Our endpoints send and receive account- and scores-related data.
+
 Endpoints accept and return JSON as request data. Authenticated endpoints want [JSON Web Tokens](https://jwt.io/introduction/), which our [`POST /accounts/register`](#post-accountsregister) and [`POST /accounts/log-in`](#post-accountslog-in) endpoints return to us.
 
 ### Request data types:
 
 #### `gameType` is one of the following:
         
-    "easyMajor","easyMajorInv","easyMinor","easyMinorInv",
-    "intermediateMinor","intermediateMinorInv","hardMajor",
-    "hardMajorInv","hardMinor","hardMinorInv","allChords",
-    "allChordsInv"
+    "easyMajor", "easyMajorInv", "easyMinor", "easyMinorInv", "intermediateMinor",
+    "intermediateMinorInv", "hardMajor", "hardMajorInv", "hardMinor", "hardMinorInv", 
+    "allChords", "allChordsInv"
 
 #### `score` takes the form:
 ```javascript
