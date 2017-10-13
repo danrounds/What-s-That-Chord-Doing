@@ -14,4 +14,9 @@ The heart of the module is the `chordGetter` object, and its `init` and
 `getChord` methods. Everything else is subordinate methods or subordinate 
 datatypes.
 
+The module is general enough that it could be slotted into another (non-web-app)
+music game or be slightly modified to generate chord voicings, on demand. As it
+is, the only access points to `chordGetter` in our codebase are the
+[`START_NEW_GAME` and `GET_NEXT_QUESTION` actions](../actions/gameActions.js).
+
 -DR, 2017
