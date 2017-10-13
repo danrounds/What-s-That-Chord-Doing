@@ -10,7 +10,7 @@ is utterly literal about displaying enharmonic notes&#8212;that is, if we didn't
 carefully manage these data, our display component would be completely screwed 
 up.
 
-The heart of the module is the `chordGetter` module, and its `init` and 
+The heart of the module is the `chordGetter` object, and its `init` and 
 `getChord` methods. Everything else is subordinate methods or subordinate 
 datatypes.
 
