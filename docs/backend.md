@@ -1,4 +1,4 @@
-# [![What's That Chord Doing?](docs/img/logo.png)](http://what-s-that-chord-doing.herokuapp.com)
+# [![What's That Chord Doing?](img/logo.png)](http://what-s-that-chord-doing.herokuapp.com)
 
 _What's That Chord Doing?_'s API is built on Node/Express
 
