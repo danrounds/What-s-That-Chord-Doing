@@ -1,4 +1,4 @@
-# ![What's That Chord Doing?](docs/img/logo.png)
+# [![What's That Chord Doing?](docs/img/logo.png)](http://what-s-that-chord-doing.herokuapp.com)
 
 ### What is this?
 
