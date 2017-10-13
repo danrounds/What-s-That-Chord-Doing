@@ -1,4 +1,4 @@
-# NOTES
+# Server tests notes
 
 Testing strategy here is what you'd expect--populate the database, do requests,
 check database, again.
