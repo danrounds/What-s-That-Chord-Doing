@@ -11,6 +11,17 @@ Project directory structure and build system derived from the
 
 ----------------------------------------------------------
 
+### Tech used
+
+_What's That Chord Doing?_ is a full-stack JS app, built on Node/Express, with
+React/Redux, and MongoDB as the data store.
+
+* [Frontend](docs/frontend.md)
+* [Backend](docs/backend.md)
+* [Testing](docs/testing.md)
+
+----------------------------------------------------------
+
 ### Views
 
 #### Splash screen
@@ -28,17 +39,6 @@ Project directory structure and build system derived from the
 #### Game play
 
 ![](docs/img/game-play-0.png)
-
-----------------------------------------------------------
-
-### Tech used
-
-_What's That Chord Doing?_ is a full-stack JS app, built on Node/Express, with
-React/Redux, and MongoDB as the data store.
-
-* [Frontend](docs/frontend.md)
-* [Backend](docs/backend.md)
-* [Testing](docs/testing.md)
 
 ----------------------------------------------------------
 
