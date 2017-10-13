@@ -11,15 +11,19 @@ Project directory structure and build system derived from the [Thinkful React st
 ### Views
 
 Splash screen
+
 ![](docs/img/splash.png)
 
 Navigation menu
+
 ![](docs/img/nav-menu-0.png)
 
 Registration
-![](docs/img/registration.png)
+
+![](docs/img/register.png)
 
 Game play
+
 ![](docs/img/game-play-0.png)
 
 ----------------------------------------------------------
