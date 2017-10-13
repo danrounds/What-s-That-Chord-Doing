@@ -13,9 +13,7 @@ Project directory structure and build system derived from the [Thinkful React st
 _What's That Chord Doing?_ is a full-stack JS app, built on Node/Express, with React/Redux, and MongoDB as the data store.
 
 * [Frontend](docs/frontend.md)
-
 * [Backend](docs/backend.md)
-
 * [Testing](docs/testing.md)
 
 ----------------------------------------------------------
