@@ -241,16 +241,40 @@ const chordGetter = {
             intermediateMinor: minor, hardMinor: minor, allChords: major
         }[gameType];
         
-        this.pickKey(this.ourSubsetOfKeys, gameType);
+        this._pickKey(this.ourSubsetOfKeys, gameType);
         return {
             keyNameReadable: this.keyNameReadable,
             keyNameNotation: this.keyNameNotation,
-            introChordSequence: this.getIntroProgression(),
+            introChordSequence: this._getIntroProgression(),
             chordSubset: this.ourChordSubset
         };
     },
 
-    getIntroProgression() {
+    getChord() {
+        // Designed to be called externally (after the init function has been
+        // called). Returns the chord numeral (string), chord notes (array),
+        // and an array of which indices of our chord note array are accidentals
+        // --which we need because VexFlow won't otherwise display accidentals
+
+        this.currentChordNumeral = this._getRandom(this.ourChordSubset);
+
+        const {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
+        const chord = chordVoicings[chordType];
+
+        const [inversion, bassNote, chordName] = this._getBassNote(chord);
+        const [trebleVoicesIndex, trebleNotes] = this._getTrebleNotes(chord);
+
+        return {
+            currentChordNumeral: this.currentChordNumeral,
+            chordName,
+            bassNote,
+            trebleNotes,
+            inversion,
+            accidentals: this._getAccidentals(inversion, trebleVoicesIndex)
+        };
+    },
+
+    _getIntroProgression() {
         // This generates the chord progression we play before each question to
         // establish our key. It only needs to be used by our MIDI library, so
         // we don't care about enharmonically-correct  note names
@@ -270,35 +294,11 @@ const chordGetter = {
         return chords;
     },
 
-    getChord() {
-        // Designed to be called externally (after the init function has been
-        // called). Returns the chord numeral (string), chord notes (array),
-        // and an array of which indices of our chord note array are accidentals
-        // --which we need because VexFlow won't otherwise display accidentals
-
-        this.currentChordNumeral = this.getRandom(this.ourChordSubset);
-
-        const {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
-        const chord = chordVoicings[chordType];
-
-        const [inversion, bassNote, chordName] = this.getBassNote(chord);
-        const [trebleVoicesIndex, trebleNotes] = this.getTrebleNotes(chord);
-
-        return {
-            currentChordNumeral: this.currentChordNumeral,
-            chordName,
-            bassNote,
-            trebleNotes,
-            inversion,
-            accidentals: this.getAccidentals(inversion, trebleVoicesIndex)
-        };
-    },
-
-    getBassNote(chord) {
+    _getBassNote(chord) {
         const {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
         const noteNameMap = keysCharacteristics[this.currentKey][enharmonically];
 
-        const i = this.inversions ? this.getIndex(chord['bass']) : 0;
+        const i = this.inversions ? this._getIndex(chord['bass']) : 0;
         const offset = chord['bass'][i];
         return [
             i,
@@ -307,10 +307,10 @@ const chordGetter = {
         ];
     },
 
-    getTrebleNotes(chord) {
+    _getTrebleNotes(chord) {
         const {chordType, displacement, enharmonically} = chordTypeAndDisplacement[this.currentChordNumeral];
         const noteNameMap = keysCharacteristics[this.currentKey][enharmonically];
-        let i = this.getIndex(chord['treble']);
+        let i = this._getIndex(chord['treble']);
 
         const trebleNotes = [];
         chord = chordVoicings[chordType]['treble'][i];
@@ -320,8 +320,8 @@ const chordGetter = {
         return [i, trebleNotes];
     },
 
-    pickKey(keySubset, gameType) {
-        this.currentKey = this.getRandom(keySubset);
+    _pickKey(keySubset, gameType) {
+        this.currentKey = this._getRandom(keySubset);
         if (['easyMajor', 'hardMajor', 'allChords'].includes(gameType)) {
             this.keyNameReadable = this.currentKey + ' Major';
             this.keyNameNotation = this.currentKey;
@@ -334,22 +334,22 @@ const chordGetter = {
         this.keyDisplacement = keysCharacteristics[this.currentKey]['displacement'];
     },
 
-    getAccidentals(inversion, i) {
+    _getAccidentals(inversion, i) {
         if (this.tonality === 'major') {
-            return this.processMajorAccidentals(this, inversion, i);
+            return this._processMajorAccidentals(this, inversion, i);
         } else {
-            return this.processMinorAccidentals(this, inversion, i);
+            return this._processMinorAccidentals(this, inversion, i);
         }
     },
 
-    processMajorAccidentals(that, inversion, i) {
+    _processMajorAccidentals(that, inversion, i) {
         return {
-            bassAccidental: this.processMajorBassAccidental(inversion),
-            trebleIndices: this.processMajorTrebleAccidentals(that, i)
+            bassAccidental: this._processMajorBassAccidental(inversion),
+            trebleIndices: this._processMajorTrebleAccidentals(that, i)
         };
     },
 
-    processMajorTrebleAccidentals(that, i) {
+    _processMajorTrebleAccidentals(that, i) {
         try {
             return {
                 'i': accidentalMap.third,
@@ -373,7 +373,7 @@ const chordGetter = {
         }
     },
 
-    processMajorBassAccidental(inversion) {
+    _processMajorBassAccidental(inversion) {
         if (['i','iv','v'].includes(this.currentChordNumeral)) {
             if (inversion === 1)
                 return true;
@@ -401,14 +401,14 @@ const chordGetter = {
         return false;
     },
 
-    processMinorAccidentals(that, inversion, i) {
+    _processMinorAccidentals(that, inversion, i) {
         return {
-            bassAccidental: this.processMinorBassAccidental(inversion),
-            trebleIndices: this.processMinorTrebleAccidentals(that, i)
+            bassAccidental: this._processMinorBassAccidental(inversion),
+            trebleIndices: this._processMinorTrebleAccidentals(that, i)
         };
     },
 
-    processMinorTrebleAccidentals(that, i) {
+    _processMinorTrebleAccidentals(that, i) {
         try {
             return {
                 'ii': accidentalMap.fifth,
@@ -429,7 +429,7 @@ const chordGetter = {
         }
     },
 
-    processMinorBassAccidental(inversion) {
+    _processMinorBassAccidental(inversion) {
         if (['ii','♭III+'].includes(this.currentChordNumeral)) {
             if (inversion === 2)
                 return true;
@@ -456,11 +456,11 @@ const chordGetter = {
         return false;
     },
 
-    getRandom(array) {
+    _getRandom(array) {
         return array[Math.floor(Math.random() * array.length)];
     },
 
-    getIndex(array) {
+    _getIndex(array) {
         return Math.floor(Math.random() * array.length);
     }
 };
