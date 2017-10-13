@@ -43,12 +43,10 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
         it('should return the same data that `GET:: /my-scores` endpoint returns', () => chai.request(app)
            .get('/accounts')
            .set('Authorization', `Bearer ${dataToSend.token}`)
-           .then(resA => {
-               return chai.request(app)
+           .then(resA => chai.request(app)
                    .get('/my-scores')
                    .set('Authorization', `Bearer ${dataToSend.token}`)
-                   .then(resB => areDeepEqual(resA.body, resB.body));
-           }));
+                   .then(resB => areDeepEqual(resA.body, resB.body))));
     });
 
     describe('POST :: /accounts/log-in', () => {
