@@ -2,7 +2,9 @@
 
 ### Strategy
 
-Component testing is almost exclusively snapshot-based. Different renderers are used based on how deep our comparisons needs to be, whether we need to update component state, &c.
+Component testing is almost exclusively snapshot-based. Different renderers are
+used based on how deep our comparisons need to be, whether we need to update 
+component state, &c.
 
 ### What we're testing
 
@@ -18,7 +20,9 @@ Component testing is almost exclusively snapshot-based. Different renderers are 
   * `Status`
 
 * Connected components
-  Here, we're still just testing rendering, but the components desperately want a store, unless we use the shallow renderer. Solution: Use the shallow renderer.  
+  Here, we're still just testing rendering, but the components desperately want
+  a store, unless we use the shallow renderer. Solution: _Use the shallow
+  renderer._
   * `Game`
   * `Home`
   * `NavBar`
@@ -26,7 +30,8 @@ Component testing is almost exclusively snapshot-based. Different renderers are 
   * `WhatIsThis`
 
 * More elaborate components:
-  Still just basic rendering tests, but the components are either more subtle, or we're being careful to try a bunch of permutations of our state.
+  Still just basic rendering tests, but the components are either more subtle,
+  or we're being careful to try a bunch of permutations of our state.
   * `AnswerEntry`
   * `Staves`
   * `LogInOrRegister`
@@ -35,7 +40,8 @@ Component testing is almost exclusively snapshot-based. Different renderers are 
 
 * Audio (webaudio/MIDI) tests. These should use the `web-audio-test-api`:
   
-  Mock data, for the event that audio tests actually get written (for `PlayAudio` component):
+  Mock data, for the event that audio tests actually get written (for 
+  `PlayAudio` component):
 ~~~javascript
 const props = {
     introChordSequence: [[ "F#3","C#5","F#5","A#5",],
