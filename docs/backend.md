@@ -7,11 +7,11 @@ _What's That Chord Doing?_'s API is built on Node/Express
 * Node
 * Express
 * MongoDB
-* Mongoose for schema/data-validation
-* Passport/Passport-JWT
+* [Mongoose](http://mongoosejs.com). for schema/data-validation
+* [Passport](http://passportjs.org/) / [Passport-JWT](https://github.com/themikenicholson/passport-jwt), for authentication
 * [JWT-Simple](https://github.com/hokaccha/node-jwt-simple) for encoding/decoding our authentication tokens
 * [bcrypt.js](https://github.com/dcodeIO/bcrypt.js), for password hashing before our data store
 
-Our backend is RESTful, [consists of seven endpoints CRUD endpoints](../api/README.md), and manages/serves account- and score-keeping-data for our app.
+Our backend is RESTful, [consists of seven CRUD endpoints](../api/README.md), and manages/serves account- and score-keeping-data for our app.
 
 Authentication is with [JWT](https://jwt.io/introduction/), stored passwords are hashed using [bcrypt](https://en.wikipedia.org/wiki/Bcrypt).
