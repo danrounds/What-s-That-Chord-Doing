@@ -19,7 +19,7 @@ component state, &c.
   * `StartNewGame`
   * `Status`
 
-* Connected components
+* Connected components:
   Here, we're still just testing rendering, but the components desperately want
   a store, unless we use the shallow renderer. Solution: _Use the shallow
   renderer._
@@ -38,8 +38,7 @@ component state, &c.
 
 ### Tests still to be written:
 
-* Audio (webaudio/MIDI) tests. These should use the `web-audio-test-api`:
-  
+* Audio (webaudio/MIDI) tests. These should use the `web-audio-test-api`.
   Mock data, for the event that audio tests actually get written (for 
   `PlayAudio` component):
 ~~~javascript
