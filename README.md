@@ -1,5 +1,17 @@
 # [![What's That Chord Doing?](docs/img/logo.png)](http://what-s-that-chord-doing.herokuapp.com)
 
+## Table of Contents
+1. [What is this?](#what-is-this)
+2. [Tech used](#tech-used)
+3. [Views](#views)
+4. [Working on OR trying the project](#working-on-or-trying-the-project)
+5. [Install MongoDB](#install-mongodb)
+6. [API documentation](#api-documentation)
+7. [Rationale](#rationale)
+8. [Description](#description)
+
+----------------------------------------------------------
+
 ### What is this?
 
 [What's That Chord Doing?](https://what-s-that-chord-doing.herokuapp.com/) is an
