@@ -24,47 +24,45 @@ const individualScoreSchema = mongoose.Schema(
     }
 );
 
-const userScoreSchema = mongoose.Schema(
-    {
-        name: {
-            type: String,
-            required: true,
-            trim: true,
-            unique: true,
-            validate: {
-                validator: (str) => /[a-zA-Z0-9_]+/.exec(str)[0] === str,
-                message: 'Poorly-formed name'
-            },
+const userScoreSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        trim: true,
+        unique: true,
+        validate: {
+            validator: (str) => /[a-zA-Z0-9_]+/.exec(str)[0] === str,
+            message: 'Poorly-formed name'
         },
-        password: {
-            type: String,
-            require: true,
-            trim: true,
-        },
-        scores: {
-            easyMajor: individualScoreSchema,
-            easyMajorInv: individualScoreSchema,
+    },
+    password: {
+        type: String,
+        require: true,
+        trim: true,
+    },
+    scores: {
+        easyMajor: individualScoreSchema,
+        easyMajorInv: individualScoreSchema,
 
-            easyMinor: individualScoreSchema,
-            easyMinorInv: individualScoreSchema,
+        easyMinor: individualScoreSchema,
+        easyMinorInv: individualScoreSchema,
 
-            intermediateMinor: individualScoreSchema,
-            intermediateMinorInv: individualScoreSchema,
+        intermediateMinor: individualScoreSchema,
+        intermediateMinorInv: individualScoreSchema,
 
-            hardMajor: individualScoreSchema,
-            hardMajorInv: individualScoreSchema,
+        hardMajor: individualScoreSchema,
+        hardMajorInv: individualScoreSchema,
 
-            hardMinor: individualScoreSchema,
-            hardMinorInv: individualScoreSchema,
+        hardMinor: individualScoreSchema,
+        hardMinorInv: individualScoreSchema,
 
-            allChords: individualScoreSchema,
-            allChordsInv: individualScoreSchema,
+        allChords: individualScoreSchema,
+        allChordsInv: individualScoreSchema,
 
-            type: Object,
-            required: true,
-        }
+        type: Object,
+        required: true,
     }
-);
+});
 
 userScoreSchema.methods.validatePassword = function(password) {
     return bcrypt

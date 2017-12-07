@@ -11,7 +11,7 @@ accountRouter.use(auth.initialize());
 
 // ROUTES -- for user accounts: /accounts*
 accountRouter.get('*', auth.authenticate(), (req, res) => {
-    // endpoint for getting all of a user's scores. This is identical to
+    // Endpoint for getting all of a user's scores. This is identical to
     // scoresRouter's GET *, and changes should occur at both places at once.
 
     return UserScore
@@ -32,7 +32,7 @@ accountRouter.post('/log-in', (req, res) => {
         return UserScore.findOne({ name: req.body.name })
             .then(userScore => {
                 if (!userScore)
-                    return res.sendStatus(404); // name doesn't exist
+                    return res.sendStatus(404); // Name doesn't exist
 
                 return userScore.validatePassword(req.body.password)
                     .then(isValid => {
@@ -59,27 +59,24 @@ accountRouter.post('/register', (req, res) => {
     if (req.body.password.trim().length < 6)
         return res.status(400).json({ error: 'Password must be at least six non-whitespace characters long' });
 
-    let exists;
     return UserScore.findOne({ name: req.body.name })
         .then(exists => {
             if (exists)
                 return res.sendStatus(409); // name conflict
         })
         .then(() => UserScore.hashPassword(req.body.password)
-              .then(hashed => {
-                  UserScore
-                      .create({
-                          name: req.body.name,
-                          password: hashed,
-                          scores: {},
-                      })
-                      .then((userScore) => {
-                          const payload = { id: userScore._id };
-                          const token = jwt.encode(payload, cfg.JWT_SECRET);
-                          res.status(201).json(token);
-                      })
-                      .catch(() => res.sendStatus(500));
-              }));
+              .then(hashed => UserScore
+                    .create({
+                        name: req.body.name,
+                        password: hashed,
+                        scores: {},
+                    })
+                    .then((userScore) => {
+                        const payload = { id: userScore._id };
+                        const token = jwt.encode(payload, cfg.JWT_SECRET);
+                        return res.status(201).json(token);
+                    })
+                    .catch(() => res.sendStatus(500))));
 });
 
 accountRouter.put('/change-password', auth.authenticate(), (req, res) => {
