@@ -6,7 +6,8 @@ import ScoresTable from './ScoresTable';
 
 export class MyScoresDisplay extends React.Component {
     componentDidMount() {
-        this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+        if (this.props.api.authToken)
+            this.props.dispatch(actions.getMyScores(this.props.api.authToken));
     }
 
     render() {

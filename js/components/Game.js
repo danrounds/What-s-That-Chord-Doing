@@ -24,7 +24,8 @@ export class Game extends React.Component {
         const mode = this.props.mode, inv = this.props.inversions;
         this.props.dispatch(actions.startNewGame(mode, inv));
         this.props.dispatch(actions.getHighScores(mode + (inv ? 'Inv' : '')));
-        this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+        if (this.props.api.authToken)
+            this.props.dispatch(actions.getMyScores(this.props.api.authToken));
     }
 
     componentDidMount() {

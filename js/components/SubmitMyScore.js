@@ -23,7 +23,7 @@ export class SubmitMyScore extends React.Component {
                 this.submitMyScore(nextProps);
                 this.setState({ submitted: true });
             }
-        else if (nextProps.questionNumber === 1 && this.state.submitted === true)
+        if (nextProps.questionNumber === 1 && this.state.submitted === true)
             this.setState({ submitted: false });
     }
 
@@ -50,8 +50,10 @@ export class SubmitMyScore extends React.Component {
         };
 
         const request = { name: props.api.myScores.name, scores };
-        this.props.dispatch(
-            actions.updateMyScores(this.props.api.authToken, request));
+        if (this.props.api.authToken) {
+            this.props.dispatch(
+                actions.updateMyScores(this.props.api.authToken, request));
+        }
     }
 
     render() {

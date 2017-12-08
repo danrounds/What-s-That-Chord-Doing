@@ -72,9 +72,9 @@ export class LogInOrRegister extends React.Component {
     }
 
     onLogIn(e) {
+        e.preventDefault();
         if (this.state.register) {
             this.setState({ register: false });
-            e.preventDefault();
         }
         if (this.name.value && this.password.value)
             this.props.dispatch(actions.logIn(this.name.value, this.password.value));
@@ -106,7 +106,7 @@ export class LogInOrRegister extends React.Component {
                     this.setState({ statusText: 'Fill in both password fields'});
                 } else if (pw !== pw_)
                     this.setState({ statusText: 'Passwords don\'t match'});
-            } catch(e) {;}      // swallow .reference for undefined
+            } catch(e) {;}      // Swallow .reference for undefined
         }
         return false;           // Keeps page from refreshing
     }

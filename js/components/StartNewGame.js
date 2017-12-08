@@ -14,12 +14,16 @@ export class StartNewGame extends React.Component {
             if (this.props.gameOver || this.props.firstQ || this.prompt()) {
                 this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                          this.props.inversions));
-                this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+                if (this.props.api.authToken) {
+                    this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+                }
             }
         } else if (this.props.keyValue === 'Enter' && this.props.gameOver) {
             this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                      this.props.inversions));
-            this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+            if (this.props.api.authToken) {
+                this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+            }
         }
     }
 
@@ -31,7 +35,9 @@ export class StartNewGame extends React.Component {
         if (this.props.gameOver || this.props.firstQ || this.prompt()) {
             this.props.dispatch(actions.startNewGame(this.props.gameType,
                                                      this.props.inversions));
-            this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+            if (this.props.api.authToken) {
+                this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+            }
         }
     }
 

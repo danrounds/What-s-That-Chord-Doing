@@ -49,9 +49,11 @@ export class Status extends React.Component {
                       <span className="keyHint">ENTER</span> to&nbsp;
                       <a className="game-link" href="javascript:void(0)"
                          onClick={() => {
-                             this.props.dispatch(
-                                 actions.startNewGame(this.props.mode,this.props.inversions));
-                             this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+                             this.props.dispatch(actions.startNewGame(this.props.mode,
+                                                                      this.props.inversions));
+                             if (this.props.api.authToken) {
+                                 this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+                             }
                         }}>
                         play again
                       </a>
@@ -62,7 +64,9 @@ export class Status extends React.Component {
                       <a className="game-link" href="javascript:void(0)"
                          onClick={
                              () => {this.props.dispatch(actions.startNewGame(this.props.mode,this.props.inversions));
-                                    this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+                                    if (this.props.api.authToken) {
+                                        this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+                                    }
                         }}>
                         Play again?
                     </a></div>);
