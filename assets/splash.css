@@ -4,13 +4,15 @@ body, html {
 }
 
 body {
-    background-image: url("guitarman.jpg");
+    background-image: url('guitarman.jpg');
     background-position: 10% 40%;
 }
 
 .top {
     background: rgba(10,130,0,0.55);
     padding: 10px 0 10px 0;
+    /* padding: 10px; */
+    width: 100%;
 }
 
 .logo {
@@ -24,9 +26,9 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 44px;
     color: rgba(30,60,30,1);
-    /* margin-left: 50px; */
     margin-left: 10%;
     margin-top: 5%;
+    height: 100%;
     width: 35%;
 }
 
@@ -79,4 +81,100 @@ footer a {
 .githubImg {
     height: 20px;
     margin-bottom: -4px;
+}
+
+/* iPad Pro, portrait */
+@media only screen and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)  {
+    body {
+        background-position: 40% 40%;
+        background-size: 320%;
+    } 
+}
+
+/* iPad Pro, landscape */
+@media only screen and (min-device-width: 1366px) and (max-device-height: 1024px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape) {
+    body {
+        background-position: 40% 40%;
+        background-size: 320%;
+    } 
+}
+
+@media screen and (max-width: 950px) {
+    .box {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .box {
+        width: 65%;
+    }
+    body {
+        background-position: 20% 40%;
+        background-size: 300%;
+    }
+}
+
+@media screen and (max-width: 725px) {
+    html {
+        height: 100%;
+    }
+    body {
+        background-position: 20% 40%;
+        background-size: 300%;
+        height: 100%;
+        overflow: hidden;
+        position: fixed;
+    }
+    .box {
+        width: 75%;
+    }
+    .top {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+
+    body {
+        background: linear-gradient(
+                            rgba(240, 240, 240, 0.4),
+                            rgba(0, 0, 0, 0.4)),
+        url('guitarman.jpg');
+        background-position: 25% 40%;
+        text-align: center;
+    }
+    .box {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 100%;
+    }
+    .tryBtn {
+        margin: 20px auto 0 auto;
+    }
+    footer {
+        font-size: 10px;
+    }
+    .githubImg {
+        height: 15px;
+    }
+}
+
+
+@media screen and (max-width: 430px) {
+    body {
+        background-position: 50% 40%;
+        background-size: 300%;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    body {
+        background-size: 350%;
+    }
+    .box {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
 }
