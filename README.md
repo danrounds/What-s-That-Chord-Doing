@@ -91,6 +91,3 @@ This is an app for musical intermediates that want to start transcribing or get
 better at playing by ear.
 
 _-DR, 2017_
-
-
-

@@ -34,16 +34,19 @@ export class LogInOrRegister extends React.Component {
         } else if (nextProps.api.error !== this.props.api.error) {
             this.setState({ errorText: true });
 
+            const errorCode = nextProps.api.error;
             // Log-in errors:
-            if (nextProps.api.error === 404)
+            if (errorCode === 404)
                 this.setState({ statusText: 'Username doesn\'t exist' });
-            else if (nextProps.api.error === 401)
+            else if (errorCode === 401)
                 this.setState({ statusText: 'Invalid password' });
 
             // Registration errors:
-            else if (nextProps.api.error === 409)
+            else if (errorCode === 409)
                 this.setState({ statusText: 'Username already exists; try a new one' });
-            else if (nextProps.api.error)            
+            else if (errorCode === 422)
+                this.setState({ statusText: 'Try a different username' });
+            else if (errorCode)
                 this.setState({ statusText: 'Submit failed; try again' });
         }
     }
@@ -73,6 +76,15 @@ export class LogInOrRegister extends React.Component {
 
     onLogIn(e) {
         e.preventDefault();
+        this.setState({ errorText: true });
+
+        const [name, password] = [this.name.value.trim(), this.password.value.trim()];
+
+        if (!this.name.value.trim())
+            this.setState({ statusText: 'Please enter a username'});
+        else if (!this.password.value.trim())
+            this.setState({ statusText: 'Please enter a password'});
+
         if (this.state.register) {
             this.setState({ register: false });
         }

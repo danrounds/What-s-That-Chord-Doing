@@ -10,7 +10,7 @@ function _makeName(name=[], length=5) {
     }
     return name.join('');
 }
-const _makePassword = () => _makeName(undefined, 7);
+const makePassword = () => _makeName(undefined, 7);
 
 function _makeScore() {
     const totalClicks = Math.floor(Math.random() * 300);
@@ -29,7 +29,7 @@ function generateAccount() {
     }
     return {
         name: _makeName(),
-        password: _makePassword(),
+        password: makePassword(),
         scores,
     };
 }
@@ -43,7 +43,7 @@ function generateHighScores() {
         scores[scoreType] = _makeScore();
         highScores.push({
             name: _makeName(),
-            password: _makePassword(), // Our schema wants this, really badly
+            password: makePassword(), // Our schema wants this, really badly
             scores,
         });
     }
@@ -57,4 +57,5 @@ function generateReplacementScore() {
     return { scores };
 }
 
-module.exports = { generateAccount, generateReplacementScore, generateHighScores, };
+module.exports = { generateAccount, generateReplacementScore, generateHighScores,
+                   makePassword, };

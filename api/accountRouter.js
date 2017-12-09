@@ -1,6 +1,8 @@
 const express = require('express');
 const accountRouter = express.Router();
 const jwt = require('jwt-simple');
+const badWordsArray = require('badwords/array');
+// ^ Ad-hoc profanity filter to prevent pollution of our scores table
 
 const { UserScore } = require('./models');
 const auth = require('./jwtAuthentication');
@@ -52,12 +54,18 @@ accountRouter.post('/log-in', (req, res) => {
 
 accountRouter.post('/register', (req, res) => {
     // Account (username/name/whatever) registration -- returns the relevant
-    // JWT for the newly-created account
+    // JWT for the newly-created account. Filters profane user names (or
+    // anything at all close).
 
     if (!(req.body.name && req.body.password))
         return res.status(400).json({ error: 'Requests need `name` and `password`' });
     if (req.body.password.trim().length < 6)
         return res.status(400).json({ error: 'Password must be at least six non-whitespace characters long' });
+
+    for (const word of badWordsArray)
+        // This is a hair-trigger profanity filter. It WILL produce false positives
+        if (req.body.name.includes(word))
+            return res.sendStatus(422);
 
     return UserScore.findOne({ name: req.body.name })
         .then(exists => {

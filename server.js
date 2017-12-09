@@ -4,9 +4,9 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
-const {DATABASE_URL, PORT} = require('./config');
-const {accountRouter} = require('./api/accountRouter');
-const {scoresRouter} = require('./api/scoresRouter');
+const { DATABASE_URL, PORT } = require('./config');
+const { accountRouter } = require('./api/accountRouter');
+const { scoresRouter } = require('./api/scoresRouter');
 
 // ES6-style promises for mongoose
 mongoose.Promise = global.Promise;
@@ -31,11 +31,11 @@ const options = {
     }
 };
 
+app.use('/app', express.static('build/', options));       // React app
 app.use('/accounts/', accountRouter);                     // API route
-app.use('/app', express.static('build/', options));       // app
 app.use('/', scoresRouter);      // /my-scores* and /high-scores API routes
 app.use('/', express.static('./build/assets/', options)); // Static files -- splash page
-app.use('*', (req, res) =>                               // Everything else
+app.use('*', (req, res) =>                                // Everything else
     res.status(404).json({message: 'Resource not found'}));
 
 
@@ -83,4 +83,4 @@ if (require.main === module) {
 // We export runServer and closeServer so that other code can start/close the
 // server, at will.
 // to start & close, over and over.
-module.exports = {runServer, closeServer, app};
+module.exports = { runServer, closeServer, app };

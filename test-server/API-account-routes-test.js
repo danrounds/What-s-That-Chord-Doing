@@ -3,11 +3,13 @@ const expect = chai.expect;
 const mongoose = require('mongoose');
 const jwt = require('jwt-simple');
 const areDeepEqual = require('assert').deepEqual;
+const badWordsArray = require('badwords/array');
 
 const { UserScore } = require('../api/models');
 const { app, runServer, closeServer } = require('../server');
 const { TEST_DATABASE_URL, TEST_PORT, JWT_SECRET } = require('../config');
 const { tearDownDb, seedDb } = require('./_setup');
+const { makePassword: makeString } = require('../api/_fake');
 
 // T E S T S :
 describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
@@ -68,8 +70,28 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
         it('should return a JWT token when we register', () => chai.request(app)
            .post('/accounts/register')
            .send({ name: 'username', password: 'abc123' })
+           // Our JWT token should have three parts:
            .then(res => expect(res.body.split('.').length).to.equal(3)));
-           // our JWT token should have three parts
+
+
+        it('should fail when we try to register a profane account}', () => {
+            const getBadWord = () => {
+                let badWord = '@';
+                while (!/^[A-Za-z0-9_]+$/.test(badWord))
+                    // \/ We're ensuring we get a word that is alphanumeric or underscore(s)
+                    badWord = badWordsArray[Math.floor(Math.random() * badWordsArray.length)];
+                return badWord;
+            };
+
+            const badAccount = makeString() + getBadWord() + getBadWord()
+                      + getBadWord() + makeString();
+
+            return chai.request(app)
+                .post('/accounts/register')
+                .send({ name: badAccount, password: 'abc123' })
+                .then(res => res.should.not.equal(201))
+                .catch(res => expect(res.status).to.equal(422));
+        });
     });
 
     describe('PUT :: /accounts/change-password', () => {
@@ -95,6 +117,6 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
                return UserScore.findOne({ name: dataToSend.name });
            })
            .then(queryResult => expect(queryResult).to.be.null));
-           // ^ We're expecting the record to be deleted
+        // ^ We're expecting the record to be deleted
     });
 });
