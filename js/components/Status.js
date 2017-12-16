@@ -1,110 +1,135 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import * as actions from '../actions';
 
 export class Status extends React.Component {
+    constructor() {
+        super();
+        this.getStatusText = this.getStatusText.bind(this);
+        this.getAverageClicks = this.getAverageClicks.bind(this);
+        this.getBetweenTurnStatus = this.getBetweenTurnStatus.bind(this);
+
+        this.state = {
+            averageClicksText: (<br/>),
+            betweenTurnStatus: (<br/>),
+            nRightText: '0 answered correctly',
+            statusText: (<br/>),
+            stopPrompting: false,
+        };
+    }
+
     static getRandom(array) {
         return array[Math.floor(Math.random() * array.length)];
     }
 
-    getStatusText() {
-        if (!this.props.answeredCorrectly && this.props.guessN) {
-            this.statusText =  Status.getRandom(
+    componentWillReceiveProps(nextProps) {
+        this.getStatusText(nextProps);
+        if (nextProps.answeredCorrectly) {
+            this.getAverageClicks(nextProps);
+            this.state.nRightText = nextProps.nAnsweredRight +' answered correctly';
+        }
+        this.getBetweenTurnStatus(nextProps);
+    }
+
+    getStatusText(props) {
+        if (!props.answeredCorrectly && props.guessN) {
+             const statusText = Status.getRandom(
                 [
                     'Not right','That\'s not it','Wrong','Incorrect','No',
                     'You are wrong','Nope'
                 ]);
+            this.setState({ statusText });
 
-        } else if (this.props.giveUp || this.props.answeredCorrectly && !this.stopPrompting) {
-            const prefix = this.props.giveUp
+        } else if (props.giveUp || props.answeredCorrectly && !this.state.stopPrompting) {
+            const prefix = props.giveUp
                       ? 'That\'s okay.'
                       : Status.getRandom(['You got it!','Yes!','Correct!']);
 
-            this.statusText = prefix
-                + ` The ${this.props.chord} chord of ${this.props.key_} is`
-                + ` ${this.props.chordName}`;
+            const statusText = prefix
+                + ` The ${props.chord} chord of ${this.props.key_} is`
+                + ` ${props.chordName}`;
 
-            this.stopPrompting = true;
+            this.setState({ statusText, stopPrompting: true });
 
-        } else if (!(this.stopPrompting && this.props.guessN)) {
-            this.statusText = (<br/>);
-            this.stopPrompting = false;
+        } else if (!(this.state.stopPrompting && props.guessN)) {
+            this.setState({ statusText: (<br/>), stopPrompting: false });
         }
-
-        return this.statusText;
     }
 
-    getAverageClicks() {
-        return (this.props.clicksPerRightAnswer.length) ?
+    getAverageClicks(props) {
+        const averageClicksEl = (props.clicksPerRightAnswer.length) ?
             String(
-                this.props.clicksPerRightAnswer.reduce(
-                    (a,b) => a + b)/this.props.clicksPerRightAnswer.length
+                props.clicksPerRightAnswer.reduce(
+                    (a,b) => a + b)/props.clicksPerRightAnswer.length
             ).substring(0,5) + ' guesses per correct answer'
             : (<br/>);
+        this.setState({ averageClicksText: averageClicksEl });
     }
 
-    getBetweenTurnStatus() {
-        if (this.props.gameOver) {
-            if (this.props.displayKeyboardShortcuts)
-                return (
+    getBetweenTurnStatus(props) {
+        let element;
+        if (props.gameOver) {
+            if (props.displayKeyboardShortcuts)
+                element = (
                     <div>
                       Game over! Press&nbsp;
                       <span className="keyHint">ENTER</span> to&nbsp;
                       <a className="game-link" href="javascript:void(0)"
                          onClick={() => {
-                             this.props.dispatch(actions.startNewGame(this.props.mode,
-                                                                      this.props.inversions));
-                             if (this.props.api.authToken) {
-                                 this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+                             props.dispatch(actions.startNewGame(props.mode,
+                                                                 props.inversions));
+                             if (props.api.authToken) {
+                                 props.dispatch(actions.getMyScores(props.api.authToken));
                              }
                         }}>
                         play again
                       </a>
                     </div>);
             else
-                return (
+                element = (
                     <div>Game over!&nbsp;
                       <a className="game-link" href="javascript:void(0)"
                          onClick={
-                             () => {this.props.dispatch(actions.startNewGame(this.props.mode,this.props.inversions));
-                                    if (this.props.api.authToken) {
-                                        this.props.dispatch(actions.getMyScores(this.props.api.authToken));
+                             () => {props.dispatch(actions.startNewGame(props.mode,props.inversions));
+                                    if (props.api.authToken) {
+                                        props.dispatch(actions.getMyScores(props.api.authToken));
                                     }
                         }}>
                         Play again?
                     </a></div>);
-        } else if (this.props.answeredCorrectly) {
-            if (this.props.displayKeyboardShortcuts)
-                return (
+        } else if (props.answeredCorrectly) {
+            if (props.displayKeyboardShortcuts)
+                element = (
                     <div>
                       Press <span className="keyHint">SPACE</span> for&nbsp;
                       <a className="game-link" href="javascript:void(0)"
-                         onClick={() => this.props.dispatch(
+                         onClick={() => props.dispatch(
                         actions.getNextQuestion())}>the next question
                       </a>
                     </div>);
             else
-                return (
+                element = (
                     <a className="game-link" href="javascript:void(0)"
-                       onClick={() => this.props.dispatch(
+                       onClick={() => props.dispatch(
                       actions.getNextQuestion())}>Want the next question?
                     </a>
                 );
-        } else if (!this.props.guessN) {
-            return (<div>Guess the chord based on context!</div>);
+        } else if (!props.guessN) {
+            element = (<div>Guess the chord based on context!</div>);
         } else {
-            return (<br/>);
+            element = (<br/>);
         }
+        this.setState({ betweenTurnStatus: element });
     }
 
     render() {
         return (
             <div className="status-box">
-              <h3 className="status-feedback">{this.getStatusText()}</h3>
-              <h3 className="status-secondary">{this.nRightText = this.props.nAnsweredRight +' answered correctly'}</h3>
-              <h3 className="status-secondary">{this.getAverageClicks()}</h3>
-              <h2 className="status-primary">{this.getBetweenTurnStatus()}</h2>
+              <h3 className="status-feedback">{this.state.statusText}</h3>
+              <h3 className="status-secondary">{this.state.nRightText}</h3>
+              <h3 className="status-secondary">{this.state.averageClicksText}</h3>
+              <h2 className="status-primary">{this.state.betweenTurnStatus}</h2>
             </div>
         );
     }

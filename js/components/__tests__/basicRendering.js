@@ -93,24 +93,11 @@ describe('Components: Basic rendering', () => {
     test('Status, basic render w/ keyboard shortcuts', () => {
         const comp = mount(
             <Status
-               displayKeyboardShorcuts={false}
+               displayKeyboardShorcuts={true}
                key_="Eb Major"
                chordName="G minor"
                chord="iii"
-               nAnsweredRight={4}
-               clicksPerRightAnswer={[3.12]}
-               gameOver={true}
-               />
-        );
-        expect(toJson(comp)).toMatchSnapshot();
-    });
-    test('Status, basic render, w/out keyboard shortcuts', () => {
-        const comp = mount(
-            <Status
-               displayKeyboardShorcuts={false}
-               key_="Eb Major"
-               chordName="G minor"
-               chord="iii"
+               answeredCorrectly={true}
                nAnsweredRight={4}
                clicksPerRightAnswer={[3,12]}
                gameOver={true}
@@ -118,7 +105,31 @@ describe('Components: Basic rendering', () => {
         );
         expect(toJson(comp)).toMatchSnapshot();
     });
+
+    test('Status, basic render, w/out keyboard shortcuts', () => {
+        const comp = mount(
+            <Status
+               displayKeyboardShorcuts={false}
+               key_="Eb Major"
+               chordName="G minor"
+               chord="iii"
+               answeredCorrectly={true}
+               nAnsweredRight={4}
+               clicksPerRightAnswer={[3,12]}
+               gameOver={true}
+               />
+        );
+        expect(toJson(comp)).toMatchSnapshot();
+    });
+
     test('Status, correct answer', () => {
+        const props = {
+            answeredCorrectly: true,
+            nAnsweredRight: 4,
+            clicksPerRightAnswer: [3,12],
+            gameOver: true,
+            guessN: 3,
+        };
         const key_ = 'Eb Major', chordName = 'G minor', chord = 'iii';
         const comp = mount(
             <Status displayKeyboardShorcuts={true}
@@ -129,9 +140,9 @@ describe('Components: Basic rendering', () => {
                     nAnsweredRight={4}
                     clicksPerRightAnswer={[3,12]}
                     gameOver={true}
-                    guessN={3}
                     />
         );
+        comp.setProps(props);
         const statusMatch = new RegExp(`[You\ got\ it\!|Yes\!|Correct\!]\ The\ `
                                        +chord+`\ chord\ of\ `+key_+`\ is\ `
                                        +chordName);
@@ -139,7 +150,15 @@ describe('Components: Basic rendering', () => {
         expect(comp.find('.status-secondary').at(0).text()).toMatch(/\d\ answered\ correctly/);
         expect(comp.find('.status-secondary').at(1).text()).toMatch(/\d\.\d*\ guesses\ per\ correct\ answer/);
     });
+
     test('Status, wrong answer', () => {
+        const props = {
+            answeredCorrectly: false,
+            nAnsweredRight: 4,
+            guessN: 4,
+            clicksPerRightAnswer: [3,12],
+            gameOver: false,
+        };
         const comp = mount(
             <Status
                displayKeyboardShorcuts={true}
@@ -153,6 +172,7 @@ describe('Components: Basic rendering', () => {
                gameOver={false}
                />
         );
+        comp.setProps(props);
         expect(comp.find('.status-feedback').text()).toMatch(
                 /Not\ right|That\'s\ not\ it|Wrong|Incorrect|No|You\ are\ wrong|Nope/);
     });

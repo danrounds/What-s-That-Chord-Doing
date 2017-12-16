@@ -44,11 +44,13 @@ export class AnswerEntry extends React.Component {
 
     onKey(props) {
         if (this.keyMap[props.keyValue]) {
-            this.setState({ guess: this.keyMap[props.keyValue] });
-            if (this.keyMap[props.keyValue] === props.currentChord)
-                this.props.dispatch(actions.markTurnCorrect());
-            else
-                this.props.dispatch(actions.incrementGuessN());
+            if (this.keyMap[props.keyValue] !== this.state.guess) {
+                this.setState({ guess: this.keyMap[props.keyValue] });
+                if (this.keyMap[props.keyValue] === props.currentChord)
+                    this.props.dispatch(actions.markTurnCorrect());
+                else
+                    this.props.dispatch(actions.incrementGuessN());
+            }
         }
     }
 
