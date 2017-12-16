@@ -1,2 +1,3 @@
-export * from './gameActions.js';
-export * from './apiActions.js';
+export * from './uiActions';
+export * from './gameActions';
+export * from './apiActions';

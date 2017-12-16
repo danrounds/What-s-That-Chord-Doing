@@ -38,11 +38,11 @@ export class GiveUpOrNext extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    displayKeyboardShortcuts: state.ui.displayKeyboardShortcuts,
     api: state.api,
     keyValue: state.game.keyValue,
     gameType: state.game.gameType,
     inversions: state.game.inversions,
-    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     questionNumber: state.game.questionNumber,
     guessN: state.game.guessN,
     giveUp: state.game.giveUp,

@@ -138,8 +138,8 @@ export class Status extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    displayKeyboardShortcuts: state.ui.displayKeyboardShortcuts,
     api: state.api,
-    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     key_: state.game.keyNameReadable,
     chordName: state.game.chordName,
     chord: state.game.chord,

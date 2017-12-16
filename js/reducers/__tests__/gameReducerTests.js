@@ -45,24 +45,10 @@ describe('gameReducer -- the reducer for our game actions', () => {
 
     it('should have a consistent initial state', () => {
         expect(state).toMatchSnapshot();
-    });
-
-    it('should update the state of our lesson display index', () => {
-        state = gameReducer(state, actions.updateLessonIndexDisplay(3));
-        expect(state).toMatchSnapshot();
-    });
+   });
 
     it('should register key presses', () => {
-        state = gameReducer(state, actions.getKeyPress('Enter'));
-        expect(state).toMatchSnapshot();
-    });
-
-    it('should toggle display of keyboard shortcuts (to true)', () => {
-        state = gameReducer(state, actions.toggleKeyboardShortcutDisplay(true));
-        expect(state).toMatchSnapshot();
-    });
-    it('should toggle display of keyboard shortcuts (to false)', () => {
-        state = gameReducer(state, actions.toggleKeyboardShortcutDisplay(false));
+        state = gameReducer(state, actions.setKeyPress('Enter'));
         expect(state).toMatchSnapshot();
     });
 

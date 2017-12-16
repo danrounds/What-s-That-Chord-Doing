@@ -1,9 +1,7 @@
 import * as actions from '../actions/gameActions';
 
 const initialState = {
-    lessonIndexDisplay: { easy: false, novice: false, difficult: false, i: 0 },
     keyValue: null,
-    displayKeyboardShortcuts: null,
     gameType: null,
     gameNumber: null,
     inversions: null,
@@ -30,81 +28,9 @@ export default (state=initialState, action) => {
 
     switch(action.type) {
 
-    case actions.UPDATE_LESSON_INDEX_DISPLAY:
+    case actions.SET_KEY_PRESS:
         return {
-            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay, action.keyValueToUpdate),
-            keyValue: '',
-            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
-            gameType: state.gameType,
-            gameNumber: state.gameNumber,
-            inversions: state.inversions,
-            keyNameReadable: state.keyNameReadable,
-            keyNameNotation: state.keyNameNotation,
-            introChordSequence: [[...state.introChordSequence[0]],
-                                 [...state.introChordSequence[1]],
-                                 [...state.introChordSequence[2]],
-                                 [...state.introChordSequence[3]]],
-            chordSubset: [...state.chordSubset],
-            chordName: state.chordName,
-            chord: state.chord,
-            notes: {
-                bass: state.notes.bass,
-                treble: [...state.notes.treble]
-            },
-            accidentals: {
-                bassAccidental: state.accidentals.bassAccidental,
-                trebleIndices: [...state.accidentals.trebleIndices]
-            },
-            guess: state.guess,
-            guessN: state.guessN,
-            answeredCorrectly: state.answeredCorrectly,
-            giveUp: false,
-            questionNumber: state.questionNumber,
-            nAnsweredRight: state.nAnsweredRight,
-            clicksPerRightAnswer: [...state.clicksPerRightAnswer],
-            gameOver: state.gameOver
-        };
-
-    case actions.GET_KEY_PRESS:
-        return {
-            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
             keyValue: action.keyValue,
-            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
-            gameType: state.gameType,
-            gameNumber: state.gameNumber,
-            inversions: state.inversions,
-            keyNameReadable: state.keyNameReadable,
-            keyNameNotation: state.keyNameNotation,
-            introChordSequence: [[...state.introChordSequence[0]],
-                                 [...state.introChordSequence[1]],
-                                 [...state.introChordSequence[2]],
-                                 [...state.introChordSequence[3]]],
-            chordSubset: [...state.chordSubset],
-            chordName: state.chordName,
-            chord: state.chord,
-            notes: {
-                bass: state.notes.bass,
-                treble: [...state.notes.treble]
-            },
-            accidentals: {
-                bassAccidental: state.accidentals.bassAccidental,
-                trebleIndices: [...state.accidentals.trebleIndices]
-            },
-            guess: state.guess,
-            guessN: state.guessN,
-            answeredCorrectly: state.answeredCorrectly,
-            giveUp: state.giveUp,
-            questionNumber: state.questionNumber,
-            nAnsweredRight: state.nAnsweredRight,
-            clicksPerRightAnswer: [...state.clicksPerRightAnswer],
-            gameOver: state.gameOver
-        };
-
-    case actions.TOGGLE_KEYBOARD_SHORTCUT_DISPLAY:
-        return {
-            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
-            keyValue: '',
-            displayKeyboardShortcuts: action.displayBool,
             gameType: state.gameType,
             gameNumber: state.gameNumber,
             inversions: state.inversions,
@@ -137,9 +63,7 @@ export default (state=initialState, action) => {
 
     case actions.START_NEW_GAME:
         return {
-            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
             keyValue: '',
-            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
             gameType: action.gameType,
             gameNumber: action.gameNumber,
             inversions: action.inversions,
@@ -163,9 +87,7 @@ export default (state=initialState, action) => {
 
     case actions.GIVE_UP:
         return {
-            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
             keyValue: '',
-            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
             gameType: state.gameType,
             gameNumber: state.gameNumber,
             inversions: state.inversions,
@@ -198,9 +120,7 @@ export default (state=initialState, action) => {
 
     case actions.GET_NEXT_QUESTION:
         return {
-            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
             keyValue: '',
-            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
             gameType: state.gameType,
             gameNumber: state.gameNumber,
             inversions: state.inversions,
@@ -230,9 +150,7 @@ export default (state=initialState, action) => {
 
     case actions.MAKE_GUESS:
         return {
-            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
             keyValue: '',
-            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
             gameType: state.gameType,
             gameNumber: state.gameNumber,
             inversions: state.inversions,
@@ -265,9 +183,7 @@ export default (state=initialState, action) => {
 
     case actions.MARK_TURN_CORRECT:
         return {
-            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
             keyValue: '',
-            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
             gameType: state.gameType,
             gameNumber: state.gameNumber,
             inversions: state.inversions,

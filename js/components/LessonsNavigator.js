@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import ReactDOM from 'react-dom';
 
 import * as actions from  '../actions';
@@ -143,8 +143,6 @@ export class LessonsNavigator extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    lessonIndexDisplay: state.game.lessonIndexDisplay
-});
-
-export default connect(mapStateToProps)(LessonsNavigator);
+export default connect(state => ({
+    lessonIndexDisplay: state.ui.lessonIndexDisplay
+}))(LessonsNavigator);

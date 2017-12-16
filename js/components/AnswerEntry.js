@@ -91,8 +91,8 @@ export class AnswerEntry extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    displayKeyboardShortcuts: state.ui.displayKeyboardShortcuts,
     keyValue: state.game.keyValue,
-    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     chordSubset: state.game.chordSubset,
     currentChord: state.game.chord,
     guess: state.game.guess,

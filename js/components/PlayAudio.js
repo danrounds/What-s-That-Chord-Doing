@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 export class PlayAudio extends React.Component {
     // This component plays audio--when the buttons are pressed, when we advance
@@ -100,8 +100,8 @@ const mapStateToProps = (state) => {
     let notes = state.game.notes;
 
     return {
+        displayKeyboardShortcuts: state.ui.displayKeyboardShortcuts,
         keyPress: state.game.keyValue,
-        displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
         gameNumber: state.game.gameNumber,
         answer: notes.bass ? [notes.bass, ...notes.treble].map(
             processNotes) : [],

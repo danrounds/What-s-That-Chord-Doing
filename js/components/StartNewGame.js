@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import * as actions from '../actions';
 
@@ -53,9 +53,9 @@ export class StartNewGame extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    displayKeyboardShortcuts: state.ui.displayKeyboardShortcuts,
     api: state.api,
     keyValue: state.game.keyValue,
-    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     gameType: state.game.gameType,
     inversions: state.game.inversions,
     firstQ: state.game.questionNumber === 1 && !state.game.answeredCorrectly,

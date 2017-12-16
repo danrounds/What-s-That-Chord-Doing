@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 
 import NavBar from './NavBar';
@@ -41,7 +41,7 @@ export class Game extends React.Component {
     };
 
     handleKey(e) {
-        this.props.dispatch(actions.getKeyPress(e.ctrlKey ?
+        this.props.dispatch(actions.setKeyPress(e.ctrlKey ?
                                                 'Control '+e.key : e.key));
     };
 

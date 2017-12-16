@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`gameReducer -- the reducer for our game actions should have a consistent initial state 1`] = `
+Object {
+  "displayKeyboardShortcuts": null,
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions should toggle display of keyboard shortcuts (to false) 1`] = `
+Object {
+  "displayKeyboardShortcuts": false,
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions should toggle display of keyboard shortcuts (to true) 1`] = `
+Object {
+  "displayKeyboardShortcuts": true,
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+}
+`;
+
+exports[`gameReducer -- the reducer for our game actions should update the state of our lesson display index 1`] = `
+Object {
+  "displayKeyboardShortcuts": null,
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+}
+`;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 export class KeyboardNavLessonListOverlay extends React.Component {
     constructor() {
@@ -34,5 +34,5 @@ export class KeyboardNavLessonListOverlay extends React.Component {
 }
 
 export default connect((state) => ({
-  displayKeyboardShortcuts: state.game.displayKeyboardShortcuts
+  displayKeyboardShortcuts: state.ui.displayKeyboardShortcuts
 }))(KeyboardNavLessonListOverlay);

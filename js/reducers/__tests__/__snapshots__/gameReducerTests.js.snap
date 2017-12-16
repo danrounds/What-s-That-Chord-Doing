@@ -24,7 +24,6 @@ Object {
     "vii°",
   ],
   "clicksPerRightAnswer": Array [],
-  "displayKeyboardShortcuts": null,
   "gameNumber": 392549214,
   "gameOver": false,
   "gameType": "easyMinor",
@@ -61,12 +60,6 @@ Object {
   "keyNameNotation": "Abm",
   "keyNameReadable": "Ab minor",
   "keyValue": "",
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
   "nAnsweredRight": 0,
   "notes": Object {
     "bass": "Cb/4",
@@ -106,7 +99,6 @@ Object {
     "vii°",
   ],
   "clicksPerRightAnswer": Array [],
-  "displayKeyboardShortcuts": null,
   "gameNumber": 392549214,
   "gameOver": false,
   "gameType": "easyMinor",
@@ -143,12 +135,6 @@ Object {
   "keyNameNotation": "Abm",
   "keyNameReadable": "Ab minor",
   "keyValue": "",
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
   "nAnsweredRight": 0,
   "notes": Object {
     "bass": "G/4",
@@ -190,7 +176,6 @@ Object {
   "clicksPerRightAnswer": Array [
     1,
   ],
-  "displayKeyboardShortcuts": null,
   "gameNumber": 392549214,
   "gameOver": true,
   "gameType": "easyMinor",
@@ -226,12 +211,6 @@ Object {
   "keyNameNotation": "Abm",
   "keyNameReadable": "Ab minor",
   "keyValue": "",
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
   "nAnsweredRight": 1,
   "notes": Object {
     "bass": "G/4",
@@ -273,7 +252,6 @@ Object {
   "clicksPerRightAnswer": Array [
     0,
   ],
-  "displayKeyboardShortcuts": null,
   "gameNumber": 392549214,
   "gameOver": false,
   "gameType": "easyMinor",
@@ -309,12 +287,6 @@ Object {
   "keyNameNotation": "Abm",
   "keyNameReadable": "Ab minor",
   "keyValue": "",
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
   "nAnsweredRight": 1,
   "notes": Object {
     "bass": "G/4",
@@ -339,7 +311,6 @@ Object {
   "chordName": null,
   "chordSubset": Array [],
   "clicksPerRightAnswer": Array [],
-  "displayKeyboardShortcuts": null,
   "gameNumber": null,
   "gameOver": false,
   "gameType": null,
@@ -356,12 +327,6 @@ Object {
   "keyNameNotation": null,
   "keyNameReadable": null,
   "keyValue": null,
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
   "nAnsweredRight": 0,
   "notes": Object {
     "bass": null,
@@ -397,7 +362,6 @@ Object {
     "vii°",
   ],
   "clicksPerRightAnswer": Array [],
-  "displayKeyboardShortcuts": null,
   "gameNumber": 392549214,
   "gameOver": false,
   "gameType": "easyMinor",
@@ -434,12 +398,6 @@ Object {
   "keyNameNotation": "Abm",
   "keyNameReadable": "Ab minor",
   "keyValue": "",
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
   "nAnsweredRight": 0,
   "notes": Object {
     "bass": "G/4",
@@ -464,7 +422,6 @@ Object {
   "chordName": null,
   "chordSubset": Array [],
   "clicksPerRightAnswer": Array [],
-  "displayKeyboardShortcuts": null,
   "gameNumber": null,
   "gameOver": false,
   "gameType": null,
@@ -481,12 +438,6 @@ Object {
   "keyNameNotation": null,
   "keyNameReadable": null,
   "keyValue": "Enter",
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
   "nAnsweredRight": 0,
   "notes": Object {
     "bass": null,
@@ -522,7 +473,6 @@ Object {
     "vii°",
   ],
   "clicksPerRightAnswer": Array [],
-  "displayKeyboardShortcuts": null,
   "gameNumber": 392549214,
   "gameOver": false,
   "gameType": "easyMinor",
@@ -559,12 +509,6 @@ Object {
   "keyNameNotation": "Abm",
   "keyNameReadable": "Ab minor",
   "keyValue": "",
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
   "nAnsweredRight": 0,
   "notes": Object {
     "bass": "G/4",
@@ -575,134 +519,5 @@ Object {
     ],
   },
   "questionNumber": 1,
-}
-`;
-
-exports[`gameReducer -- the reducer for our game actions should toggle display of keyboard shortcuts (to false) 1`] = `
-Object {
-  "accidentals": Object {
-    "bassAccidental": null,
-    "trebleIndices": Array [],
-  },
-  "answeredCorrectly": null,
-  "chord": null,
-  "chordName": null,
-  "chordSubset": Array [],
-  "clicksPerRightAnswer": Array [],
-  "displayKeyboardShortcuts": false,
-  "gameNumber": null,
-  "gameOver": false,
-  "gameType": null,
-  "giveUp": null,
-  "guess": null,
-  "guessN": 0,
-  "introChordSequence": Array [
-    Array [],
-    Array [],
-    Array [],
-    Array [],
-  ],
-  "inversions": null,
-  "keyNameNotation": null,
-  "keyNameReadable": null,
-  "keyValue": "",
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
-  "nAnsweredRight": 0,
-  "notes": Object {
-    "bass": null,
-    "treble": Array [],
-  },
-  "questionNumber": 0,
-}
-`;
-
-exports[`gameReducer -- the reducer for our game actions should toggle display of keyboard shortcuts (to true) 1`] = `
-Object {
-  "accidentals": Object {
-    "bassAccidental": null,
-    "trebleIndices": Array [],
-  },
-  "answeredCorrectly": null,
-  "chord": null,
-  "chordName": null,
-  "chordSubset": Array [],
-  "clicksPerRightAnswer": Array [],
-  "displayKeyboardShortcuts": true,
-  "gameNumber": null,
-  "gameOver": false,
-  "gameType": null,
-  "giveUp": null,
-  "guess": null,
-  "guessN": 0,
-  "introChordSequence": Array [
-    Array [],
-    Array [],
-    Array [],
-    Array [],
-  ],
-  "inversions": null,
-  "keyNameNotation": null,
-  "keyNameReadable": null,
-  "keyValue": "",
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
-  "nAnsweredRight": 0,
-  "notes": Object {
-    "bass": null,
-    "treble": Array [],
-  },
-  "questionNumber": 0,
-}
-`;
-
-exports[`gameReducer -- the reducer for our game actions should update the state of our lesson display index 1`] = `
-Object {
-  "accidentals": Object {
-    "bassAccidental": null,
-    "trebleIndices": Array [],
-  },
-  "answeredCorrectly": null,
-  "chord": null,
-  "chordName": null,
-  "chordSubset": Array [],
-  "clicksPerRightAnswer": Array [],
-  "displayKeyboardShortcuts": null,
-  "gameNumber": null,
-  "gameOver": false,
-  "gameType": null,
-  "giveUp": false,
-  "guess": null,
-  "guessN": 0,
-  "introChordSequence": Array [
-    Array [],
-    Array [],
-    Array [],
-    Array [],
-  ],
-  "inversions": null,
-  "keyNameNotation": null,
-  "keyNameReadable": null,
-  "keyValue": "",
-  "lessonIndexDisplay": Object {
-    "difficult": false,
-    "easy": false,
-    "i": 0,
-    "novice": false,
-  },
-  "nAnsweredRight": 0,
-  "notes": Object {
-    "bass": null,
-    "treble": Array [],
-  },
-  "questionNumber": 0,
 }
 `;

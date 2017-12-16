@@ -1,21 +1,9 @@
 import chordGetter from '../musicLogic/';
 
-export const UPDATE_LESSON_INDEX_DISPLAY = 'UPDATE_LESSON_INDEX_DISPLAY';
-export const updateLessonIndexDisplay = (keyValueToUpdate) => ({
-    type: UPDATE_LESSON_INDEX_DISPLAY,
-    keyValueToUpdate,
-});
-
-export const GET_KEY_PRESS = 'GET_KEY_PRESS';
-export const getKeyPress = (keyValue) => ({
-    type: GET_KEY_PRESS,
+export const SET_KEY_PRESS = 'SET_KEY_PRESS';
+export const setKeyPress = (keyValue) => ({
+    type: SET_KEY_PRESS,
     keyValue,
-});
-
-export const TOGGLE_KEYBOARD_SHORTCUT_DISPLAY = 'TOGGLE_KEYBOARD_SHORTCUT_DISPLAY';
-export const toggleKeyboardShortcutDisplay = (displayBool) => ({
-    type: TOGGLE_KEYBOARD_SHORTCUT_DISPLAY,
-    displayBool,
 });
 
 export const START_NEW_GAME = 'START_NEW_GAME';

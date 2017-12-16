@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import MediaQuery from 'react-responsive';
 
 import * as actions from '../actions';
@@ -57,7 +57,7 @@ export class NavBar extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
+    displayKeyboardShortcuts: state.ui.displayKeyboardShortcuts,
     api: state.api,
 });
 
