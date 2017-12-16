@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import * as actions from  '../actions';
 
@@ -10,16 +10,11 @@ export class AnswerEntry extends React.Component {
         this.onKey = this.onKey.bind(this);
 
         this.keyMap = this.makeKeyMap();
-        this.state = { guess: null };
     }
 
     componentWillReceiveProps(nextProps) {
         if (!nextProps.giveUp && !nextProps.answeredCorrectly && nextProps.keyValue)
             this.onKey(nextProps);
-        else if (nextProps.giveUp)
-            this.setState({ guess: nextProps.currentChord });
-        else if (!nextProps.guessN && this.state.guess !== null)
-            this.setState({ guess: null });
     }
 
     onClick(e){
@@ -32,24 +27,21 @@ export class AnswerEntry extends React.Component {
             else
                 guess = e.target.innerText.split('\n')[0];
 
-            this.setState({ guess });
-
             // Actions:
+            this.props.dispatch(actions.makeGuess(guess));
             if (guess === this.props.currentChord)
                 this.props.dispatch(actions.markTurnCorrect());
-            else
-                this.props.dispatch(actions.incrementGuessN());
         }
     }
 
     onKey(props) {
+        const currentGuess = this.keyMap[props.keyValue];
         if (this.keyMap[props.keyValue]) {
-            if (this.keyMap[props.keyValue] !== this.state.guess) {
-                this.setState({ guess: this.keyMap[props.keyValue] });
+            if (currentGuess !== this.props.guess) {
+                this.props.dispatch(actions.makeGuess(currentGuess));
+
                 if (this.keyMap[props.keyValue] === props.currentChord)
                     this.props.dispatch(actions.markTurnCorrect());
-                else
-                    this.props.dispatch(actions.incrementGuessN());
             }
         }
     }
@@ -77,7 +69,7 @@ export class AnswerEntry extends React.Component {
             let buttonClass;
             if (this.props.giveUp && numeral === this.props.currentChord)
                 buttonClass = 'buttonGiveUpStyle';
-            else if (this.state.guess === numeral)
+            else if (this.props.guess === numeral)
                 buttonClass = (numeral === this.props.currentChord) ? 'buttonRightStyle' : 'buttonWrongStyle';
             else
                 buttonClass = 'buttonStyle';
@@ -103,6 +95,7 @@ const mapStateToProps = (state) => ({
     displayKeyboardShortcuts: state.game.displayKeyboardShortcuts,
     chordSubset: state.game.chordSubset,
     currentChord: state.game.chord,
+    guess: state.game.guess,
     guessN: state.game.guessN,
     answeredCorrectly: state.game.answeredCorrectly,
     giveUp: state.game.giveUp,

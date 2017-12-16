@@ -15,6 +15,7 @@ const initialState = {
     chord: null,
     notes: {bass: null, treble: []},
     accidentals: {bassAccidental: null, trebleIndices: []},
+    guess: null,
     guessN: 0,
     answeredCorrectly: null,
     giveUp: null,
@@ -54,6 +55,7 @@ export default (state=initialState, action) => {
                 bassAccidental: state.accidentals.bassAccidental,
                 trebleIndices: [...state.accidentals.trebleIndices]
             },
+            guess: state.guess,
             guessN: state.guessN,
             answeredCorrectly: state.answeredCorrectly,
             giveUp: false,
@@ -88,6 +90,7 @@ export default (state=initialState, action) => {
                 bassAccidental: state.accidentals.bassAccidental,
                 trebleIndices: [...state.accidentals.trebleIndices]
             },
+            guess: state.guess,
             guessN: state.guessN,
             answeredCorrectly: state.answeredCorrectly,
             giveUp: state.giveUp,
@@ -122,6 +125,7 @@ export default (state=initialState, action) => {
                 bassAccidental: state.accidentals.bassAccidental,
                 trebleIndices: [...state.accidentals.trebleIndices]
             },
+            guess: state.guess,
             guessN: state.guessN,
             answeredCorrectly: state.answeredCorrectly,
             giveUp: state.giveUp,
@@ -147,6 +151,7 @@ export default (state=initialState, action) => {
             chord: action.currentChordNumeral,
             notes: {bass: action.bassNote, treble: action.trebleNotes},
             accidentals: action.accidentals,
+            guess: null,
             guessN: 0,
             answeredCorrectly: false,
             giveUp: false,
@@ -181,6 +186,7 @@ export default (state=initialState, action) => {
                 bassAccidental: state.accidentals.bassAccidental,
                 trebleIndices: [...state.accidentals.trebleIndices]
             },
+            guess: null,
             guessN: 0,
             answeredCorrectly: false,
             giveUp: true,
@@ -212,6 +218,7 @@ export default (state=initialState, action) => {
                 bassAccidental: action.accidentals.bassAccidental,
                 trebleIndices: [...action.accidentals.trebleIndices]
             },
+            guess: null,
             guessN: 0,
             answeredCorrectly: false,
             giveUp: false,
@@ -221,7 +228,7 @@ export default (state=initialState, action) => {
             gameOver: false
         };
 
-    case actions.INCREMENT_GUESS_N:
+    case actions.MAKE_GUESS:
         return {
             lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
             keyValue: '',
@@ -246,6 +253,7 @@ export default (state=initialState, action) => {
                 bassAccidental: state.accidentals.bassAccidental,
                 trebleIndices: [...state.accidentals.trebleIndices]
             },
+            guess: action.guess,
             guessN: state.guessN + 1,
             answeredCorrectly: false,
             giveUp: state.giveUp,
@@ -280,11 +288,12 @@ export default (state=initialState, action) => {
                 bassAccidental: state.accidentals.bassAccidental,
                 trebleIndices: [...state.accidentals.trebleIndices]
             },
-            guessN: state.guessN + 1,
+            guess: state.guess,
+            guessN: state.guessN,
             answeredCorrectly: true,
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight + 1,
-            clicksPerRightAnswer: [...state.clicksPerRightAnswer, state.guessN + 1],
+            clicksPerRightAnswer: [...state.clicksPerRightAnswer, state.guessN],
             gameOver: state.questionNumber === 10 ? true : false,
         };
 

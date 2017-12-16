@@ -27,14 +27,14 @@ describe('Component: AnswerEntryTest', () => {
     it('should register wrong answers', () => {
         // Using the shallow renderer here, because it can .setState
         const comp = shallow(<AnswerEntry {...props} />);
-        comp.setState({ guess: 'vi' });
+        comp.setProps({ guess: 'vi' });
         expect(toJson(comp)).toMatchSnapshot();
     });
 
     it('should register right answers', () => {
         // Using the shallow renderer here, because it can .setState
         const comp = shallow(<AnswerEntry {...props} />);
-        comp.setState({ guess: 'vii°' }).render();
+        comp.setProps({ guess: 'vii°' }).render();
         expect(toJson(comp)).toMatchSnapshot();
     });
 

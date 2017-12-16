@@ -128,6 +128,7 @@ describe('Components: Basic rendering', () => {
             nAnsweredRight: 4,
             clicksPerRightAnswer: [3,12],
             gameOver: true,
+            guess: 'iii',
             guessN: 3,
         };
         const key_ = 'Eb Major', chordName = 'G minor', chord = 'iii';
@@ -155,6 +156,7 @@ describe('Components: Basic rendering', () => {
         const props = {
             answeredCorrectly: false,
             nAnsweredRight: 4,
+            guess: 'vi',
             guessN: 4,
             clicksPerRightAnswer: [3,12],
             gameOver: false,

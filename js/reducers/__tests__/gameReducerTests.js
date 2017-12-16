@@ -83,19 +83,20 @@ describe('gameReducer -- the reducer for our game actions', () => {
         expect(state).toMatchSnapshot();
     });
 
-    it('increment the guess number', () => {
+    it('make a guess', () => {
         state = gameReducer(state, actions.startNewGame('easyMinor', false));
-        state = gameReducer(state, actions.incrementGuessN());
+        state = gameReducer(state, actions.makeGuess('iii'));
         expect(state).toMatchSnapshot();
     });
     
-    it('mark turn correct when the game isn\'t about to over', () => {
+    it('mark turn correct when the game isn\'t about to be over', () => {
         state = gameReducer(state, actions.startNewGame('easyMinor', false));
         state = gameReducer(state, actions.markTurnCorrect());
         expect(state).toMatchSnapshot();
     });
     it('mark turn correct when the game is about to be over', () => {
         state = gameReducer(state, actions.startNewGame('easyMinor', false));
+        state = gameReducer(state, actions.makeGuess('iii'));
         state = gameReducer(Object.assign(state, { questionNumber: 10 }),
                             actions.markTurnCorrect());
         expect(state).toMatchSnapshot();

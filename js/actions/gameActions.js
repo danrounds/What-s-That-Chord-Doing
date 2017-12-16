@@ -63,9 +63,10 @@ export const getNextQuestion = () => {
     };
 };
 
-export const INCREMENT_GUESS_N = 'INCREMENT_GUESS_N';
-export const incrementGuessN = () => ({
-    type: INCREMENT_GUESS_N,
+export const MAKE_GUESS = 'MAKE_GUESS';
+export const makeGuess = (guess) => ({
+    type: MAKE_GUESS,
+    guess,
 });
 
 export const MARK_TURN_CORRECT = 'MARK_TURN_CORRECT';

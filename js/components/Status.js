@@ -24,8 +24,9 @@ export class Status extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.getStatusText(nextProps);
-        if (nextProps.answeredCorrectly) {
+        if (!nextProps.guessN || this.props.guess !== nextProps.guess || nextProps.giveUp)
+            this.getStatusText(nextProps);
+        if (!nextProps.guessN || nextProps.answeredCorrectly) {
             this.getAverageClicks(nextProps);
             this.state.nRightText = nextProps.nAnsweredRight +' answered correctly';
         }
@@ -142,6 +143,7 @@ const mapStateToProps = (state) => ({
     key_: state.game.keyNameReadable,
     chordName: state.game.chordName,
     chord: state.game.chord,
+    guess: state.game.guess,
     guessN: state.game.guessN,
     answeredCorrectly: state.game.answeredCorrectly,
     giveUp: state.game.giveUp,

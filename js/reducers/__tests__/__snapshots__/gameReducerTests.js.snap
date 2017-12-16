@@ -29,6 +29,7 @@ Object {
   "gameOver": false,
   "gameType": "easyMinor",
   "giveUp": false,
+  "guess": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [
@@ -79,7 +80,7 @@ Object {
 }
 `;
 
-exports[`gameReducer -- the reducer for our game actions increment the guess number 1`] = `
+exports[`gameReducer -- the reducer for our game actions make a guess 1`] = `
 Object {
   "accidentals": Object {
     "bassAccidental": true,
@@ -110,6 +111,7 @@ Object {
   "gameOver": false,
   "gameType": "easyMinor",
   "giveUp": false,
+  "guess": "iii",
   "guessN": 1,
   "introChordSequence": Array [
     Array [
@@ -192,6 +194,7 @@ Object {
   "gameNumber": 392549214,
   "gameOver": true,
   "gameType": "easyMinor",
+  "guess": "iii",
   "guessN": 1,
   "introChordSequence": Array [
     Array [
@@ -242,7 +245,7 @@ Object {
 }
 `;
 
-exports[`gameReducer -- the reducer for our game actions mark turn correct when the game isn't about to over 1`] = `
+exports[`gameReducer -- the reducer for our game actions mark turn correct when the game isn't about to be over 1`] = `
 Object {
   "accidentals": Object {
     "bassAccidental": true,
@@ -268,13 +271,14 @@ Object {
     "vii°",
   ],
   "clicksPerRightAnswer": Array [
-    1,
+    0,
   ],
   "displayKeyboardShortcuts": null,
   "gameNumber": 392549214,
   "gameOver": false,
   "gameType": "easyMinor",
-  "guessN": 1,
+  "guess": null,
+  "guessN": 0,
   "introChordSequence": Array [
     Array [
       "G#/3",
@@ -340,6 +344,7 @@ Object {
   "gameOver": false,
   "gameType": null,
   "giveUp": null,
+  "guess": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [],
@@ -397,6 +402,7 @@ Object {
   "gameOver": false,
   "gameType": "easyMinor",
   "giveUp": true,
+  "guess": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [
@@ -463,6 +469,7 @@ Object {
   "gameOver": false,
   "gameType": null,
   "giveUp": null,
+  "guess": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [],
@@ -520,6 +527,7 @@ Object {
   "gameOver": false,
   "gameType": "easyMinor",
   "giveUp": false,
+  "guess": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [
@@ -586,6 +594,7 @@ Object {
   "gameOver": false,
   "gameType": null,
   "giveUp": null,
+  "guess": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [],
@@ -628,6 +637,7 @@ Object {
   "gameOver": false,
   "gameType": null,
   "giveUp": null,
+  "guess": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [],
@@ -670,6 +680,7 @@ Object {
   "gameOver": false,
   "gameType": null,
   "giveUp": false,
+  "guess": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [],
