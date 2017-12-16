@@ -3,19 +3,19 @@ import chordGetter from '../musicLogic/';
 export const UPDATE_LESSON_INDEX_DISPLAY = 'UPDATE_LESSON_INDEX_DISPLAY';
 export const updateLessonIndexDisplay = (keyValueToUpdate) => ({
     type: UPDATE_LESSON_INDEX_DISPLAY,
-    keyValueToUpdate
+    keyValueToUpdate,
 });
 
 export const GET_KEY_PRESS = 'GET_KEY_PRESS';
 export const getKeyPress = (keyValue) => ({
     type: GET_KEY_PRESS,
-    keyValue
+    keyValue,
 });
 
 export const TOGGLE_KEYBOARD_SHORTCUT_DISPLAY = 'TOGGLE_KEYBOARD_SHORTCUT_DISPLAY';
 export const toggleKeyboardShortcutDisplay = (displayBool) => ({
     type: TOGGLE_KEYBOARD_SHORTCUT_DISPLAY,
-    displayBool
+    displayBool,
 });
 
 export const START_NEW_GAME = 'START_NEW_GAME';
@@ -44,6 +44,10 @@ export const startNewGame = (gameType, inversions) => {
         accidentals
     };
 };
+export const GIVE_UP = 'GIVE_UP';
+export const giveUp = () => ({
+    type: GIVE_UP,
+});
 
 export const GET_NEXT_QUESTION = 'GET_NEXT_QUESTION';
 export const getNextQuestion = () => {
@@ -55,16 +59,16 @@ export const getNextQuestion = () => {
         currentChordNumeral,
         bassNote,
         trebleNotes,
-        accidentals
+        accidentals,
     };
 };
 
 export const INCREMENT_GUESS_N = 'INCREMENT_GUESS_N';
 export const incrementGuessN = () => ({
-    type: INCREMENT_GUESS_N
+    type: INCREMENT_GUESS_N,
 });
 
 export const MARK_TURN_CORRECT = 'MARK_TURN_CORRECT';
 export const markTurnCorrect = () => ({
-    type: MARK_TURN_CORRECT
+    type: MARK_TURN_CORRECT,
 });

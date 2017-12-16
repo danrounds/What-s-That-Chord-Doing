@@ -8,7 +8,7 @@ import { KeyboardNavLessonListOverlay } from '../KeyboardNavLessonListOverlay';
 import { KeyboardShortcutsOnOff } from '../KeyboardShortcutsOnOff';
 import { KofN } from '../KofN';
 import { LessonsNavigator } from '../LessonsNavigator';
-import { Next } from '../Next';
+import { GiveUpOrNext } from '../GiveUpOrNext';
 import { PlayAudio } from '../PlayAudio';
 import { StartNewGame } from '../StartNewGame';
 import { Status } from '../Status';
@@ -50,15 +50,15 @@ describe('Components: Basic rendering', () => {
         expect(toJson(comp)).toMatchSnapshot();
     });
 
-    test('Next, w/ keyboard shortcuts', () => {
+    test('GiveUpOrNext, w/ keyboard shortcuts', () => {
         const comp = renderer.create(
-            <Next displayKeyboardShortcuts={true} />
+            <GiveUpOrNext displayKeyboardShortcuts={true} />
         ).toJSON();
         expect(comp).toMatchSnapshot();
     });
-    test('Next, w/out keyboard shortcuts', () => {
+    test('GiveUpOrNext, w/out keyboard shortcuts', () => {
         const comp = renderer.create(
-            <Next displayKeyboardShortcuts={false} />
+            <GiveUpOrNext displayKeyboardShortcuts={false} />
         ).toJSON();
         expect(comp).toMatchSnapshot();
     });

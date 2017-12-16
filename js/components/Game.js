@@ -10,7 +10,7 @@ import Status from './Status';
 import AnswerEntry from './AnswerEntry';
 import PlayAudio from './PlayAudio';
 import StartNewGame from './StartNewGame';
-import Next from './Next';
+import GiveUpOrNext from './GiveUpOrNext';
 import SubmitMyScore from './SubmitMyScore';
 
 import * as actions from '../actions';
@@ -59,7 +59,7 @@ export class Game extends React.Component {
                 <AnswerEntry />
                 <PlayAudio instrument={this.props.instrument} ac={this.props.ac} />
                 <StartNewGame />
-                <Next />
+                <GiveUpOrNext />
                 <SubmitMyScore />
               </div>
             </div>

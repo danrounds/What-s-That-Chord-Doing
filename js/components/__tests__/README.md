@@ -14,7 +14,7 @@ component state, &c.
   * `KeyboardShortcutsOnOff`
   * `KofN`
   * `LessonsNavigator`
-  * `Next`
+  * `GiveUpOrNext`
   * `PlayAudio`
   * `StartNewGame`
   * `Status`

@@ -71,6 +71,12 @@ describe('gameReducer -- the reducer for our game actions', () => {
         expect(state).toMatchSnapshot();
     });
 
+    it('should let us give up, when we don\'t know the answer', () => {
+        state = gameReducer(state, actions.startNewGame('easyMinor', false));
+        state = gameReducer(state, actions.giveUp());
+        expect(state).toMatchSnapshot();
+    });
+
     it('get the next question', () => {
         state = gameReducer(state, actions.startNewGame('easyMinor', false));
         state = gameReducer(state, actions.getNextQuestion());

@@ -4,22 +4,26 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 export class Status extends React.Component {
-    getRandom(array) {
+    static getRandom(array) {
         return array[Math.floor(Math.random() * array.length)];
     }
 
     getStatusText() {
         if (!this.props.answeredCorrectly && this.props.guessN) {
-            this.statusText =  this.getRandom(
+            this.statusText =  Status.getRandom(
                 [
                     'Not right','That\'s not it','Wrong','Incorrect','No',
                     'You are wrong','Nope'
                 ]);
 
-        } else if (this.props.answeredCorrectly && !this.stopPrompting) {
-            this.statusText =  this.getRandom(['You got it!','Yes!','Correct!']) +
-                ` The ${this.props.chord} chord of ${this.props.key_} is` +
-                ` ${this.props.chordName}`;
+        } else if (this.props.giveUp || this.props.answeredCorrectly && !this.stopPrompting) {
+            const prefix = this.props.giveUp
+                      ? 'That\'s okay.'
+                      : Status.getRandom(['You got it!','Yes!','Correct!']);
+
+            this.statusText = prefix
+                + ` The ${this.props.chord} chord of ${this.props.key_} is`
+                + ` ${this.props.chordName}`;
 
             this.stopPrompting = true;
 
@@ -115,6 +119,7 @@ const mapStateToProps = (state) => ({
     chord: state.game.chord,
     guessN: state.game.guessN,
     answeredCorrectly: state.game.answeredCorrectly,
+    giveUp: state.game.giveUp,
     nAnsweredRight: state.game.nAnsweredRight,
     clicksPerRightAnswer: state.game.clicksPerRightAnswer,
     gameOver: state.game.gameOver,

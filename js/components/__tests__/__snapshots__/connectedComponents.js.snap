@@ -20,7 +20,7 @@ exports[`Score-based components Game 1`] = `
     <Connect(AnswerEntry) />
     <Connect(PlayAudio) />
     <Connect(StartNewGame) />
-    <Connect(Next) />
+    <Connect(GiveUpOrNext) />
     <Connect(SubmitMyScore) />
   </div>
 </div>

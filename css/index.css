@@ -272,6 +272,17 @@ button {
     width: 50px;
 }
 
+.buttonGiveUpStyle {
+    background-color: pink;
+    border: 1px solid #9c9c9c;
+    border-radius: 2px;
+    color: beige;
+    font-size: 20px;
+    height: 60px;
+    text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 1px #333, 0 -1px 5px #555;
+    width: 50px;
+}
+
 .buttonWrongStyle {
     background-color: #ff3333;
     border: 1px solid #9c9c9c;
@@ -306,10 +317,6 @@ button:hover {
     margin-top: 6px;
 }
 
-/* .nxt-btn:hover { */
-/*     box-shadow: inset 2px -1px 20px 0 #yellow; */
-/* } */
-
 .keyHint {
     background-color: green;
     border: 1px solid green;
@@ -342,6 +349,7 @@ button:hover {
 
 .nxtKeyHint {
     margin-top: 12px;
+    width: 36px;
 }
 
 .miniPlus {

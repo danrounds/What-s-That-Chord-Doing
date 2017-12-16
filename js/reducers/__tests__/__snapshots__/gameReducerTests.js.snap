@@ -28,6 +28,7 @@ Object {
   "gameNumber": 392549214,
   "gameOver": false,
   "gameType": "easyMinor",
+  "giveUp": false,
   "guessN": 0,
   "introChordSequence": Array [
     Array [
@@ -108,6 +109,7 @@ Object {
   "gameNumber": 392549214,
   "gameOver": false,
   "gameType": "easyMinor",
+  "giveUp": false,
   "guessN": 1,
   "introChordSequence": Array [
     Array [
@@ -337,6 +339,7 @@ Object {
   "gameNumber": null,
   "gameOver": false,
   "gameType": null,
+  "giveUp": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [],
@@ -363,6 +366,87 @@ Object {
 }
 `;
 
+exports[`gameReducer -- the reducer for our game actions should let us give up, when we don't know the answer 1`] = `
+Object {
+  "accidentals": Object {
+    "bassAccidental": true,
+    "trebleIndices": Array [
+      0,
+    ],
+  },
+  "answeredCorrectly": false,
+  "chord": "vii°",
+  "chordName": "G diminished",
+  "chordSubset": Array [
+    "i",
+    "♭II",
+    "ii°",
+    "ii",
+    "♭III",
+    "iv",
+    "v",
+    "V",
+    "♭VI",
+    "vi",
+    "♭VII",
+    "vii°",
+  ],
+  "clicksPerRightAnswer": Array [],
+  "displayKeyboardShortcuts": null,
+  "gameNumber": 392549214,
+  "gameOver": false,
+  "gameType": "easyMinor",
+  "giveUp": true,
+  "guessN": 0,
+  "introChordSequence": Array [
+    Array [
+      "G#/3",
+      "D#/5",
+      "G#/5",
+      "B/5",
+    ],
+    Array [
+      "C#/4",
+      "C#/5",
+      "E/5",
+      "G#/5",
+    ],
+    Array [
+      "D#/4",
+      "A#/4",
+      "D#/5",
+      "G/5",
+    ],
+    Array [
+      "G#/3",
+      "B/4",
+      "D#/5",
+      "G#/5",
+    ],
+  ],
+  "inversions": false,
+  "keyNameNotation": "Abm",
+  "keyNameReadable": "Ab minor",
+  "keyValue": "",
+  "lessonIndexDisplay": Object {
+    "difficult": false,
+    "easy": false,
+    "i": 0,
+    "novice": false,
+  },
+  "nAnsweredRight": 0,
+  "notes": Object {
+    "bass": "G/4",
+    "treble": Array [
+      "G/5",
+      "Bb/5",
+      "Db/6",
+    ],
+  },
+  "questionNumber": 1,
+}
+`;
+
 exports[`gameReducer -- the reducer for our game actions should register key presses 1`] = `
 Object {
   "accidentals": Object {
@@ -378,6 +462,7 @@ Object {
   "gameNumber": null,
   "gameOver": false,
   "gameType": null,
+  "giveUp": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [],
@@ -434,6 +519,7 @@ Object {
   "gameNumber": 392549214,
   "gameOver": false,
   "gameType": "easyMinor",
+  "giveUp": false,
   "guessN": 0,
   "introChordSequence": Array [
     Array [
@@ -499,6 +585,7 @@ Object {
   "gameNumber": null,
   "gameOver": false,
   "gameType": null,
+  "giveUp": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [],
@@ -540,6 +627,7 @@ Object {
   "gameNumber": null,
   "gameOver": false,
   "gameType": null,
+  "giveUp": null,
   "guessN": 0,
   "introChordSequence": Array [
     Array [],
@@ -581,6 +669,7 @@ Object {
   "gameNumber": null,
   "gameOver": false,
   "gameType": null,
+  "giveUp": false,
   "guessN": 0,
   "introChordSequence": Array [
     Array [],

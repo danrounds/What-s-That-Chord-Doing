@@ -14,14 +14,16 @@ export class AnswerEntry extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (!nextProps.answeredCorrectly && nextProps.keyValue)
+        if (!nextProps.giveUp && !nextProps.answeredCorrectly && nextProps.keyValue)
             this.onKey(nextProps);
+        else if (nextProps.giveUp)
+            this.setState({ guess: nextProps.currentChord });
         else if (!nextProps.guessN && this.state.guess !== null)
             this.setState({ guess: null });
     }
 
     onClick(e){
-        if (!this.props.answeredCorrectly) {
+        if (!this.props.giveUp && !this.props.answeredCorrectly) {
             let guess;
 
             // We're either clicking a button or something deeper in our tree
@@ -32,7 +34,7 @@ export class AnswerEntry extends React.Component {
 
             this.setState({ guess });
 
-            // actions
+            // Actions:
             if (guess === this.props.currentChord)
                 this.props.dispatch(actions.markTurnCorrect());
             else
@@ -41,8 +43,8 @@ export class AnswerEntry extends React.Component {
     }
 
     onKey(props) {
-        this.setState({ guess: this.keyMap[props.keyValue] || null });
         if (this.keyMap[props.keyValue]) {
+            this.setState({ guess: this.keyMap[props.keyValue] });
             if (this.keyMap[props.keyValue] === props.currentChord)
                 this.props.dispatch(actions.markTurnCorrect());
             else
@@ -55,7 +57,7 @@ export class AnswerEntry extends React.Component {
                       'z','x','c','v','b','n','m',',','.','/'];
 
         const keyMap = {};
-        this.props.chordSubset.map((numeral) => {
+        this.props.chordSubset.map(numeral => {
             let k = keys.shift();
             keyMap[k] = numeral;
         });
@@ -67,31 +69,30 @@ export class AnswerEntry extends React.Component {
                       'z','x','c','v','b','n','m',',','.','/'];
 
 
-        return this.props.chordSubset.map((numeral) => {
+        return this.props.chordSubset.map(numeral => {
             let k = keys.shift();
 
+            let buttonClass;
+            if (this.props.giveUp && numeral === this.props.currentChord)
+                buttonClass = 'buttonGiveUpStyle';
+            else if (this.state.guess === numeral)
+                buttonClass = (numeral === this.props.currentChord) ? 'buttonRightStyle' : 'buttonWrongStyle';
+            else
+                buttonClass = 'buttonStyle';
+
+            const keyHints = this.props.displayKeyboardShortcuts && (<div className="keyHint answerKeyHint">{k}</div>);
+
             return (
-                <button className={this.state.guess === numeral
-                                   ? (numeral === this.props.currentChord
-                                      ? "buttonRightStyle"
-                                      : "buttonWrongStyle"
-                                     )
-                        : "buttonStyle"}
-                        key={numeral} onClick={this.onClick}>
+                <button className={buttonClass} key={numeral} onClick={this.onClick}>
                   {numeral}<br/>
-                  {this.props.displayKeyboardShortcuts
-                  && <div className="keyHint answerKeyHint">{k}</div>}
+                  {keyHints}
                 </button>
             );
         });
     }
 
     render() {
-        return (
-            <div>
-              {this.makeButtons()}
-            </div>
-        );
+        return (<div>{this.makeButtons()}</div>);
     }
 }
 
@@ -101,7 +102,8 @@ const mapStateToProps = (state) => ({
     chordSubset: state.game.chordSubset,
     currentChord: state.game.chord,
     guessN: state.game.guessN,
-    answeredCorrectly: state.game.answeredCorrectly
+    answeredCorrectly: state.game.answeredCorrectly,
+    giveUp: state.game.giveUp,
 });
 
 export default connect(mapStateToProps)(AnswerEntry);

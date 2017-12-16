@@ -8,6 +8,37 @@ exports[`Components: Basic rendering GameModeText 1`] = `
 </div>
 `;
 
+exports[`Components: Basic rendering GiveUpOrNext, w/ keyboard shortcuts 1`] = `
+<button
+  className="ctrl-btn nxt-btn"
+  onClick={[Function]}
+>
+  <div
+    className="nxt-text"
+  >
+    give up?
+  </div>
+  <div
+    className="keyHint miniKeyHint nxtKeyHint"
+  >
+    SPACE
+  </div>
+</button>
+`;
+
+exports[`Components: Basic rendering GiveUpOrNext, w/out keyboard shortcuts 1`] = `
+<button
+  className="ctrl-btn nxt-btn"
+  onClick={[Function]}
+>
+  <div
+    className="nxt-text"
+  >
+    give up?
+  </div>
+</button>
+`;
+
 exports[`Components: Basic rendering KeyboardNavLessonListOverlay, w/ keyboard shortcuts 1`] = `
 <div
   className="lesson-nav-keyboard-hints"
@@ -446,37 +477,6 @@ exports[`Components: Basic rendering LessonsNavigator 1`] = `
     </div>
   </div>
 </LessonsNavigator>
-`;
-
-exports[`Components: Basic rendering Next, w/ keyboard shortcuts 1`] = `
-<button
-  className="ctrl-btn nxt-btn"
-  onClick={[Function]}
->
-  <div
-    className="nxt-text"
-  >
-    next ?
-  </div>
-  <div
-    className="keyHint miniKeyHint nxtKeyHint"
-  >
-    SPACE
-  </div>
-</button>
-`;
-
-exports[`Components: Basic rendering Next, w/out keyboard shortcuts 1`] = `
-<button
-  className="ctrl-btn nxt-btn"
-  onClick={[Function]}
->
-  <div
-    className="nxt-text"
-  >
-    next ?
-  </div>
-</button>
 `;
 
 exports[`Components: Basic rendering PlayAudio, w/ keyboard shortcuts 1`] = `

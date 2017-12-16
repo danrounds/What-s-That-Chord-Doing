@@ -18,7 +18,7 @@ export class Staves extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        return !nextProps.guessN || nextProps.answeredCorrectly;
+        return !nextProps.guessN || nextProps.answeredCorrectly || nextProps.giveUp;
     }
 
     componentDidUpdate() {
@@ -54,7 +54,7 @@ export class Staves extends React.Component {
         bass.addClef('bass').addKeySignature(this.props.keySignature);
         bass.setContext(context).draw();
 
-        if (this.props.answeredCorrectly) {            
+        if (this.props.answeredCorrectly || this.props.giveUp) {
             const trebleNotes = this.defineTrebleNotes(VF);
             const bassNote = this.defineBassNote(VF);
 
@@ -143,7 +143,8 @@ const mapStateToProps = (state) => ({
     accidentals: state.game.accidentals,
     keySignature: state.game.keyNameNotation,
     guessN: state.game.guessN,
-    answeredCorrectly: state.game.answeredCorrectly
+    answeredCorrectly: state.game.answeredCorrectly,
+    giveUp: state.game.giveUp,
 });
 
 export default connect(mapStateToProps)(Staves);

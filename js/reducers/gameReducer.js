@@ -1,7 +1,7 @@
 import * as actions from '../actions/gameActions';
 
 const initialState = {
-    lessonIndexDisplay: {easy: false, novice: false, difficult: false, i: 0},
+    lessonIndexDisplay: { easy: false, novice: false, difficult: false, i: 0 },
     keyValue: null,
     displayKeyboardShortcuts: null,
     gameType: null,
@@ -17,13 +17,14 @@ const initialState = {
     accidentals: {bassAccidental: null, trebleIndices: []},
     guessN: 0,
     answeredCorrectly: null,
+    giveUp: null,
     questionNumber: 0,
     nAnsweredRight: 0,
     clicksPerRightAnswer: [],
     gameOver: false,
 };
 
-// Our reducer for the game-play/keyboard-shortcut part of our app
+// Our reducer for the game-play/keyboard-shortcut part of our app:
 export default (state=initialState, action) => {
 
     switch(action.type) {
@@ -55,6 +56,7 @@ export default (state=initialState, action) => {
             },
             guessN: state.guessN,
             answeredCorrectly: state.answeredCorrectly,
+            giveUp: false,
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer],
@@ -88,6 +90,7 @@ export default (state=initialState, action) => {
             },
             guessN: state.guessN,
             answeredCorrectly: state.answeredCorrectly,
+            giveUp: state.giveUp,
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer],
@@ -121,6 +124,7 @@ export default (state=initialState, action) => {
             },
             guessN: state.guessN,
             answeredCorrectly: state.answeredCorrectly,
+            giveUp: state.giveUp,
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer],
@@ -145,10 +149,45 @@ export default (state=initialState, action) => {
             accidentals: action.accidentals,
             guessN: 0,
             answeredCorrectly: false,
+            giveUp: false,
             questionNumber: 1,
             nAnsweredRight: 0,
             clicksPerRightAnswer: [],
             gameOver: false
+        };
+
+    case actions.GIVE_UP:
+        return {
+            lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
+            keyValue: '',
+            displayKeyboardShortcuts: state.displayKeyboardShortcuts,
+            gameType: state.gameType,
+            gameNumber: state.gameNumber,
+            inversions: state.inversions,
+            keyNameReadable: state.keyNameReadable,
+            keyNameNotation: state.keyNameNotation,
+            introChordSequence: [[...state.introChordSequence[0]],
+                                 [...state.introChordSequence[1]],
+                                 [...state.introChordSequence[2]],
+                                 [...state.introChordSequence[3]]],
+            chordSubset: [...state.chordSubset],
+            chordName: state.chordName,
+            chord: state.chord,
+            notes: {
+                bass: state.notes.bass,
+                treble: [...state.notes.treble]
+            },
+            accidentals: {
+                bassAccidental: state.accidentals.bassAccidental,
+                trebleIndices: [...state.accidentals.trebleIndices]
+            },
+            guessN: 0,
+            answeredCorrectly: false,
+            giveUp: true,
+            questionNumber: state.questionNumber,
+            nAnsweredRight: state.nAnsweredRight,
+            clicksPerRightAnswer: [...state.clicksPerRightAnswer],
+            gameOver: state.questionNumber === 10 ? true : false,
         };
 
     case actions.GET_NEXT_QUESTION:
@@ -175,6 +214,7 @@ export default (state=initialState, action) => {
             },
             guessN: 0,
             answeredCorrectly: false,
+            giveUp: false,
             questionNumber: (state.questionNumber + 1) % 11,
             nAnsweredRight: state.nAnsweredRight,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer],
@@ -208,6 +248,7 @@ export default (state=initialState, action) => {
             },
             guessN: state.guessN + 1,
             answeredCorrectly: false,
+            giveUp: state.giveUp,
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer],
@@ -215,7 +256,6 @@ export default (state=initialState, action) => {
         };
 
     case actions.MARK_TURN_CORRECT:
-        let gameOver = state.questionNumber === 10 ? true : false;
         return {
             lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
             keyValue: '',
@@ -245,7 +285,7 @@ export default (state=initialState, action) => {
             questionNumber: state.questionNumber,
             nAnsweredRight: state.nAnsweredRight + 1,
             clicksPerRightAnswer: [...state.clicksPerRightAnswer, state.guessN + 1],
-            gameOver
+            gameOver: state.questionNumber === 10 ? true : false,
         };
 
     default:

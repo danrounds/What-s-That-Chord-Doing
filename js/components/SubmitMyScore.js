@@ -11,6 +11,9 @@ export class SubmitMyScore extends React.Component {
     // This is non-robust, in the sense that if (for some reason) we had two
     // games going on different computers/in different browsers, we could
     // generate conflicting data
+    //
+    // We also don't bother submitting scores for games where the user didn't
+    // answer any questions correctly.
 
     constructor() {
         super();
@@ -19,7 +22,7 @@ export class SubmitMyScore extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.gameOver)
-            if (!this.state.submitted) {
+            if (!this.state.submitted && nextProps.clicksPerRightAnswer.length) {
                 this.submitMyScore(nextProps);
                 this.setState({ submitted: true });
             }
@@ -36,7 +39,7 @@ export class SubmitMyScore extends React.Component {
             if (scoresObj[gameMode])
                 var { totalClicks, nAnsweredRight, nQuestionNumber }
                         = scoresObj[gameMode];
-        // function-level variable necessary, here
+        // ^ function-level variable necessary, here
 
         totalClicks += props.clicksPerRightAnswer.reduce((a,b) => a + b);
         nAnsweredRight += props.nAnsweredRight;
