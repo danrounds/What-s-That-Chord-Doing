@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Vex from 'vexflow';
 
 export class Staves extends React.Component {
@@ -15,7 +15,9 @@ export class Staves extends React.Component {
 
     componentDidMount() {
         this.drawMusic();
+        window.addEventListener('resize', this.drawMusic);
     }
+
 
     shouldComponentUpdate(nextProps) {
         return !nextProps.guessN || nextProps.answeredCorrectly || nextProps.giveUp;
@@ -23,6 +25,10 @@ export class Staves extends React.Component {
 
     componentDidUpdate() {
         this.drawMusic();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.drawMusic);
     }
 
     deleteCanvas() {
@@ -40,17 +46,23 @@ export class Staves extends React.Component {
         const renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
         // Configure the rendering context.
-        renderer.resize(500, 220);
+        let size = 500, staveWidth = 400;
+        // ^ this is a fallback so that our tests work
+        if (document.getElementById('app')) {
+            size = document.getElementById('app').offsetWidth * 0.9;
+            staveWidth = size * 0.9;
+        }
+        renderer.resize(size, 220);
 
         const context = renderer.getContext();
         context.setFont('Arial', 10, '').setBackgroundFillStyle('eed');
 
-        // Create a stave of width 400 at position 0, 0 (x, y) on the canvas.
-        const treble = new VF.Stave(0, 20, 400);
+        // Create staves of width `size` at position 0, 0 (x, y) on the canvas.
+        const treble = new VF.Stave(0, 20, staveWidth);
         treble.addClef('treble').addKeySignature(this.props.keySignature);
         treble.setContext(context).draw();
 
-        const bass = new VF.Stave(0, 125, 400);
+        const bass = new VF.Stave(0, 125, staveWidth);
         bass.addClef('bass').addKeySignature(this.props.keySignature);
         bass.setContext(context).draw();
 

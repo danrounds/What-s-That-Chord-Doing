@@ -81,7 +81,7 @@ exports[`Score-based components NavBar 1`] = `
     </Link>
   </div>
   <div
-    className="nav-button"
+    className="log-in-btn nav-button"
   >
     <a
       className="nav-text"

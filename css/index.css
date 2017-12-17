@@ -86,13 +86,13 @@ em {
 
 .nav-bar {
     background-color: #ffe4e1;
-    cursor: pointer;
     height: 60px;
     user-select: none;
 }
 
 .nav-button {
     background-color: #ffe4e1;
+    cursor: pointer;
     border-radius: 4px;
     display: inline-block;
     font-size: 14px;
@@ -151,6 +151,10 @@ em {
     padding-left: 20px;
 }
 
+.log-in-btn {
+    margin-left: 130px;
+}
+
 li :focus {
     background-color: #91f999;
 }
@@ -160,6 +164,7 @@ li :focus {
     font-weight: 600;
     margin-bottom: 10px;
     padding-top: 20px;
+    text-align: center;
 }
 
 .difficultyLvl {
@@ -262,6 +267,7 @@ button {
     -webkit-transition: all 0.1s linear;
     transition: all 0.1s linear;
     user-select: none;
+    vertical-align: bottom;
 }
 
 .buttonStyle {
@@ -311,6 +317,7 @@ button:hover {
 
 .nxt-btn {
     font-weight: bold;
+    width: 67px;
 }
 
 .nxt-text {
@@ -466,13 +473,19 @@ button:hover {
     box-shadow: inset 2px -2px 90px #ff6699;
 }
 
+.huge-btn-div {
+    height: 100%;
+    vertical-align: top;
+}
+
 .huge-btn {
     border: 1px solid #666;
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 30px;
     height: 90px;
-    width: 260px;
+    vertical-align: top;
+    width: 50%;
 }
 
 .huge-btn-active {
@@ -488,7 +501,8 @@ button:hover {
     border: 1px solid #666;
     border-radius: 3px;
     font-size: 20px;
-    width: 173px;
+    vertical-align: top;
+    width: 33.3%;
 }
 
 .big-btn-selected {
@@ -497,25 +511,26 @@ button:hover {
 
 .small-btns {
     box-sizing: border-box;
-    vertical-align: bottom;
+    vertical-alignment: top;
 }
 
 .small-btns-major button {
-    width: 130px;
+    width: 25%;
 }
 
 .small-btns-minor button {
-    width: 86.6px;
+    font-size: 13px;
+    width: 16.66%;
 }
 
 .small-btns-all button {
-    width: 260px;
+    width: 50%;
 }
 
 .small-btn {
     border: 1px solid #666;
     border-radius: 3px;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .small-btn-selected {
@@ -555,4 +570,55 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+@media screen and (max-width: 800px) {
+    html, body {
+        height: 100%;
+    }
+    #app {
+        height: 100%;
+        width: auto;
+    }
+    .log-in-btn {
+        margin-left: 50%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .log-in-btn {
+        margin-left: 30%;
+    }
+    .small-btn {
+        font-size: 12px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .log-in-btn {
+        margin-left: 30%;
+    }
+    .small-btns-minor button {
+        font-size: 10px;
+        height: 50px;
+    }
+    .big-btn {
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .status-box {
+        height: 150px;
+        width: 80%;
+        margin: 0 5px 10px 5px;
+    }
+    .log-in-btn {
+        margin-left: auto;
+    }
+    .small-btns-minor button {
+        font-size: 8px;
+        height: 50px;
+    }
 }
