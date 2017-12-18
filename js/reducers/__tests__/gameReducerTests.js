@@ -21,6 +21,7 @@ actions.startNewGame = (gameType, inversions) => ({
     currentChordNumeral: 'vii°',
     bassNote: 'G/4',
     trebleNotes: ['G/5','Bb/5','Db/6',],
+    inversionN: 0,
     accidentals: {
         bassAccidental: true,
         trebleIndices: [0]
@@ -33,6 +34,7 @@ actions.getNextQuestion = () => ({
     currentChordNumeral:'♭III',
     bassNote: 'Cb/4',
     trebleNotes: ['Cb/5','Eb/5','Gb/5',],
+    inversionN: 1,
     accidentals: {
         bassAccidental: false,
         trebleIndices: [],

@@ -7,12 +7,13 @@ const initialState = {
     inversions: null,
     keyNameReadable: null,
     keyNameNotation: null,
-    introChordSequence: [[],[],[],[]],
+    introChordSequence: [ [],[],[],[] ],
     chordSubset: [],
     chordName: null,
     chord: null,
-    notes: {bass: null, treble: []},
-    accidentals: {bassAccidental: null, trebleIndices: []},
+    notes: { bass: null, treble: [] },
+    inversionN: null,
+    accidentals: { bassAccidental: null, trebleIndices: [] },
     guess: null,
     guessN: 0,
     answeredCorrectly: null,
@@ -40,16 +41,17 @@ export default (state=initialState, action) => {
                                  [...state.introChordSequence[1]],
                                  [...state.introChordSequence[2]],
                                  [...state.introChordSequence[3]]],
-            chordSubset: [...state.chordSubset],
+            chordSubset: [ ...state.chordSubset ],
             chordName: state.chordName,
             chord: state.chord,
             notes: {
                 bass: state.notes.bass,
                 treble: [...state.notes.treble]
             },
+            inversionN: state.inversionN,
             accidentals: {
                 bassAccidental: state.accidentals.bassAccidental,
-                trebleIndices: [...state.accidentals.trebleIndices]
+                trebleIndices: [...state.accidentals.trebleIndices],
             },
             guess: state.guess,
             guessN: state.guessN,
@@ -73,7 +75,8 @@ export default (state=initialState, action) => {
             chordSubset: action.chordSubset,
             chordName: action.chordName,
             chord: action.currentChordNumeral,
-            notes: {bass: action.bassNote, treble: action.trebleNotes},
+            notes: { bass: action.bassNote, treble: action.trebleNotes },
+            inversionN: action.inversionN,
             accidentals: action.accidentals,
             guess: null,
             guessN: 0,
@@ -104,6 +107,7 @@ export default (state=initialState, action) => {
                 bass: state.notes.bass,
                 treble: [...state.notes.treble]
             },
+            inversionN: state.inversionN,
             accidentals: {
                 bassAccidental: state.accidentals.bassAccidental,
                 trebleIndices: [...state.accidentals.trebleIndices]
@@ -133,7 +137,8 @@ export default (state=initialState, action) => {
             chordSubset: [...state.chordSubset],
             chordName: action.chordName,
             chord: action.currentChordNumeral,
-            notes: {bass: action.bassNote, treble: [...action.trebleNotes]},
+            notes: { bass: action.bassNote, treble: [...action.trebleNotes] },
+            inversionN: action.inversionN,
             accidentals: {
                 bassAccidental: action.accidentals.bassAccidental,
                 trebleIndices: [...action.accidentals.trebleIndices]
@@ -167,6 +172,7 @@ export default (state=initialState, action) => {
                 bass: state.notes.bass,
                 treble: [...state.notes.treble]
             },
+            inversionN: state.inversionN,
             accidentals: {
                 bassAccidental: state.accidentals.bassAccidental,
                 trebleIndices: [...state.accidentals.trebleIndices]
@@ -200,6 +206,7 @@ export default (state=initialState, action) => {
                 bass: state.notes.bass,
                 treble: [...state.notes.treble]
             },
+            inversionN: state.inversionN,
             accidentals: {
                 bassAccidental: state.accidentals.bassAccidental,
                 trebleIndices: [...state.accidentals.trebleIndices]

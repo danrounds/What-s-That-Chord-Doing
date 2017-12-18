@@ -8,9 +8,9 @@ export const setKeyPress = (keyValue) => ({
 
 export const START_NEW_GAME = 'START_NEW_GAME';
 export const startNewGame = (gameType, inversions) => {
-    let {keyNameReadable, keyNameNotation, introChordSequence, chordSubset} =
+    let { keyNameReadable, keyNameNotation, introChordSequence, chordSubset } =
             chordGetter.init(gameType, inversions);
-    let {chordName, currentChordNumeral, bassNote, trebleNotes, accidentals} =
+    let { chordName, currentChordNumeral, bassNote, trebleNotes, inversion, accidentals } =
             chordGetter.getChord();
     let gameNumber = Math.random() * Math.pow(2,52);
     // ^ This is not a seed number; it's merely an [ostensibly] unique
@@ -29,6 +29,7 @@ export const startNewGame = (gameType, inversions) => {
         currentChordNumeral,
         bassNote,
         trebleNotes,
+        inversionN: inversion,
         accidentals
     };
 };
@@ -39,7 +40,7 @@ export const giveUp = () => ({
 
 export const GET_NEXT_QUESTION = 'GET_NEXT_QUESTION';
 export const getNextQuestion = () => {
-    let {chordName, currentChordNumeral, bassNote, trebleNotes, accidentals} =
+    let { chordName, currentChordNumeral, bassNote, trebleNotes, inversion, accidentals } =
             chordGetter.getChord();
     return {
         type: GET_NEXT_QUESTION,
@@ -47,6 +48,7 @@ export const getNextQuestion = () => {
         currentChordNumeral,
         bassNote,
         trebleNotes,
+        inversionN: inversion,
         accidentals,
     };
 };

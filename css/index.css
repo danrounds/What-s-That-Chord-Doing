@@ -237,6 +237,19 @@ li :focus {
     margin-bottom: 7px;
 }
 
+.inv-glyph {
+  position: relative;
+  font-size: 60%;
+  left: 1px;
+  top: -8px;
+}
+
+.low-glyph {
+  position: absolute;
+  left: 0;
+  top: 11px; 
+}
+
 .status-primary {
     font-size: 21px;
     margin-top: 10px;

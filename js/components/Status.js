@@ -6,9 +6,9 @@ import * as actions from '../actions';
 export class Status extends React.Component {
     constructor() {
         super();
-        this.getStatusText = this.getStatusText.bind(this);
-        this.getAverageClicks = this.getAverageClicks.bind(this);
-        this.getBetweenTurnStatus = this.getBetweenTurnStatus.bind(this);
+        this.setStatusText = this.setStatusText.bind(this);
+        this.setAverageClicks = this.setAverageClicks.bind(this);
+        this.setBetweenTurnStatus = this.setBetweenTurnStatus.bind(this);
 
         this.state = {
             averageClicksText: (<br/>),
@@ -25,15 +25,27 @@ export class Status extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (!nextProps.guessN || this.props.guess !== nextProps.guess || nextProps.giveUp)
-            this.getStatusText(nextProps);
+            this.setStatusText(nextProps);
         if (!nextProps.guessN || nextProps.answeredCorrectly) {
-            this.getAverageClicks(nextProps);
+            this.setAverageClicks(nextProps);
             this.state.nRightText = nextProps.nAnsweredRight +' answered correctly';
         }
-        this.getBetweenTurnStatus(nextProps);
+        this.setBetweenTurnStatus(nextProps);
     }
 
-    getStatusText(props) {
+    getInversionInfo(props) {
+        const invEl = {
+            0: null,
+            1: (<span className="inv-glyph">6</span>),
+            2: (<span className="inv-glyph">6<span className="low-glyph">4</span></span>),
+        }[props.inversionN];
+
+        const bassNoteStr = props.inversionN ? `/${props.notes.bass.split('/')[0]}` : null;
+
+        return [ invEl, bassNoteStr ];
+    }
+
+    setStatusText(props) {
         if (!props.answeredCorrectly && props.guessN) {
              const statusText = Status.getRandom(
                 [
@@ -47,9 +59,12 @@ export class Status extends React.Component {
                       ? 'That\'s okay.'
                       : Status.getRandom(['You got it!','Yes!','Correct!']);
 
-            const statusText = prefix
-                + ` The ${props.chord} chord of ${this.props.key_} is`
-                + ` ${props.chordName}`;
+            const [ invEl, bassNoteStr ] = this.getInversionInfo(props);
+            const statusText = (
+                <div>
+                  {prefix} The {props.chord}{invEl} chord of {props.key_} is {props.chordName}{bassNoteStr}
+                </div>
+            );
 
             this.setState({ statusText, stopPrompting: true });
 
@@ -58,7 +73,7 @@ export class Status extends React.Component {
         }
     }
 
-    getAverageClicks(props) {
+    setAverageClicks(props) {
         const averageClicksEl = (props.clicksPerRightAnswer.length) ?
             String(
                 props.clicksPerRightAnswer.reduce(
@@ -68,7 +83,7 @@ export class Status extends React.Component {
         this.setState({ averageClicksText: averageClicksEl });
     }
 
-    getBetweenTurnStatus(props) {
+    setBetweenTurnStatus(props) {
         let element;
         if (props.gameOver) {
             if (props.displayKeyboardShortcuts)
@@ -143,6 +158,8 @@ const mapStateToProps = (state) => ({
     key_: state.game.keyNameReadable,
     chordName: state.game.chordName,
     chord: state.game.chord,
+    notes: state.game.notes,
+    inversionN: state.game.inversionN,
     guess: state.game.guess,
     guessN: state.game.guessN,
     answeredCorrectly: state.game.answeredCorrectly,
