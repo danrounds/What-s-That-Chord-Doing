@@ -5,7 +5,10 @@ export const updateLessonIndexDisplay = (keyValueToUpdate) => ({
 });
 
 export const TOGGLE_KEYBOARD_SHORTCUT_DISPLAY = 'TOGGLE_KEYBOARD_SHORTCUT_DISPLAY';
-export const toggleKeyboardShortcutDisplay = (displayBool) => ({
-    type: TOGGLE_KEYBOARD_SHORTCUT_DISPLAY,
-    displayBool,
-});
+export const toggleKeyboardShortcutDisplay = (displayBool) => {
+    localStorage.setItem('@WTCD/displayKeyboardShortcuts', displayBool);
+    return {
+        type: TOGGLE_KEYBOARD_SHORTCUT_DISPLAY,
+        displayBool,
+    };
+};

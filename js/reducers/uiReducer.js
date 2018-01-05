@@ -2,7 +2,7 @@ import * as actions from '../actions/uiActions';
 
 const initialState = {
     lessonIndexDisplay: { easy: false, novice: false, difficult: false, i: 0 },
-    displayKeyboardShortcuts: null,
+    displayKeyboardShortcuts: JSON.parse(localStorage.getItem('@WTCD/displayKeyboardShortcuts')),
 };
 
 // Reducer for the lesson-index and keyboard shortcut display
