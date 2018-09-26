@@ -73,7 +73,6 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
            // Our JWT token should have three parts:
            .then(res => expect(res.body.split('.').length).to.equal(3)));
 
-
         it('should fail when we try to register a profane account}', () => {
             const getBadWord = () => {
                 let badWord = '@';
@@ -89,7 +88,7 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
             return chai.request(app)
                 .post('/accounts/register')
                 .send({ name: badAccount, password: 'abc123' })
-                .then(res => res.should.not.equal(201))
+                .then(res => expect(res.status).not.to.equal(201))
                 .catch(res => expect(res.status).to.equal(422));
         });
     });
@@ -103,7 +102,7 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
                      name: dataToSend.name,
                      newPassword: 'abc123',
                  })
-                 .then((res) => expect(res.status).to.equal(204))
+                 .then(res => expect(res.status).to.equal(204))
                  .then(() => UserScore.findOne({ name: dataToSend.name }))
                  .then(changed => expect(changed.password).not.to.equal(oldRecord.password))));
     });
