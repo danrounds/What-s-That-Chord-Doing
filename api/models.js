@@ -2,6 +2,7 @@
 
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
+mongoose.plugin(schema => { schema.options.usePushEach = true });
 
 const individualScoreSchema = mongoose.Schema(
     {
