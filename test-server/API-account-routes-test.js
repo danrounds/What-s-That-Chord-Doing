@@ -1,34 +1,28 @@
 const chai = require('chai');
 const expect = chai.expect;
-const mongoose = require('mongoose');
-const jwt = require('jwt-simple');
 const areDeepEqual = require('assert').deepEqual;
 const badWordsArray = require('badwords/array');
 
 const { UserScore } = require('../api/models');
 const { app, runServer, closeServer } = require('../server');
-const { TEST_DATABASE_URL, TEST_PORT, JWT_SECRET } = require('../config');
+const { TEST_DATABASE_URL, TEST_PORT } = require('../config');
 const { tearDownDb, seedDb } = require('./_setup');
 const { makePassword: makeString } = require('../api/_fake');
 
 // T E S T S :
 describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
-
-    let dataToSend;           // We'll be using this throughout our tests
+    let dataToSend;        // We'll be using this throughout our tests
     before(() => Promise.all([runServer(TEST_DATABASE_URL, TEST_PORT), tearDownDb()]));
-
     beforeEach(() => seedDb()
                .then(data => dataToSend = data));
-
     afterEach(() => tearDownDb());
-
     after(() => closeServer());
 
     describe('GET :: /accounts', () => {
         it('should return the right data and response code', () => chai.request(app)
            .get('/accounts')
            .set('Authorization', `Bearer ${dataToSend.token}`)
-           .then(res => {
+           .then((res) => {
                const { body, status } = res;
                expect(status).to.equal(200);
                areDeepEqual(body.scores, dataToSend.scores);
@@ -37,7 +31,7 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
         it('should fail on bad authorization', () => chai.request(app)
            .get('/accounts')
            .set('Authorization', `Bearer ${dataToSend.token+123}`) // bad token
-           .catch((res) => expect(res.status).to.equal(401)));
+           .catch(res => expect(res.status).to.equal(401)));
 
         it('should return the same data that `GET:: /my-scores` endpoint returns', () => chai.request(app)
            .get('/accounts')
@@ -52,7 +46,7 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
         it('should return a JWT token for us, when we submit valid username/password', () => chai.request(app)
            .post('/accounts/log-in')
            .send({ name: dataToSend.name , password: dataToSend.password })
-           .then(res => {
+           .then((res) => {
                const { body, status } = res;
                expect(status).to.equal(200);
                expect(body).to.equal(dataToSend.token);

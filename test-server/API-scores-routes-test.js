@@ -1,27 +1,21 @@
 const chai = require('chai');
 const expect = chai.expect;
-const mongoose = require('mongoose');
-const jwt = require('jwt-simple');
 const areDeepEqual = require('assert').deepEqual;
 
 const { UserScore } = require('../api/models');
 const { app, runServer, closeServer } = require('../server');
-const { TEST_DATABASE_URL, TEST_PORT, JWT_SECRET } = require('../config');
+const { TEST_DATABASE_URL, TEST_PORT } = require('../config');
 const { tearDownDb, seedDb } = require('./_setup');
 const { generateReplacementScore, generateHighScores }
           = require('../api/_fake');
 
 // T E S T S :
 describe('What\'s That Chord Doing API score endpoints', () => {
-
     let dataToSend;           // We'll be using this throughout our tests
     before(() => Promise.all([runServer(TEST_DATABASE_URL, TEST_PORT), tearDownDb()]));
-
     beforeEach(() => seedDb()
                .then(data => dataToSend = data));
-
     afterEach(() => tearDownDb());
-
     after(() => closeServer());
 
     describe('GET :: /my-scores', () => {
@@ -31,7 +25,7 @@ describe('What\'s That Chord Doing API score endpoints', () => {
            .get('/my-scores')
            .set('Content-Type', 'application/json')
            .set('Authorization', `Bearer ${dataToSend.token}`)
-           .then(res => {
+           .then((res) => {
                const { body, status } = res;
                expect(status).to.equal(200);
                areDeepEqual(body.scores, dataToSend.scores);
@@ -67,7 +61,7 @@ describe('What\'s That Chord Doing API score endpoints', () => {
             return UserScore.insertMany(highScores)
                 .then(() => chai.request(app)
                       .get(`/high-scores/${scoreType}`)
-                      .then(result => {
+                      .then((result) => {
                           const scores = result.body;
                           const topScore = scores[0].scores[scoreType];
 
@@ -85,9 +79,7 @@ describe('What\'s That Chord Doing API score endpoints', () => {
                               'totalClicks','nAnsweredRight','nQuestionNumber',
                               'winRatio'
                           ]);
-
                       }));
-
         });
     });
 });
