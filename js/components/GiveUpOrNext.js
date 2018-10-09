@@ -29,7 +29,7 @@ export class GiveUpOrNext extends React.Component {
     render() {
         return (
             <button className="ctrl-btn nxt-btn" onClick={() => this.handleGiveUpOrNext(this.props)}>
-              <div className="nxt-text">{this.props.giveUp || this.props.answeredCorrectly ? 'next ?' : 'give up?' }</div>
+              <div className="nxt-text">{ this.props.giveUp || this.props.answeredCorrectly ? 'next?' : 'give up?' }</div>
               {this.props.displayKeyboardShortcuts
               && <div className="keyHint miniKeyHint nxtKeyHint">SPACE</div>}
             </button>
