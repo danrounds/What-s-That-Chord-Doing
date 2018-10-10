@@ -2,8 +2,8 @@ require('babel-polyfill');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {Router, Route, hashHistory} from 'react-router';
+import { Provider } from 'react-redux';
+import { Router, Route, hashHistory } from 'react-router';
 
 import Soundfont from 'soundfont-player';
 
@@ -52,8 +52,8 @@ const routes = (
 );
 
 document.addEventListener(
-    'DOMContentLoaded', () => ReactDOM.render(
-        <Provider store={store}>{routes}</Provider>,
-        document.getElementById('app')
-    )
+  'DOMContentLoaded', () => ReactDOM.render(
+      <Provider store={store}>{ routes }</Provider>,
+      document.getElementById('app'),
+  ),
 );
