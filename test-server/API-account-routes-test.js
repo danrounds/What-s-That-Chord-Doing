@@ -53,7 +53,7 @@ describe('What\'s That Chord Doing API endpoints :: /accounts*', () => {
            }));
 
         it('should return error status, when we submit a bad name/password combo', () => {
-            chai.request(app)
+            return chai.request(app)
                 .post('/accounts/log-in')
                 .send({ name: dataToSend.name, password: 'data' })
                 .catch(res => expect(res.status).to.equal(401));
