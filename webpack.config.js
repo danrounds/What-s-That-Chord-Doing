@@ -6,20 +6,20 @@ module.exports = {
         path: path.resolve(__dirname, 'build/js'),
         filename: 'index.js',
     },
-//    devtool: 'inline-source-map',  // for development. Version of webpack is
-//                                      too old for separate dev and production
-//                                      build configs
+    //    devtool: 'inline-source-map',  // for development. Version of webpack is
+    //                                      too old for separate dev and production
+    //                                      build configs
     devtool: 'source-map',
     module: {
-      loaders: [
-        {
-          test: /\.jsx?$/,
-          exclude: /(node_modules)/,
-          loader: 'babel',
-        },
-      ]
+        rules: [
+            {
+                test: /\.jsx?$/,
+                exclude: /(node_modules)/,
+                loader: 'babel-loader',
+            },
+        ],
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
-    }
+        extensions: ['.js', '.jsx'],
+    },
 };
