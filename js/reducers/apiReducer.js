@@ -1,4 +1,4 @@
-import * as actions from '../actions/apiActions';
+import * as types from '../actions/apiActionTypes.js';
 
 const initialState = {
     authToken: localStorage.getItem('@WTCD/authToken'),
@@ -34,7 +34,7 @@ function copyHighScores(oldScores) {
 export default (state=initialState, action) => {
     switch(action.type) {
         
-    case actions.LOG_IN_SUCCESS:
+    case types.LOG_IN_SUCCESS:
         return {
             authToken: action.token,
             name: action.name,
@@ -45,7 +45,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case actions.LOG_IN_FAILURE:
+    case types.LOG_IN_FAILURE:
         return {
             authToken: null,
             name: null,
@@ -57,7 +57,7 @@ export default (state=initialState, action) => {
         };
 
 
-    case actions.LOG_OFF:
+    case types.LOG_OFF:
         return {
             authToken: null,
             name: null,
@@ -71,10 +71,10 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case actions.LOG_IN_PENDING:
-    case actions.GET_MY_SCORES_PENDING:
-    case actions.GET_HIGH_SCORES_PENDING:
-    case actions.MAKE_USER_ACCOUNT_PENDING:
+    case types.LOG_IN_PENDING:
+    case types.GET_MY_SCORES_PENDING:
+    case types.GET_HIGH_SCORES_PENDING:
+    case types.MAKE_USER_ACCOUNT_PENDING:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -88,7 +88,7 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case actions.GET_MY_SCORES_SUCCESS:
+    case types.GET_MY_SCORES_SUCCESS:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -99,7 +99,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case actions.GET_MY_SCORES_FAILURE:
+    case types.GET_MY_SCORES_FAILURE:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -113,7 +113,7 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case actions.UPDATE_MY_SCORES_SUCCESS:
+    case types.UPDATE_MY_SCORES_SUCCESS:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -124,7 +124,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case actions.UPDATE_MY_SCORES_FAILURE:
+    case types.UPDATE_MY_SCORES_FAILURE:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -138,7 +138,7 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case actions.GET_HIGH_SCORES_SUCCESS:
+    case types.GET_HIGH_SCORES_SUCCESS:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -149,7 +149,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case actions.GET_HIGH_SCORES_FAILURE:
+    case types.GET_HIGH_SCORES_FAILURE:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -163,7 +163,7 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case actions.MAKE_USER_ACCOUNT_SUCCESS:
+    case types.MAKE_USER_ACCOUNT_SUCCESS:
         return {
             authToken: action.token,
             name: action.name,
@@ -174,7 +174,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case actions.MAKE_USER_ACCOUNT_FAILURE:
+    case types.MAKE_USER_ACCOUNT_FAILURE:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -188,7 +188,7 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
         
-    case actions.CHANGE_USER_PASSWORD_SUCCESS:
+    case types.CHANGE_USER_PASSWORD_SUCCESS:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -199,7 +199,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case actions.CHANGE_USER_PASSWORD_FAILURE:
+    case types.CHANGE_USER_PASSWORD_FAILURE:
         return {
             authToken: state.authToken,
             name: state.name,
