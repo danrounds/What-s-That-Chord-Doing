@@ -1,4 +1,4 @@
-import * as actions from '../actions/gameActions';
+import * as types from '../actions/gameActionTypes.js';
 
 const initialState = {
     keyValue: null,
@@ -29,7 +29,7 @@ export default (state=initialState, action) => {
 
     switch(action.type) {
 
-    case actions.SET_KEY_PRESS:
+    case types.SET_KEY_PRESS:
         return {
             keyValue: action.keyValue,
             gameType: state.gameType,
@@ -63,7 +63,7 @@ export default (state=initialState, action) => {
             gameOver: state.gameOver
         };
 
-    case actions.START_NEW_GAME:
+    case types.START_NEW_GAME:
         return {
             keyValue: '',
             gameType: action.gameType,
@@ -88,7 +88,7 @@ export default (state=initialState, action) => {
             gameOver: false
         };
 
-    case actions.GIVE_UP:
+    case types.GIVE_UP:
         return {
             keyValue: '',
             gameType: state.gameType,
@@ -122,7 +122,7 @@ export default (state=initialState, action) => {
             gameOver: state.questionNumber === 10 ? true : false,
         };
 
-    case actions.GET_NEXT_QUESTION:
+    case types.GET_NEXT_QUESTION:
         return {
             keyValue: '',
             gameType: state.gameType,
@@ -153,7 +153,7 @@ export default (state=initialState, action) => {
             gameOver: false
         };
 
-    case actions.MAKE_GUESS:
+    case types.MAKE_GUESS:
         return {
             keyValue: '',
             gameType: state.gameType,
@@ -187,7 +187,7 @@ export default (state=initialState, action) => {
             gameOver: false
         };
 
-    case actions.MARK_TURN_CORRECT:
+    case types.MARK_TURN_CORRECT:
         return {
             keyValue: '',
             gameType: state.gameType,
