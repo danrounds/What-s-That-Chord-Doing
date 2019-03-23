@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "An audio-based, \"tonally-functional\" chord identification game",
   "main": "js/index.js",
-  "engines": {
-    "node": "7.2.1"
-  },
   "scripts": {
     "start": "node server.js",
     "postinstall": "run-s build",
