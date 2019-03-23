@@ -34,7 +34,7 @@ function copyHighScores(oldScores) {
 export default (state=initialState, action) => {
     switch(action.type) {
         
-    case 'LOG_IN_SUCCESS':
+    case actions.LOG_IN_SUCCESS:
         return {
             authToken: action.token,
             name: action.name,
@@ -45,7 +45,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case 'LOG_IN_FAILURE':
+    case actions.LOG_IN_FAILURE:
         return {
             authToken: null,
             name: null,
@@ -57,7 +57,7 @@ export default (state=initialState, action) => {
         };
 
 
-    case 'LOG_OFF':
+    case actions.LOG_OFF:
         return {
             authToken: null,
             name: null,
@@ -71,10 +71,10 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case 'LOG_IN_PENDING':
-    case 'GET_MY_SCORES_PENDING':
-    case 'GET_HIGH_SCORES_PENDING':
-    case 'MAKE_USER_ACCOUNT_PENDING':
+    case actions.LOG_IN_PENDING:
+    case actions.GET_MY_SCORES_PENDING:
+    case actions.GET_HIGH_SCORES_PENDING:
+    case actions.MAKE_USER_ACCOUNT_PENDING:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -88,7 +88,7 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case 'GET_MY_SCORES_SUCCESS':
+    case actions.GET_MY_SCORES_SUCCESS:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -99,7 +99,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case 'GET_MY_SCORES_FAILURE':
+    case actions.GET_MY_SCORES_FAILURE:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -113,7 +113,7 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case 'UPDATE_MY_SCORES_SUCCESS':
+    case actions.UPDATE_MY_SCORES_SUCCESS:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -124,7 +124,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case 'UPDATE_MY_SCORES_FAILURE':
+    case actions.UPDATE_MY_SCORES_FAILURE:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -138,7 +138,7 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case 'GET_HIGH_SCORES_SUCCESS':
+    case actions.GET_HIGH_SCORES_SUCCESS:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -149,7 +149,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case 'GET_HIGH_SCORES_FAILURE':
+    case actions.GET_HIGH_SCORES_FAILURE:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -163,7 +163,7 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-    case 'MAKE_USER_ACCOUNT_SUCCESS':
+    case actions.MAKE_USER_ACCOUNT_SUCCESS:
         return {
             authToken: action.token,
             name: action.name,
@@ -174,7 +174,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case 'MAKE_USER_ACCOUNT_FAILURE':
+    case actions.MAKE_USER_ACCOUNT_FAILURE:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -188,7 +188,7 @@ export default (state=initialState, action) => {
         //////////////////////////////////////////////
         //////////////////////////////////////////////
         
-    case 'CHANGE_USER_PASSWORD_SUCCESS':
+    case actions.CHANGE_USER_PASSWORD_SUCCESS:
         return {
             authToken: state.authToken,
             name: state.name,
@@ -199,7 +199,7 @@ export default (state=initialState, action) => {
             pending: false,
         };
 
-    case 'CHANGE_USER_PASSWORD_FAILURE':
+    case actions.CHANGE_USER_PASSWORD_FAILURE:
         return {
             authToken: state.authToken,
             name: state.name,
