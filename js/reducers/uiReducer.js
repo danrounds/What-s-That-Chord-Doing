@@ -1,4 +1,4 @@
-import * as actions from '../actions/uiActions';
+import * as types from '../actions/uiActionTypes.js';
 
 const initialState = {
     lessonIndexDisplay: { easy: false, novice: false, difficult: false, i: 0 },
@@ -10,13 +10,13 @@ export default (state=initialState, action) => {
 
     switch(action.type) {
 
-    case actions.UPDATE_LESSON_INDEX_DISPLAY:
+    case types.UPDATE_LESSON_INDEX_DISPLAY:
         return {
             lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay, action.keyValueToUpdate),
             displayKeyboardShortcuts: state.displayKeyboardShortcuts,
         };
 
-    case actions.TOGGLE_KEYBOARD_SHORTCUT_DISPLAY:
+    case types.TOGGLE_KEYBOARD_SHORTCUT_DISPLAY:
         return {
             lessonIndexDisplay: Object.assign({}, state.lessonIndexDisplay),
             displayKeyboardShortcuts: action.displayBool,
