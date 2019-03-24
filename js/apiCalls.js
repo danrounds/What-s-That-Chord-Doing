@@ -12,7 +12,7 @@ function testResponse(response) {
         throw response.status;
 }
 
-function postReqLogIn(name, password) {
+function httpPostReqLogIn(name, password) {
     const payload = {
         method: 'POST',
         headers: {
@@ -24,12 +24,12 @@ function postReqLogIn(name, password) {
         .then(response => testResponse(response));
 }
 
-function getReqUserScores(token) {
+function httpGetReqUserScores(token) {
     return fetch(userScoreUrl, { headers: { Authorization: 'Bearer '+ token } })
         .then(response => testResponse(response));
 }
 
-function putReqUserScores(token, scores) {
+function httpPutReqUserScores(token, scores) {
     const payload = {
         method: 'PUT',
         headers: {
@@ -42,14 +42,14 @@ function putReqUserScores(token, scores) {
         .then(response => testResponse(response));
 }
 
-function getReqHighScores(gameType) {
+function httpGetReqHighScores(gameType) {
     return fetch(highScoreUrl+gameType)
         .then(response => testResponse(response));
 }
 
 //////
 
-function postReqAccount(name, password) {
+function httpPostReqAccount(name, password) {
     const payload = {
         method: 'POST',
         headers: {
@@ -61,7 +61,7 @@ function postReqAccount(name, password) {
         .then(response => testResponse(response));
 }
 
-function putReqAccountPassword(token, name, password) {
+function httpPutReqAccountPassword(token, name, password) {
     const payload = {
         method: 'PUT',
         headers: {
@@ -74,7 +74,7 @@ function putReqAccountPassword(token, name, password) {
         .then(response => testResponse(response));
 }
 
-function deleteReqAccount(token, name, password) {
+function httpDeleteReqAccount(token, name, password) {
     const payload = {
         method: 'DELETE',
         headers: {
@@ -87,5 +87,6 @@ function deleteReqAccount(token, name, password) {
         .then(response => testResponse(response));
 }
 
-export { postReqLogIn, getReqUserScores, getReqHighScores, postReqAccount,
-         putReqUserScores, putReqAccountPassword, deleteReqAccount };
+export { httpPostReqLogIn, httpGetReqUserScores, httpGetReqHighScores,
+         httpPostReqAccount, httpPutReqUserScores, httpPutReqAccountPassword,
+         httpDeleteReqAccount };

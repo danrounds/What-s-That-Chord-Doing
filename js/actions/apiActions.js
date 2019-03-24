@@ -1,8 +1,8 @@
-import { postReqLogIn, getReqUserScores, getReqHighScores, postReqAccount,
-         putReqUserScores, putReqAccountPassword, deleteReqAccount }
-    from '../apiCalls';
+import { httpPostReqLogIn, httpGetReqUserScores, httpGetReqHighScores,
+         httpPostReqAccount, httpPutReqUserScores, httpPutReqAccountPassword,
+         httpDeleteReqAccount } from '../apiCalls';
 
-import * as types from './apiActionTypes.js';
+import * as types from './apiActionTypes';
 
 // The logInSuccess, logOff, makeUserAccount actions success all update
 // `authToken` and `name` fields in localStorage. These are retrieved as our
@@ -11,7 +11,7 @@ import * as types from './apiActionTypes.js';
 export function logIn(name, password) {
     return dispatch => {
         dispatch(logInPending());
-        return postReqLogIn(name, password)
+        return httpPostReqLogIn(name, password)
             .then(token => dispatch(logInSuccess(name, token)))
             .catch((e) => dispatch(logInFailure(e)));
     };
@@ -50,7 +50,7 @@ export const logOff = () => {
 export function getMyScores(token) {
     return dispatch => {
         dispatch(getMyScoresPending());
-        return getReqUserScores(token)
+        return httpGetReqUserScores(token)
             .then(scores => dispatch(getMyScoresSuccess(scores)))
             .catch((e) => dispatch(getMyScoresFailure(e)));
     };
@@ -74,7 +74,7 @@ export const getMyScoresFailure = (error) => ({
 
 export function updateMyScores(token, scores) {
     return dispatch => {
-        return putReqUserScores(token, scores)
+        return httpPutReqUserScores(token, scores)
             .then(() => dispatch(updateMyScoresSuccess(scores)))
             .catch((e) => dispatch(updateMyScoresFailure(e)));
     };
@@ -94,7 +94,7 @@ export const updateMyScoresFailure = (error) => ({
 export function getHighScores(gameType) {
     return dispatch => {
         dispatch(getHighScoresPending());
-        return getReqHighScores(gameType)
+        return httpGetReqHighScores(gameType)
             .then(highScores => dispatch(getHighScoresSuccess(highScores, gameType)))
             .catch((e) => dispatch(getHighScoresFailure(e)));
     };
@@ -120,7 +120,7 @@ export const getHighScoresFailure = (error) => ({
 export function makeUserAccount(name, password) {
     return dispatch => {
         dispatch(makeUserAccountPending());
-        return postReqAccount(name, password)
+        return httpPostReqAccount(name, password)
             .then(token => dispatch(makeUserAccountSuccess(name, token)))
             .catch((e) => dispatch(makeUserAccountFailure(e)));
     };
@@ -148,7 +148,7 @@ export const makeUserAccountFailure = (error) => ({
 ////////////////////
 // This hasn't actually been incorporated into the client \/
 export function changeUserPassword(name, password) {
-    return dispatch => putReqAccountPassword(name, password)
+    return dispatch => httpPutReqAccountPassword(name, password)
         .then(() => dispatch(changeUserPasswordSuccess()))
         .catch((e) => dispatch(changeUserPasswordFailure()));
 }
