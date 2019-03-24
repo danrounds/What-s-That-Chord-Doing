@@ -8,12 +8,14 @@ import * as types from './apiActionTypes.js';
 // `authToken` and `name` fields in localStorage. These are retrieved as our
 // initial state for our reducer.
 
-export const logIn = (name, password) => dispatch => {
-    dispatch(logInPending());
-    return postReqLogIn(name, password)
-        .then(token => dispatch(logInSuccess(name, token)))
-        .catch((e) => dispatch(logInFailure(e)));
-};
+export function logIn(name, password) {
+    return dispatch => {
+        dispatch(logInPending());
+        return postReqLogIn(name, password)
+            .then(token => dispatch(logInSuccess(name, token)))
+            .catch((e) => dispatch(logInFailure(e)));
+    };
+}
 
 export const logInPending = () => ({
     type: types.LOG_IN_PENDING,
@@ -45,12 +47,14 @@ export const logOff = () => {
 };
 
 
-export const getMyScores = (token) => dispatch => {
-    dispatch(getMyScoresPending());
-    return getReqUserScores(token)
-        .then(scores => dispatch(getMyScoresSuccess(scores)))
-        .catch((e) => dispatch(getMyScoresFailure(e)));
-};
+export function getMyScores(token) {
+    return dispatch => {
+        dispatch(getMyScoresPending());
+        return getReqUserScores(token)
+            .then(scores => dispatch(getMyScoresSuccess(scores)))
+            .catch((e) => dispatch(getMyScoresFailure(e)));
+    };
+}
 
 export const getMyScoresPending = () => ({
     type: types.GET_MY_SCORES_PENDING,
@@ -68,10 +72,13 @@ export const getMyScoresFailure = (error) => ({
 
 ////////////////////
 
-export const updateMyScores =  (token, scores) =>
-    dispatch => putReqUserScores(token, scores)
-    .then(() => dispatch(updateMyScoresSuccess(scores)))
-    .catch((e) => dispatch(updateMyScoresFailure(e)));
+export function updateMyScores(token, scores) {
+    return dispatch => {
+        return putReqUserScores(token, scores)
+            .then(() => dispatch(updateMyScoresSuccess(scores)))
+            .catch((e) => dispatch(updateMyScoresFailure(e)));
+    };
+}
 
 export const updateMyScoresSuccess = () => ({
     type: types.UPDATE_MY_SCORES_SUCCESS
@@ -84,12 +91,14 @@ export const updateMyScoresFailure = (error) => ({
 
 ////////////////////
 
-export const getHighScores = (gameType) => dispatch => {
-    dispatch(getHighScoresPending());
-    return getReqHighScores(gameType)
-        .then(highScores => dispatch(getHighScoresSuccess(highScores, gameType)))
-        .catch((e) => dispatch(getHighScoresFailure(e)));
-};
+export function getHighScores(gameType) {
+    return dispatch => {
+        dispatch(getHighScoresPending());
+        return getReqHighScores(gameType)
+            .then(highScores => dispatch(getHighScoresSuccess(highScores, gameType)))
+            .catch((e) => dispatch(getHighScoresFailure(e)));
+    };
+}
 
 export const getHighScoresPending = () => ({
     type: types.GET_HIGH_SCORES_PENDING,
@@ -108,13 +117,14 @@ export const getHighScoresFailure = (error) => ({
 
 ////////////////////
 
-export const makeUserAccount = (name, password) =>
-    dispatch => {
+export function makeUserAccount(name, password) {
+    return dispatch => {
         dispatch(makeUserAccountPending());
         return postReqAccount(name, password)
             .then(token => dispatch(makeUserAccountSuccess(name, token)))
             .catch((e) => dispatch(makeUserAccountFailure(e)));
     };
+}
 
 export const makeUserAccountPending = () => ({
     type: types.MAKE_USER_ACCOUNT_PENDING,
@@ -137,10 +147,11 @@ export const makeUserAccountFailure = (error) => ({
 
 ////////////////////
 // This hasn't actually been incorporated into the client \/
-export const changeUserPassword = (name, password) =>
-    dispatch => putReqAccountPassword(name, password)
-    .then(() => dispatch(changeUserPasswordSuccess()))
-    .catch((e) => dispatch(changeUserPasswordFailure()));
+export function changeUserPassword(name, password) {
+    return dispatch => putReqAccountPassword(name, password)
+        .then(() => dispatch(changeUserPasswordSuccess()))
+        .catch((e) => dispatch(changeUserPasswordFailure()));
+}
 
 export const changeUserPasswordSuccess = () => ({
     type: types.CHANGE_USER_PASSWORD_SUCCESS,
