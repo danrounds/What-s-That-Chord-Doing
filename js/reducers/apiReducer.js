@@ -1,4 +1,4 @@
-import * as types from '../actions/apiActionTypes.js';
+import * as types from '../actions/apiActions/types';
 
 const initialState = {
     authToken: localStorage.getItem('@WTCD/authToken'),
